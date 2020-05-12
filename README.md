@@ -10,9 +10,20 @@ LTXMK is intended to be a replacement for [latexmk](https://mg.readthedocs.io/la
  - Bad defaults around PDF and output folder and build files
  - Arcane custom dependency rules
  - Poor CI support
+ - latexmk is a large perl script
+    - Offload work to other crates
+ - Assume a sane and modern evironment 
+    - Everything is a pdf
 
 ## Status
 Currently LTXMK is being developed and does not work.
+
+## Things to support
+
+- pdflatex
+- bibtex
+- biber
+- makeindex
 
 ## License
 Licensed under either of
