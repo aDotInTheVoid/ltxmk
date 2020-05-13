@@ -7,7 +7,9 @@ use std::process::Command;
 use anyhow::{anyhow, Context, Result};
 use structopt::StructOpt;
 
-mod strings;
+use log::{debug, error, info, trace, warn};
+
+//mod strings;
 
 #[derive(StructOpt, Debug)]
 struct Cli {
@@ -19,6 +21,14 @@ struct Cli {
     #[structopt(long, short)]
     /// Enables cleaning the output dir before compilation
     clean: bool,
+
+    // Has it's own docs
+    #[structopt(flatten)]
+    verbose: clap_verbosity_flag::Verbosity,
+
+    #[structopt(short, long)]
+    /// Enable timed logs
+    timed_log: bool,
 }
 
 // TODO: make these configurable
@@ -29,10 +39,22 @@ const TEX_FILE_EXT: &str = "tex";
 fn main() -> Result<()> {
     let mut args: Cli = Cli::from_args();
 
+    // Set up logging
+    if let Some(level) = args.verbose.log_level() {
+        if !args.timed_log {
+            pretty_env_logger::formatted_builder()
+        } else {
+            pretty_env_logger::formatted_timed_builder()
+        }
+        .filter(None, level.to_level_filter())
+        .init();
+    }
+
     // Clean files
     {
         let path = Path::new(OUTPUT_DIR);
         if path.is_dir() && args.clean {
+            info!("Removing dir {}", OUTPUT_DIR);
             fs::remove_dir_all(OUTPUT_DIR)?;
         } else if path.is_file() {
             return Err(anyhow!(
@@ -45,6 +67,7 @@ fn main() -> Result<()> {
     // Populate args if empty
     // If no files given, build every tex file
     if args.files.is_empty() {
+        info!("No files given, using all");
         for file in fs::read_dir(std::env::current_dir()?)? {
             let file = file?.path();
             if file.is_file() && file.extension() == Some(std::ffi::OsStr::new(TEX_FILE_EXT)) {
@@ -52,6 +75,8 @@ fn main() -> Result<()> {
             }
         }
     }
+
+    trace!("Files to process: {:#?}", &args.files);
 
     // Process each arg
     for i in args.files {
@@ -82,10 +107,15 @@ fn process_file(file: &Path) -> Result<()> {
     // Eg: out/Chemistry.pdf
     let output_file = format!("{}/{}.pdf", OUTPUT_DIR, stem);
 
+    info!("Creating dir: {}", &output_dir);
     fs::create_dir_all(&output_dir)?;
 
     //TODO: Figure out how many times to run
     for _ in 0..3 {
+        debug!(
+            "Running {} -recorder -output-directory={} -halt-on-error {}",
+            LATEX_CMD, output_dir, output_file,
+        );
         let output = Command::new(LATEX_CMD)
             .arg("-recorder")
             .arg(format!("-output-directory={}", output_dir))
@@ -95,6 +125,7 @@ fn process_file(file: &Path) -> Result<()> {
     }
     //println!("{}", std::str::from_utf8(&output.stdout)?);
 
+    info!("Moving {} to {}", generated_file, output_file);
     fs::rename(generated_file, output_file)?;
 
     Ok(())
