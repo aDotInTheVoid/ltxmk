@@ -1,6 +1,6 @@
 //! Important strings
 
-
+/// Regexes for errors
 const FILE_NOT_FOUND: &[&str] = &[
     r"^No file\s*(.*)\.$",
     r"^\! LaTeX Error: File `([^\']*)\' not found\.",
