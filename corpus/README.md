@@ -7,4 +7,5 @@ This is a series of test documents for ltxmk. Each has their own license
 - [a-level-notes](https://github.com/aDotInTheVoid/a-level-notes): CC BY-NC-SA 4.0
 - [gsasl](https://www.gnu.org/software/gsasl/): GPL
 - [dart](https://github.com/dart-lang/language/tree/master/specification): BSD
+- [ua-thesis](https://github.com/detiuaveiro/ua-thesis-template): MIT
  
