@@ -1,0 +1,331 @@
+\chapter{Bonus: A hint of Pontryagin duality}
+\label{ch:pontryagin}
+
+In this short chapter we will give statements
+about how to generalize our Fourier analysis
+(a bonus chapter \Cref{ch:fourier})
+to a much wider class of groups $G$.
+
+\section{LCA groups}
+\prototype{$\TT$, $\RR$.}
+Earlier we played with $\RR$,
+which is nice because in addition to being a topological space,
+it is also an abelian group under addition.
+These sorts of objects which are both groups and spaces have a name.
+\begin{definition}
+	A group $G$ is a \vocab{topological group}
+	is a Hausdorff\footnote{Some authors omit the Hausdorff condition.}
+	topological space equipped also with a group operation $(G, \cdot)$,
+	such that both maps
+	\begin{align*}
+		G \times G &\to G \quad\text{ by }\quad (x,y) \mapsto xy \\
+		G &\to G \quad\text{ by }\quad x \mapsto x\inv
+	\end{align*}
+	are continuous.
+\end{definition}
+
+For our Fourier analysis, we need some additional conditions.
+\begin{definition}
+	A \vocab{locally compact abelian (LCA) group} $G$
+	is one for which the group operation is abelian,
+	and moreover the topology is \emph{locally compact}:
+	for every point $p$ of $G$,
+	there exists a compact subset $K$ of $G$
+	such that $K \ni p$, and $K$ contains some open neighborhood of $p$.
+\end{definition}
+
+Our previous examples all fall into this category:
+\begin{example}
+	[Examples of locally compact abelian groups]
+	\listhack
+	\begin{itemize}
+		\ii Any finite group $Z$ with the discrete topology is LCA.
+		\ii The circle group $\TT$ is LCA and also in fact compact.
+		\ii The real numbers $\RR$ are an example of an LCA group
+		which is \emph{not} compact.
+	\end{itemize}
+\end{example}
+
+These conditions turn out to be enough
+for us to define a measure on the space $G$.
+The relevant theorem, which we will just quote:
+\begin{theorem}
+	[Haar measure]
+	Let $G$ be a locally compact abelian group.
+	We regard it as a measurable space
+	using its Borel $\sigma$-algebra $\SB(G)$.
+	There exists a measure $\mu \colon \SB(G) \to [0,\infty]$,
+	called the \vocab{Haar measure},
+	satisfying the following properties:
+	\begin{itemize}
+		\ii $\mu(gS) = \mu(S)$ for every $g \in G$ and measurable $S$.
+		That means that $\mu$ is ``translation-invariant''
+		under translation by $G$.
+		\ii $\mu(K)$ is finite for any compact set $K$.
+		\ii if $S$ is measurable, then $\mu(S) = \inf\left\{ \mu(U) \colon U \supseteq S \text{ open} \right\}$.
+		\ii if $U$ is open, then $\mu(U) = \sup\left\{ \mu(S) \colon S \supseteq U \text{ measurable} \right\}$.
+	\end{itemize}
+	Moreover, it is unique up to scaling by a positive constant.
+\end{theorem}
+
+\begin{remark}
+	Note that if $G$ is compact, then $\mu(G)$ is finite (and positive).
+	For this reason the Haar measure on a LCA group $G$
+	is usually normalized so $\mu(G) = 1$.
+\end{remark}
+
+For this chapter, we will only use the first two properties at all,
+and the other two are just mentioned for completeness.
+Note that this actually generalizes the chapter where
+we constructed a measure on $\SB(\RR^n)$,
+since $\RR^n$ is an LCA group!
+
+So, in short: if we have an LCA group,
+we have a measure $\mu$ on it.
+
+\section{The Pontryagin dual}
+Now the key definition is:
+\begin{definition}
+	Let $G$ be an LCA group.
+	Then its \vocab{Pontryagin dual} is the abelian group
+	\[ \wh G \defeq \left\{ \text{continuous group homomorphisms }
+			\xi : G \to \TT \right\}. \]
+	The maps $\xi$ are called \vocab{characters}.
+	It can be itself made into an LCA group.\footnote{If you must
+		know the topology, it is the \vocab{compact-open topology}:
+		for any compact set $K \subseteq G$
+		and open set $U \subseteq \TT$,
+		we declare the set of all $\xi$ with $\xi\im(K) \subseteq U$ to be open,
+		and then take the smallest topology
+		containing all such sets. We won't use this at all.}
+\end{definition}
+\begin{example}
+	[Examples of Pontryagin duals]
+	\listhack
+	\begin{itemize}
+		\ii $\wh{\ZZ} \cong \TT$,
+		since group homomorphisms $\ZZ \to \TT$ are determined by the image of $1$.
+		\ii $\wh{\TT} \cong \ZZ$.
+		The characters are given by $\theta \mapsto n\theta$ for $n \in \ZZ$.
+		\ii $\wh{\RR} \cong \RR$.
+		This is because a nonzero continuous homomorphism
+		$\RR \to S^1$ is determined by the fiber above $1 \in S^1$.
+		(Algebraic topologists might see covering projections here.)
+		\ii $\wh{\ZZ/n\ZZ} \cong \ZZ/n\ZZ$,
+		characters $\xi$ being determined by the image $\xi(1) \in \TT$.
+		\ii $\wh{G \times H} \cong \wh G \times \wh H$.
+	\end{itemize}
+\end{example}
+\begin{exercise}
+	[$\wh Z \cong Z$, for those who read \Cref{sec:FTFGAG}]
+	If $Z$ is a finite abelian group, show that $\wh Z \cong Z$,
+	using the results of the previous example.
+	You may now recognize that the bilinear form
+	$\cdot \colon Z \times Z \to \TT$
+	is exactly a choice of isomorphism $Z \to \wh Z$.
+	It is not ``canonical''.
+\end{exercise}
+
+True to its name as the dual,
+and in analogy with $(V^\vee)^\vee \cong V$ for vector spaces $V$, we have:
+\begin{theorem}
+	[Pontryagin duality theorem]
+	For any LCA group $G$, there is an isomorphism
+	\[ G \cong \wh{\wh G} \qquad \text{by} \qquad
+		x \mapsto \left( \xi \mapsto \xi(x) \right). \]
+\end{theorem}
+
+The compact case is especially nice.
+\begin{proposition}
+	[$G$ compact $\iff$ $\wh G$ discrete]
+	Let $G$ be an LCA group.
+	Then $G$ is compact if and only if $\wh G$ is discrete.
+\end{proposition}
+\begin{proof}
+	\Cref{prob:LCA_compact}.
+\end{proof}
+
+\section{The orthonormal basis in the compact case}
+Let $G$ be a compact LCA group,
+and work with its Haar measure.
+We may now let $L^2(G)$ be the space of
+square-integrable functions to $\CC$, i.e.
+\[ L^2(G) = \left\{ f \colon G \to \CC
+	\quad\text{such that}\quad \int_G |f|^2 < \infty \right\}. \]
+Thus we can equip it with the inner form
+\[ \left< f,g \right> = \int_G f \cdot \ol{g}. \]
+In that case, we get all the results we wanted before:
+\begin{theorem}
+	[Characters of $\wh G$ forms an orthonormal basis]
+	\label{thm:god}
+	Assume $G$ is LCA and compact (so $\wh G$ is discrete).
+	Then the characters
+	\[ (e_\xi)_{\xi \in \wh G}
+		\qquad\text{by}\qquad e_\xi(x) = e(\xi(x)) = \exp(2\pi i \xi(x)) \]
+	form an orthonormal basis of $L^2(G)$.
+	Thus for each $f \in L^2(G)$ we have
+	\[ f = \sum_{\xi \in \wh G} \wh f(\xi) e_\xi \]
+	where
+	\[ \wh f(\xi) = \left< f, e_\xi \right>
+		= \int_G f(x) \exp(-2\pi i \xi(x)) \; d\mu. \]
+\end{theorem}
+The sum $\sum_{\xi \in \wh G}$ makes sense since $\wh G$ is discrete.
+In particular,
+\begin{itemize}
+	\ii Letting $G = Z$ for a finite group $G$
+	gives ``Fourier transform on finite groups''.
+	\ii The special case $G = \ZZ/n\ZZ$ has its
+	\href{https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Definition}%
+	{own Wikipedia page}: the ``discrete-time Fourier transform''.
+	\ii Letting $G = \TT$ gives the ``Fourier series'' earlier.
+\end{itemize}
+
+\section{The Fourier transform of the non-compact case}
+If $G$ is LCA but not compact, then Theorem~\ref{thm:god} becomes false.
+On the other hand, it's still possible to define $\wh G$.
+We can then try to write the Fourier coefficients anyways:
+let \[ \wh f(\xi) = \int_G f \cdot \ol{e_\xi} \; d\mu \]
+for $\xi \in \wh G$ and $f \colon G \to \CC$.
+The results are less fun in this case, but we still have, for example:
+\begin{theorem}
+	[Fourier inverison formula in the non-compact case]
+	Let $\mu$ be a Haar measure on $G$.
+	Then there exists a unique Haar measure $\nu$ on $\wh G$
+	(called the \vocab{dual measure}) such that:
+	whenever $f \in L^1(G)$ and $\wh f \in L^1(\wh G)$, we have
+	\[ f(x) = \int_{\wh G} \wh f(\xi) \xi(x) \; d\nu \]
+	for almost all $x \in G$ (with respect to $\mu$).
+	If $f$ is continuous, this holds for all $x$.
+\end{theorem}
+So while we don't have the niceness of a full inner product from before,
+we can still in some situations at least write $f$ as integral
+in sort of the same way as before.
+
+In particular, they have special names for a few special $G$:
+\begin{itemize}
+	\ii If $G = \RR$, then $\wh G = \RR$,
+	yielding the
+	``\href{https://en.wikipedia.org/wiki/Fourier_transform}{(continuous) Fourier transform}''.
+	\ii If $G = \ZZ$, then $\wh G = \TT$,
+	yielding the
+	``\href{https://en.wikipedia.org/wiki/Discrete-time_Fourier_transform}{discrete time Fourier transform}.
+\end{itemize}
+
+\section{Summary}
+We summarize our various flavors of Fourier analysis
+from the previous sections in the following table.
+In the first part $G$ is compact,
+in the second half $G$ is not.
+\[
+	\begin{array}{llll}
+		\hline
+		\text{Name} & \text{Domain }G & \text{Dual }\wh G 
+			& \text{Characters} \\ \hline
+		\text{Binary Fourier analysis} & \{\pm1\}^n
+			& S \subseteq \left\{ 1, \dots, n \right\}
+			& \prod_{s \in S} x_s \\
+		\text{Fourier transform on finite groups} & Z
+			& \xi \in \wh Z \cong Z & e( i \xi \cdot x) \\
+		\text{Discrete Fourier transform} & \ZZ/n\ZZ & \xi \in \ZZ/n\ZZ
+			& e(\xi x / n) \\
+		\text{Fourier series} & \TT \cong [-\pi, \pi]  & n \in \ZZ
+			& \exp(inx) \\ \hline
+		\text{Continuous Fourier transform} & \RR & \xi \in \RR
+		 	& e(\xi x) \\
+		\text{Discrete time Fourier transform} & \ZZ & \xi \in \TT \cong [-\pi, \pi]
+		 	& \exp(i \xi n) \\
+	\end{array}
+\]
+You might notice that the \textbf{various names are awful}.
+This is part of the reason I got confused as a high school student:
+every type of Fourier series above has its own Wikipedia article.
+If it were up to me, we would just use the term ``$G$-Fourier transform'',
+and that would make everyone's lives a lot easier.
+
+
+
+\section{\problemhead}
+\begin{problem}
+	If $G$ is compact, so $\wh G$ is discrete,
+	describe the dual measure $\nu$.
+	\begin{hint}
+		You can read it off \Cref{thm:god}.
+	\end{hint}
+	\begin{sol}
+		It is the counting measure.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	\label{prob:LCA_compact}
+	Show that an LCA group $G$ is compact
+	if and only if $\wh G$ is discrete.
+	(You will need the compact-open topology for this.)
+	\begin{hint}
+		After Pontryagin duality,
+		we need to show $G$ compact implies $\wh G$ discrete
+		and $G$ discrete implies $\wh G$ compact.
+		Both do not need anything fancy:
+		they are topological facts.
+	\end{hint}
+\end{problem}
+
+\endinput
+\section{Peter-Weyl}
+In fact, if $G$ is a Lie group, even if $G$ is not abelian
+we can still give an orthonormal basis of $L^2(G)$
+(the square-integrable functions on $G$).
+It turns out in this case the characters are attached to complex
+irreducible representations of $G$
+(and in what follows all representations are complex).
+
+The result is given by the Peter-Weyl theorem.
+First, we need the following result:
+\begin{lemma}
+	[Compact Lie groups have unitary reps]
+	Any finite-dimensional (complex) representation $V$ of a compact Lie group $G$
+	is unitary, meaning it can be equipped with a $G$-invariant inner form.
+	Consequently, $V$ is completely reducible:
+	it splits into the direct sum of irreducible representations of $G$.
+\end{lemma}
+\begin{proof}
+	Suppose $B : V \times V \to \CC$ is any inner product.
+	Equip $G$ with a right-invariant Haar measure $dg$.
+	Then we can equip it with an ``averaged'' inner form
+	\[ \wt B(v,w) = \int_G B(gv, gw) \; dg. \]
+	Then $\wt B$ is the desired $G$-invariant inner form.
+	Now, the fact that $V$ is completely reducible follows from the fact
+	that given a subrepresentation of $V$, its orthogonal complement
+	is also a subrepresentation.
+\end{proof}
+
+The Peter-Weyl theorem then asserts that the finite-dimensional irreducible
+unitary representations essentially give an orthonormal basis for $L^2(G)$,
+in the following sense.  Let $V = (V, \rho)$ be such a representation of $G$,
+and fix an orthonormal basis of $e_1$, \dots, $e_d$ for $V$ (where $d = \dim V$).
+The $(i,j)$th \vocab{matrix coefficient} for $V$ is then given by 
+\[ G \taking{\rho} \GL(V) \taking{\pi_{ij}} \CC \]
+where $\pi_{ij}$ is the projection onto the $(i,j)$th entry of the matrix.
+We abbreviate $\pi_{ij} \circ \rho$ to $\rho_{ij}$.
+Then the theorem is:
+\begin{theorem}
+	[Peter-Weyl]
+	Let $G$ be a compact Lie group.
+	Let $\Sigma$ denote the (pairwise non-isomorphic) irreducible finite-dimensional
+	unitary representations of $G$.
+	Then
+	\[ \left\{ \sqrt{\dim V} \rho_{ij}
+			\; \Big\vert \; (V, \rho) \in \Sigma,
+			\text{ and } 1 \le i,j \le \dim V \right\}  \]
+	is an orthonormal basis of $L^2(G)$.
+\end{theorem}
+Strictly, I should say $\Sigma$ is a set of representatives of 
+the isomorphism classes of irreducible unitary representations,
+one for each isomorphism class.
+
+In the special case $G$ is abelian,
+all irreducible representations are one-dimensional.
+A one-dimensional representation of $G$ is a map
+$G \injto \GL(\CC) \cong \CC^\times$,
+but the unitary condition implies it is actually a map $G \injto S^1 \cong \TT$,
+i.e.\ it is an element of $\wh G$.

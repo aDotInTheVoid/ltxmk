@@ -1,0 +1,535 @@
+\chapter{Inner product spaces}
+%%fakesection Cheerleading
+It will often turn out that our vector spaces which look more like $\RR^n$
+not only have the notion of addition, but also a notion of \emph{orthogonality}
+and the notion of \emph{distance}.
+All this is achieved by endowing the vector space with a so-called \textbf{inner form},
+which you likely already know as the ``dot product'' for $\RR^n$.
+Indeed, in $\RR^n$ you already know that
+\begin{itemize}
+	\ii $v \cdot w = 0$ if and only if $v$ and $w$ are perpendicular, and
+	\ii $|v|^2 = v \cdot v$.
+\end{itemize}
+The purpose is to quickly set up this structure in full generality.
+Some highlights of the chapter:
+\begin{itemize}
+	\ii We'll see that the high school ``dot product''
+	formulation is actually very natural:
+	it falls out from the two axioms we listed above.
+	If you ever wondered why $\sum a_i b_i$ behaves as nicely as it does,
+	now you'll know.
+	\ii We show how the inner form can be used to make $V$ into a \emph{metric space},
+	giving it more geometric structure.
+	\ii A few chapters later,
+	we'll identify $V \cong V^\vee$ in a way that wasn't possible before,
+	and as a corollary deduce the nice result that
+	symmetric matrices with real entries
+	always have real eigenvalues.
+\end{itemize}
+
+Throughout this chapter, \emph{all vector spaces are over $\CC$ or $\RR$},
+unless otherwise specified.
+We'll generally prefer working over $\CC$ instead of $\RR$ since
+$\CC$ is algebraically closed
+(so, e.g.\ we have Jordan forms).
+Every real matrix can be thought of as a matrix
+with complex entries anyways.
+
+\section{The inner product}
+\prototype{Dot product in $\RR^n$.}
+\subsection{For real numbers: bilinear forms}
+
+First, let's define the inner form for real spaces.
+Rather than the notation $v \cdot w$ it is most customary
+to use $\left< v,w \right>$ for general vector spaces.
+\begin{definition}
+	Let $V$ be a real vector space.
+	A \vocab{real inner form}\footnote{Other
+		names include ``inner product'', ``dot product'',
+		``positive definite nondegenerate symmetric bilinear form'', \dots}
+	is a function
+	\[ \left< \bullet, \bullet \right> : V \times V \to \RR \]
+	which satisfies the following properties:
+	\begin{itemize}
+		\ii The form is \vocab{symmetric}: for any $v,w \in V$ we have
+		\[ \left< v,w \right> = \left< w,v\right>. \]
+		Of course, one would expect this property from a product.
+
+		\ii The form is \vocab{bilinear}, or \textbf{linear in both arguments},
+		meaning that $\left< -, v\right>$
+		and $\left< v, -\right>$ are linear functions for any fixed $v$.
+		Spelled explicitly this means that
+		\begin{align*}
+			\left< cx, v \right> &= c \left< x,v \right> \\
+			\left< x+y, v \right> &= \left< x,v \right> + \left< y,v \right>.
+		\end{align*}
+		and similarly if $v$ was on the left.
+		This is often summarized by the single equation
+		$\left< cx+y, z \right> = c \left< x,z \right> + \left< y,z \right>$.
+
+		\ii The form is \vocab{positive definite}, meaning $\left<v,v\right> \ge 0$
+		is a nonnegative real number, and equality takes place only if $v = 0_V$.
+	\end{itemize}
+\end{definition}
+\begin{exercise}
+	Show that linearity in the first argument plus symmetry
+	already gives you linearity in the second argument,
+	so we could edit the above definition
+	by only requiring $\left< -, v\right>$ to be linear.
+\end{exercise}
+
+\begin{example}
+	[$\RR^n$]
+	As we already know, one can define the inner form on $\RR^n$ as follows.
+	Let $e_1 = (1, 0, \dots, 0)$, $e_2 = (0, 1, \dots, 0)$,
+	\dots, $e_n = (0, \dots, 0, 1)$ be the usual basis.
+	Then we let
+	\[ 
+		\left< a_1 e_1 + \dots + a_n e_n, b_1 e_1 + \dots + b_n e_n \right>
+		\defeq a_1 b_1 + \dots + a_n b_n.
+	\]
+	It's easy to see this is bilinear
+	(symmetric and linear in both arguments).
+	To see it is positive definite,
+	note that if $a_i = b_i$
+	then the dot product is $a_1^2 + \dots + a_n^2$,
+	which is zero exactly when all $a_i$ are zero.
+\end{example}
+
+\subsection{For complex numbers: sesquilinear forms}
+The definition for a complex product space is similar, but has one difference:
+rather than symmetry we instead have \emph{conjugate symmetry}
+meaning $\left< v, w \right> = \ol{ \left< w,v \right> }$.
+Thus, while we still have linearity in the first argument,
+we actually have a different linearity for the second argument.
+To be explicit:
+\begin{definition}
+	Let $V$ be a complex vector space.
+	A \vocab{complex inner product} is a function
+	\[ \left< \bullet, \bullet \right> : V \times V \to \CC \]
+	which satisfies the following properties:
+	\begin{itemize}
+		\ii The form has \vocab{conjugate symmetry}, which means that
+		for any $v,w \in V$ we have
+		\[ \left< v,w \right> = \ol{\left< w,v\right>}. \]
+
+		\ii The form is \vocab{sesquilinear}
+		(the name means ``one-and-a-half linear'').
+		This means that:
+		\begin{itemize}
+		\ii The form is \textbf{linear in the first argument}, so again we have
+		\begin{align*}
+			\left< x+y, v \right> &= \left< x,v \right> + \left< y,v \right> \\
+			\left< cx, v \right> &= c\left< x,v \right>.
+		\end{align*}
+		Again this is often abbreviated to the single line
+		$\left< cx+y, v \right> = c \left< x,v \right> + \left< y,v \right>$
+		in the literature.
+
+		\ii However, it is now \textbf{\vocab{anti-linear}
+		in the second argument}:
+		for any complex number $c$ and vectors $x$ and $y$ we have
+		\begin{align*}
+			\left< v, x+y\right> &= \left< v, x\right> + \left< v,y \right> \\
+			\left< v, cx \right> &= \ol c \left< v, x\right>.
+		\end{align*}
+		Note the appearance of the complex conjugate $\ol c$,
+		which is new!
+		Again, we can abbreviate this to just
+		$\left< v, cx+y \right> = \ol c \left< v,x \right> + \left< v,y\right>$
+		if we only want to write one equation.
+		\end{itemize}
+
+		\ii The form is \vocab{positive definite},
+		meaning $\left<v,v\right>$ is a nonnegative real number,
+		and equals zero exactly when $v = 0_V$.
+	\end{itemize}
+\end{definition}
+\begin{exercise}
+	Show that anti-linearity follows
+	from conjugate symmetry plus linearity in the first argument.
+\end{exercise}
+
+\begin{example}
+	[$\CC^n$]
+	The dot product in $\CC^n$ is defined as follows:
+	let $\ee_1$, $\ee_2$, \dots, $\ee_n$ be the standard basis.
+	For complex numbers $w_i$, $z_i$ we set
+	\[ 
+		\left< w_1 \ee_1 + \dots + w_n \ee_n, z_1 \ee_1 + \dots + z_n \ee_n \right>
+		\defeq w_1\ol{z_1} + \dots + w_n \ol{z_n}.
+	\]
+\end{example}
+\begin{ques}
+	Check that the above is in fact a complex inner form.
+\end{ques}
+
+\subsection{Inner product space}
+It'll be useful to treat both types of spaces simultaneously:
+\begin{definition}
+	An \vocab{inner product space} is either a real vector space
+	equipped with a real inner form,
+	or a complex vector space equipped with a complex inner form.
+
+	A linear map between inner product spaces
+	is a map between the underlying vector spaces
+	(we do \emph{not} require any compatibility with the inner form).
+\end{definition}
+
+\begin{remark}
+	[Why sesquilinear?]
+	The above example explains one reason why we want
+	to satisfy conjugate symmetry rather than just symmetry.
+	If we had tried to define the dot product as $\sum w_i z_i$,
+	then we would have lost the condition of being positive definite,
+	because there is no guarantee that
+	$\left< v,v \right> = \sum z_i^2$ will even be a real number at all.
+	On the other hand, with conjugate symmetry
+	we actually enforce $\left< v,v \right> = \ol{\left< v,v \right>}$,
+	i.e.\ $\left< v,v \right> \in \RR$ for every $v$.
+
+	Let's make this point a bit more forcefully.
+	Suppose we tried to put a bilinear form $\left< -, -\right>$,
+	on a \emph{complex} vector space $V$.
+	Let $e$ be any vector with $\left< e, e \right> = 1$ (a unit vector).
+	Then we would instead get
+	$\left< ie, ie \right> = - \left< e,e \right> = -1$;
+	this is a vector with length $-1$, which is not okay!
+	That's why it is important that,
+	when we have a complex inner product space,
+	our form is sesquilinear, not bilinear.
+\end{remark}
+
+Now that we have a dot product,
+we can talk both about the norm and orthogonality.
+
+\section{Norms}
+\prototype{$\RR^n$ becomes its usual Euclidean space with the vector norm.}
+
+The inner form equips our vector space with a notion of distance, which we call the norm.
+\begin{definition}
+	Let $V$ be an inner product space.
+	The \vocab{norm} of $v \in V$ is defined by
+	\[ \norm{v} = \sqrt{\left<v,v\right>}. \]
+	This definition makes sense because
+	we assumed our form to be positive definite,
+	so $\left< v,v\right>$ is a nonnegative real number.
+\end{definition}
+
+\begin{example}[$\RR^n$ and $\CC^n$ are normed vector spaces]
+	When $V = \RR^n$ or $V = \CC^n$ with the standard dot product norm,
+	then the norm of $v$ corresponds to the absolute value that we are used to.
+\end{example}
+
+Our goal now is to prove that
+\begin{moral}
+	With the metric $d(v,w) = \norm{v-w}$, $V$ becomes a metric space.
+\end{moral}
+\begin{ques}
+	Verify that $d(v,w) = 0$ if and only if $v = w$.
+\end{ques}
+So we just have to establish the triangle inequality.
+Let's now prove something we all know and love,
+which will be a stepping stone later:
+\begin{lemma}
+	[Cauchy-Schwarz]
+	Let $V$ be an inner product space.
+	For any $v,w \in V$ we have
+	\[ \left\lvert \left< v,w\right> \right\rvert
+	\le \norm{v} \norm{w} \]
+	with equality if and only if $v$ and $w$ are linearly dependent.
+\end{lemma}
+\begin{proof}
+	The theorem is immediate if $\left< v,w\right> = 0$.
+	It is also immediate if $\norm{v} \norm{w} = 0$,
+	since then one of $v$ or $w$ is the zero vector.
+	So henceforth we assume all these quantities are nonzero
+	(as we need to divide by them later).
+
+	The key to the proof is to think about the equality case:
+	we'll use the inequality $\left< cv-w, cv-w\right> \ge 0$.
+	Deferring the choice of $c$ until later, we compute
+	\begin{align*}
+		0 &\le \left< cv-w, cv-w \right> \\
+		&= \left< cv, cv\right> - \left< cv, w\right> - \left< w, cv\right> + \left< w,w \right> \\
+		&= |c|^2 \left< v,v \right> - c \left< v,w \right> - \ol c \left< w,v \right> + \left< w,w \right> \\
+		&= |c|^2 \norm{v}^2 + \norm{w}^2 - c \left< v,w \right> - \ol{c \left< v,w\right> } \\
+		2 \Re \left[ c \left< v,w \right> \right] &\le |c|^2 \norm{v}^2 + \norm{w}^2  \\
+		\intertext{At this point, a good choice of $c$ is}
+		c &= \frac{ \norm w}{\norm v} \cdot \frac{|\left< v,w\right>|}{\left< v,w\right>} \\
+		\intertext{since then}
+		c \left< v,w \right> &= \frac{\norm w}{\norm v} \left\lvert \left< v,w\right> \right\rvert \in \RR \\
+		|c| &= \frac{\norm w}{\norm v} \\
+		\intertext{whence the inequality becomes}
+		 2\frac{\norm w}{\norm v} \left\lvert \left< v,w\right> \right\rvert &\le 2 \norm{w}^2  \\
+		 \left\lvert \left< v,w\right> \right\rvert &\le \norm v \norm w. \qedhere
+	\end{align*}
+\end{proof}
+Thus:
+\begin{theorem}
+	[Triangle inequality]
+	We always have
+	\[ \norm v + \norm w \ge \norm{v+w} \]
+	with equality if and only if $v$ and $w$ are linearly dependent.
+\end{theorem}
+\begin{exercise}
+	Prove this by squaring both sides, and applying Cauchy-Schwarz.
+\end{exercise}
+
+In this way, our vector space now has a topological structure of a metric space.
+
+\section{Orthogonality}
+\prototype{Still $\RR^n$!}
+Our next goal is to give the geometric notion of ``perpendicular''.
+The definition is easy enough:
+\begin{definition}
+	Two nonzero vectors $v$ and $w$ in an inner product space
+	are \vocab{orthogonal} if $\left< v,w \right> = 0$.
+\end{definition}
+
+As we expect from our geometric intuition in $\RR^n$,
+this implies independence:
+\begin{lemma}[Orthogonal vectors are independent]
+	Any set of pairwise orthogonal vectors $v_1$, $v_2$, \dots, $v_n$,
+	with $\norm{v_i} \ne 0$ for each $i$,
+	is linearly independent.
+\end{lemma}
+\begin{proof}
+	Consider a dependence
+	\[ a_1 v_1 + \dots + a_n v_n = 0 \]
+	for $a_i$ in $\RR$ or $\CC$.
+	Then \[ 0_V = \left< v_1, \sum a_i v_i \right> = \ol{a_1} \norm{v_1}^2. \]
+	Hence $a_1 = 0$, since we assumed $\norm{v_1} \neq 0$.
+	Similarly $a_2 = \dots = a_m = 0$.
+\end{proof}
+
+In light of this, we can now consider a stronger condition on our bases:
+\begin{definition}
+	An \vocab{orthonormal} basis of a
+	\emph{finite-dimensional} inner product space $V$
+	is a basis $e_1$, \dots, $e_n$ such that
+	$\norm{e_i} = 1$ for every $i$ and
+	$\left< e_i, e_j \right> = 0$ for any $i \neq j$.
+\end{definition}
+\begin{example}[$\RR^n$ and $\CC^n$ have standard bases]
+	In $\RR^n$ and $\CC^n$ equipped with the standard dot product,
+	the standard basis $\ee_1$, \dots, $\ee_n$ is also orthonormal.
+\end{example}
+This is no loss of generality:
+\begin{theorem}[Gram-Schmidt]
+	Let $V$ be a finite-dimensional inner product space.
+	Then it has an orthonormal basis.
+\end{theorem}
+\begin{proof}[Sketch of Proof]
+	One constructs the orthonormal basis explicitly from any basis
+	$e_1$, \dots, $e_n$ of $V$.
+	Define $\opname{proj}_u(v) = \frac{\left< v,u\right>}{\left< u,u\right>} u$.
+	Then recursively define
+	\begin{align*}
+		u_1 &= e_1 \\
+		u_2 &= e_2 - \opname{proj}_{u_1}(e_2) \\
+		u_3 &= e_3 - \opname{proj}_{u_1}(e_3) - \opname{proj}_{u_2}(e_3) \\
+		&\vdotswithin{=} \\
+		u_n &= e_n - \opname{proj}_{u_1}(e_n) - \dots - \opname{proj}_{u_{n-1}}(e_n).
+	\end{align*}
+	One can show the $u_i$ are pairwise orthogonal and not zero.
+\end{proof}
+Thus, we can generally assume our bases are orthonormal.
+
+Worth remarking:
+\begin{example}[The dot product is the ``only'' inner form]
+	Let $V$ be a finite-dimensional inner product space,
+	and consider \emph{any} orthonormal basis $e_1, \dots, e_n$.
+	Then we have that
+	\[ \left< a_1 e_1 + \dots + a_n e_n,
+		b_1 e_1 + \dots + b_n e_n \right>
+		= \sum_{i,j=1}^n a_i\ol{b_j} \left< e_i, e_j \right>
+		= \sum_{i=1}^n a_i \ol{b_i} \]
+	owing to the fact that the $\{e_i\}$ are orthonormal.
+\end{example}
+And now you know why the dot product expression is so ubiquitous.
+
+\section{Hilbert spaces}
+In algebra we are usually scared of infinity,
+and so when we defined a basis of a vanilla vector space many chapters ago,
+we only allowed finite linear combinations.
+However, if we have an inner product space,
+then it is a metric space and we \emph{can}
+sometimes actually talk about convergence.
+
+Here is how it goes:
+\begin{definition}
+	A \vocab{Hilbert space} is a inner product space $V$,
+	such that the corresponding metric space is complete.
+\end{definition}
+
+In that case, it will now often make sense to take infinite linear combinations,
+because we can look at the sequence of partial sums and let it converge.
+Here is how we might do it.
+Let's suppose we have $e_1$, $e_2$, \dots an infinite sequence
+of vectors with norm $1$ and which are pairwise orthogonal.
+Suppose $c_1$, $c_2$, \dots, is a sequence of real or complex numbers.
+Then consider the sequence
+\begin{align*}
+	v_1 &= c_1 e_1 \\
+	v_2 &= c_1 e_1 + c_2 e_2 \\
+	v_3 &= c_1 e_1 + c_2 e_2 + c_3 e_3 \\
+	&\vdotswithin=
+\end{align*}
+
+\begin{proposition}
+	[Convergence criteria in a Hilbert space]
+	The sequence $(v_i)$ defined above
+	converges if and only if $\sum \left\lvert c_i \right\rvert^2 < \infty$.
+\end{proposition}
+\begin{proof}
+	This will make more sense if you read \Cref{ch:calc_limits},
+	so you could skip this proof if you haven't read the chapter.
+	The sequence $v_i$ converges if and only if it is Cauchy,
+	meaning that when $i < j$,
+	\[ \norm{v_j - v_i}^2 = |c_{i+1}|^2 + \dots + |c_j|^2 \]
+	tends to zero as $i$ and $j$ get large.
+	This is equivalent to the sequence
+	$s_n = |c_1|^2 + \dots + |c_n|^2$ being Cauchy.
+
+	Since $\RR$ is complete, $s_n$ is Cauchy
+	if and only if it converges.
+	Since $s_n$ consists of nonnegative real numbers,
+	converges holds if and only if $s_n$ is bounded,
+	or equivalently if $\sum \left\lvert c_i \right\rvert^2 < \infty$.
+\end{proof}
+
+Thus, when we have a Hilbert space, we change our definition slightly:
+\begin{definition}
+	An \vocab{orthonormal basis} for a Hilbert space $V$
+	is a (possibly infinite) sequence $e_1$, $e_2$, \dots,
+	of vectors such that
+	\begin{itemize}
+		\ii $\left< e_i, e_i \right> = 1$ for all $i$,
+		\ii $\left< e_i, e_j \right> = 0$ for $i \ne j$,
+		i.e.\ the vectors are pairwise orthogonal
+		\ii every element of $V$ can be expressed uniquely as an
+		infinite linear combination
+		\[ \sum_i c_i e_i \]
+		where $\sum_i \left\lvert c_i \right\rvert^2 < \infty$,
+		as described above.
+	\end{itemize}
+\end{definition}
+That's the official definition, anyways.
+(Note that if $\dim V < \infty$, this agrees with our usual definition,
+since then there are only finitely many $e_i$.)
+But for our purposes you can mostly not worry about it and instead think:
+\begin{moral}
+	A Hilbert space is an inner product space
+	whose basis requires infinite linear combinations,
+	not just finite ones.
+\end{moral}
+The technical condition $\sum \left\lvert c_i \right\rvert^2 < \infty$
+is exactly the one which ensures the infinite sum makes sense.
+
+\section{\problemhead}
+
+\begin{problem}
+	[Pythagorean theorem]
+	Show that if $\left< v,w \right> = 0$ in an inner product space,
+	then $\norm{v}^2 + \norm{w}^2 = \norm{v+w}^2$.
+\end{problem}
+
+\begin{sproblem}
+	[Finite-dimensional $\implies$ Hilbert]
+	Show that a finite-dimensional inner product space
+	is a Hilbert space.
+	\begin{hint}
+		Fix an orthonormal basis $e_1$, \dots, $e_n$.
+		Use the fact that $\RR^n$ is complete.
+	\end{hint}
+\end{sproblem}
+
+%\begin{problem}
+%	Let $V$ be a complex inner product space
+%	with orthonormal basis $e_1$, \dots, $e_n$.
+%	Suppose $x = a_1 e_1 + \dots + a_n e_n \in V$
+%	and $y = b_1 e_1 + \dots + b_n e_n \in V$.
+%	Show:
+%	\begin{align*}
+%		\left< x,x \right> &= \sum_\xi |a_i|^2 \\
+%		a_1 &= \left< x, e_1 \right> \\
+%		\left< x,y \right> &= \sum_i a_i \ol{b_i}.
+%	\end{align*}
+%\end{problem}
+
+\begin{problem}[Taiwan IMO camp]
+	\gim
+	In a town there are $n$ people and $k$ clubs.
+	Each club has an odd number of members,
+	and any two clubs have an even number of common members.
+	Prove that $k \le n$.
+	\begin{hint}
+		Dot products in $\FF_2$.
+	\end{hint}
+	\begin{sol}
+		Interpret clubs as vectors in the vector space $\mathbb F_2^n$.
+		Consider a ``dot product'' to show that all $k$ vectors are linearly independent.
+		Thus $k \le \dim \mathbb F_2^n = n$.
+	\end{sol}
+\end{problem}
+
+\begin{sproblem}[Inner product structure of tensors]
+	\label{prob:inner_prod_tensor}
+	Let $V$ and $W$ be finite-dimensional inner product spaces over $k$,
+	where $k$ is either $\RR$ or $\CC$.
+	\begin{enumerate}[(a)]
+		\ii Find a canonical way to make $V \otimes_k W$ into an inner product space too.
+		\ii Let $e_1$, \dots, $e_n$ be an orthonormal basis of $V$
+		and $f_1$, \dots, $f_m$ be an orthonormal basis of $W$.
+		What's an orthonormal basis of $V \otimes W$?
+	\end{enumerate}
+	\begin{hint}
+		Define it on simple tensors then extend linearly.
+	\end{hint}
+	\begin{sol}
+		The inner form given by
+		\[ \left< v_1 \otimes w_1 , v_2 \otimes w_2 \right>_{V \otimes W}
+		= \left< v_1,v_2 \right>_V \left< w_1,w_2\right>_W \]
+		on pure tensors, then extending linearly.
+		For (b) take $e_i \otimes f_j$ for $1 \le i \le n$, $1 \le j \le m$.
+	\end{sol}
+\end{sproblem}
+
+\begin{problem}[Putnam 2014]
+	\gim
+	Let $n$ be a positive integer.
+	What is the largest $k$ for which there exist
+	$n\times n$ matrices $M_1,\dots,M_k$ and $N_1,\dots,N_k$
+	with real entries such that for all $i$ and $j$,
+	the matrix product $M_i N_j$ has a zero entry somewhere
+	on its diagonal if and only if $i \ne j?$
+	\begin{hint}
+		$k = n^n$.
+		Endow tensor products with an inner form.
+		Note that ``zero entry somewhere on its diagonal''
+		is equivalent to the product of those entries being zero.
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	[Sequence space]
+	Consider the space $\ell^2$ of infinite sequences of real numbers
+	$a = (a_1, a_2, \dots)$ satisfying $\sum_i a_i^2 < \infty$.
+	We equip it with the dot product
+	\[ \left< a, b\right> = \sum_i a_i b_i. \]
+	Is this a Hilbert space?
+	If so, identify a Hilbert basis.
+\end{problem}
+
+\begin{problem}
+	[Kuratowski embedding]
+	A \vocab{Banach space} is a normed vector space $V$,
+	such that the corresponding metric space is complete.
+	(So a Hilbert space is a special case of a Banach space.)
+
+	Let $(M,d)$ be any metric space.
+	Prove that there exists a Banach space $X$
+	and an injective function $f \colon M \injto X$
+	such that $d(x,y) = \norm{f(x)-f(y)}$ for any $x$ and $y$.
+\end{problem}

@@ -1,0 +1,807 @@
+\chapter{Sheaves and ringed spaces}
+Most of the complexity of the affine variety $V$ earlier comes from $\OO_V$.
+This is a type of object called a ``sheaf''.
+The purpose of this chapter is to completely define what this sheaf is,
+and just what it is doing.
+
+\section{Motivation and warnings}
+The typical example to keep in mind is a sheaf of
+``functions with property $P$'' on a topological space $X$:
+for every open set $U$, $\SF(U)$ gives us the ring of functions on $X$.
+However, we will work very abstractly and only assume $\SF(U)$
+is a ring, without an interpretation as ``functions''.
+
+Throughout this chapter, I will not only be using algebraic geometry
+examples, but also those with $X$ a topological space
+and $\SF$ being a sheaf of differentiable/analytic/etc functions.
+One of the nice things about sheaves is that the same abstraction works fine,
+so you can train your intuition with both algebraic and analytic examples.
+In particular, we can keep drawing open sets $U$ as ovals,
+even though in the Zariski topology that's not what they look like.
+
+The payoff for this abstraction is that it will
+allow us to define an arbitrary scheme in the next chapter.
+Varieties use $\CC[x_1, x_2, \dots, x_n] / I$ as their ``ring of functions'',
+and by using the fully general sheaf we replace this
+with \emph{any} commutative ring.
+In particular, we could choose $\CC[x] / (x^2)$
+and this will give the ``multiplicity''
+behavior that we sought all along.
+
+
+\section{Pre-sheaves}
+\prototype{The sheaf of holomorphic (or regular, continuous,
+differentiable, constant, whatever) functions.}
+
+The proper generalization of our $\OO_V$ is a so-called sheaf of rings.
+Recall that $\OO_V$ took \emph{open sets of $V$} to \emph{rings},
+with the interpretation that $\OO_V(U)$ was a ``ring of functions''.
+
+\subsection{Usual definition}
+So here is the official definition of a pre-sheaf.
+\begin{definition}
+	For a topological space $X$ let $\Opens(X)$ denote
+	its open sets of $X$.
+\end{definition}
+\begin{definition}
+	A \vocab{pre-sheaf} of rings on a space $X$ is a function
+	\[ \SF : \Opens(X) \to \catname{Rings} \]
+	meaning each open set gets associated with a ring $\SF(U)$.
+	Each individual element of $\SF(U)$ is called a \vocab{section}.
+
+	It is also equipped with a \vocab{restriction map}
+	for any $U_1 \subseteq U_2$; this is a map
+	\[ \res_{U_1, U_2}
+		\colon \SF(U_2) \to \SF(U_1). \]
+	The map satisfies two axioms:
+	\begin{itemize}
+		\ii The map $\res_{U,U}$ is the identity, and
+		\ii Whenever we have nested subsets
+		\[ U_{\text{small}} \subseteq U_{\text{med}} \subseteq U_{\text{big}} \]
+		the diagram
+		\begin{diagram}
+			\SF(U_{\text{big}}) & \rTo^{\res} & \SF(U_{\text{med}}) \\
+			& \rdTo_\res & \dTo_\res \\
+			&& \SF(U_{\text{small}})
+		\end{diagram}
+		commutes.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	An element of $\SF(X)$ is called a \vocab{global section}.
+\end{definition}
+
+\begin{abuse}
+	If $s \in \mathscr F(U_2)$ is some section and $U_1 \subseteq U_2$,
+	then rather than write $\res_{U_1,U_2}(s)$
+	I will write $s\restrict{U_1}$ instead:
+	``$s$ restricted to $U_1$''.
+	This is abuse of notation because the section $s$ is just
+	an element of some ring, and in the most abstract of cases
+	may not have a natural interpretation as function.
+\end{abuse}
+
+
+Here is a way you can picture sections.
+In all our usual examples, sheaves return functions an open set $U$.
+So, we draw a space $X$, and an open set $U$,
+and then we want to draw a ``function on $U$'' to represent a section $s$.
+Crudely, we will illustrate $s$ by drawing an $xy$-plot of a curve,
+since that is how we were told to draw functions in grade school.
+
+\begin{center}
+\begin{asy}
+	filldraw(ellipse( (0,0), 8, 1.5 ), opacity(0.2)+lightblue, black );
+	label("$X$", (8,-1.5));
+	filldraw(ellipse( (-1,0), 5, 1 ), opacity(0.2)+lightcyan, heavycyan);
+	label("$U$", (4,-1), dir(45), heavycyan);
+	path curve = (-6,3)..(-4,5)..(-2,8)..(-1,7)..(0,5)..(2,7)..(4,9);
+	draw(curve, red);
+	label("$s \in \mathcal F(U)$", (-2,8), dir(90), red);
+	draw( (-6,3)..(-6,0), dashed+red );
+	draw( (4,9)..(4,0), dashed+red );
+\end{asy}
+\end{center}
+Then, the restriction corresponds to, well, taking just a chunk of the section.
+\begin{center}
+\begin{asy}
+	filldraw(ellipse( (0,0), 8, 1.5 ), opacity(0.2)+lightblue, black );
+	label("$X$", (8,-1.5));
+	filldraw(ellipse( (-1,0), 5, 1 ), opacity(0.2)+lightcyan, heavycyan);
+	label("$U$", (4,-1), dir(45), heavycyan);
+	path curve = (-6,3)..(-4,5)..(-2,8)..(-1,7)..(0,5)..(2,7)..(4,9);
+	draw(curve, red);
+	draw(subpath(curve, 1, 5), deepgreen+1.5); // from x=-4 to x=2
+	filldraw(ellipse( (-1,0), 3, 0.8 ), opacity(0.2)+deepgreen, deepgreen);
+	label("$V$", (2,-0.8), dir(45), deepgreen);
+	label("$\operatorname{res} s \in \mathcal F(V)$", (-2,8), dir(90), deepgreen);
+	draw( (-4,5)..(-4,0), dashed+deepgreen);
+	draw( (2,7)..(2,0), dashed+deepgreen);
+	draw( (-6,3)..(-6,0), dashed+red );
+	draw( (4,9)..(4,0), dashed+red );
+\end{asy}
+\end{center}
+All of this is still a dream, since $s$ in reality is an element of a ring.
+However, by the end of this chapter we will be able to make
+our dream into a reality.
+
+\begin{example}[Examples of pre-sheaves]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii For an affine variety $V$, $\OO_V$ is of course a sheaf,
+		with $\OO_V(U)$ being the ring of regular functions on $U$.
+		The restriction map just says that if $U_1 \subseteq U_2$,
+		then a function $s \in \OO_V(U_2)$ can also be thought of as
+		a function $s \restrict{U_1} \in \OO_V(U_1)$,
+		hence the name ``restriction''.
+		The commutativity of the diagram then follows.
+		
+		\ii Let $X \subseteq \RR^n$ be an open set.
+		Then there is a sheaf of smooth/differentiable/etc.\ functions on $X$.
+		In fact, one can do the same construction for any manifold $M$.
+
+		\ii Similarly, if $X \subseteq \CC$ is open,
+		we can construct a sheaf of holomorphic functions on $X$.
+	\end{enumerate}
+	In all these examples, the sections $s \in \SF(U)$
+	are really functions on the space, but in general they need not be.
+\end{example}
+
+In practice, thinking about the restriction maps
+might be more confusing than helpful; it is better to say:
+\begin{moral}
+	Pre-sheaves should be thought of as
+	``returning the ring of functions with a property $P$''.
+\end{moral}
+
+\subsection{Categorical definition}
+If you really like category theory,
+we can give a second equivalent and shorter definition.
+Despite being a category lover myself,
+I find this definition less intuitive,
+but its brevity helps with remembering the first one.
+\begin{abuse}
+	By abuse of notation, $\Opens(X)$ will also be thought of as a
+	posetal category by inclusion. Thus $\varnothing$ is an initial object
+	and the entire space $X$ is a terminal object.
+\end{abuse}
+\begin{definition}
+	A \vocab{pre-sheaf} of rings on $X$ is a contravariant functor
+	\[ \SF : \Opens(X)\op \to \catname{Rings}. \]
+\end{definition}
+\begin{exercise}
+	Check that these definitions are equivalent.
+\end{exercise}
+In particular, it is possible to replace $\catname{Rings}$ with any category we want.
+We will not need to do so any time soon, but it's worth mentioning.
+
+
+\section{Stalks and germs}
+\prototype{Germs of real smooth functions tell you the derivatives,
+but germs of holomorphic functions determine the entire function.}
+
+As we mentioned, the helpful pictures from the previous section
+are still just metaphors, because there is no notion of ``value''.
+With the addition of the words ``stalk'' and ``germ'',
+we can actually change that.
+
+\begin{definition}
+	Let $\SF$ be a pre-sheaf (of rings).
+	For every point $p$ we define the \vocab{stalk} $\SF_p$ to be the set
+	\[ \left\{ (s, U) \mid s \in \SF(U), p \in U \right\} \]
+	modulo the equivalence relation $\sim$ that
+	\[ (s_1,U_1) \sim (s_2, U_2)
+		\quad\text{if}\quad
+		s_1 \restrict{V} = s_2 \restrict{V} \]
+	for some open set $V$ with $V \ni p$
+	and $V \subseteq U_1 \cap U_2$.
+	The equivalence classes themselves are called \vocab{germs}.
+\end{definition}
+
+\begin{definition}
+	The germ of a given $s \in \SF(U)$ at a point $p$
+	is the equivalence class for $(s,U) \in \SF_p$.
+	We denote this by $[s]_p$.
+\end{definition}
+
+It is rarely useful to think of a germ as an ordered pair,
+since the set $U$ can get arbitrarily small.
+Instead, one should think of a germ as a
+``shred'' of some section near $p$.
+A nice summary for the right mindset might be:
+\begin{moral}
+	A germ is an ``enriched value'';
+	the stalk is the set of possible germs.
+\end{moral}
+
+Let's add this to our picture from before.
+If we insist on continuing to draw our sections as $xy$-plots,
+then above each point $p$ a good metaphor would be a vertical line out from $p$.
+The germ would then be the ``enriched value of $s$ at $p$''.
+We just draw that as a big dot in our plot.
+The main difference is that the germ is enriched in the sense that
+the germ carries information in a small region around $p$ as well,
+rather than literally just the point $p$ itself.
+So accordingly we draw a large dot for $[s]_p$,
+rather than a small dot at $p$.
+
+\begin{center}
+\begin{asy}
+	filldraw(ellipse( (0,0), 8, 1.5 ), opacity(0.2)+lightblue, black );
+	label("$X$", (8,-1.5));
+	filldraw(ellipse( (-1,0), 5, 1 ), opacity(0.2)+lightcyan, heavycyan);
+	label("$U$", (4,-1), dir(45), heavycyan);
+	path curve = (-6,3)..(-4,5)..(-2,8)..(-1,7)..(0,5)..(2,7)..(4,9);
+	draw(curve, red);
+	label("$s \in \mathcal F(U)$", (-2,8), dir(120), red);
+	draw( (-6,3)..(-6,0), dashed+red );
+	draw( (4,9)..(4,0), dashed+red );
+	draw( (0,0)--(0,12), heavygreen);
+	label("$\mathcal F_p$", (0,12), dir(90), heavygreen);
+	dot("$[s]_p$", (0,5), dir(-45), heavygreen+6);
+	dot("$p$", (0,0), dir(0), blue);
+\end{asy}
+\end{center}
+
+Before going on,
+we might as well note that the stalks are themselves rings,
+not just sets: we can certainly add or subtract enriched values.
+\begin{definition}
+	The stalk $\SF_p$ can itself be regarded as a ring:
+	for example, addition is done by
+	\[
+		\left( s_1, U_1 \right) + \left( s_2, U_2 \right)
+		= \left( s_1 \restrict{U_1 \cap U_2} + s_2 \restrict{U_1 \cap U_2},
+		U_1 \cap U_2 \right).
+	\]
+\end{definition}
+
+\begin{example}
+	[Germs of real smooth functions]
+	Let $X = \RR$ and let $\SF$ be the pre-sheaf on $X$ of smooth functions
+	(i.e.\ $\SF(U)$ is the set of smooth real-valued functions on $U$).
+
+	Consider a global section, $s : \RR \to \RR$ (thus $s \in \SF(X)$)
+	and its germ at $0$.
+	\begin{enumerate}[(a)]
+		\ii From the germ we can read off $s(0)$, obviously.
+		\ii We can also find $s'(0)$, because the germ carries enough
+		information to compute the limit $\lim_{h \to 0} \frac1h[s(h)-s(0)]$.
+		\ii Similarly, we can compute the second derivative and so on.
+		\ii However, we can't read off, say, $s(3)$ from the germ.
+		For example, consider the function from \Cref{ex:nonanalytic},
+		\[
+			s(x) = \begin{cases}
+				e^{-\frac{1}{x-1}} & x > 1 \\
+				0 & x \le 1.
+			\end{cases}
+		\]
+		Note $s(3) = e^{-\half}$, but $[\text{zero function}]_0 = [s]_0$.
+		So germs can't distinguish between the zero function and $s$.
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	[Germs of holomorphic functions]
+	Holomorphic functions are surprising in this respect.
+	Consider the sheaf $\SF$ on $\CC$ of \emph{holomorphic} functions.
+
+	Take $s : \CC \to \CC$ a global section.
+	Given the germ of $s$ at $0$, we can read off $s(0)$, $s'(0)$, et cetera.
+	The miracle of complex analysis is that just knowing
+	the derivatives of $s$ at zero is enough to reconstruct all of $s$:
+	we can compute the Taylor series of $s$ now.
+	\textbf{Thus germs of holomorphic functions determine the entire function};
+	they ``carry more information'' than their real counterparts.
+	
+	In particular, we can concretely describe the stalks of the pre-sheaf:
+	\[
+		\SF_p = \left\{
+			\sum_{k \ge 0} c_k (z-p)^k
+			\text{ convergent near $p$}
+		\right\}.
+	\]
+	For example, this includes germs of meromorphic functions,
+	so long as there is no pole at $p$ itself.
+\end{example}
+
+And of course, our algebraic geometry example.
+This example will matter a lot later,
+so we do it carefully now.
+\begin{abuse}
+	Rather than writing $(\OO_X)_p$ we will write $\OO_{X,p}$.
+\end{abuse}
+\begin{theorem}
+	[Stalks of $\OO_V$]
+	\label{thm:stalks_affine_var}
+	Let $V \subseteq \Aff^n$ be a variety,
+	and assume $p \in V$ is a point.
+	Then \[ \OO_{V,p} \cong
+		\left\{ \frac fg \mid f,g \in \CC[V], \; g(p) \ne 0 \right\}. \]
+\end{theorem}
+\begin{proof}
+%	It is possible to skip this proof since we will subsume it later,
+%	but I want to include it to show that you \emph{could} easily prove it,
+%	if you wanted to.
+	A regular function $\varphi$ on $U \subseteq V$
+	is supposed to be a function on $U$ that ``locally'' is a quotient
+	of two functions in $\CC[V]$.
+	Since we are looking at the stalk near $p$, though,
+	the germ only cares up to the choice of representation at $p$,
+	and so we can go ahead and write
+	\[
+		\OO_{V,p} = 
+		\left\{ \left( \tfrac fg , U \right) \mid 
+			U \ni p, \; f,g \in \CC[V], \;
+			\text{$g \neq 0$ on $U$} \right\}
+	\]
+	modulo the same relation.
+
+	Now we claim that the map
+	\[ \OO_{V,p} \to \text{desired RHS}
+		\qquad\text{by}\qquad \left( \frac fg, U \right) \mapsto \frac fg \]
+	is an isomorphism.
+	\begin{itemize}
+		\ii Injectivity: We are working with complex polynomials,
+		so we know that a rational function is determined by its
+		behavior on any open neighborhood of $p$;
+		thus two germ representatives $(\frac{f_1}{g_1}, U_1)$
+		and $(\frac{f_2}{g_2}, U_2)$ agree on $U_1 \cap U_2$
+		if and only if they are actually the same quotient.
+		\ii Surjectivity: take $U = D(g)$. \qedhere
+	\end{itemize}
+\end{proof}
+
+\begin{example}
+	[Stalks of your favorite varieties at the origin]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii Let $V = \Aff^1$; then the stalk of $\OO_V$
+		at each point $p \in V$ is
+		\[ \OO_{V,a}
+			= \left\{ \frac{f(x)}{g(x)} \mid g(p) \ne 0 \right\}. \]
+		Examples of elements are $x^2+5$, $\frac{1}{x+1}$ if $p \ne 1$,
+		$\frac{x+7}{x^2-9}$ if $p \ne \pm 3$, and so on.
+
+		\ii Let $V = \Aff^2$;
+		then the stalk of $\OO_V$ at the origin is
+		\[ \OO_{V, (0,0)}
+			= \left\{ \frac{f(x,y)}{g(x,y)} \mid g(0,0) \ne 0 \right\}. \]
+		Examples of elements are $x^2+y^2$,
+		$\frac{x^3}{xy+1}$, $\frac{13x+37y}{x^2+8y+2}$.
+
+		\ii Let $V = \VV(y-x^2) \subseteq \Aff^2$;
+		then the stalk of $\OO_V$ at the origin is
+		\[ \OO_{V, (0,0)}
+			= \left\{ \frac{f(x,y)}{g(x,y)} \mid f,g \in \CC[x,y] / (y-x^2),
+				\; g(0,0) \ne 0 \right\}. \]
+		For example, $\frac{y}{1+x} = \frac{x^2}{1+x}$
+		denote the same element in the stalk.
+		Actually, you could give a canonical choice of representative
+		by replacing $y$ with $x^2$ everywhere, so it would also be
+		correct to write
+		\[ \OO_{V, (0,0)}
+			= \left\{ \frac{f(x)}{g(x)} \mid \; g(0) \ne 0 \right\} \]
+		which is the same as the first example.
+	\end{enumerate}
+\end{example}
+
+\begin{remark}
+	[Aside for category lovers]
+	You may notice that $\SF_p$ seems to be
+	``all the $\SF_p(U)$ coming together'', where $p \in U$.
+	And in fact, $\SF_p(U)$ is the categorical \emph{limit}
+	of the diagram formed by all the $\SF(U)$ such that $p \in U$.
+	This is often written
+	\[ \SF_p = \varinjlim_{U \ni p} \SF(U) \]
+	Thus we can define stalks in any category with limits,
+	though to be able to talk about germs the category needs
+	to be concrete.
+\end{remark}
+
+\section{Sheaves}
+\prototype{Constant functions aren't sheaves, but locally constant ones are.}
+
+Since we care so much about stalks, which study local behavior,
+we will impose additional local conditions on our pre-sheaves.
+One way to think about this is:
+\begin{moral}
+	Sheaves are pre-sheaves for which $P$ is a \emph{local} property.
+\end{moral}
+
+The formal definition doesn't illuminate this
+as much as the examples do,
+but sadly I have to give the definition first
+for the examples to make sense.
+\begin{definition}
+	A \vocab{sheaf} $\mathscr F$ is a pre-sheaf obeying two additional axioms:
+	Suppose $U$ is covered by open sets $U_\alpha \subseteq U$. Then:
+	\begin{enumerate}
+		\ii (Identity) If $s, t \in \mathscr F(U)$ are sections,
+		and $s\restrict{U_\alpha} = t\restrict{U_\alpha}$
+		for all $\alpha$, then $s = t$.
+		\ii (Gluing) Consider sections
+		$s_\alpha \in \mathscr(U_\alpha)$ for each $\alpha$.
+		Suppose that 
+		\[ s_\alpha \restrict{U_\alpha \cap U_\beta}
+			= s_\beta \restrict{U_\alpha \cap U_\beta} \]
+		for each $U_\alpha$ and $U_\beta$.
+		Then we can find $s \in U$ such that
+		$s \restrict{U_\alpha}  = s_\alpha$.
+	\end{enumerate}
+\end{definition}
+\begin{remark}
+	[For keepers of the empty set]
+	The above axioms imply $\SF(\varnothing) = 0$ (the zero ring).
+	This is not worth worrying about until you actually need it,
+	so you can forget I said that.
+\end{remark}
+This is best illustrated by picture in the case of just two open sets:
+consider two open sets $U$ and $V$.
+Then the sheaf axioms are saying something about
+$\SF(U \cup V)$, $\SF(U \cap V)$, $\SF(U)$ and $\SF(V)$.
+\begin{center}
+	\begin{asy}
+		size(4cm);
+		filldraw(shift(-0.5,0)*unitcircle, lightred+opacity(0.3), red);
+		filldraw(shift( 0.5,0)*unitcircle, lightblue+opacity(0.3), blue);
+		label("$U$", (-0.5,0)+dir(135), dir(135), red);
+		label("$V$", ( 0.5,0)+dir(45), dir(45), blue);
+	\end{asy}
+\end{center}
+Then for a sheaf of functions, the axioms are saying that:
+\begin{itemize}
+	\ii If $s$ and $t$ are functions (with property $P$)
+	on $U \cap V$
+	and $s \restrict{U} = t \restrict{U}$,
+	$s \restrict{V} = t \restrict{V}$,
+	then $s = t$ on the entire union.
+	This is clear.
+
+	\ii If $s_1$ is a function with property $P$ on $U$
+	and $s_2$ is a function with property $P$ on $V$,
+	and the two functions agree on the overlap,
+	then one can glue them to obtain a function $s$
+	on the whole space:
+	this is obvious, but
+	\textbf{the catch is that the collated function
+	needs to have property $P$ as well}
+	(i.e.\ needs to be an element of $\SF(U \cup V)$).
+	That's why it matters that $P$ is local.
+\end{itemize}
+So you can summarize both of these as saying:
+any two functions on $U$ and $V$
+which agree on the overlap
+glue to a \emph{unique} function on $U \cup V$.
+If you like category theory,
+you might remember we alluded to this in \Cref{ex:diff_pullback}.
+\begin{exercise}
+	[For the categorically inclined]
+	Show that the diagram
+	\begin{center}
+	\begin{tikzcd}
+		\SF(U \cup V) \ar[r] \ar[d] & \SF(U) \ar[d] \\
+		\SF(V) \ar[r] & \SF(U \cap V)
+	\end{tikzcd}
+	\end{center}
+	is a pullback square.
+\end{exercise}
+
+Now for the examples.
+\begin{example}
+	[Examples and non-examples of sheaves]
+	Note that every example of a stalk we computed
+	in the previous section was of a sheaf.
+	Here are more details:
+	\begin{enumerate}[(a)]
+		\ii Pre-sheaves of arbitrary / continuous / differentiable / smooth
+		/ holomorphic functions are still sheaves.
+		This is because to verify a function is continuous,
+		one only needs to look at small open neighborhoods at once.
+		
+		\ii For a complex variety $V$, $\OO_V$ is a sheaf,
+		precisely because our definition was \emph{locally} quotients
+		of polynomials.
+
+		\ii The pre-sheaf of \emph{constant} real functions on a space $X$
+		is \emph{not} a sheaf in general, because it fails the gluing axiom.
+		Namely, suppose that $U_1 \cap U_2 = \varnothing$
+		are disjoint open sets of $X$.
+		Then if $s_1$ is the constant function $1$ on $U_1$
+		while $s_2$ is the constant function $2$ on $U_2$,
+		then we cannot glue these to a constant function on $U_1 \cup U_2$.
+
+		\ii On the other hand, \emph{locally constant} functions
+		do produce a sheaf. (A function is locally constant
+		if for every point it is constant on some open neighborhood.)
+	\end{enumerate}
+	In fact, the sheaf in (d) is what is called a \emph{sheafification}
+	of the pre-sheaf constant functions, which we define momentarily.
+\end{example}
+
+\section{For sheaves, sections ``are'' sequences of germs}
+\prototype{A real function on $U$ is a sequence of
+	real numbers $f(p)$ for each $p \in U$ satisfying some local condition.
+	Analogously, a section $s \in \SF(U)$ is a sequence of germs
+	satisfying some local compatibility condition.}
+
+Once we impose the sheaf axioms,
+our metaphorical picture will actually be more or less complete.
+Just as a function was supposed to be a choice of value at each point,
+a section will be a choice of germ at each stalk.
+
+\begin{example}[Real functions vs.\ germs]
+	Let $X$ be a space and let $\SF$ be the sheaf of smooth functions.
+	Take a section $f \in \SF(U)$.
+	\begin{itemize}
+		\ii As a function, $f$ is just a choice of value $f(p) \in \RR$ at
+		every point $p$, subject to a local ``smooth'' condition.
+
+		\ii Let's now think of $f$ as a sequence of germs.
+		At every point $p$ the germ $[f]_p \in \SF_p$ gives us the value $f(p)$
+		as we described above. The germ packages even more data than this:
+		from the germ $[f]_p$ alone we can for example compute $f'(p)$.
+		Nonetheless we stretch the analogy and think of $f$
+		as a choice of germ $[f]_p \in \SF_p$ at each point $p$.
+	\end{itemize}
+	Thus we can replace the notion of the value $f(p)$ with germ $[f]_p$.
+	This is useful because in a general sheaf $\SF$, the notion $s(p)$
+	is not defined while the notion $[s]_p$ is.
+\end{example}
+
+
+From the above example it's obvious that if we know each germ $[s]_p$
+this should let us reconstruct the entire section $s$.
+Let's check this from the sheaf axioms:
+\begin{exercise}
+	[Sections are determined by stalks]
+	Let $\SF$ be a sheaf.
+	Consider the natural map 
+	\[ \SF(U) \to \prod_{p \in U} \SF_p \]
+	described above.
+	Show that this map is injective, i.e.\
+	the germs of $s$ at every point $p \in U$ determine the section $s$.
+	(You will need the ``identity'' sheaf axiom, but not ``gluing''.)
+\end{exercise}
+
+However, this map is clearly not surjective!
+%\begin{ques}
+%	Come up with a counterexample to break surjectivity.
+%	(This is like asking ``come up with a non-smooth function''.)
+%\end{ques}
+Nonetheless we can describe the image:
+we want a sequence of germs $(g_p)_{p \in U}$ such that near every germ $g_p$,
+the germs $g_q$ are ``compatible'' with $g_p$.
+We make this precise:
+\begin{definition}
+	Let $\SF$ be pre-sheaf and let $U$ be an open set.
+	A sequence $(g_p)_{p \in U}$ of germs
+	(with $g_p \in \SF_p$ for each $p$)
+	is said to be \vocab{compatible} if
+	they can be ``locally collated'':
+	\begin{quote}
+		For any $p \in U$ there exists an open neighborhood $U_p \ni p$
+		and a section $s \in \SF(U_p)$ on it
+		such that $[s]_q = g_q$ for each $q \in U_p$.
+	\end{quote}
+	Intuitively, the germs should ``collate together'' to some section near
+	each \emph{individual} point $q$
+	(but not necessarily to a section on all of $U$).
+\end{definition}
+
+We let the reader check this definition is what we want:
+\begin{exercise}
+	Prove that any choice of compatible germs over $U$
+	collates together to a section of $U$.
+	(You will need the ``gluing'' sheaf axiom, but not ``identity''.)
+\end{exercise}
+
+Putting together the previous two exercise gives:
+\begin{theorem}
+	[Sections ``are'' just compatible germs]
+	Let $\SF$ be a sheaf.
+	There is a natural bijection between
+	\begin{itemize}
+		\ii sections of $\SF(U)$, and
+		\ii sequences of compatible germs over $U$.
+	\end{itemize}
+\end{theorem}
+
+
+We draw this in a picture below
+by drawing several stalks, rather than just one,
+with the germs above.
+The stalks at different points need not be related to each other,
+so I have drawn the stalks to have different heights to signal this.
+And, the caveat is that the germs are large enough that germs
+which are ``close to each other'' should be ``compatible''.
+
+\begin{center}
+\begin{asy}
+	filldraw(ellipse( (0,0), 8, 1.5 ), opacity(0.2)+lightblue, black );
+	label("$X$", (8,-1.5));
+	filldraw(ellipse( (-1,0), 5, 1 ), opacity(0.2)+lightcyan, heavycyan);
+	label("$U$", (4,-1), dir(45), heavycyan);
+	path curve = (-6,3)..(-4,5)..(-2,8)..(-1,7)..(0,5)..(2,7)..(4,9);
+	draw(curve, red);
+	draw( (-6,3)..(-6,0), dashed+red );
+	draw( (4,9)..(4,0), dashed+red );
+
+	draw( (-4,0)--(-4,13), heavygreen);
+	dot((-4,5), heavygreen+6);
+	dot((-4,0), blue);
+
+	draw( (-2,0)--(-2,12), heavygreen);
+	dot((-2,8), heavygreen+6);
+	dot((-2,0), blue);
+
+	draw( (-1,0)--(-1,11), heavygreen);
+	dot((-1,7), heavygreen+6);
+	dot((-1,0), blue);
+
+	draw( (0,0)--(0,12), heavygreen);
+	dot((0,5), heavygreen+6);
+	dot((0,0), blue);
+
+	draw( (2,0)--(2,11), heavygreen);
+	dot((2,7), heavygreen+6);
+	dot((2,0), blue);
+\end{asy}
+\end{center}
+
+
+
+This is in exact analogy to the way that e.g.\
+a smooth real-valued function on $U$ is a choice
+of real number $f(p) \in \RR$ at each point $p \in U$
+satisfying a local smoothness condition.
+
+Thus the notion of stalks is what lets us recover the viewpoint
+that sections are ``functions''.  Therefore for theoretical purposes,
+\begin{moral}
+	With sheaf axioms, sections are sequences of compatible germs.
+\end{moral}
+In particular, this makes restriction morphisms easy to deal with:
+just truncate the sequence of germs!
+
+\section{Sheafification (optional)}
+\prototype{The pre-sheaf of constant functions
+	becomes the sheaf of locally constant functions.}
+
+The idea is that if $\SF$ is the pre-sheaf of ``functions with property $P$''
+then we want to associate a sheaf $\SF\sh$ of
+``functions which are locally $P$'', which makes them into a sheaf.
+We have already seen two examples of this:
+\begin{example}
+	[Sheafification]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii If $X$ is a topological space,
+		and $\SF$ is the pre-sheaf of constant functions on open sets of $X$,
+		then $\SF\sh$ is the sheaf of locally constant functions.
+
+		\ii If $V$ is an affine variety,
+		and $\SF$ is the pre-sheaf of rational functions,
+		then $\SF\sh$ is the sheaf of regular functions
+		(which are locally rational).
+	\end{enumerate}
+\end{example}
+
+The procedure is based on stalks and germs.
+We saw that for a sheaf, sections correspond to sequences of compatible germs.
+For a pre-sheaf, we can still define stalks and germs,
+but their properties will be less nice.
+But given our initial pre-sheaf $\SF$,
+we \emph{define} the sections of $\SF\sh$ to be sequences
+of compatible $\SF$-germs.
+\begin{definition}
+	The \vocab{sheafification} $\SF\sh$ of a pre-sheaf $\SF$ is defined by
+	\[ \SF\sh(U) =
+		\left\{ \text{sequences of compatible
+		$\SF$-germs $(g_p)_{p \in U}$} \right\}.  \]
+\end{definition}
+\begin{ques}
+	Complete the definition by describing
+	the restriction morphisms of $\SF\sh$.
+\end{ques}
+\begin{abuse}
+	I'll usually be equally sloppy in the future:
+	when defining a sheaf $\SF$, I'll only say what $\SF(U)$ is,
+	with the restriction morphisms $\SF(U_2) \to \SF(U_1)$ being implicit.
+\end{abuse}
+The construction is contrived so that given a section
+$(g_p)_{p \in U} \in \SF\sh(U)$ the germ at a point $p$ is $g_p$:
+\begin{lemma}
+	[Stalks preserved by sheafification]
+	\label{lem:pre_sheaf_stalk}
+	Let $\SF$ be a pre-sheaf and $\SF\sh$ its sheafification.
+	Then for any point $q$, there is an isomorphism
+	\[ (\SF\sh)_q \cong \SF_q. \]
+\end{lemma}
+\begin{proof}
+	A germ in $(\SF\sh)_q$ looks like
+	$\left( (g_p)_{p \in U}, U \right)$,
+	where $g_p = (s_p, U_p)$ are themselves germs of $\SF_p$,
+	and $q \in U$.
+	Then the isomorphism is given by
+	\[ \left( (g_p)_{p \in U}, U \right) \mapsto g_q \in \SF_q. \]
+	The inverse map is given by for each $g = (s,U) \in \SF_q$ by
+	\[ g \mapsto \left( (g)_{p \in U}, U \right) \in (\SF\sh)_q \]
+	i.e.\ the sequence of germs is the constant sequence.
+\end{proof}
+
+We will use sheafification in the future to economically construct sheaves.
+However, in practice, the details of the construction will often not matter.
+
+\section\problemhead
+\begin{problem}
+	Prove that if $\SF$ is already a sheaf, then $\SF(U) \cong \SF\sh(U)$
+	for every open set $U$.
+	\begin{sol}
+		Because the stalks are preserved by sheafification,
+		there is essentially nothing to prove:
+		both sides correspond to sequences of compatible $\SF$-germs over $U$.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	\label{prob:finite_sheaf}
+	Let $X$ be a space with two points $\{p,q\}$
+	and let $\SF$ be a sheaf on it.
+	Suppose $\SF_p = \Zc{5}$ and $\SF_q = \ZZ$.
+	Describe $\SF(U)$ for each open set $U$ of $X$, where
+	\begin{enumerate}[(a)]
+		\ii $X$ is equipped with the discrete topology.
+		\ii $X$ is equipped $\varnothing$, $\{p\}$, $\{p,q\}$
+		as the only open sets.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}
+	[Skyscraper sheaf]
+	Let $Y$ be a topological space.
+	Fix $p \in Y$ a point, and $R$ a ring.
+	The \vocab{skyscraper sheaf} is defined by
+	\[
+		\SF(U) = \begin{cases}
+			R & p \in U \\
+			0 & \text{otherwise}
+		\end{cases}
+	\]
+	with restriction maps in the obvious manner.
+	Compute all the stalks of $\SF$.
+
+	(Possible suggestion: first do the case where $Y$ is Hausdorff,
+	where your intuition will give the right answer.
+	Then do the pathological case where every open set of $Y$ contains $p$.
+	Then try to work out the general answer.)
+	\begin{hint}
+		The stalk is $R$ at points in the closure of $\{p\}$, and $0$ elsewhere.
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	Let $\SF$ be a sheaf on a space $X$ and let $s \in \SF(X)$
+	be a global section.
+	Define the \vocab{support} of $s$ as
+	\[ Z = \left\{ p \in X \mid [s]_p \neq 0 \in \SF_p \right\}. \]
+	Show that $Z$ is a closed set of $X$.
+	\begin{hint}
+		Show that the complement $\{ p \mid [s]_p = 0 \}$ is open.
+	\end{hint}
+\end{problem}
+
+%\begin{dproblem}
+%	[Pushforward sheaf]
+%	Suppose $f : X \to Y$ is a continuous map of spaces
+%	and $\SF$ is a sheaf on $X$.
+%	Define a sheaf $f_\ast \SF$ on $Y$ from $\SF$;
+%	we call this the pushforward of $\SF$ onto $Y$.
+%\end{dproblem}
+%
+%\begin{problem}
+%	Interpret the skyscraper sheaf as the pushforward
+%	of a constant sheaf on a one-point space.
+%\end{problem}
+

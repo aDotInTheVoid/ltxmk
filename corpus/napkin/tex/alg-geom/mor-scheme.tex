@@ -1,0 +1,905 @@
+\chapter{Morphisms of locally ringed spaces}
+Having set up the definition of a locally ringed space,
+we are almost ready to define morphisms between them.
+Throughout this chapter, you should imagine your ringed spaces
+are the affine schemes we have so painstakingly defined;
+but it will not change anything to work in the generality
+of arbitrary locally ringed spaces.
+
+\section{Morphisms of ringed spaces via sections}
+Let $(X, \OO_X)$ and $(Y, \OO_Y)$ be ringed spaces.
+We want to give a define what it means
+to have a function $\pi \colon X \to Y$ between them.\footnote{Notational
+	connotations: for ringed spaces, $\pi$ will be used for maps,
+	since $f$ is often used for sections.}
+We start by requiring the map to be continuous,
+but this is not enough: there is a sheaf on it!
+
+Well, you might remember what we did for baby ringed spaces:
+any time we had a function on an open set of $U \subseteq Y$,
+we wanted there to be an analogous function on $\pi\pre(U) \subseteq X$.
+For baby ringed spaces, this was done by composition,
+since the elements of the sheaf \emph{were} really complex valued functions:
+\[ \pi^\sharp\phi \text{ was defined as } \phi \circ \pi. \]
+The upshot was that we got a map $\OO_Y(U) \to \OO_X(\pi\pre(U))$
+for every open set $U$.
+\begin{center}
+	\begin{asy}
+		size(13cm);
+		bigblob("$X$");
+		pair p = (0.5,0);
+		filldraw(CR(p, 1), opacity(0.2)+lightgreen, deepgreen+dashed);
+		label("$\pi^{\text{pre}}(U)$", p+dir(135), dir(135), deepgreen);
+
+		transform t = scale(0.8) * shift(14*dir(180));
+		add(t * CC());
+		p = t*p;
+
+		bigblob("$Y$");
+		pair q = (0,0.5);
+		filldraw(CR(q, 1.2), opacity(0.2)+lightred, red+dashed);
+		label("$U$", q+1.2*dir(45), dir(45), red);
+		
+		draw( (-9,0.5)--(-3,0.5), EndArrow);
+		label("$\pi$", (-6,0.5), dir(90));
+		label("$\boxed{f \in \mathcal O_Y(U)}$", (0,-5), red);
+		label("$\boxed{\pi^\sharp f \in \mathcal O_X(f^{\text{pre}}(U))}$",
+			t*(0,-6), deepgreen);
+	\end{asy}
+\end{center}
+
+Now, for general locally ringed spaces,
+the sections are just random rings,
+which may not be so well-behaved.
+So the solution is that we \emph{include} the data of $f^\sharp$
+as part of the definition of a morphism.
+\begin{definition}
+	A \vocab{morphism of ringed spaces}
+	$(X, \OO_X) \to (Y, \OO_Y)$ consists of a pair $(\pi, \pi^\sharp)$
+	where $\pi \colon X \to Y$ is a continuous map
+	(of topological spaces),
+	and $\pi^\sharp$ consists of a choice of ring homomorphism
+	\[ \pi^\sharp_U \colon \OO_Y(U) \to \OO_X(\pi\pre(U)) \]
+	for every open set $U \subseteq Y$, such that the restriction diagram
+	\begin{center}
+	\begin{tikzcd}
+		\OO_Y(U) \ar[r] \ar[d] & \OO_Y(\pi\pre(U)) \ar[d] \\
+		\OO_Y(V) \ar[r] & \OO_X(\pi\pre(V))
+	\end{tikzcd}
+	\end{center}
+	commutes for $V \subseteq U$.
+\end{definition}
+\begin{abuse}
+	We will abbreviate $(\pi, \pi^\sharp) \colon (X, \OO_X) \to (Y, \OO_Y)$
+	to just $\pi \colon X \to Y$,
+	despite the fact this notation is exactly
+	the same as that for topological spaces.
+\end{abuse}
+
+There is an obvious identity map,
+and so we can also define isomorphism etc.\ in the categorical way.
+
+\section{Morphisms of ringed spaces via stalks}
+Unsurprisingly, the sections are clumsier to work with
+than the stalks, now that we have grown to love localization.
+So rather than specifying $\pi^\sharp_U$ on every open set $U$,
+it seems better if we could do it by stalks
+(there are fewer stalks than open sets,
+so this saves us a lot of work!).
+
+We start out by observing that we \emph{do}
+get a morphism of stalks.
+\begin{proposition}
+	[Induced stalk morphisms]
+	If $\pi \colon X \to Y$ is a map of ringed spaces
+	sending $\pi(p) = q$, then we get a map
+	\[ \pi_p^\sharp \colon \OO_{Y,q} \to \OO_{X,p} \]
+	whenever $\pi(p) = q$.
+\end{proposition}
+
+This means you can draw a morphism of locally ringed spaces
+as a continuous map on the topological space,
+plus for each $\pi(p) = q$,
+an assignment of each germ at $q$ to a germ at $p$.
+\begin{center}
+\begin{asy}
+	size(10cm);
+	pair p = (-4,0);
+	pair q = ( 4,0);
+	filldraw(ellipse(p, 2, 1 ), opacity(0.2)+lightcyan, black);
+	filldraw(ellipse(q, 2, 1 ), opacity(0.2)+lightcyan, black);
+	label("$X$", p+dir(270), dir(270), blue);
+	label("$Y$", q+dir(270), dir(270), blue);
+	pair pt = (-4, 3.5);
+	pair qt = ( 4, 4.3);
+	draw( p--pt, red );
+	draw( q--qt, red );
+	label("$\mathcal O_{X,p}$", pt, dir(90), red);
+	label("$\mathcal O_{Y,q}$", qt, dir(90), red);
+	dot("$p$", p, dir(-90), blue);
+	dot("$q$", q, dir(-90), blue);
+	pair pg = (-4, 1.6);
+	pair qg = (4, 2.8);
+	dot("$[s]_q$", qg, dir(0), red+6);
+	dot("$[\pi^\sharp(s)]_p$", pg, dir(180), red+6);
+	draw(qg--pg, deepgreen, EndArrow, Margin(4,4));
+	label("$\pi^\sharp_p$", midpoint(qg--pg), dir(90), deepgreen);
+	draw( (-1.5,0)--(1.5,0), deepgreen, EndArrow );
+	label("$\pi$", origin, dir(-90), deepgreen);
+\end{asy}
+\end{center}
+Again, compare this to the pullback picture:
+this is roughly saying that if a function $f$ has some enriched value at $q$,
+then $\pi^\sharp(f)$ should be assigned a corresponding enriched value at $p$.
+The analogy is not perfect since the stalks at $q$ and $p$
+may be different rings in general,
+but there should at least be a ring homomorphism (the assignment).
+\begin{proof}
+	If $(s,U)$ is a germ at $q$,
+	then $(\pi^\sharp(s), \pi\pre(U))$ is a germ at $p$,
+	and this is a well-defined morphism because
+	of compatibility with restrictions.
+\end{proof}
+
+We already obviously have uniqueness in the following senes.
+\begin{proposition}
+	[Uniqueness of morphisms via stalks]
+	Consider a map of ringed spaces
+	$(\pi, \pi^\sharp) \colon (X, \OO_X) \to (Y, \OO_Y)$
+	and the corresponding map $\pi^\sharp_p$ of stalks.
+	Then $\pi^\sharp$ is uniquely determined by $\pi^\sharp_p$.
+\end{proposition}
+\begin{proof}
+	Given a section $s \in \OO_Y(U)$,
+	let 
+	\[ t = \pi^\sharp_U(s) \in \OO_X(\pi\pre(U)) \]
+	denote the image under $\pi^\sharp$.
+
+	We know $t_p$ for each $p \in \pi\pre(U)$,
+	since it equals $\pi^\sharp_p(t)$ by definition.
+	That is, we know all the germs of $t$.
+	So we know $t$.
+\end{proof}
+
+However, it seems clear that not every choice of
+stalk morphisms will lead to $\pi^\sharp_U$:
+some sort of ``continuity'' or ``compatibility'' is needed.
+You can actually write down the explicit statement:
+each sequence of compatible germs over $U$
+should gets mapped to a sequence of compatible germs over $\pi\pre(U)$.
+We avoid putting up a formal statement of this for now,
+because the statement is clumsy,
+and you're about to see it in practice (where it will make more sense).
+
+\begin{remark}
+	[Isomorphisms are determined by stalks]
+	One fact worth mentioning, that we won't prove, but good to know:
+	a map of ringed spaces
+	$(\pi, \pi^\sharp) \colon (X, \OO_X) \to (Y, \OO_Y)$
+	is an isomorphism if and only if $\pi$ is a homeomorphism,
+	and moreover $\pi^\sharp_p$ is an isomorphism for each $p \in X$.
+\end{remark}
+
+\section{Morphisms of locally ringed spaces}
+On the other hand, we've seen that our stalks are local rings,
+which enable us to actually talk about \emph{values}.
+And so we want to add one more compatibility condition
+to ensure that our notion of value is preserved.
+Now the stalks at $p$ and $q$ in the previous picture might be different,
+so $\kappa(p)$ and $\kappa(q)$ might even be different fields.
+\begin{definition}
+	A \vocab{morphism of locally ringed spaces}
+	is a morphism of ringed spaces $\pi \colon X \to Y$
+	with the following additional property:
+	whenever $\pi(p) = q$,
+	the map at the stalks also induces a well-defined ring homomorphism
+	\[ \pi^\sharp_p \colon \kappa(q) \to \kappa(p). \]
+\end{definition}
+So we require $\pi^\sharp_p$ induces a field homomorphisms\footnote{Which
+means it is automatically injective, by \Cref{prob:field_hom}.}
+on the \emph{residue fields}.
+In particular, since $\pi^\sharp(0) = 0$,
+this means something very important:
+\begin{moral}
+	In a morphism of locally ringed spaces,
+	a germ vanishes at $q$ if and only if
+	the corresponding germ vanishes at $p$.
+\end{moral}
+\begin{exercise}
+	[So-called ``local ring homomorphism'']
+	Show that this is equivalent to requiring
+	\[ (\pi^\sharp_p)\im(\km_{Y,q}) \subseteq \km_{X,p} \]
+	or in English, a germ at $q$ has value zero
+	iff the corresponding germ at $p$ has value zero.
+\end{exercise}
+I don't like this formulation
+$(\pi^\sharp)\im(\km_{Y,q}) \subseteq \km_{X,p}$
+as much since it hides the geometric intuition behind a lot of symbols:
+that we want the notion of ``value at a point''
+to be preserved in some way.
+
+At this point, we can state the definition of a scheme,
+and we do so, although we won't really use it for a few more sections.
+\begin{definition}
+	A \vocab{scheme} is a locally ringed space
+	for which every point has an open neighborhood
+	isomorphic to an affine scheme.
+	A morphism of schemes is just a morphism of locally ringed spaces.
+\end{definition}
+In particular, $\Spec A$ is a scheme
+(the open neighborhood being the entire space!).
+And so let's start by looking at those.
+
+\section{A few examples of morphisms between affine schemes}
+Okay, sorry for lack of examples in previous few sections.
+Let's make amends now,
+where you can see all the moving parts in action.
+
+\subsection{One-point schemes}
+\begin{example}
+	[$\Spec \RR$ is well-behaved]
+	There is only one map $X = \Spec \RR \to \Spec \RR = Y$.
+	Indeed, these are spaces with one point,
+	and specifying the map $\RR = \OO_Y(Y) \to \OO_X(X) = \RR$
+	can only be done in one way,
+	since there is only one field automorphism of $\RR$ (the identity).
+\end{example}
+\begin{example}
+	[$\Spec \CC$ horror story]
+	There are multiple maps $X = \Spec \CC \to \Spec \CC = Y$,
+	horribly enough!
+	Indeed, these are spaces with one point,
+	so again we're just reduced to specifying
+	a map $\CC = \OO_Y(Y) \to \OO_X(X) = \CC$.
+	However, in addition to the identity map,
+	complex conjugation also works,
+	as well as some so-called ``wild automorphisms'' of $\CC$.
+\end{example}
+
+This behavior is obviously terrible,
+so for illustration reasons,
+some of the examples use $\RR$ instead of $\CC$
+to avoid the horror story we just saw.
+However, there is an easy fix using ``scheme over $\CC$''
+which will force the ring homomorphisms to fix $\CC$, later.
+
+\begin{example}
+	[$\Spec k$ and $\Spec k'$]
+	In general, if $k$ and $k'$ are fields,
+	we see that maps $\Spec k \to \Spec k'$
+	are in bijection with field homomorphism $k' \to k$,
+	since that's all there is left to specify.
+\end{example}
+
+\subsection{Examples of constant maps}
+\begin{example}
+	[Constant map to $(y-3)$]
+	We analyze scheme morphisms
+	\[ X = \Spec \RR[x] \taking{\pi} \Spec \RR[y] = Y \]
+	which send all points of $X$ to $\km = (y-3) \in Y$.
+	Constant maps are continuous no matter how bizarre your topology is,
+	so this lets us just focus our attention on the sections.
+
+	This example is simple enough that we can even do it by sections,
+	as much as I think stalks are simpler.
+	Let $U$ be any open subset of $Y$, then we need to specify a map
+	\[ \pi^\sharp_U \colon \OO_Y(U) \to \OO_X(\pi\pre(U)). \]
+	If $U$ does not contain $(y-3)$, then $\pi\pre(U) = \varnothing$,
+	so $\OO_X(\varnothing) = 0$ is the zero ring and there is nothing to do.
+
+	Conversely, if $U$ does contain $(y-3)$ then $\pi\pre(U) = X$,
+	so this time we want to specify a map
+	\[ \pi^\sharp_U \colon \OO_Y(U) \to \OO_X(X) = \RR[x] \]
+	which satisfies restriction maps.
+	Note that for any $U$, the element $y$ must map to a unit in $\RR[x]$;
+	since $1/y$ is a section too for a subset of $U$ not containing $(x)$.
+	Actually for any real number $c \ne 3$,
+	$y-c$ must be map to a unit in $\RR[x]$.
+	This can only happen if $y \mapsto 3 \in \RR[x]$.
+
+	As we have specified $\RR[y] \mapsto \RR[x]$ with $y \mapsto 3$,
+	that determines all the ring homomorphisms we needed.
+\end{example}
+But we could have used stalks, too.
+We wanted to specify a morphism
+\[ \RR[y]_{(y-3)} = \OO_{\Spec Y, (y-3)} \to \OO_{\Spec X, \kp} \]
+for every prime ideal $\kp$,
+sending compatible germs to compatible germs\dots
+but wait, $(y-3)$ is spitting out all the germs.
+So every \emph{individual} germ in $\OO_{\Spec Y, (y-3)}$
+needs to yield a (compatible) germ above every point of $\Spec X$,
+which is the data of an entire global section.
+So we're actually trying to specify
+\[ \RR[y]_{(y-3)} = \OO_{\Spec Y, (y-3)} \to \OO_{\Spec X}(\Spec X) = \RR[x]. \]
+This requires $y \mapsto 3$, as we saw,
+since $y-c$ is a unit of $\RR[x]$ for any $c \ne 3$.
+
+\begin{example}
+	[Constant map to $(y^2+1)$ does not exist]
+	Let's see if there are constant maps
+	$X = \Spec \RR[x] \to \Spec \RR[y] = Y$
+	which send everything to $(y^2+1)$.
+	Copying the previous example, we see that we want
+	\[ \OO_Y(U) \to \OO_X(X) = \RR[x]. \]
+	We find that $y$ and $1/y$ has nowhere to go:
+	the same argument as last time shows that $y-c$ should be a unit of $\RR[x]$;
+	this time for any real number $c$.
+
+	Like this time, stalks show this too,
+	even with just residue fields.
+	We would for example need a field homomorphism
+	\[ \CC = \kappa( (y^2+1) ) \to \kappa( (x) ) = \RR \]
+	which does not exist.
+\end{example}
+
+You might already notice the following:
+\begin{example}
+	[The generic point repels smaller points]
+	Changing the tune, consider maps $\Spec \CC[x] \to \Spec \CC[y]$.
+	We claim that if $\km$ is a maximal ideal (closed point)
+	of $\CC[x]$, then it can never be mapped to the generic point $(0)$ of $\CC[y]$.
+
+	For otherwise, we would get a local ring homomorphism
+	\[ \CC(y) \cong \OO_{\Spec k[y], (0)}
+		\to \OO_{\Spec \CC[x], \km} \cong \CC[x]_\km \]
+	which in particular means we have a map on the residue fields
+	\[ \CC(y) \to \CC[x] / \km \cong \CC \]
+	which is impossible, there is no such field homomorphism at all (why?).
+\end{example}
+The last example gives some nice intuition in general:
+``more generic'' points tend to have bigger stalks
+than ``less generic'' points, hence repel them.
+
+\subsection{The map $t \mapsto t^2$}
+We now consider what we would think
+of as the map $t \mapsto t^2$.
+\begin{example}
+	[The map $t \mapsto t^2$]
+	We consider a map 
+	\[ \pi \colon X = \Spec \CC[x] \to \Spec \CC[y] = Y \]
+	defined on points as follows:
+	\begin{align*}
+		\pi\left( (0) \right) &= (0) \\
+		\pi\left( (x-a)  \right) &= (y-a^2).
+	\end{align*}
+	You may check if you wish this map is continuous.
+	I claim that, surprisingly,
+	you can actually read off $\pi^\sharp$ from just this
+	behavior at points.
+	The reason is that we imposed the requirement
+	that a section $s$ can vanish at $\kq \in Y$
+	if and only if $\pi^\sharp_X(s)$ vanishes at $\kp \in X$,
+	where $\pi(\kp) = \kq$.
+	So, now:
+	\begin{itemize}
+		\ii Consider the section $y \in \OO_Y(Y)$,
+		which vanishes only at $(y) \in \Spec \CC[y]$;
+		then its image $\pi^\sharp_Y(y) \in \OO_X(X)$
+		must vanish at exactly $(x) \in \Spec \CC[x]$,
+		so $\pi^\sharp_Y(y) = x^n$ for some integer $n \ge 1$.
+		\ii Consider the section $y-4 \in \OO_Y(Y)$,
+		which vanishes only at $(y-4) \in \Spec \CC[y]$;
+		then its image $\pi^\sharp_Y(y-4) \in \OO_X(X)$
+		must vanish at exactly $(x-2) \in \Spec \CC[x]$
+		and $(x+2) \in \Spec \CC[x]$.
+		So $\pi^\sharp_Y(y)-4$ is divisible by $(x-2)^a(x+2)^b$
+		for some $a \ge 1$ and $b \ge 1$.
+	\end{itemize}
+	Thus $y \mapsto x^2$ in the top level map of sections $\pi^\sharp_Y$:
+	and hence also in all the maps of sections
+	(as well as at all the stalks).
+\end{example}
+The above example works equally well if $t^2$ is replaced
+by some polynomial $f(t)$,
+so that $(x-a)$ maps to $(y-f(y))$.
+The image of $y$ must be a polynomial $g(x)$
+with the property that $g(x)-c$ has the same roots as $f(x)-c$
+for any $c \in \CC$.
+Put another way, $f$ and $g$ have the same values, so $f = g$.
+
+\begin{remark}
+	[Generic point stalk overpowered]
+	I want to also point out that you can read off the polynomial
+	just from the stalk at the generic point:
+	for example, the previous example has
+	\[ \CC(y) \cong \OO_{\Spec \CC[y], (0)}
+		\to \OO_{\Spec \CC[x], (0)} \cong \CC(x)
+		\qquad y \mapsto x^2. \]
+	This is part of the reason why generic points are so powerful.
+	We expect that with polynomials,
+	if you know what happens to a ``generic'' point,
+	you can figure out the entire map.
+	This intuition is true:
+	knowing where each germ at the generic point goes
+	is enough to tell us the whole map.
+\end{remark}
+
+\subsection{An arithmetic example}
+\begin{example}
+	[{$\Spec \ZZ[i] \to \Spec \ZZ$}]
+	We now construct a morphism of schemes
+	$\pi \colon \Spec \ZZ[i] \to \Spec \ZZ$.
+	On points it behaves by
+	\begin{align*}
+		\pi\left( (0) \right) &= (0) \\
+		\pi\left( (p) \right) &= (p) \\
+		\pi\left( (a+bi) \right) &= (a^2+b^2)
+	\end{align*}
+	where $a+bi$ is a Gaussian prime:
+	so for example $\pi( (2+i) ) = (5)$ and $\pi( (1+i) ) = (2)$.
+	We could figure out the induced map on stalks now,
+	much like before, but in a moment we'll have a big theorem
+	that spares us the trouble.
+\end{example}
+
+
+\section{The big theorem}
+We did a few examples of $\Spec A \to \Spec B$ by hand,
+specifying the full data of a map of locally ringed spaces.
+It turns out that in fact, we didn't to specify that much data,
+and much of the process can be automated:
+\begin{proposition}
+	[Affine reconstruction]
+	\label{prop:affine_reconstruction}
+	Let $\pi \colon \Spec A \to \Spec B$ be a map of schemes.
+	Let $\psi \colon B \to A$ be the ring homomorphism
+	obtained by taking global sections, i.e.
+	\[ \psi= \pi^\sharp_B \colon \OO_{\Spec B}(\Spec B)
+		\to \OO_{\Spec A}(\Spec A). \]
+	Then we can recover $\pi$ given only $\psi$;
+	in fact, $\pi$ is given explicitly by
+	\[ \pi(\kp) = \psi\pre(\kp) \]
+	and
+	\[ \pi^\sharp_\kp \colon \OO_{Y,\pi(\kp)} \to \OO_{X,\kp}
+			\quad\text{ by }\quad f/g \mapsto \psi(f)/\psi(g).  \]
+\end{proposition}
+This is the big miracle of affine schemes.
+Despite the enormous amount of data packaged into the definition,
+we can compress maps between affine schemes
+into just the single ring homomorphism on the top level.
+\begin{proof}
+	This requires two parts.
+	\begin{itemize}
+		\ii We need to check that the maps agree on \emph{points};
+		surprisingly this is the harder half.
+		To see how this works, let $\kq = \pi(\kp)$.
+		The key fact is that a function $f \in B$ vanishes on $\kq$
+		if and only if $\pi^\sharp_B(f)$ vanishes on $\kp$
+		(because $\pi^\sharp_B$ is supposed to be a
+		homomorphism of \emph{local} rings).
+		Therefore,
+		\begin{align*}
+			\pi(\kp) &= \kq = \left\{ f \in B \mid f \in \kq \right\} \\
+			&= \left\{ f \in B \mid f \text{ vanishes on } \kq \right\} \\
+			&= \left\{ f \in B \mid \pi^\sharp_B(f) \text{ vanishes on } \kp \right\} \\
+			&= \left\{ f \in B \mid \pi^\sharp_B(f) \in \kp \right\} 
+			= \left\{ f \in B \mid \psi(f) \in \kp \right\} \\
+			&= \psi\pre(\kp).
+		\end{align*}
+
+		\ii We also want to check the maps on the stalks is the same.
+		Suppose $\kp \in \Spec A$, $\kq \in \Spec B$,
+		and $\kp \mapsto \kq$ (under both of the above).
+
+		In our original $\pi$, consider the map
+		$\pi^\sharp_\kp \colon B_\kq \to A_\kp$.
+		We know that it sends each $f \in B$ to $\psi(f) \in A$,
+		by taking the germ of each global section $f \in B$ at $\kq$.
+		Thus it must send $f/g$ to $\psi(f) / \psi(g)$,
+		being a ring homomorphism, as needed. \qedhere
+	\end{itemize}
+\end{proof}
+
+All of this suggests a great idea:
+if $\psi \colon B \to A$ is \emph{any} ring homomorphism,
+we ought to be able to construct a map of schemes
+by using fragments of the proof we just found.
+The only extra work we have to do is verify that
+we get a continuous map in the Zariski topology,
+and that we can get a suitable $\pi^\sharp$.
+
+We thus get the huge important theorem about affine schemes.
+\begin{theorem}
+	[$\Spec A \to \Spec B$ is just $B \to A$]
+	These two construction gives a bijection between
+	ring homomorphisms $B \to A$ and $\Spec A \to \Spec B$.
+\end{theorem}
+\begin{proof}
+	We have seen how to take each
+	$\pi \colon \Spec A \to \Spec B$
+	and get a ring homomorphism $\psi$.
+	\Cref{prop:affine_reconstruction} shows this map is injective.
+	So we just need to check it is surjective --- that
+	every $\psi$ arises from some $\pi$.
+
+	Given $\psi \colon B \to A$, we define
+	$(\pi, \pi^\sharp) \colon \Spec A \to \Spec B$
+	by copying \Cref{prop:affine_reconstruction}
+	and checking that everything is well-definced.
+	The details are:
+	\begin{itemize}
+	\ii For each prime ideal $\kp \in \Spec A$,
+	we let $\pi(\kp) = \psi\pre(\kp) \in \Spec B$
+	(which by \Cref{prob:prime_preimage} is also prime).
+	\begin{exercise}
+		Show that the resulting map $\pi$ is continuous
+		in the Zariski topology.
+	\end{exercise}
+	\ii Now we want to also define maps on the stalks,
+	and so for ecah $\pi(\kp) = \kq$ we set
+	\[ B_\kq \ni \frac fg \mapsto \frac{\psi(f)}{\psi(g)} \in A_\kp. \]
+	This makes sense since $g \notin \kq \implies \psi(g) \notin \kp$.
+	Also $f \in \kq \implies \psi(f) \in \kp$,
+	we find this really is a local ring homomorphism
+	(sending the maximal ideal of $B_\kq$ into the one of $A_\kp$).
+
+	Observe that if $f/g$ is a \emph{section}
+	over an open set $U \subseteq B$
+	(meaning $g$ does not vanish at the primes in $U$),
+	then $\psi(f)/\psi(g)$ is a section over $\pi\pre(U)$
+	(meaning $\psi(g)$ does not vanish at the primes in $\pi\pre(U)$).
+	Therefore, compatible germs over $B$
+	get sent to compatible germs over $A$, as needed.
+	\end{itemize}
+	Finally, the resulting $\pi$ has $\pi^\sharp_B = \psi$ on global sections,
+	completing the proof.
+\end{proof}
+
+This can be summarized succinctly using category theory:
+\begin{corollary}
+	[Categorical interpretation]
+	The opposite category of rings $\catname{CRing}\op$,
+	is ``equivalent'' to the category of affine schemes, $\catname{AffSch}$,
+	with $\Spec$ as a functor.
+\end{corollary}
+This means for example that $\Spec A \cong \Spec B$,
+naturally, whenever $A \cong B$.
+
+To make sure you realize that this theorem is important,
+here is an amusing comment I found on MathOverflow
+while reading about algebraic geometry
+references\footnote{From \url{https://mathoverflow.net/q/2446/70654}.}:
+\begin{quote}
+	\small\sffamily\itshape
+	He [Hartshorne] never mentions that the category of affine schemes
+	is dual to the category of rings, as far as I can see.
+	I'd expect to see that in huge letters
+	near the definition of scheme.
+	How could you miss that out?
+\end{quote}
+
+\section{More examples of scheme morphisms}
+Now that we have the big hammer,
+we can talk about examples much more briefly
+than we did a few sections ago.
+Before throwing things around,
+I want to give another definition
+that will eliminate the weird behavior we saw with
+$\CC \to \CC$ having nontrivial field automorphisms:
+\begin{definition}
+	Let $S$ be a scheme.
+	A \vocab{scheme over $S$} or \vocab{$S$-scheme} is a scheme $X$
+	together with a map $X \to S$.
+	A morphism of $S$-schemes is a scheme morphism $X \to Y$
+	such that the diagram
+	\begin{tikzcd}
+		X \ar[r] \ar[rd] & Y \ar[d] \\ & S
+	\end{tikzcd}
+	commutes.
+	Often, if $S = \Spec k$, we will use refer
+	to schemes over $k$ or $k$-schemes for short.
+\end{definition}
+\begin{example}
+	[{$\Spec k[\dots]$}]
+	If $X = \Spec k[x_1, \dots, x_n] / I$ for some ideal $I$,
+	then $X$ being a $k$-scheme in a natural way;
+	since we have an obvious homomorphism
+	$k \injto k[x_1, \dots, x_n] / I$
+	which gives a map $X \to \Spec k$.
+\end{example}
+
+\begin{example}
+	[{$\Spec \CC[x] \to \Spec \CC[y]$}]
+	As $\CC$-schemes, maps $\Spec \CC[x] \to \Spec \CC[y]$
+	coincide with ring homomorphisms
+	from $\psi \colon \CC[y] \to \CC[x]$ such that the diagram
+	\begin{center}
+	\begin{tikzcd}
+		\CC[x] & \CC[y] \ar[l, "\psi"'] \\
+		& \ar[lu, hook] \ar[u, hook] \CC
+	\end{tikzcd}
+	\end{center}
+	We see that the ``over $\CC$'' condition is eliminating
+	the pathology from before:
+	the $\psi$ is required to preserve $\CC$.
+	So the morphism is determined by the image of $y$,
+	i.e.\ the choice of a polynomial in $\CC[x]$.
+	For example, if $\psi(y) = x^2$
+	we recover the first example we saw.
+	This matches our intuition that these maps should correspond
+	to polynomials.
+\end{example}
+
+\begin{example}
+	[$\Spec \OO_K$]
+	This generalize $\Spec \ZZ[i]$ from before.
+	If $K$ is a number field and $\OO_K$,
+	then there is a natural morphism $\Spec \OO_K \to \Spec \ZZ$
+	from the (unique) ring homomorphism $\ZZ \injto \OO_K$.
+	Above each rational prime $(p) \in \ZZ$,
+	one obtains the prime ideals that $p$ splits as.
+	(We don't have a way of capturing ramification yet, alas.)
+\end{example}
+
+\section{A little bit on non-affine schemes}
+We can finally state the isomorphism that we wanted for a long time
+(first mentioned in \Cref{subsec:distinguished_open_affine}):
+\begin{theorem}
+	[Distinguished open sets are isomorphic to affine schemes]
+	Let $A$ be a ring and $f$ an element.
+	Then
+	\[ \Spec A[1/f] \cong D(f) \subseteq \Spec A. \]
+\end{theorem}
+\begin{proof}
+	Annoying check, not included yet.
+	(We have already seen the bijection of prime ideals, at the level of points.)
+\end{proof}
+
+\begin{corollary}
+	[Open subsets are schemes]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii Any nonempty open subset of an affine scheme is itself a scheme.
+		\ii Any nonempty open subset of any scheme (affine or not) is itself a scheme.
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	Part (a) has essentially been done already:
+	\begin{ques}
+		Combine \Cref{thm:distinguished_base}
+		with the previous proposition to deduce (a).
+	\end{ques}
+	Part (b) then follows by noting that if $U$ is an open set,
+	and $p$ is a point in $U$,
+	then we can take an affine open neighborhood $\Spec A$ at $p$,
+	and then cover $U \cap \Spec A$ with distinguished
+	open subsets of $\Spec A$ as in (a).
+\end{proof}
+
+We now reprise \Cref{subsec:punctured_plane}
+(except $\CC$ will be replaced by $k$).
+We have seen it is an open subset $U$ of $\Spec k[x,y]$, so it is affine.
+\begin{ques}
+	Show that in fact $U$ can be covered by
+	two open sets which are both affine.
+\end{ques}
+However, we show now that you really do need two open sets.
+\begin{proposition}
+	[Famous example: punctured plane isn't affine]
+	The punctured plane $U = (U, \OO_U)$,
+	obtained by deleting $(x,y)$ from $\Spec k[x,y]$,
+	is not isomorphic to any affine scheme $\Spec B$.
+\end{proposition}
+
+The intuition is that $\OO_U(U) = k[x,y]$, but $U$ is not the plane.
+\begin{proof}
+	We already know $\OO_U(U) = k[x,y]$
+	and we have a good handle on it.
+	For example, $y \in \OO_U(U)$ is a global section
+	which vanishes on what looks like the $y$-axis.
+	Similarly, $x \in \OO_X(X)$ is a global section
+	which vanishes on what looks like the $y$-axis.
+	In particular, no point of $U$ vanishes at both.
+
+	Now assume for contradiction that we have an isomorphism
+	\[ \psi \colon \Spec B \to U. \]
+	By taking the map on global sections (part of the definition),
+	\[ k[x,y] = \OO_U(U) \taking{\psi^\sharp}
+		\OO_{\Spec B}(\Spec B) \cong B. \]
+	The global sections $x$ and $y$ in $\OO_U(U)$
+	should then have images $a$ and $b$ in $B$;
+	and it follows we have a ring isomorphism $B \cong k[a,b]$.
+
+	\begin{center}
+	\begin{asy}
+		unitsize(0.9cm);
+		draw( (0,-3)--(0,3), red );
+		draw( (-3,0)--(3,0), red );
+		fill(box( (-3,-3), (3,3) ), opacity(0.2)+lightcyan);
+		opendot(origin, blue+1.5);
+		label("$\mathcal V(x)$", (3,0), dir(135), red);
+		label("$\mathcal V(y)$", (0,3), dir(-45), red);
+		label("$U$", (0,3), dir(90), deepcyan);
+		label("$\mathcal O_U(U) = k[x,y]$", (0,-3), dir(-90), deepcyan);
+		add(shift(-8,0)*CC());
+		fill(box( (-3,-3), (3,3) ), opacity(0.2)+lightblue);
+		path a = (-3,-1)..(-1,0.7)..(0.2,0.5)..(2,1)..(3,0.8);
+		path b = (-0.5,-3)..(0.4,-1)..(0.2,0.5)..(-0.4,2)..(-0.7,3);
+		draw(a, red);
+		draw(b, red);
+		label("$\mathcal V(a)$", (3,0.8), dir(225), red);
+		label("$\mathcal V(b)$", (-0.7,3), dir(225), red);
+		dot("$(a,b)$", (0.2,0.5), dir(225), red);
+		label("$\operatorname{Spec} B$", (0,3), dir(90), blue);
+		label("$\mathcal O_{\operatorname{Spec} B}(\operatorname{Spec} B) \cong k[a,b]$", (0,-3), dir(-90), blue);
+	\end{asy}
+	\end{center}
+
+	Now in $\Spec B$, $\VV(a) \cap \VV(b)$ is a closed
+	set containing a single point, the maximal ideal $\km = (a,b)$.
+	Thus in $\Spec B$ there is exactly
+	one point vanishing at both $a$ and $b$.
+	\emph{Because we required morphisms of schemes to preserve values}
+	(hence the big fuss about locally ringed spaces),
+	that means there should be a single point of $U$
+	vanishing at both $x$ and $y$.
+	But there isn't --- it was the origin we deleted.
+\end{proof}
+
+\section{Where to go from here}
+% \todo{I think I want to write more, but in a later edition}
+This chapter concludes the long setup for the definition of a scheme.
+For now, this unfortunately is as far as I have time to go.
+So, if you want to actually see how schemes are used in ``real life'',
+you'll have to turn elsewhere.
+
+A good reference I happily recommend is \cite{ref:gathmann};
+a more difficult (and famous) one is \cite{ref:vakil}.
+See \Cref{ch:refs} for further remarks.
+
+\section{\problemhead}
+\begin{problem}
+	Given an affine scheme $X = \Spec R$,
+	show that there is a unique morphism of schemes $X \to \Spec \ZZ$,
+	and describe where it sends points of $X$.
+	\begin{hint}
+		Use the fact that $\catname{AffSch} \simeq \catname{CRing}$.
+	\end{hint}
+	\begin{sol}
+		Since $\ZZ$ is the initial object of $\catname{CRing}$,
+		it follows $\Spec \ZZ$ is the final object of $\catname{AffSch}$.
+		$\kp$ gets sent to the characteristic of the field $\OO_{X,\kp} / \km_{X,\kp}$.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Is the open subset of $\Spec \ZZ[x]$
+	obtained by deleting the point $\km = (2,x)$
+	isomorphic to some affine scheme?
+\end{problem}
+
+\endinput
+
+\section{Projective scheme}
+\prototype{Projective varieties, in the same way.}
+The most important class of schemes which are not affine are
+\emph{projective} schemes.
+The complete the obvious analogy:
+\[
+	\frac{\text{Affine variety}}{\text{Projective variety}}
+	= 
+	\frac{\text{Affine scheme}}{\text{Projective scheme}}.
+\]
+Let $S$ be \emph{any} (commutative) graded ring, like $\CC[x_0, \dots, x_n]$.
+\begin{definition}
+	We define $\Proj S$, the \vocab{projective scheme over $S$}:
+	\begin{itemize}
+		\ii As a set, $\Proj S$ consists of \emph{homogeneous prime ideals}
+		$\kp$ which do not contain $S^+$.
+		\ii If $I \subseteq S$ is homogeneous, then
+		we let $\Vp(I) = \{ \kp \in \Proj S \mid I \subseteq \kp \}$.
+		Then the \vocab{Zariski topology} is imposed by declaring 
+		sets of the form $\Vp(I)$ to be closed.
+		\ii We now define a pre-sheaf $\SF$ on $\Proj S$ by
+		\[ \SF(U) = 
+			\left\{ \frac{f}{g} \mid 
+			g(\kp) \neq 0 \; \forall \kp \in U \text{ and }
+			\deg f = \deg g \right\}.
+		\]
+		In other words, the rational functions are quotients $f/g$
+		where $f$ and $g$ are \emph{homogeneous of the same degree}.
+		Then we let \[ \OO_{\Proj S} = \SF\sh \] be the sheafification.
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	The \vocab{distinguished open sets} $D(f)$ of the $\Proj S$
+	are defined as $\left\{ \kp \in \Proj S : f(\kp) \neq 0 \right\}$,
+	as before; these form a basis for the Zariski topology of $\Proj S$.
+\end{definition}
+Now, we want analogous results as we did for affine structure sheaf.
+So, we define a slightly modified localization:
+\begin{definition}
+	Let $S$ be a graded ring.
+	\begin{enumerate}[(i)]
+		\ii For a prime ideal $\kp$, let
+		\[ S_{(\kp)} = \left\{ \frac fg \mid g(\kp) \neq 0 \text{ and }
+			\deg f = \deg g \right\} \]
+		denote the elements of $S_\kp$ with ``degree zero''.
+		\ii For any homogeneous $g \in S$ of degree $d$, let
+		\[ S_{(g)} = \left\{ \frac{f}{g^r} \mid 
+			\deg f = r \deg g \right\} \]
+		denote the elements of $S_g$ with ``degree zero''.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+	[On the projective structure sheaf]
+	Let $S$ be a graded ring and let $\Proj S$ the associated projective scheme.
+	\begin{enumerate}[(a)]
+		\ii Let $\kp \in \Proj S$.
+		Then $\OO_{\Proj S, \kp} \cong S_{(\kp)}$.
+		\ii Suppose $g$ is homogeneous with $\deg g > 0$. Then
+		\[ D(g) \cong \Spec S_{(g)} \]
+		as locally ringed spaces.
+		In particular, $\OO_{\Proj S}(D(g)) \cong S_{(g)}$.
+	\end{enumerate}
+\end{theorem}
+\begin{ques}
+	Conclude that $\Proj S$ is a scheme.
+\end{ques}
+
+Of course, the archetypal example is that
+\[ \Proj \CC[x_0, x_1, \dots, x_n] / I \]
+corresponds to the projective subvariety of $\CP^n$
+cut out by $I$ (when $I$ is radical).
+In the general case of an arbitrary ideal $I$, we
+call such schemes \vocab{projective subscheme} of $\CP^n$.
+For example, the ``double point'' in  $\CP^1$
+is given by $\Proj[x_0,x_1]/(x_0^2)$.
+
+\begin{remark}
+	No comment yet on what the global sections of $\OO_{\Proj S}(\Proj S)$ are.
+	(The theorem above requires $\deg g > 0$, so we cannot just take $g=1$.)
+	One might hope that in general $\OO_{\Proj S}(\Proj S) \cong S^0$
+	in analogy to our complex projective varieties, but
+	one needs some additional assumptions on $S$ for this to hold.
+\end{remark}
+
+
+
+\section{Morphisms of sheaves}
+First, recall that a sheaf is a contravariant functor (pre-sheaf)
+with extra conditions. In light of this, it is not hard to guess
+the definition of a morphism of pre-sheaves:
+\begin{definition}
+	A \vocab{morphism of (pre-)sheaves} $\alpha : \SF \to \SG$ on the same
+	space $X$ is a \textbf{natural transformation} of the underlying functors.
+	Isomorphism of sheaves is defined in the usual way.
+\end{definition}
+\begin{ques}
+	Show that this amounts to: for each $U \subseteq X$ we need to specify
+	a morphism $\alpha_U : \SF(U) \to \SG(U)$ such that the diagram
+	\begin{diagram}
+		\SF(U_2) & \rTo^{\alpha_{U_2}} & \SG(U_2) \\
+		\dTo^{\res_{U_1, U_2}} && \dTo_{\res_{U_1, U_2}} \\
+		\SF(U_1) & \rTo_{\alpha_{U_1}} & \SG(U_1)
+	\end{diagram}
+	commutes any time that $U_1 \subseteq U_2$.
+\end{ques}
+However, in the sheaf case we like stalks more than sections because
+they are theoretically easier to think about.
+And in fact:
+\begin{proposition}
+	[Morphisms determined by stalks]
+	A morphism of sheaves $\alpha : \SF \to \SG$ induces a morphism of stalks
+	\[ \alpha_p : \SF_p \to \SG_p \]
+	for every point $p \in X$.
+	Moreover, the sequence $(\alpha_p)_{p \in X}$ determines $\alpha$ uniquely.
+\end{proposition}
+\begin{proof}
+	The morphism $\alpha_p$ itself is just
+	$(s, U) \xmapsto{\alpha_p} (\alpha_U(s), U)$.
+	\begin{ques}
+		Show this is well-defined.
+	\end{ques}
+	Now suppose $\alpha , \beta : \SF \to \SG$ satisfy $\alpha_p = \beta_p$
+	for every $p$. We want to show $\alpha_U(s) = \beta_U(s)$
+	for every $s \in \SF(U)$.
+	\begin{ques}
+		Verify this using the description of sections
+		as sequences of germs. \qedhere
+	\end{ques}
+\end{proof}
+Thus a morphism of sheaves can be instead modelled as a morphism
+of all the stalks. We will see later on that this viewpoint is quite useful.
+

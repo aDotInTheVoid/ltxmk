@@ -1,0 +1,502 @@
+\chapter{Flavors of rings}
+We continue our exploration of rings by considering
+some nice-ness properties that rings or ideals can satisfy,
+which will be valuable later on.
+As before, number theory is interlaced as motivation.
+I guess I can tell you at the outset what the completed table
+is going to look like, so you know what to expect.
+
+\begin{center}
+	\begin{tabular}[h]{lll}
+		Ring noun & Ideal adjective & Relation \\ \hline
+		PID & principal &
+			$R$ is a PID $\iff$ $R$ is an integral domain, \\
+			&& \qquad and every $I$ is principal \\
+		Noetherian ring & finitely generated &
+			$R$ is Noetherian $\iff$ every $I$ is fin.\ gen. \\
+		field & maximal & $R/I$ is a field $\iff$ $I$ is maximal \\
+		integral domain & prime & $R/I$ is an integral domain
+			$\iff$ $I$ is prime \\
+	\end{tabular}
+\end{center}
+
+\section{Fields}
+\prototype{$\QQ$ is a field, but $\ZZ$ is not.}
+
+We already saw this definition last chapter:
+a field $K$ is a nontrivial ring for which every nonzero element is a unit.
+
+In particular, there are only two ideals in a field:
+the ideal $(0)$, which is maximal, and the entire field $K$.
+
+\section{Integral domains}
+\prototype{$\ZZ$ is an integral domain.}
+
+In practice, we are often not so lucky that we have a full-fledged field.
+Now it would be nice if we could still conclude the zero product property:
+if $ab = 0$ then either $a = 0$ or $b = 0$.
+If our ring is a field, this is true: if $b \neq 0$,
+then we can multiply by $b\inv$ to get $a = 0$.
+But many other rings we consider like $\ZZ$ and $\ZZ[x]$ also have this property,
+despite not having division.
+
+Not all rings though: in $\Zc{15}$,
+\[ 3 \cdot 5 \equiv 0 \pmod{15}. \]
+If $a, b \neq 0$ but $ab=0$ then we say $a$ and $b$ are \vocab{zero divisors}
+of the ring $R$.
+So we give a name to such rings.
+\begin{definition}
+	A nontrivial ring with no zero divisors
+	is called an \vocab{integral domain}.\footnote{Some
+		authors abbreviate this to ``domain'', notably Artin.}
+\end{definition}
+\begin{ques}
+	Show that a field is an integral domain.
+\end{ques}
+\begin{exercise}
+	[Cancellation in integral domains]
+	Suppose $ac = bc$ in an integral domain, and $c \neq 0$.
+	Show that that $a = b$.
+	(There is no $c\inv$ to multiply by,
+	so you have to use the definition.)
+\end{exercise}
+
+\begin{example}
+	[Examples of integral domains]
+	Every field is an integral domain,
+	so all the previous examples apply.
+	In addition:
+	\begin{enumerate}[(a)]
+		\ii $\ZZ$ is an integral domain, but it is not a field.
+		\ii $\RR[x]$ is not a field,
+		since there is no polynomial $P(x)$ with $xP(x) = 1$.
+		However, $\RR[x]$ is an integral domain,
+		because if $P(x) Q(x) = 0$ then one of $P$ or $Q$ is zero.
+		\ii $\ZZ[x]$ is also an example of an integral domain.
+		In fact, $R[x]$ is an integral domain for any integral domain $R$ (why?).
+		\ii $\Zc n$ is a field (hence integral domain)
+		exactly when $n$ is prime.
+		When $n$ is not prime, it is a ring but not an integral domain.
+	\end{enumerate}
+	The trivial ring $0$ is \emph{not} considered an integral domain.
+\end{example}
+
+At this point, we go ahead and say:
+\begin{definition}
+	An integral domain where all ideals are principal
+	is called a \vocab{principal ideal domain (PID)}.
+\end{definition}
+The ring $\ZZ/6\ZZ$ is an example of a ring
+which is a principal ideal ring, but not an integral domain.
+As we alluded to earlier, we will never really use ``principal ideal ring''
+in any real way: we typically will want to strengthen it to PID.
+
+\section{Prime ideals}
+\prototype{$(5)$ is a prime ideal of $\ZZ$.}
+
+We know that every integer can be factored (up to sign)
+as a unique product of primes; for example $15 = 3 \cdot 5$
+and $-10 = -2 \cdot 5$.
+You might remember the proof involves the so-called B\'ezout's lemma,
+which essentially says that $(a,b) = (\gcd(a,b))$;
+in other words we've carefully used the fact that $\ZZ$ is a PID.
+
+It turns out that for general rings, the situation is not as nice
+as factoring elements because most rings are not PID's.
+The classic example of something going wrong is
+\[ 6 = 2 \cdot 3 = \left( 1-\sqrt{-5} \right)\left( 1+\sqrt{-5} \right) \]
+in $\ZZ[\sqrt{-5}]$.
+Nonetheless, we can sidestep the issue
+and talk about factoring \emph{ideals}:
+somehow the example $10 = 2 \cdot 5$ should be $(10) = (2) \cdot (5)$,
+which says ``every multiple of $10$ is the product of a
+multiple of $2$ and a multiple of $5$''.
+I'd have to tell you then how to multiply two ideals, which I do
+in the chapter on unique factorization.
+
+Let's at least figure out what primes are.
+In $\ZZ$, we have that $p \neq 1$ is prime if whenever $p \mid xy$,
+either $p \mid x$ or $p \mid y$.
+We port over this definition to our world of ideals.
+\begin{definition}
+	\label{def:prime_ideal}
+	A \emph{proper} ideal $I \subsetneq R$ is a \vocab{prime ideal}
+	if whenever $xy \in I$, either $x \in I$ or $y \in I$.
+\end{definition}
+The condition that $I$ is proper is analogous to the
+fact that we don't consider $1$ to be a prime number.
+
+\begin{example}[Examples and non-examples of prime ideals]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii The ideal $(7)$ of $\ZZ$ is prime.
+		\ii The ideal $(8)$ of $\ZZ$ is not prime,
+		since $2 \cdot 4 = 8$.
+
+		\ii The ideal $(x)$ of $\ZZ[x]$ is prime.
+		\ii The ideal $(x^2)$ of $\ZZ[x]$ is not prime,
+		since $x \cdot x = x^2$.
+
+		\ii The ideal $(3,x)$ of $\ZZ[x]$ is prime.
+		This is actually easiest to see
+		using \Cref{thm:prime_ideal_quotient} below.
+
+		\ii The ideal $(5) = 5\ZZ + 5i\ZZ$ of $\ZZ[i]$
+		is not prime, since the elements
+		$3+i$ and $3-i$ have product $10 \in (5)$,
+		yet neither is itself in $(5)$.
+	\end{enumerate}
+\end{example}
+\begin{remark}
+	\label{rem:unit_sign_issue}
+	Ideals have the nice property that they get rid of ``sign issues''.
+	For example, in $\ZZ$, do we consider $-3$ to be a prime?
+	When phrased with ideals, this annoyance goes away: $(-3) = (3)$.
+	More generally, for a ring $R$, talking about ideals
+	lets us ignore multiplication by a unit.
+	(Note that $-1$ is a unit in $\ZZ$.)
+\end{remark}
+
+\begin{exercise}
+	What do you call a ring $R$ for which the zero ideal $(0)$ is prime?
+\end{exercise}
+
+We also have:
+\begin{theorem}[Prime ideal $\iff$ quotient is integral domain]
+	\label{thm:prime_ideal_quotient}
+	An ideal $I$ is prime if and only if $R/I$ is an integral domain.
+\end{theorem}
+\begin{exercise}
+	[Mandatory]
+	Convince yourself the theorem is true;
+	it is just definition chasing.
+	(A possible start is to consider $R = \ZZ$ and $I = (15)$.)
+\end{exercise}
+
+I now must regrettably inform you that unique factorization is still
+not true even with the notion of a ``prime'' ideal
+(though again I haven't told you how to multiply two ideals yet).
+But it will become true with some additional assumptions
+that will arise in algebraic number theory
+(relevant buzzword: Dedekind domain).
+
+\section{Maximal ideals}
+\prototype{The ideal $(x,5)$ is maximal in $\ZZ[x]$, by quotient-ing.}
+
+Here's another flavor of an ideal.
+\begin{definition}
+	A proper ideal $I$ of a ring $R$ is \vocab{maximal} if
+	it is not contained in any other proper ideal.
+\end{definition}
+
+\begin{example}
+	[Examples of maximal ideals]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii The ideal $I = (7)$ of $\ZZ$ is maximal, because
+		if an ideal $J$ contains $7$
+		and an element $n$ not in $I$
+		it must contain $\gcd(7,n) = 1$, and hence $J = \ZZ$.
+		\ii The ideal $(x)$ is \emph{not} maximal in $\ZZ[x]$,
+		because it's contained in $(x,5)$ (among others).
+		\ii On the other hand, $(x,5)$ is indeed maximal in $\ZZ[x]$.
+		This is actually easiest to verify using
+		\Cref{thm:max_ideal_quotient} below.
+		\ii Also, $(x)$ is maximal in $\CC[x]$,
+		again appealing to \Cref{thm:max_ideal_quotient} below.
+	\end{enumerate}
+\end{example}
+
+\begin{exercise}
+	What do you call a ring $R$ for which the zero ideal $(0)$ is maximal?
+\end{exercise}
+
+There's an analogous theorem to the one for prime ideals.
+\begin{theorem}
+	[$I$ maximal $\iff$ $R/I$ field]
+	\label{thm:max_ideal_quotient}
+	An ideal $I$ is maximal if and only if $R/I$ is a field.
+\end{theorem}
+\begin{proof}
+	A ring is a field if and only if $(0)$ is the only maximal ideal.
+	So this follows by \Cref{prob:inclusion_preserving}.
+\end{proof}
+
+\begin{corollary}
+	[Maximal ideals are prime]
+	If $I$ is a maximal ideal of a ring $R$, then $I$ is prime.
+\end{corollary}
+\begin{proof}
+	If $I$ is maximal, then $R/I$ is a field,
+	hence an integral domain, so $I$ is prime.
+\end{proof}
+
+In practice, because modding out by generated ideals is pretty convenient,
+this is a very efficient way to check whether an ideal is maximal.
+\begin{example}
+	[Modding out in $\ZZ{[x]}$]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii This instantly implies that $(x,5)$ is a maximal ideal
+		in $\ZZ[x]$, because if we mod out by $x$ and $5$ in $\ZZ[x]$,
+		we just get $\FF_5$, which is a field.
+		\ii On the other hand, modding out by just $x$ gives $\ZZ$,
+		which is an integral domain but not a field; that's why $(x)$ is
+		prime but not maximal.
+	\end{enumerate}
+\end{example}
+
+As we saw, any maximal ideal is prime.
+But now note that $\ZZ$ has the special property that
+all of its nonzero prime ideals are also maximal.
+It's with this condition and a few other minor conditions
+that you get a so-called \emph{Dedekind domain}
+where prime factorization of ideals \emph{does} work.
+More on that later.
+
+\section{Field of fractions}
+\prototype{$\Frac(\ZZ) = \QQ$.}
+As long as we are here, we take the time to introduce a useful
+construction that turns any integral domain into a field.
+
+\begin{definition}
+	Given an integral domain $R$,
+	we define its \vocab{field of fractions} or \vocab{fraction field}
+	$\Frac(R)$ as follows:
+	it consists of elements $a / b$, where $a,b \in R$ and $b \neq 0$.
+	We set $a / b \sim c / d$ if and only if $bc = ad$.
+	Addition and multiplication is defined by
+	\begin{align*}
+		\frac ab + \frac cd &= \frac{ad+bc}{bd} \\
+		\frac ab \cdot \frac cd &= \frac{ac}{bd}.
+	\end{align*}
+\end{definition}
+In fact everything you know about $\QQ$ basically carries over by analogy.
+You can prove if you want that this indeed a field, but 
+considering how comfortable we are that $\QQ$ is well-defined,
+I wouldn't worry about it\dots
+
+\begin{definition}
+	Let $k$ be a field.
+	We define $k(x) = \Frac(k[x])$
+	(read ``$k$ of $x$''),
+	and call it the \vocab{field of rational functions}.
+\end{definition}
+
+\begin{example}
+	[Examples of fraction fields]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii By \emph{definition}, $\Frac(\ZZ) = \QQ$.
+		\ii The field $\RR(x)$ consists of rational functions in $x$:
+		\[ \RR(x) = \left\{ \frac{f(x)}{g(x)} \mid f,g \in \RR[x] \right\}. \]
+		For example, $\frac{2x}{x^2-3}$ might be a typical element.
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+	[Gaussian rationals]
+	\label{ex:gaussian_rationals}
+	Just like we defined $\ZZ[i]$ by abusing notation,
+	we can also write $\QQ(i) = \Frac(\ZZ[i])$.
+	Officially, it should consist of
+	\[ \QQ(i) = \left\{ \frac{f(i)}{g(i)} \mid g(i) \ne 0 \right\} \]
+	for polynomials $f$ and $g$ with rational coefficients.
+	But since $i^2=-1$ this just leads to
+	\[ \QQ(i) = \left\{ \frac{a+bi}{c+di} \mid a,b,c,d \in \QQ,
+		(c,d) \ne (0,0) \right\}. \]
+	And since $\frac{1}{c+di} = \frac{c-di}{c^2+d^2}$ we end up with
+	\[ \QQ(i) = \left\{ a+bi \mid a,b \in \QQ \right\}. \]
+\end{example}
+
+
+\section{Unique factorization domains (UFD's)}
+\prototype{$\ZZ$ and polynomial rings in general.}
+
+Here is one stray definition that will be important
+for those with a number-theoretic inclination.
+Over the positive integers, we have a fundamental theorem of arithmetic,
+stating that every integer is uniquely the product of prime numbers.
+
+We can even make an analogous statement in $\ZZ$ or $\ZZ[i]$,
+if we allow representations like $6 = (-2)(-3)$ and so on.
+The trick is that we only consider everything \emph{up to units};
+so $6 = (-2)(-3) = 2 \cdot 3$ are considered the same.
+
+The general definition goes as follows.
+\begin{definition}
+	A nonzero non-unit of an integral domain $R$ is
+	\vocab{irreducible} if it cannot be written as the product of two non-units.
+
+	An integral domain $R$ is a \vocab{unique factorization domain}
+	if every nonzero non-unit of $R$ can be written
+	as the product of irreducible elements,
+	which is unique up to multiplication by units.
+\end{definition}
+\begin{ques}
+	Verify that $\ZZ$ is a UFD.
+\end{ques}
+
+\begin{example}
+	[Examples of UFD's]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii Fields are a ``degenerate'' example of UFD's:
+		every nonzero element is a unit,
+		so there is nothing to check.
+
+		\ii $\ZZ$ is a UFD.
+		The irreducible elements are $p$ and $-p$,
+		for example $5$ or $-17$.
+
+		\ii $\QQ[x]$ is a UFD:
+		polynomials with rational coefficients
+		can be uniquely factored, up to scaling by constants
+		(as the units of $\QQ[x]$ are just the rational numbers).
+
+		\ii $\ZZ[x]$ is a UFD.
+
+		\ii The Gaussian integers $\ZZ[i]$ turns out to be a UFD too
+		(and this will be proved in the chapters on algebraic number theory).
+
+		\ii $\ZZ[\sqrt{-5}]$ is the classic non-example of a UFD:
+		one may write
+		\[ 6 = 2 \cdot 3 = \left( 1-\sqrt{-5} \right)
+			\left( 1+\sqrt{-5} \right) \]
+		but each of $2$, $3$, $1 \pm \sqrt{-5}$ is irreducible.
+		(It turns out the right way to fix this is
+		by considering prime \emph{ideals} instead,
+		and this is one big motivation for \Cref{part:algnt1}.)
+
+		\ii Theorem we won't prove: every PID is a UFD.
+		\ii Theorem we won't prove: if $R$ is a UFD,
+		so is $R[x]$ (and hence by induction so is
+		$R[x,y]$, $R[x,y,z]$, \dots).
+	\end{enumerate}
+\end{example}
+
+
+
+\section{\problemhead}
+Not olympiad problems, but again the spirit is very close
+to what you might see in an olympiad.
+
+\begin{problem}
+	Consider the ring
+	\[ \QQ[\sqrt2] = \left\{ a + b\sqrt2 \mid a,b \in \QQ \right\}. \]
+	Is it a field?
+	\begin{hint}
+		Yes.
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	[Homomorphisms from fields are injective]
+	\label{prob:field_hom}
+	Let $K$ be a field and $R$ a ring.
+	Prove that any homomorphism $\psi \colon K \to R$
+	is injective.\footnote{Note that $\psi$
+		cannot be the zero map for us,
+		since we require $\psi(1_K) = 1_R$.
+		You sometimes find different statements in the literature.}
+	\begin{hint}
+		The kernel is an ideal of $K$!
+	\end{hint}
+\end{problem}
+
+\begin{sproblem}
+	[Pre-image of prime ideals]
+	\label{prob:prime_preimage}
+	Suppose $\phi \colon R \to S$ is a ring homomorphism,
+	and $I \subseteq S$ is a prime ideal.
+	Prove that $\phi\pre(I)$ is prime as well.
+	\begin{hint}
+		This is just a definition chase.
+	\end{hint}
+	\begin{sol}
+		Consider $ab \in \phi\pre(I)$,
+		meaning $\phi(ab) = \phi(a) \phi(b) \in I$.
+		Since $I$ is prime, either $\phi(a) \in I$ or $\phi(b) \in I$.
+		In the former case we get $a \in \phi\pre(I)$ as needed;
+		the latter case we get $b \in \phi\pre(I)$.
+	\end{sol}
+\end{sproblem}
+
+\begin{sproblem}
+	\gim
+	Let $R$ be an integral domain with finitely many elements.
+	Prove that $R$ is a field.
+	\label{prob:finite_domain_field}
+	\begin{hint}
+		Fermat's little theorem type argument;
+		cancellation holds in integral domains.
+	\end{hint}
+	\begin{sol}
+		Let $x \in R$ with $x \neq 0$.
+		Look at the powers $x$, $x^2$, \dots.
+		By pigeonhole, eventually two of them coincide.
+		So assume $x^m = x^n$ where $m < n$, or equivalently
+		\[ 0  = x \cdot x \cdot \dots \cdot x
+			\cdot \left( x^{n-m} - 1 \right). \]
+		Since $x \ne 0$, we get $x^{n-m} - 1 = 0$,
+		or $x^{n-m} = 1$.
+		So $x^{n-m-1}$ is an inverse for $x$.
+
+		This means every nonzero element has an inverse,
+		ergo $R$ is a field.
+	\end{sol}
+\end{sproblem}
+
+\begin{sproblem}
+	[Krull's theorem]
+	\label{prob:krull_max_ideal}
+	Let $R$ be a ring and $J$ a proper ideal.
+	\begin{enumerate}[(a)]
+		\ii Prove that if $R$ is Noetherian,
+		then $J$ is contained in a maximal ideal $I$.
+		\ii Use Zorn's lemma (\Cref{ch:zorn})
+		to prove the result even if $R$ isn't Noetherian.
+	\end{enumerate}
+	\begin{hint}
+		Just keep on adding in elements to get an ascending chain.
+	\end{hint}
+	\begin{sol}
+		For part (b), look at the poset of \emph{proper} ideals.
+		Apply Zorn's lemma (again using a union trick to verify the condition;
+		be sure to verify that the union is proper!).
+		In part (a) we are given no ascending infinite chains,
+		so no need to use Zorn's lemma.
+	\end{sol}
+\end{sproblem}
+
+\begin{problem}
+	[{$\Spec k[x]$}]
+	Describe the prime ideals of $\CC[x]$ and $\RR[x]$.
+	\begin{hint}
+		Use the fact that both are PID's.
+	\end{hint}
+	\begin{sol}
+		The ideal $(0)$ is of course prime in both.
+		Also, both rings are PID's.
+
+		For $\CC[x]$ we get a prime ideal $(x-z)$ for each $z \in \CC$.
+
+		For $\RR[x]$ a prime ideal $(x-a)$ for each $a \in \RR$
+		and a prime ideal $(x^2 - ax + b)$ for each quadratic
+		with two conjugate real roots.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Prove that any nonzero prime ideal of $\ZZ[\sqrt 2]$ is also a maximal ideal.
+	%(This is starred since the main idea of the solution will get used extensively in
+	%the algebraic NT chapters, even though the problem itself won't.)
+	\label{prob:dedekind_sample}
+	\begin{hint}
+		Show that the quotient $\ZZ[\sqrt2]/I$ has finitely many elements
+		for any nonzero prime ideal $I$.
+		Therefore, the quotient is an integral domain, it is also a field,
+		and thus $I$ was a maximal ideal.
+	\end{hint}
+\end{problem}
+

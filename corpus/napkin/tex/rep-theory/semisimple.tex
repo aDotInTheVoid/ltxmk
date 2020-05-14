@@ -1,0 +1,436 @@
+\chapter{Semisimple algebras}
+In what follows, \textbf{assume the field $k$ is algebraically closed}.
+
+Fix an algebra $A$ and suppose
+you want to study its representations.
+We have a ``direct sum'' operation already.
+So, much like we pay special attention to prime numbers,
+we're motivated to study irreducible representations
+and then build all the representations of $A$ from there.
+
+Unfortunately, we have seen (\Cref{exer:irred_not_indecomp})
+that there exists a representation which is not irreducible,
+and yet cannot be broken down as a direct sum (indecomposable).
+This is \emph{weird and bad}, so we want to give a name
+to representations which are more well-behaved.
+We say that a representation is \vocab{completely reducible}
+if it doesn't exhibit this bad behavior.
+
+Even better, we say a finite-dimensional algebra $A$
+is \vocab{semisimple} if all its finite-dimensional
+representations are completely reducible.
+So when we study finite-dimensional representations of
+semisimple algebras $A$,
+we just have to figure out what the irreps are,
+and then piecing them together will give all
+the representations of $A$.
+
+In fact, semisimple algebras $A$ have even nicer properties.
+The culminating point of the chapter is when we prove that
+$A$ is semisimple if and only if $A \cong \bigoplus_i \Mat(V_i)$,
+where the $V_i$ are the irreps of $A$
+(yes, there are only finitely many!).
+
+\section{Schur's lemma continued}
+\prototype{For $V$ irreducible,
+	$\Homrep(V^{\oplus 2}, V^{\oplus 2}) \cong k^{\oplus 4}$.}
+\begin{definition}
+	For an algebra $A$ and representations $V$ and $W$,
+	we let $\Homrep(V,W)$ be the set of intertwining operators between them.
+	(It is also a $k$-algebra.)
+\end{definition}
+
+By Schur's lemma (since $k$ is algebraically closed,
+which again, we are taking as a standing assumption),
+we already know that if $V$ and $W$ are irreps, then
+\[
+	\Homrep(V,W) \cong
+	\begin{cases}
+		k & \text{if $V \cong W$} \\
+		0 & \text{if $V \not\cong W$}.
+	\end{cases}
+\]
+Can we say anything more?
+For example, it also tells us that
+\[ \Homrep(V, V^{\oplus 2}) = k^{\oplus 2}. \]
+The possible maps are $v \mapsto (c_1v_1, c_2v_2)$ for some choice of $c_1, c_2 \in k$.
+
+More generally, suppose $V$ is an irrep and consider
+$\Homrep(V^{\oplus m}, V^{\oplus n})$.
+Intertwining operators are determined completely
+$T : V^{\oplus m} \to V^{\oplus n}$ by the $mn$ choices of compositions
+\begin{diagram}
+	V & \rInj & V^{\oplus m} & \rTo^T & V^{\oplus n} & \rSurj & V
+\end{diagram}
+where the first arrow is inclusion to the $i$th component of $V^{\oplus m}$
+(for $1 \le i \le m$) and the second arrow is inclusion to the $j$th
+component of $V^{\oplus n}$ (for $1 \le j \le n$).
+However, by Schur's lemma on each of these compositions,
+we know they must be constant.
+
+Thus, $\Homrep(V^{\oplus n}, V^{\oplus m})$ consist of $n \times m$ ``matrices''
+of constants, and the map is provided by
+\[
+	\begin{bmatrix}
+		c_{11} & c_{12} & \dots & c_{1(n-1)} & c_{1n} \\
+		c_{21} & c_{22} & \dots & c_{2(n-1)} & c_{1n} \\
+		\vdots & \vdots & \ddots & \vdots & \vdots \\
+		c_{m1} & c_{m2} & \dots & c_{m(n-1)} & c_{mn}
+	\end{bmatrix}
+	\begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix}
+	\in V^{\oplus n}
+\]
+where the $c_{ij} \in k$ but $v_i \in V$; note the type mismatch!
+This is \emph{not} just a linear map $V^{\oplus n_i} \to V^{\oplus m_i}$;
+rather, the outputs are $m$ \emph{linear combinations} of the inputs.
+
+More generally, we have:
+\begin{theorem}
+	[Schur's lemma for completely reducible representations]
+	\label{thm:compred_schur}
+	Let $V$ and $W$ be completely reducible representations,
+	and set $V = \bigoplus V_i^{\oplus n_i}$, $W = \bigoplus V_i^{\oplus m_i}$
+	for integers $n_i, m_i \ge 0$, where each $V_i$ is an irrep.
+	Then
+	\[ \Homrep(V, W)
+		\cong \bigoplus_i \Mat_{n_i \times m_i}(k) \]
+	meaning that an intertwining operator $T : V \to W$
+	amounts to, for each $i$, an $n_i \times m_i$ matrix of constants
+	which gives a map $V_i^{\oplus n_i} \to V_i^{\oplus m_i}$.
+\end{theorem}
+
+\begin{corollary}
+	[Subrepresentations of completely reducible representations]
+	\label{cor:subrep_schur}
+	Let $V = \bigoplus V_i^{\oplus n_i}$ be completely reducible.
+	Then any subrepresentation $W$ of $V$ is isomorphic
+	to $\bigoplus V_i^{\oplus m_i}$ where $m_i \le n_i$ for each $i$,
+	and the inclusion $W \injto V$ is given
+	by the direct sum of inclusion $V_i^{\oplus m_i} \injto V_i^{\oplus n_i}$,
+	which are $n_i \times m_i$ matrices.
+\end{corollary}
+\begin{proof}
+	Apply Schur's lemma to the inclusion $W \injto V$.
+\end{proof}
+
+
+
+\section{Density theorem}
+We are going to take advantage of the previous result to prove that
+finite-dimensional algebras have finitely many irreps.
+
+\begin{theorem}
+	[Jacobson density theorem]
+	Let $(V_1, \rho_1)$, \dots, $(V_r, \rho_r)$ be pairwise nonisomorphic
+	finite-dimensional representations of $A$.
+	Then there is a surjective map of vector spaces
+	\[ \bigoplus_{i=1}^r \rho_i : A \surjto \bigoplus_{i=1}^r \Mat(V_i). \]
+\end{theorem}
+The right way to think about this theorem is that
+\begin{moral}
+	Density is the ``Chinese remainder theorem''
+	for irreps of $A$.
+\end{moral}
+Recall that in number theory, the Chinese remainder theorem tells us
+that given lots of ``unrelated'' congruences, we can find a single $N$
+which simultaneously satisfies them all.
+Similarly, given lots of different nonisomorphic representations of $A$,
+this means that we can select a single $a \in A$ which induces any tuple
+$(\rho_1(a), \dots, \rho_r(a))$ of actions we want --- a surprising result,
+since even the $r=1$ case is not obvious at all!
+
+\begin{diagram}
+	&&& \rho_1(a) &= M_1 \in \Mat(V_1) \\
+	&& \ruTo(3,2) & \rho_2(a) &= M_2 \in \Mat(V_2) \\
+	\boxed{a \in A} && \ruTo(3,1) && \vdots \\
+	& \rdTo(3,1) && \rho_r(a) &= M_r \in \Mat(V_r) \\
+\end{diagram}
+
+This also gives us the non-obvious corollary
+\begin{corollary}
+	[Finiteness of number of representations]
+	Any finite-dimensional algebra $A$ has at most $\dim A$ irreps.
+	\label{cor:finiteness}
+\end{corollary}
+\begin{proof}
+	If $V_i$ are such irreps then 
+	$A \surjto \bigoplus_i V_i^{\oplus \dim V_i}$,
+	hence we have the inequality $\sum (\dim V_i)^2 \le \dim A$.
+\end{proof}
+
+\begin{proof}[Proof of density theorem]
+	Let $V = V_1 \oplus \dots \oplus V_r$, so $A$
+	acts on $V = (V, \rho)$ by $\rho = \bigoplus_i \rho_i$.
+	Thus by \Cref{prob:reg_mat}, we can instead consider $\rho$
+	as an \emph{intertwining operator}
+	\[ \rho : \Reg(A) \to \bigoplus_{i=1}^r \Mat(V_i)
+		\cong \bigoplus_{i=1}^r V_i^{\oplus d_i}. \]
+	We will use this instead as it will be easier to work with.
+
+	First, we handle the case $r = 1$.
+	Fix a basis $e_1$, \dots, $e_n$ of $V = V_1$.
+	Assuming for contradiction that the map is not surjective.
+	Then there is a map of representations (by $\rho$ and the isomorphism)
+	$\Reg(A) \to V^{\oplus n}$ given by $a \mapsto (a \cdot e_1, \dots, a \cdot e_n)$.
+	By hypothesis is not surjective:
+	its image is a \emph{proper} subrepresentation of $V^{\oplus n}$.
+	Assume its image is isomorphic to $V^{\oplus m}$ for $m < n$,
+	so by \Cref{thm:compred_schur} there is a matrix of constants $X$ with
+	\begin{diagram}
+		\Reg(A) & \rTo & V^{\oplus n} & \lInj^{X \cdot -} & V^{\oplus r} \\
+		a & \rMapsto & (a \cdot e_1, \dots, a \cdot e_n) && \\
+		1_A & \rMapsto & (e_1, \dots, e_n) & \lMapsto & (v_1, \dots, v_m)
+	\end{diagram}
+	where the two arrows in the top row have the same image;
+	hence the pre-image $(v_1, \dots, v_m)$ of $(e_1, \dots, e_n)$ can be found.
+	But since $r < n$ we can find constants $c_1, \dots, c_n$ not all zero
+	such that $X$ applied to the column vector $(c_1, \dots, c_n)$ is zero:
+	\[
+		\sum_{i=1}^n c_ie_i
+		=
+		\begin{bmatrix} c_1 & \dots & c_n \end{bmatrix}
+		\begin{bmatrix} e_1 \\ \vdots \\ e_n \end{bmatrix}
+		=
+		\begin{bmatrix} c_1 & \dots & c_n \end{bmatrix}
+		X
+		\begin{bmatrix} v_1 \\ \vdots \\ v_m \end{bmatrix}
+		= 0
+	\]
+	contradicting the fact that $e_i$ are linearly independent.
+	Hence we conclude the theorem for $r=1$.
+
+	As for $r \ge 2$, the image $\rho\im(A)$ is necessarily of the form
+	$\bigoplus_i V_i^{\oplus r_i}$ (by \Cref{cor:subrep_schur})
+	and by the above $r_i = \dim V_i$ for each $i$.
+\end{proof}
+
+\section{Semisimple algebras}
+
+\begin{definition}
+	A finite-dimensional algebra $A$ is a \vocab{semisimple}
+	if every finite-dimensional representation of $A$ is completely reducible.
+\end{definition}
+
+\begin{theorem}
+	[Semisimple algebras]
+	Let $A$ be a finite-dimensional algebra.
+	Then the following are equivalent:
+	\begin{enumerate}[(i)]
+		\ii $A \cong \bigoplus_i \Mat_{d_i}(k)$ for some $d_i$.
+		\ii $A$ is semisimple.
+		\ii $\Reg(A)$ is completely reducible.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	(i) $\implies$ (ii) follows
+	from \Cref{thm:rep_1mat} and \Cref{prop:rep_direct_sum}.
+	(ii) $\implies$ (iii) is tautological.
+
+	To see (iii) $\implies$ (i), we use the following clever trick.
+	Consider
+	\[ \Homrep(\Reg(A), \Reg(A)). \]
+	On one hand, by \Cref{prob:regA_intertwine},
+	it is isomorphic to $A\op$ ($A$ with opposite multiplication),
+	because the only intertwining operators $\Reg(A) \to \Reg(A)$
+	are those of the form $- \cdot a$.
+	On the other hand, suppose that we have set
+	$ \Reg(A) = \bigoplus_i V_i^{\oplus n_i} $.
+	By \Cref{thm:compred_schur}, we have
+	\[ A\op \cong \Homrep(\Reg(A), \Reg(A))
+		= \bigoplus_i \Mat_{n_i \times n_i}(k). \]
+	But $\Mat_n(k)\op \cong \Mat_n(k)$ (just by transposing),
+	so we recover the desired conclusion.
+\end{proof}
+
+In fact, if we combine the above result with
+the density theorem (and \Cref{cor:finiteness}), we obtain:
+\begin{theorem}
+	[Sum of squares formula]
+	For a finite-dimensional algebra $A$ we have
+	\[ \sum_{i} \dim(V_i)^2 \le \dim A \]
+	where the $V_i$ are the irreps of $A$;
+	equality holds exactly when $A$ is semisimple,
+	in which case 
+	\[ \Reg(A) \cong \bigoplus_i \Mat(V_i)
+		\cong \bigoplus_I V_i^{\oplus \dim V_i}. \]
+\end{theorem}
+\begin{proof}
+	The inequality was already mentioned in \Cref{cor:finiteness}.
+	It is equality if and only if the map $\rho : A \to \bigoplus_i \Mat(V_i)$
+	is an isomorphism; this means all $V_i$ are present.
+\end{proof}
+
+\begin{remark}
+	[Digression]
+	For any finite-dimensional $A$, the kernel of the map
+	$\rho : A \to \bigoplus_i \Mat(V_i)$ is denoted $\opname{Rad}(A)$
+	and is the so-called \vocab{Jacobson radical} of $A$;
+	it's the set of all $a \in A$ which act by zero in all irreps of $A$.
+	The usual definition of ``semisimple'' given in books is that
+	this Jacobson radical is trivial.
+\end{remark}
+
+\section{Maschke's theorem}
+We now prove that the representation theory of groups is as nice as possible.
+\begin{theorem}
+	[Maschke's theorem]
+	Let $G$ be a finite group, and $k$ an algebraically closed
+	field whose characteristic does not divide $|G|$.
+	Then $k[G]$ is semisimple.
+\end{theorem}
+This tells us that when studying representations of groups,
+all representations are completely reducible.
+\begin{proof}
+	Consider any finite-dimensional representation $(V, \rho)$ of $k[G]$.
+	Given a proper subrepresentation $W \subseteq V$,
+	our goal is to construct a supplementary $G$-invariant subspace $W'$
+	which satisfies \[ V = W \oplus W'. \]
+	This will show that indecomposable $\iff$ irreducible,
+	which is enough to show $k[G]$ is semisimple.
+
+	Let $\pi : V \to W$ be any projection of $V$ onto $W$,
+	meaning $\pi(v) = v \iff v \in W$.
+	We consider the \emph{averaging} map $P : V \to V$ by
+	\[ 
+		P(v) = \frac{1}{\left\lvert G \right\rvert}
+		\sum_{g \in G} \rho(g\inv) \circ \pi \circ \rho(g).
+	\]
+	We'll use the following properties of the map:
+	\begin{exercise}
+		Show that the map $P$ satisfies:
+		\begin{itemize}
+			\ii For any $w \in W$, $P(w) = w$.
+			\ii For any $v \in V$, $P(w) \in W$.
+			\ii The map $P : V \to V$ is an intertwining operator.
+		\end{itemize}
+	\end{exercise}
+	Thus $P$ is idempotent (it is the identity on its image $W$),
+	so by \Cref{prob:idempotent} we have $V = \ker P \oplus \img P$,
+	but both $\ker P$ and $\img P$ are subrepresentations as desired.
+\end{proof}
+\begin{remark}
+	In the case where $k = \CC$, there is a shorter proof.
+	Suppose $B : V \times V \to \CC$ is an arbitrary bilinear form.
+	Then we can ``average'' it to obtain a new bilinear form
+	\[ \left< v,w \right> \defeq \frac{1}{|G|} \sum_{g \in G} B(g \cdot v, g \cdot w). \]
+	The averaged form $\left< -,- \right>$ is $G$-invariant,
+	in the sense that $\left< v,w \right> = \left< g \cdot v, g \cdot w\right>$.
+	Then, one sees that if $W \subseteq V$ is a subrepresentation,
+	so is its orthogonal complement $W^\perp$.
+	This implies the result.
+\end{remark}
+
+\section{Example: the representations of $\CC[S_3]$}
+We compute all irreps of $\CC[S_3]$.
+I'll take for granted right now there are exactly three such representations
+(which will be immediate by the first theorem in the next chapter:
+we'll in fact see that the number of representations of $G$
+is exactly equal to the number of conjugacy classes of $G$).
+
+Given that, if the three representations of have dimension $d_1$, $d_2$, $d_3$ ,
+then we ought to have
+\[ d_1^2 + d_2^2 + d_3^2 = |G| = 6. \]
+From this, combined with some deep arithmetic,
+we deduce that we should have $d_1 = d_2 = 1$ and $d_3 = 2$
+or some permutation.
+
+In fact, we can describe these representations explicitly.
+First, we define:
+\begin{definition}
+	Let $G$ be a group.
+	The complex \vocab{trivial group representation} of a group $G$
+	is the one-dimensional representation $\Ctriv = (\CC, \rho)$
+	where $g \cdot v = v$ for all $g \in G$ and $v \in \CC$
+	(i.e.\ $\rho(g) = \id$ for all $g \in G$).
+\end{definition}
+\begin{remark}
+	[Warning] The trivial representation of an \emph{algebra} $A$
+	doesn't make sense for us:
+	we might want to set $a \cdot v = v$ but this isn't linear in $A$.
+	(You \emph{could} try to force it to work by
+	deleting the condition $1_A \cdot v = v$ from our definition;
+	then one can just set $a \cdot v = 0$.
+	But even then $\Ctriv$ would not be the trivial representation of $k[G]$.)
+\end{remark}
+
+Then the representations are:
+\begin{itemize}
+	\ii The one-dimensional $\Ctriv$;
+	each $\sigma \in S_3$ acts by the identity.
+
+	\ii There is a nontrivial one-dimensional representation
+	$\Csign$ where the map $S_3 \to \CC^\times$ is given
+	by sending $\sigma$ to the sign of $\sigma$.
+	Thus in $\Csign$ every $\sigma \in S_3$ acts as $\pm 1$.
+	Of course, $\Ctriv$ and $\Csign$ are not isomorphic
+	(as one-dimensional representations are never isomorphic
+	unless the constants they act on coincide for all $a$,
+	as we saw in \Cref{prob:one_dim}).
+
+	\ii Finally, we have already seen the two-dimensional representation,
+	but now we give it a name.
+	Define $\refl_0$ to be the representation whose vector space is
+	$\{ (x,y,z) \mid x+y+z = 0 \}$,
+	and whose action of $S_3$ on it is permutation of coordinates.
+	\begin{exercise}
+		Show that $\refl_0$ is irreducible, for example by showing directly
+		that no subspace is invariant under the action of $S_3$.
+	\end{exercise}
+	Thus $V$ is also not isomorphic to the previous two representations.
+\end{itemize}
+This implies that these are all the irreps of $S_3$.
+Note that, if we take the representation $V$ of $S_3$ on $k^{\oplus 3}$,
+we just get that $V = \refl_0 \oplus \CC_{\text{triv}}$.
+
+\section\problemhead
+
+\begin{problem}
+	Find all the irreps of $\CC[\Zc n]$.
+	\begin{hint}
+		They are all one-dimensional, $n$ of them.
+		What are the homomorphisms $\Zc n \to \CC^\times$?
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	[Maschke requires $|G|$ finite]
+	Consider the representation of the group $\RR$
+	on $\CC^{\oplus 2}$ under addition by a homomorphism
+	\[ 
+		\RR \to \Mat_2(\CC)
+		\quad\text{by}\quad
+		t \mapsto 
+		\begin{bmatrix} 1 & t \\ 0 & 1 \end{bmatrix}.
+	\]
+	Show that this representation is not irreducible,
+	but it is indecomposable.
+	\begin{hint}
+		The span of $(1,0)$ is a subrepresentation.
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	Prove that all irreducible representations
+	of a finite group are finite-dimensional.
+	\begin{hint}
+		This is actually easy.
+	\end{hint}
+	\begin{sol}
+		Pick any $v \in V$, then the subspace
+		spanned by elements $g \cdot v$ for $v \in V$
+		is $G$-invariant;
+		this is a finite-dimensional subspace,
+		so it must equal all of $V$.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	\gim
+	Determine all the complex irreps of $D_{10}$.
+	\begin{hint}
+		There are only two one-dimensional ones
+		(corresponding to the only two
+		homomorphisms $D_{10} \to \CC^\times$).
+		So the remaining ones are two-dimensional.
+	\end{hint}
+\end{problem}

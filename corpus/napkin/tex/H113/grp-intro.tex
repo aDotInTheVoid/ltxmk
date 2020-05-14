@@ -1,0 +1,831 @@
+\chapter{Groups}
+A group is one of the most basic structures in higher mathematics.
+In this chapter I will tell you only the bare minimum:
+what a group is, and when two groups are the same.
+
+\section{Definition and examples of groups}
+\prototype{The additive group of integers $(\ZZ,+)$ and the cyclic group $\Zc m$.
+Just don't let yourself forget that most groups are non-commutative.}
+
+A group consists of two pieces of data: a set $G$,
+and an associative binary operation $\star$ with some properties.
+Before I write down the definition of a group, let me give two examples.
+
+\begin{example}[Additive integers]
+	The pair $(\ZZ, +)$ is a group:
+	$\ZZ = \left\{ \dots,-2,-1,0,1,2,\dots \right\}$ is the set
+	and the associative operation is \emph{addition}.
+	Note that
+	\begin{itemize}
+		\ii The element $0 \in \ZZ$ is an \emph{identity}:
+		$a+0=0+a = a$ for any $a$.
+		\ii Every element $a \in \ZZ$ has an additive \emph{inverse}: $a + (-a) = (-a) + a = 0$.
+	\end{itemize}
+	We call this group $\ZZ$.
+\end{example}
+\begin{example}[Nonzero rationals]
+	Let $\QQ^\times$ be the set of \emph{nonzero rational numbers}.
+	The pair $(\QQ^\times, \cdot)$ is a group:
+	the set is $\QQ^\times$
+	and the associative operation is \emph{multiplication}.
+
+	Again we see the same two nice properties.
+	\begin{itemize}
+		\ii The element $1 \in \QQ^\times$ is an \emph{identity}:
+		for any rational number, $a \cdot 1 = 1 \cdot a = a$.
+		\ii For any rational number $x \in \QQ^\times$,
+		we have an inverse $x\inv$, such that
+		\[ x \cdot x\inv = x\inv \cdot x = 1. \]
+	\end{itemize}
+\end{example}
+
+From this you might already have a guess what the definition of a group is.
+\begin{definition}
+	A \vocab{group} is a pair $G = (G, \star)$
+	consisting of a set of elements $G$, and a binary operation $\star$ on $G$, such that:
+	\begin{itemize}
+		\ii $G$ has an \vocab{identity element}, usually denoted $1_G$
+		or just $1$, with the property that
+		\[ 1_G \star g = g \star 1_G = g \text{ for all $g \in G$}. \]
+		\ii The operation is \vocab{associative}, meaning
+		$(a \star b) \star c = a \star (b \star c)$
+		for any $a,b,c \in G$.
+		Consequently we generally don't write the parentheses.
+		\ii Each element $g \in G$ has an \vocab{inverse}, that is, an element $h \in G$ such that \[ g \star h = h \star g = 1_G. \]
+	\end{itemize}
+	\label{def:group}
+\end{definition}
+\begin{remark}
+	[Unimportant pedantic point]
+	Some authors like to add a ``closure'' axiom,
+	i.e.\ to say explicitly that $g \star h \in G$.
+	This is implied already by the fact that $\star$
+	is a binary operation on $G$,
+	but is worth keeping in mind for the examples below.
+\end{remark}
+
+\begin{remark}
+	It is not required that $\star$ is commutative ($a \star b = b \star a$).
+	So we say that a group is \vocab{abelian} if the operation is
+	commutative and \vocab{non-abelian} otherwise.
+\end{remark}
+
+% Now that I've made clear what the criteria of a group are,
+% let us write down some non-examples of groups.
+
+\begin{example}[Non-Examples of groups]
+	\listhack
+	\begin{itemize}
+		\ii The pair $(\QQ, \cdot)$ is NOT a group.
+		(Here $\QQ$ is rational numbers.)
+		While there is an identity element, the element $0 \in \QQ$
+		does not have an inverse.
+		\ii The pair $(\ZZ, \cdot)$ is also NOT a group. (Why?)
+		\ii Let $\Mat_{2 \times 2}(\RR)$ be the set of $2 \times 2$ real matrices.
+		Then $(\Mat_{2 \times 2}(\RR), \cdot)$
+		(where $\cdot$ is matrix multiplication) is NOT a group.
+		Indeed, even though we have an identity matrix
+		\[ 
+			\begin{bmatrix}
+				1 & 0 \\ 0 & 1
+			\end{bmatrix}
+		\]
+		we still run into the same issue as before:
+		the zero matrix does not have a multiplicative inverse.
+
+		(Even if we delete the zero matrix from the set,
+		the resulting structure is still not a group:
+		those of you that know some linear algebra
+		might recall that any matrix with determinant zero
+		cannot have an inverse.)
+	\end{itemize}
+\end{example}
+
+Let's resume writing down examples.
+Here are some more \textbf{abelian examples} of groups:
+\begin{example}
+	[Complex unit circle]
+	Let $S^1$ denote the set of complex numbers $z$ with absolute value one; that is
+	\[ S^1 \defeq \left\{ z \in \CC \mid \left\lvert z \right\rvert = 1 \right\}. \]
+	Then $(S^1, \times)$ is a group because
+	\begin{itemize}
+		\ii The complex number $1 \in S^1$ serves as the identity, and
+		\ii Each complex number $z \in S^1$ has an inverse $\frac 1z$ which is also in $S^1$, since $\left\lvert z\inv \right\rvert = \left\lvert z \right\rvert\inv = 1$.
+	\end{itemize}
+	There is one thing I ought to also check: that $z_1 \times z_2$ is actually still in $S^1$.
+	But this follows from the fact that $\left\lvert z_1z_2 \right\rvert = \left\lvert z_1 \right\rvert \left\lvert z_2 \right\rvert = 1$.
+\end{example}
+
+\begin{example}
+	[Addition mod $n$]
+	Here is an example from number theory:
+	Let $n > 1$ be an integer,
+	and consider the residues (remainders) modulo $n$.
+	These form a group under addition.
+	We call this the \vocab{cyclic group of order $n$},
+	and denote it as $\Zc n$, with elements $\ol 0, \ol 1, \dots$.
+	The identity is $\ol 0$.
+	\label{def:cyclic_group}
+\end{example}
+\begin{example}
+	[Multiplication mod $p$]
+	Let $p$ be a prime.
+	Consider the \emph{nonzero residues modulo $p$},
+	which we denote by $\Zm p$.
+	Then $\left( \Zm p, \times \right)$ is a group.
+	\label{def:mult_mod_p}
+\end{example}
+\begin{ques}
+	Why do we need the fact that $p$ is prime?
+\end{ques}
+(Digression: the notation $\Zc n$ and $\Zm p$ may seem strange
+but will make sense when we talk about rings and ideals.
+Set aside your worry for now.)
+
+
+Here are some \textbf{non-abelian examples}:
+\begin{example}
+	[General linear group]
+	Let $n$ be a positive integer.
+	Then $\GL_n(\RR)$ is defined as the set of $n \times n$ real matrices
+	which have nonzero determinant.
+	It turns out that with this condition,
+	every matrix does indeed have an inverse,
+	so $(\GL_n(\RR), \times)$ is a group, called the
+	\vocab{general linear group}.
+
+	(The fact that $\GL_n(\RR)$ is closed under $\times$ follows
+	from the linear algebra fact that $\det (AB) = \det A \det B$,
+	proved in later chapters.)
+\end{example}
+\begin{example}
+	[Special linear group]
+	Following the example above, let $\SL_n(\RR)$ denote 
+	the set of $n \times n$ matrices whose determinant is actually $1$.
+	Again, for linear algebra reasons
+	it turns out that $(\SL_n(\RR), \times)$ is also a group,
+	called the \vocab{special linear group}.
+\end{example}
+
+\begin{example}
+	[Symmetric groups]
+	Let $S_n$ be the set of permutations of $\left\{ 1,\dots,n \right\}$.
+	By viewing these permutations as functions from $\left\{ 1,\dots,n \right\}$ to itself, we can consider \emph{compositions} of permutations.
+	Then the pair $(S_n, \circ)$ (here $\circ$ is function composition)
+	is also a group, because
+	\begin{itemize}
+		\ii There is an identity permutation, and
+		\ii Each permutation has an inverse.
+	\end{itemize}
+	The group $S_n$ is called the \vocab{symmetric group} on $n$ elements.
+\end{example}
+\begin{example}
+	[Dihedral group]
+	The \vocab{dihedral group of order $2n$}, denoted $D_{2n}$,
+	is the group of symmetries of a regular $n$-gon $A_1A_2 \dots A_n$,
+	which includes rotations and reflections.
+	It consists of the $2n$ elements
+	\[ \left\{ 1, r, r^2, \dots, r^{n-1}, s, sr, sr^2, \dots, sr^{n-1} \right\}. \]
+	The element $r$ corresponds to rotating the $n$-gon by $\frac{2\pi}{n}$,
+	while $s$ corresponds to reflecting it across the line $OA_1$
+	(here $O$ is the center of the polygon).
+	So $rs$ mean ``reflect then rotate''
+	(like with function composition, we read from right to left).
+
+	In particular, $r^n = s^2 = 1$. You can also see that $r^k s = sr^{-k}$.
+\end{example}
+
+Here is a picture of some elements of $D_{10}$.
+\begin{center}
+	\begin{asy}
+		size(12cm);
+		picture aoeu(string a, string b, string c, string d, string e,
+					string x) {
+			draw(dir(0)--dir(72)--dir(144)--dir(216)--dir(288)--cycle);
+			MP(a, dir(0), dir(0));
+			MP(b, dir(72), dir(72));
+			MP(c, dir(144), dir(144));
+			MP(d, dir(216), dir(216));
+			MP(e, dir(288), dir(288));
+			MP(x, origin, origin);
+			return CC();
+		}
+		picture one = aoeu("1", "2", "3", "4", "5", "1");
+		picture r = aoeu("5", "1", "2", "3", "4", "r");
+		picture s = aoeu("1", "5", "4", "3", "2", "s");
+		picture sr = aoeu("5", "4", "3", "2", "1", "sr");
+		picture rs = aoeu("2", "1", "5", "4", "3", "rs");
+		add(shift( (0,0) ) * one);
+		add(shift( (3,0) ) * r);
+		add(shift( (6,0) ) * s);
+		add(shift( (9,0) ) * sr);
+		add(shift( (12,0) ) * rs);
+	\end{asy}
+\end{center}
+Trivia: the dihedral group $D_{12}$ is my favorite example of a non-abelian group,
+and is the first group I try for any exam question of the form ``find an example\dots''.
+
+More examples:
+\begin{example}
+	[Products of groups]
+	Let $(G, \star)$ and $(H, \ast)$ be groups.
+	We can define a \vocab{product group} $(G \times H, {\cdot})$, as follows.
+	The elements of the group will be ordered pairs $(g,h) \in G \times H$.
+	Then
+	\[ (g_1, h_1) \cdot (g_2, h_2) = (g_1 \star g_2, h_1 \ast h_2) \in G \times H
+		\]
+	is the group operation.
+	\label{def:product_group}
+\end{example}
+\begin{ques}
+	What are the identity and inverses of the product group?
+\end{ques}
+
+\begin{example}
+	[Trivial group]
+	The \vocab{trivial group}, often denoted $0$ or $1$,
+	is the group with only an identity element.
+	I will use the notation $\{1\}$.
+\end{example}
+
+\begin{exercise}
+	Which of these are groups?
+	\begin{enumerate}[(a)]
+		\ii Rational numbers with odd denominators (in simplest form), where the operation is addition.
+		(This includes integers, written as $n/1$, and $0 = 0/1$).
+		\ii The set of rational numbers with denominator at most $2$, where the operation is addition.
+		\ii The set of rational numbers with denominator at most $2$, where the operation is multiplication.
+		\ii The set of nonnegative integers, where the operation is addition.
+	\end{enumerate}
+\end{exercise}
+
+
+\section{Properties of groups}
+\prototype{$\Zm p$ is possibly best.}
+\begin{abuse}
+	From now on, we'll often refer to a group $(G, \star)$ by just $G$.
+	Moreover, we'll abbreviate $a \star b$ to just $ab$.
+	Also, because the operation $\star$ is associative,
+	we will omit unnecessary parentheses: $(ab)c = a(bc) = abc$.
+\end{abuse}
+\begin{abuse}
+	From now on, for any $g \in G$ and $n \in \NN$ we abbreviate
+	\[ g^n
+		=
+		\underbrace{g \star \dots \star g}_{\text{$n$ times}}.\]
+	Moreover, we let $g\inv$ denote the inverse of $g$,
+	and $g^{-n} = (g\inv)^n$.
+\end{abuse}
+
+In mathematics, a common theme is to require
+that objects satisfy certain minimalistic properties,
+with certain examples in mind,
+but then ignore the examples on paper
+and try to deduce as much as you can just from the properties alone.
+(Math olympiad veterans are likely familiar with
+``functional equations''
+in which knowing a single property about a function
+is enough to determine the entire function.)
+Let's try to do this here,
+and see what we can conclude just from knowing \Cref{def:group}.
+
+It is a law in Guam and 37 other states that
+I now state the following proposition.
+\begin{fact}
+	Let $G$ be a group.
+	\begin{enumerate}[(a)]
+		\ii The identity of a group is unique.
+		\ii The inverse of any element is unique.
+		\ii For any $g \in G$, $(g\inv)\inv = g$.
+	\end{enumerate}
+\end{fact}
+\begin{proof}
+	This is mostly just some formal manipulations,
+	and you needn't feel bad skipping it on a first read.
+	\begin{enumerate}[(a)]
+		\ii If $1$ and $1'$ are identities, then $1 = 1 \star 1' = 1'$.
+		\ii If $h$ and $h'$ are inverses to $g$, then $1_G = g \star h
+		\implies h' = (h' \star g) \star h = 1_G \star h = h$.
+		\ii Trivial; omitted. \qedhere
+	\end{enumerate}
+\end{proof}
+
+Now we state a slightly more useful proposition.
+\begin{proposition}[Inverse of products]
+	Let $G$ be a group, and $a,b \in G$.
+	Then $(ab)\inv = b\inv a\inv$.
+\end{proposition}
+\begin{proof}
+	Direct computation. We have
+	\[ (ab)(b\inv a\inv)
+		= a (bb\inv) a\inv = aa\inv = 1_G. \]
+	Hence $(ab)\inv = b\inv a\inv$.
+	Similarly, $(b\inv a\inv)(ab) = 1_G$ as well.
+\end{proof}
+
+Finally, we state a very important lemma about groups,
+which highlights why having an inverse is so valuable.
+\begin{lemma}[Left multiplication is a bijection]
+	Let $G$ be a group, and pick a $g \in G$.
+	Then the map $G \to G$ given by $x \mapsto gx$ is a bijection.
+	\label{lem:group_mult_biject}
+\end{lemma}
+\begin{exercise}
+	Check this by showing injectivity and surjectivity directly.
+	(If you don't know what these words mean,
+	consult \Cref{ch:sets_functions}.)
+\end{exercise}
+\begin{example}
+	Let $G = \Zm 7$ (as in \Cref{def:mult_mod_p}) and pick $g=3$.
+	The above lemma states that the map $x \mapsto 3 \cdot x$ is a bijection, and we can see this explicitly:
+	\begin{align*}
+		1 &\overset{\times 3}{\longmapsto} 3 \pmod 7 \\
+		2 &\overset{\times 3}{\longmapsto} 6 \pmod 7 \\
+		3 &\overset{\times 3}{\longmapsto} 2 \pmod 7 \\
+		4 &\overset{\times 3}{\longmapsto} 5 \pmod 7 \\
+		5 &\overset{\times 3}{\longmapsto} 1 \pmod 7 \\
+		6 &\overset{\times 3}{\longmapsto} 4 \pmod 7.
+	\end{align*}
+\end{example}
+The fact that the map is injective is often called the \vocab{cancellation law}.
+(Why do you think so?)
+
+\begin{abuse}
+	[Later on, sometimes the identity is denoted $0$ instead of $1$]
+	You don't need to worry about this for a few chapters,
+	but I'll bring it up now anyways.
+	In most of our examples up until now the operation $\star$
+	was thought of like multiplication of some sort,
+	which is why $1 = 1_G$ was a natural notation for the identity element.
+
+	But there are groups like $\ZZ = (\ZZ,+)$
+	where the operation $\star$ is thought of as addition,
+	in which case the notation $0 = 0_G$ might make more sense instead.
+	(In general, whenever an operation is denoted $+$,
+	the operation is almost certainly commutative.)
+	We will eventually start doing so too
+	when we discuss rings and linear algebra.
+\end{abuse}
+
+\section{Isomorphisms}
+\prototype{$\ZZ \cong 10\ZZ$.}
+First, let me talk about what it means for groups to be isomorphic.
+Consider the two groups
+\begin{itemize}
+	\ii $\ZZ = (\left\{ \dots,-2,-1,0,1,2,\dots \right\}, +)$.
+	\ii $10\ZZ = (\left\{ \dots, -20, -10, 0, 10, 20, \dots \right\}, +)$.
+\end{itemize}
+These groups are ``different'', but only superficially so -- you might even say they only differ in the names of the elements.
+Think about what this might mean formally for a moment.
+
+Specifically the map
+\[ \phi : \ZZ \to 10 \ZZ  \text{ by } x \mapsto 10 x \]
+is a bijection of the underlying sets which respects the group action.
+In symbols,
+\[ \phi(x + y) = \phi(x) + \phi(y). \]
+In other words, $\phi$ is a way of re-assigning names of the elements
+without changing the structure of the group.
+That's all just formalism for
+capturing the obvious fact that $(\ZZ,+)$
+and $(10 \ZZ, +)$ are the same thing.
+
+Now, let's do the general definition.
+\begin{definition}
+	Let $G = (G, \star)$ and $H = (H, \ast)$ be groups.
+	A bijection $\phi : G \to H$ is called an \vocab{isomorphism} if
+	\[ \phi(g_1 \star g_2) = \phi(g_1) \ast \phi(g_2) \quad
+		\text{for all $g_1, g_2 \in G$}. \]
+	If there exists an isomorphism from $G$ to $H$,
+	then we say $G$ and $H$ are \vocab{isomorphic} and write $G \cong H$.
+\end{definition}
+Note that in this definition, the left-hand side
+$\phi(g_1 \star g_2)$ uses the operation of $G$
+while the right-hand side $\phi(g_1) \ast \phi(g_2)$
+uses the operation of $H$.
+
+\begin{example}
+	[Examples of isomorphisms]
+	Let $G$ and $H$ be groups. We have the following isomorphisms.
+	\begin{enumerate}[(a)]
+		\ii $\ZZ \cong 10 \ZZ$, as above.
+		\ii There is an isomorphism
+		\[ G \times H \cong H \times G\]
+		by the map $(g,h) \mapsto (h,g)$.
+		\ii The identity map $\id : G \to G$
+		is an isomorphism, hence $G \cong G$.
+		\ii There is another isomorphism of $\ZZ$ to itself: send every $x$ to $-x$.
+	\end{enumerate}
+\end{example}
+\begin{example}
+	[Primitive roots modulo $7$]
+	As a nontrivial example, we claim that $\Zc 6 \cong \Zm 7$.
+	The bijection is
+	\[ \phi(\text{$a$ mod $6$}) = \text{$3^a$ mod $7$}. \]
+	To check that this is an isomorphism, we need to verify several things.
+	\begin{itemize}
+		\ii First, we need to check this map actually makes sense:
+		why is it the case that if $a \equiv b \pmod 6$, then $3^a \equiv 3^b \pmod 7$?
+		The reason is that Fermat's little theorem guarantees that $3^6 \equiv 1 \pmod 7$.
+		\ii Next, we need to check that this map is a bijection.
+		You can do this explicitly:
+		\[ (3^1, 3^2, 3^3, 3^4, 3^5, 3^6)
+			\equiv (3,2,6,4,5,1) \pmod 7. \]
+		\ii Finally, we need to verify that this map respects the group action.
+		In other words, we want to see that
+		$\phi(a+b) = \phi(a) \phi(b)$
+		since the operation of $\Zc 6$ is addition
+		while the operation of $\Zm 7$ is multiplication.
+		That's just saying that $3^{a+b} \equiv 3^a 3^b \pmod 7$,
+		which is true.
+	\end{itemize}
+\end{example}
+\begin{example}
+	[Primitive roots]
+	More generally, for any prime $p$, there exists
+	an element $g \in \Zm p$ called a \vocab{primitive root} modulo $p$
+	such that $1, g, g^2, \dots, g^{p-2}$ are all different modulo $p$.
+	One can show by copying the above proof that
+	\[ \Zcc{p-1} \cong \Zm p \text{ for all primes $p$}. \]
+	The example above was the special case $p=7$ and $g=3$.
+\end{example}
+\begin{exercise}
+	Assuming the existence of primitive roots,
+	establish the isomorphism $\Zcc{p-1} \cong \Zm p$ as above.
+\end{exercise}
+
+It's not hard to see that $\cong$ is an equivalence relation (why?).
+Moreover, because we really only care about the structure of groups,
+we'll usually consider two groups to be the same when they are isomorphic.
+So phrases such as ``find all groups'' really mean 
+``find all groups up to isomorphism''.
+
+\section{Orders of groups, and Lagrange's theorem}
+\prototype{$\Zm p$.}
+
+As is typical in math, we use the word ``order'' for way too many things.
+In groups, there are two notions of order.
+\begin{definition}
+	The \vocab{order of a group} $G$ is the number of elements of $G$.
+	We denote this by $\left\lvert G \right\rvert$.
+	Note that the order may not be finite, as in $\ZZ$.
+	We say $G$ is a \vocab{finite group} just to mean that $\left\lvert G \right\rvert$ is finite.
+\end{definition}
+\begin{example}[Orders of groups]
+	For a prime $p$, $\left\lvert \Zm p \right\rvert = p-1$.
+	In other words, the order of $\Zm p$ is $p-1$.
+	As another example,
+	the order of the symmetric group $S_n$ is $\left\lvert S_n \right\rvert = n!$
+	and the order of the dihedral group $D_{2n}$ is $2n$.
+\end{example}
+
+\begin{definition}
+	The \vocab{order of an element} $g \in G$ is the smallest positive integer $n$
+	such that $g^n = 1_G$, or $\infty$ if no such $n$ exists.
+	We denote this by $\ord g$.
+\end{definition}
+\begin{example}[Examples of orders]
+	The order of $-1$ in $\QQ^\times$ is $2$,
+	while the order of $1$ in $\ZZ$ is infinite.
+\end{example}
+\begin{ques}
+	Find the order of each of the six elements of $\Zc 6$,
+	the cyclic group on six elements.
+	(See \Cref{def:cyclic_group} if you've forgotten what $\Zc 6$ means.)
+\end{ques}
+\begin{example}[Primitive roots]
+	If you know olympiad number theory, this coincides with the definition of an order of a residue mod $p$.
+	That's why we use the term ``order'' there as well.
+	In particular, a primitive root is precisely an element $g \in \Zm p$
+	such that $\ord g = p-1$.
+\end{example}
+You might also know that if $x^n \equiv 1 \pmod p$,
+then the order of $x \pmod p$ must divide $n$.
+The same is true in a general group for exactly the same reason.
+\begin{fact}
+	If $g^n = 1_G$ then $\ord g$ divides $n$.
+\end{fact}
+Also, you can show that any element
+of a finite group has a finite order.
+The proof is just an olympiad-style pigeonhole argument.
+Consider the infinite sequence $1_G, g, g^2, \dots$,
+and find two elements that are the same.
+\begin{fact}
+	Let $G$ be a finite group.
+	For any $g \in G$, $\ord g$ is finite.
+\end{fact}
+
+What's the last property of $\Zm p$ that you know from olympiad math?
+We have Fermat's little theorem: for any $a \in \Zm p$,
+we have $a^{p-1} \equiv 1 \pmod p$.
+This is no coincidence:
+exactly the same thing is true in a more general setting.
+
+\begin{theorem}
+	[Lagrange's theorem for orders]
+	Let $G$ be any finite group.
+	Then $x^{\left\lvert G \right\rvert} = 1_G$ for any $x \in G$.
+\end{theorem}
+Keep this result in mind! We'll prove it later in
+the generality of \Cref{thm:lagrange_grp}.
+
+\section{Subgroups}
+\prototype{$\SL_n(\RR)$ is a subgroup of $\GL_n(\RR)$.}
+Earlier we saw that $\GL_n(\RR)$, the $n \times n$ matrices with nonzero determinant, formed a group under matrix multiplication.
+But we also saw that a subset of $\GL_n(\RR)$, namely $\SL_n(\RR)$, also formed a group with the same operation.
+For that reason we say that $\SL_n(\RR)$ is a subgroup of $\GL_n(\RR)$.
+And this definition generalizes in exactly the way you expect.
+
+\begin{definition}
+	Let $G = (G, \star)$ be a group.
+	A \vocab{subgroup} of $G$ is exactly what you would expect it to be:
+	a group $H = (H, \star)$ where $H$ is a subset of $G$.
+	It's a \vocab{proper subgroup} if $H \neq G$.
+\end{definition}
+
+\begin{remark}
+	To specify a group $G$, I needed to tell you both what the set $G$ was and the operation $\star$ was.
+	But to specify a subgroup $H$ of a given group $G$, I only need to tell you who its elements are: the operation of $H$ is just inherited from the operation of $G$.
+\end{remark}
+
+\begin{example}
+	[Examples of subgroups]
+	\listhack
+	\begin{enumerate}[(a) ]
+		\ii $2\ZZ$ is a subgroup of $\ZZ$, which is isomorphic to $\ZZ$ itself!
+		\ii Consider again $S_n$, the symmetric group on $n$ elements.
+		Let $T$ be the set of permutations $\tau : \{1, \dots, n\} \to \{1, \dots, n\}$
+		for which $\tau(n) = n$.  Then $T$ is a subgroup of $S_n$;
+		in fact, it is isomorphic to $S_{n-1}$.
+		\ii Consider the group $G \times H$ (\Cref{def:product_group})
+		and the elements $ \left\{ (g, 1_H) \mid g \in G \right\} $.
+		This is a subgroup of $G \times H$ (why?).
+		In fact, it is isomorphic to $G$
+		by the isomorphism $(g,1_H) \mapsto g$.
+	\end{enumerate}
+\end{example}
+\begin{example}
+	[Stupid examples of subgroups]
+	For any group $G$, the trivial group $\{1_G\}$
+	and the entire group $G$ are subgroups of $G$.
+\end{example}
+%\begin{example}
+%	[Center of a Group]
+%	Let $G$ be a group.
+%	Its \vocab{center}, denoted $Z(G)$, is the set $x \in G$ such that
+%	$gx = xg$ for every $g \in G$; in other words, it is the set of
+%	$x \in G$ which commute with every element of $G$.
+%\end{example}
+%You can check the center is indeed a group (some boring details\dots).
+
+Next is an especially important example that we'll talk about more in later chapters.
+\begin{example}[Subgroup generated by an element]
+	Let $x$ be an element of a group $G$.
+	Consider the set
+	\[ \left<x\right> = \left\{ \dots, x^{-2}, x^{-1}, 1, x, x^2, \dots \right\}. \]
+	This is also a subgroup of $G$, called the subgroup generated by $x$.
+\end{example}
+\begin{exercise}
+	If $\ord x = 2015$, what is the above subgroup equal to?
+	What if $\ord x = \infty$?
+\end{exercise}
+
+Finally, we present some non-examples of subgroups.
+\begin{example}[Non-examples of subgroups]
+	Consider the group $\ZZ = (\ZZ, +)$.
+	\begin{enumerate}[(a)]
+		\ii The set $\left\{ 0,1,2,\dots \right\}$ is
+		not a subgroup of $\ZZ$ because it does not contain inverses.
+		\ii The set $\{ n^3 \mid n \in \ZZ \}
+		= \{ \dots, -8, -1, 0, 1, 8, \dots \}$ is not a subgroup
+		because it is not closed under addition;
+		the sum of two cubes is not in general a cube.
+		\ii The empty set $\varnothing$ is not a subgroup
+		of $\ZZ$ because it lacks an identity element.
+	\end{enumerate}
+\end{example}
+
+\section{Groups of small orders}
+Just for fun, here is a list of all groups of order less than or equal to ten
+(up to isomorphism, of course).
+\begin{enumerate}
+	\ii The only group of order $1$ is the trivial group.
+	\ii The only group of order $2$ is $\Zc 2$.
+	\ii The only group of order $3$ is $\Zc 3$.
+	\ii The only groups of order $4$ are
+	\begin{itemize}
+		\ii $\Zc 4$, the cyclic group on four elements,
+		\ii $\Zc 2 \times \Zc 2$, called the Klein Four Group.
+	\end{itemize}
+	\ii The only group of order $5$ is $\Zc 5$.
+	\ii The groups of order six are
+	\begin{itemize}
+		\ii $\Zc 6$, the cyclic group on six elements.
+		\ii $S_3$, the permutation group of three elements.
+		This is the first non-abelian group.
+	\end{itemize}
+	Some of you might wonder where $\Zc 2 \times \Zc 3$ is.
+	All I have to say is: Chinese remainder theorem!
+
+	You might wonder where $D_6$ is in this list.
+	It's actually isomorphic to $S_3$.
+	\ii The only group of order $7$ is $\Zc 7$.
+	\ii The groups of order eight are more numerous.
+	\begin{itemize}
+		\ii $\Zc 8$, the cyclic group on eight elements.
+		\ii $\Zc 4 \times \Zc 2$.
+		\ii $\Zc 2 \times \Zc 2 \times \Zc 2$.
+		\ii $D_8$, the dihedral group with eight elements, which is not abelian.
+		\ii A non-abelian group $Q_8$, called the \emph{quaternion group}.
+		It consists of eight elements $\pm 1$, $\pm i$, $\pm j$, $\pm k$
+		with $i^2=j^2=k^2=ijk=-1$.
+	\end{itemize}
+	\ii The groups of order nine are
+	\begin{itemize}
+		\ii $\Zc 9$, the cyclic group on nine elements.
+		\ii $\Zc 3 \times \Zc 3$.
+	\end{itemize}
+	\ii The groups of order $10$ are
+	\begin{itemize}
+		\ii $\Zc{10} \cong \Zc5 \times \Zc2$ (again Chinese remainder theorem).
+		\ii $D_{10}$, the dihedral group with $10$ elements.
+		This group is non-abelian.
+	\end{itemize}
+\end{enumerate}
+
+\section{Unimportant long digression}
+A common question is: why these axioms?
+For example, why associative but not commutative?
+This answer will likely not make sense until later,
+but here are some comments that may help.
+
+One general heuristic is:
+Whenever you define a new type of general object,
+there's always a balancing act going on.
+On the one hand, you want to include enough constraints that your
+objects are ``nice''.
+On the other hand, if you include too many constraints,
+then your definition applies to too few objects.
+
+So, for example, we include ``associative''
+because that makes our lives easier
+and most operations we run into are associative.
+In particular, associativity is required for the inverse
+of an element to necessarily be unique.
+However we don't include ``commutative'', because examples below
+show that there are lots of non-abelian groups we care about.
+(But we introduce another name ``abelian''
+because we still want to keep track of it.)
+
+Another comment: a good motivation for the inverse axioms
+is that you get a large amount of \emph{symmetry}.
+The set of positive integers with addition is not a group,
+for example, because you can't subtract $6$ from $3$:
+some elements are ``larger'' than others.
+By requiring an inverse element to exist, you get rid of this issue.
+(You also need identity for this;
+it's hard to define inverses without it.)
+
+Even more abstruse comment:
+\Cref{thm:cayley_theorem} shows that groups are actually shadows of
+the so-called symmetric groups (defined later, also called permutation groups).
+This makes rigorous the notion that ``groups are very symmetric''.
+
+\section{\problemhead}
+
+\begin{problem}
+	What is the joke in the following figure? (Source: \cite{img:snsd}.)
+	\begin{center}
+		\includegraphics[height=8cm]{media/love-proper-isomorphic-subgroup.jpg}
+		%\caption{$\heartsuit$ is a group, $G \subsetneq \heartsuit$ a subgroup and $G \cong \heartsuit$.}
+	\end{center}
+	\begin{hint}
+		Orders.
+	\end{hint}
+	\begin{sol}
+		The point is that $\heartsuit$ is a group, $G \subsetneq \heartsuit$ a subgroup and $G \cong \heartsuit$.
+		This can only occur if $\left\lvert \heartsuit \right\rvert = \infty$;
+		otherwise, a proper subgroup would have strictly smaller size than the original.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Prove Lagrange's theorem for orders in the special case
+	that $G$ is a finite abelian group.
+	\begin{hint}
+		Copy the proof of Fermat's little theorem, using
+		\Cref{lem:group_mult_biject}.
+	\end{hint}
+	\begin{sol}
+		Let $\{g_1, g_2, \dots, g_n\}$ denote the elements of $G$.
+		For any $g \in G$, this is the same as the set $\{gg_1, \dots, gg_n\}$.
+		Taking the entire product and exploiting commutativity gives
+		$g^n \cdot g_1g_2 \dots g_n = g_1g_2 \dots g_n$, hence $g^n=1$.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Show that $D_6 \cong S_3$ but $D_{24} \not\cong S_4$.
+	\begin{hint}
+		For the former,
+		decide where the isomorphism should send $r$ and $s$,
+		and the rest will follow through.
+		For the latter, look at orders.
+	\end{hint}
+	\begin{sol}
+		One can check manually that $D_6 \cong S_3$,
+		using the map $r \mapsto (1 \; 2 \; 3)$ and $s \mapsto (1 \; 2)$.
+		(The right-hand sides are in ``cycle notation'',
+		as mentioned in \Cref{subsec:cycle_notation}.)
+		On the other hand $D_{24}$ contains an element of order $12$
+		while $S_4$ does not.
+	\end{sol}
+\end{problem}
+
+\begin{sproblem}
+	Let $p$ be a prime.
+	Show that the only group of order $p$ is $\Zc p$.
+	\begin{hint}
+		Generated groups.
+	\end{hint}
+	\begin{sol}
+		Let $G$ be a group of order $p$, and $1 \neq g \in G$.
+		Look at the group $H$ generated by $g$ and use Lagrange's theorem.
+	\end{sol}
+\end{sproblem}
+
+\begin{problem}
+	[A hint for Cayley's theorem]
+	Find a subgroup $H$ of $S_8$
+	which is isomorphic to $D_8$,
+	and write the isomorphism explicitly.
+\end{problem}
+
+\begin{dproblem}
+	\gim
+	Let $G$ be a finite group.\footnote{In other words,
+		permutation groups can be arbitrarily weird.
+		I remember being highly unsettled
+		by this theorem when I first heard of it,
+		but in hindsight it is not so surprising.}
+	Show that there exists a positive integer $n$ such that
+	\begin{enumerate}[(a)]
+		\ii (Cayley's theorem) $G$ is isomorphic to some subgroup of the symmetric group $S_n$.
+		\ii (Representation Theory) $G$ is isomorphic to some subgroup of
+		the general linear group $\GL_n(\RR)$.
+		(This is the group of invertible $n \times n$ matrices.)
+	\end{enumerate}
+	\label{thm:cayley_theorem}
+	\begin{hint}
+		Use $n = \left\lvert G \right\rvert$.
+	\end{hint}
+	\begin{sol}
+		The idea is that each element $g \in G$ can be thought of as a permutation
+		$G \to G$ by $x \mapsto gx$.
+	\end{sol}
+\end{dproblem}
+
+\begin{problem}
+	[IMO SL 2005 C5] \gim
+	There are $n$ markers, each with one side white and the other side black.
+	In the beginning, these $n$ markers are aligned in a row so that their white sides are all up.
+	In each step, if possible, we choose a marker whose white side is up
+	(but not one of the outermost markers),
+	remove it, and reverse the closest marker to the left of it
+	and also reverse the closest marker to the right of it.
+	
+	Prove that if $n \equiv 1 \pmod 3$ it's impossible to reach a state
+	with only two markers remaining.
+	(In fact the converse is true as well.)
+	% http://www.artofproblemsolving.com/Forum/viewtopic.php?f=41&t=90046&p=3573800
+	\begin{hint}
+		Draw inspiration from $D_6$.
+	\end{hint}
+	\begin{sol}
+		We have $www = bb$, $bww = wb$, $wwb = bw$, $bwb = ww$.
+		Interpret these as elements of $D_6$.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	\gim
+	Let $p$ be a prime and $F_1 = F_2 = 1$, $F_{n+2} = F_{n+1} + F_n$
+	be the Fibonacci sequence.
+	Show that $F_{2p(p^2-1)}$ is divisible by $p$.
+	\begin{hint}
+		Look at the group of $2 \times 2$ matrices mod $p$
+		with determinant $\pm 1$.
+	\end{hint}
+	\begin{sol}
+		Look at the group $G$ of $2 \times 2$ matrices mod $p$
+		with determinant $\pm 1$ (whose entries are the integers mod $p$).
+		Let $g = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix}$
+		and then use $g^{\left\lvert G \right\rvert} = 1_G$.
+	\end{sol}
+\end{problem}
+
+%\begin{problem}[Hard]
+%	Exhibit two groups $G$ and $H$ which are not isomorphic with the property that
+%	for every positive integer $n$,
+%	the number of elements $g \in G$ with $\ord g = n$
+%	equals the number of elements $h \in H$ with $\ord h = n$.
+%\end{problem}

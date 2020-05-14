@@ -1,0 +1,696 @@
+\chapter{Topological spaces}
+\label{ch:top_more}
+
+In \Cref{ch:metric_space} we introduced the notion
+of space by describing metrics on them.
+This gives you a lot examples, and nice intuition,
+and tells you how you should draw pictures of open and closed sets.
+
+However, moving forward, it will be useful to begin
+thinking about topological spaces in terms of just their \emph{open sets}.
+(One motivation is that our fishy \Cref{ex:fishy} shows that
+in some ways the notion of homeomorphism really wants
+to be phrased in terms of open sets, not in terms of the metric.)
+As we are going to see, the open sets manage to actually retain
+nearly all the information we need, but are simpler.\footnote{The
+	reason I adamantly introduce metric spaces first
+	is because I think otherwise the examples make much less sense.}
+This will be done in just a few sections,
+and after that we will start describing more adjectives
+that we can apply to topological (and hence metric) spaces.
+
+The most important topological notion is missing from this chapter:
+that of a \emph{compact} space.
+It is so important that I have dedicated a separate chapter just for it.
+
+Quick note for those who care:
+the adjectives ``Hausdorff'', ``connected'',
+and later ``compact'' are all absolute adjectives.
+
+%Note that in contrast to the warning on open/closed sets I gave earlier,
+%\begin{moral}
+%	The adjectives in this chapter will be used to describe \emph{spaces}.
+%\end{moral}
+
+%As I alluded to earlier, sequences in metric spaces are super nice,
+%but sequences in general topological spaces \emph{suck} (to the point where
+%I didn't bother to define convergence of general sequences).
+
+\section{Forgetting the metric}
+Recall \Cref{thm:open_set}:
+\begin{quote}
+	A function $f \colon M \to N$ of metric spaces is continuous
+	if and only if the pre-image of every open set in $N$ is open in $M$.
+\end{quote}
+Despite us having defined this in the context of metric spaces,
+this nicely doesn't refer to the metric at all,
+only the open sets.
+As alluded to at the start of this chapter,
+this is a great motivation for how we can forgot
+about the fact that we had a metric to begin with,
+and rather \emph{start} with the open sets instead.
+
+\begin{definition}
+	A \vocab{topological space} is a pair $(X, \mathcal T)$,
+	where $X$ is a set of points,
+	and $\mathcal T$ is the \vocab{topology},
+	which consists of several subsets of $X$, called the \vocab{open sets} of $X$.
+	The topology must obey the following axioms.
+	\begin{itemize}
+		\ii $\varnothing$ and $X$ are both in $\mathcal T$.
+		\ii Finite intersections of open sets are also in $\mathcal T$.
+		\ii Arbitrary unions (possibly infinite) of open sets are also in $\mathcal T$.
+	\end{itemize}
+\end{definition}
+So this time, the open sets are \emph{given}.
+Rather than defining a metric and getting open sets from the metric,
+we instead start from just the open sets.
+\begin{abuse}
+	We abbreviate $(X, \mathcal T)$ by just $X$,
+	leaving the topology $\mathcal T$ implicit.
+	(Do you see a pattern here?)
+\end{abuse}
+
+\begin{example}[Examples of topologies]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii Given a metric space $M$, we can let $\mathcal T$ be
+		the open sets in the metric sense.
+		The point is that the axioms are satisfied.
+		\ii In particular, \vocab{discrete space}
+		is a topological space in which every set is open. (Why?)
+		\ii Given $X$, we can let $\mathcal T = \left\{ \varnothing, X \right\}$,
+		the opposite extreme of the discrete space.
+	\end{enumerate}
+\end{example}
+
+Now we can port over our metric definitions.
+\begin{definition}
+	An \vocab{open neighborhood}\footnote{In literature,
+		a ``neighborhood'' refers to a set
+		which contains some open set around $x$.
+		We will not use this term,
+		and exclusively refer to ``open neighborhoods''.}
+	of a point $x \in X$ is an
+	open set $U$ which contains $x$ (see figure).
+\end{definition}
+\begin{center}
+	\begin{asy}
+		size(4cm);
+		bigblob("$X$");
+		pair p = Drawing("x", (0.3,0.1), dir(-90));
+		real r = 1.55;
+		draw(shift(p) * scale(1.6,1.2)*unitcircle, dashed);
+		label("$U$", p+r*dir(45), dir(45));
+	\end{asy}
+\end{center}
+
+\begin{abuse}
+	Just to be perfectly clear:
+	by an ``open neighborhood'' I mean \emph{any} open set containing $x$.
+	But by an ``$r$-neighborhood'' I always mean the
+	points with distance less than $r$ from $x$,
+	and so I can only use this term if my space is a metric space.
+\end{abuse}
+
+\section{Re-definitions}
+Now that we've defined a topological space,
+for nearly all of our metric notions we can write down
+as the definition the one that required only open sets
+(which will of course agree with our old definitions
+when we have a metric space).
+
+\subsection{Continuity}
+Here was our motivating example, continuity:
+\begin{definition}
+	We say function $f \colon X \to Y$ of topological spaces
+	is \vocab{continuous} at a point $p \in X$ if the pre-image of any
+	open neighborhood of $f(p)$ is an open neighborhood of $p$.
+	The function is continuous if it is continuous at every point.
+\end{definition}
+
+Thus homeomorphisms carries over:
+a bijection which is continuous in both directions.
+\begin{definition}
+	A \vocab{homeomorphism} of topological spaces
+	$(X, \tau_X)$ and $(Y, \tau_Y)$
+	is a bijection $f \colon X \to Y$
+	which induces a bijection from $\tau_X$ to $\tau_Y$:
+	i.e.\ the bijection preserves open sets.
+\end{definition}
+\begin{ques}
+	Show that this is equivalent to $f$ and its inverse
+	both being continuous.
+\end{ques}
+Therefore, any property defined only in
+terms of open sets is preserved by homeomorphism.
+Such a property is called a \vocab{topological property}.
+However, the later adjectives we define 
+(``connected'', ``Hausdorff'', ``compact'') will all be defined
+only in terms of the open sets, so they will be.
+
+
+
+%\begin{definition}
+%	A sequence $(x_n)$ of points in a topological space $X$ is said to \vocab{converge to} $x \in X$ if for every open neighborhood of $x$,
+%	eventually all terms of the sequence lie in that open neighborhood.
+%\end{definition}
+%\begin{remark}
+%	Unfortunately, for general topological spaces we no longer have the nice property
+%	that any function which preserves sequential limits is automatically continuous.
+%\end{remark}
+%There's one other property of open sets that we have in a metric space that isn't implied by the above: for any two points of $X$, we can find an open set containing one but not the other.
+%A space which also has this property is called a \vocab{Kolmogorov space}.
+%This property is a good property to have, because if $x,y \in X$ are in the same open sets, the topology can't tell them apart.
+
+\subsection{Closed sets}
+We saw last time there were two equivalent definitions
+for closed sets, but one of them relies only on open sets, and we use it:
+\begin{definition}
+	\label{def:closure}
+	In a general topological space $X$, we say that $S \subseteq X$ is
+	\vocab{closed} in $X$ if the complement $X \setminus S$ is open in $X$.
+
+	If $S \subseteq X$ is any set, the \vocab{closure} of $S$,
+	denoted $\ol S$,
+	is defined as the smallest closed set containing $S$.
+\end{definition}
+Thus for general topological spaces,
+open and closed sets carry the same information,
+and it is entirely a matter of taste whether we define everything in terms
+of open sets or closed sets.
+In particular, you can translate axioms and properties of open sets to closed ones:
+\begin{ques}
+	Show that the (possibly infinite) intersection of closed sets is closed
+	while the union of finitely many closed sets is closed.
+	(Look at complements.)
+\end{ques}
+\begin{exercise}
+	Show that a function is continuous if and only if the pre-image
+	of every closed set is closed.
+\end{exercise}
+Mathematicians seem to have agreed that they like open sets better.
+
+
+\subsection{Properties that don't carry over}
+Not everything works:
+
+\begin{remark}
+	[Complete and (totally) bounded are metric properties]
+	The two metric properties we have seen,
+	``complete'' and ``(totally) bounded'',
+	are not topological properties.
+	They rely on a metric,
+	so as written we cannot apply them to topological spaces.
+	One might hope that maybe,
+	there is some alternate definition (like we saw for ``continuous function'')
+	that is just open-set based.
+	But \Cref{ex:fishy} showing $(0,1) \cong \RR$
+	tells us that it is hopeless.
+\end{remark}
+
+\begin{remark}
+	[Sequences don't work well]
+	You could also try to port over the notion
+	of sequences and convergent sequences.
+	However, this turns out to break a lot of desirable properties.
+	Therefore I won't bother to do so,
+	and thus if we are discussing sequences you should
+	assume that we are working with a metric space.
+\end{remark}
+
+\section{Hausdorff spaces}
+\prototype{Every space that's not the Zariski topology (defined much later).}
+
+As you might have guessed,
+there exist topological spaces which cannot be realized
+as metric spaces (in other words, are not \vocab{metrizable}).
+One example is just to take $X = \{a,b,c\}$ and the topology
+$\tau_X = \left\{ \varnothing, \{a,b,c\} \right\}$.
+This topology is fairly ``stupid'':
+it can't tell apart any of the points $a$, $b$, $c$!
+But any metric space can tell its points apart (because $d(x,y) > 0$ when $x \neq y$).
+
+We'll see less trivial examples later,
+but for now we want to add a little more sanity condition onto our spaces.
+There is a whole hierarchy of such axioms, labelled $T_n$ for
+integers $n$ (with $n=0$ being the weakest and $n=6$ the strongest);
+these axioms are called \vocab{separation axioms}.
+
+By far the most common hypothesis is the $T_2$ axiom,
+which bears a special name.
+\begin{definition}
+	A topological space $X$ is \vocab{Hausdorff} if
+	for any two disjoint points $p$ and $q$ in $X$,
+	there exists an open neighborhood $U$ of $p$
+	and an open neighborhood $V$ of $q$ such that
+	\[ U \cap V = \varnothing. \]
+\end{definition}
+
+In other words, around any two distinct points we should be
+able to draw disjoint open neighborhoods.
+Here's a picture to go with above,
+but not much going on.
+\begin{center}
+\begin{asy}
+	size(5cm);
+	pair p = (-1.5,0);
+	pair q = ( 1.5,0);
+	filldraw(CR(p,1), opacity(0.1)+lightcyan, blue+dashed);
+	filldraw(CR(q,1), opacity(0.1)+lightred, red+dashed);
+	dot("$p$", p, dir(-90), blue);
+	dot("$q$", q, dir(-90), red);
+\end{asy}
+\end{center}
+
+\begin{ques}
+	Show that all metric spaces are Hausdorff.
+\end{ques}
+
+I just want to define this here so that I can use this word later.
+In any case, basically any space we will encounter other than
+the Zariski topology is Hausdorff.
+
+
+\section{Subspaces}
+\prototype{$S^1$ is a subspace of $\RR^2$.}
+
+One can also take subspaces of general topological spaces.
+\begin{definition}
+	Given a topological space $X$,
+	and a subset $S \subseteq X$,
+	we can make $S$ into a topological space
+	by declaring that the open subsets of $S$ are $U \cap S$
+	for open $U \subseteq X$.
+	This is called the \vocab{subspace topology}.
+\end{definition}
+So for example, if we view $S^1$ as a subspace of $\RR^2$,
+then any open arc is an open set,
+because you can view it as the intersection of an open disk with $S^1$.
+\begin{center}
+	\begin{asy}
+		size(3cm);
+		draw(unitcircle, black+1);
+		MP("S^1", dir(60), dir(60));
+		MP("\mathbb R^2", dir(-45)*1.2, dir(-45));
+		pair A = dir(-30);
+		pair B = dir(50);
+		draw(CP(dir(10), A), dotted);
+		draw(arc(origin,A,B), blue+2);
+		dotfactor *= 2;
+		opendot(A, blue);
+		opendot(B, blue);
+	\end{asy}
+\end{center}
+
+Needless to say, for metric spaces it doesn't matter
+which of these definitions I choose.
+(Proving this turns out to be surprisingly annoying,
+so I won't do so.)
+
+\section{Connected spaces}
+\prototype{$[0,1] \cup [2,3]$ is disconnected.}
+Even in metric spaces, it is possible for a set
+to be both open and closed.
+\begin{definition}
+	A subset $S$ of a topological space $X$
+	is \vocab{clopen} if it is both closed and open in $X$.
+	(Equivalently, both $S$ and its complement are open.)
+\end{definition}
+For example $\varnothing$ and the entire space are examples of clopen sets.
+In fact, the presence of a nontrivial clopen set other
+than these two leads to a so-called \emph{disconnected} space.
+
+\begin{ques}
+	Show that a space $X$ has a nontrivial clopen set
+	(one other than $\varnothing$ and $X$)
+	if and only if $X$ can be written as a disjoint union
+	of two nonempty open sets.
+\end{ques}
+
+We say $X$ is \vocab{disconnected}
+if there are nontrivial clopen sets,
+and \vocab{connected} otherwise.
+To see why this should be a reasonable definition,
+it might help to solve \Cref{prob:disconnected_better_def}.
+
+\begin{example}[Disconnected and connected spaces]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii The metric space 
+		\[ \{ (x,y) \mid x^2+y^2\le 1 \}
+			\cup \{ (x,y) \mid (x-4)^2+y^2\le1\} \subseteq \RR^2 \]
+		is disconnected (it consists of two disks).
+
+		\ii The space $[0,1] \cup [2,3]$ is disconnected:
+		it consists of two segments,
+		each of which is a clopen set.
+
+		\ii A discrete space on more than one point is disconnected,
+		since \emph{every} set is clopen in the discrete space.
+
+		\ii Convince yourself that the set
+		\[ \left\{ x \in \QQ : x^2 < 2014 \right\} \]
+		is a clopen subset of $\QQ$.
+		Hence $\QQ$ is disconnected too -- it has \emph{gaps}.
+
+		\ii $[0,1]$ is connected.
+	\end{enumerate}
+\end{example}
+
+%\begin{remark}
+%	For general topological spaces $X$, it is still true that if $S$ is closed
+%	(meaning $X \setminus S$ is open), then it contains the limits of all its sequences.
+%	But the converse of this statement no longer holds.
+%\end{remark}
+
+
+\section{Path-connected spaces}
+\prototype{Walking around in $\CC$.}
+A stronger and perhaps more intuitive notion
+of a connected space is a \emph{path-connected} space.
+The short description: ``walk around in the space''.
+% We have general topological spaces, but so far they've just been sitting there.
+% Let's start walking in them.
+
+% Throughout this section, we let $I = [0,1]$ with the usual topology
+% inherited from $\RR$.
+%Also, recall that $S^n$ is the surface of the sphere living
+%in $n+1$ dimensional space; hence $S^1$ is a unit circle, say.
+
+\begin{definition}
+	A \vocab{path} in the space $X$ is a continuous function
+	\[ \gamma : [0,1] \to X. \]
+	Its \vocab{endpoints} are the two points $\gamma(0)$ and $\gamma(1)$.
+\end{definition}
+
+You can think of $[0,1]$ as measuring ``time'', and so we'll often write $\gamma(t)$
+for $t \in [0,1]$ (with $t$ standing for ``time'').
+Here's a picture of a path.
+\begin{center}
+	\begin{asy}
+		bigblob("$X$");
+		pair A = Drawing("\gamma(0)", (-3,-1));
+		pair B = Drawing("\gamma(1)", (2,1), dir(90));
+		path p = A..(-2,0)..(0,2)..(1,0)..B;
+		draw(p, EndArrow);
+		MP("\gamma", midpoint(p), dir(90));
+	\end{asy}
+\end{center}
+\begin{ques}
+	Why does this agree with your intuitive notion of what a ``path'' is?
+\end{ques}
+
+\begin{definition}
+	A space $X$ is \vocab{path-connected} if
+	any two points in it are connected by some path.
+\end{definition}
+
+\begin{exercise}
+	[Path-connected implies connected]
+	Let $X = U \sqcup V$ be a disconnected space.
+	Show that there is no path
+	from a point of $U$ to point $V$.
+	(If $\gamma \colon [0,1] \to X$, then we get
+	$[0,1] = \gamma\pre(U) \sqcup \gamma\pre(V)$,
+	but $[0,1]$ is connected.)
+\end{exercise}
+
+\begin{example}[Examples of path-connected spaces]
+	\listhack
+	\begin{itemize}
+		\ii $\RR^2$ is path-connected,
+		since we can ``connect'' any two points with a straight line.
+		\ii The unit circle $S^1$ is path-connected, since
+		we can just draw the major or minor arc to connect two points.
+	\end{itemize}
+\end{example}
+
+% Easy, right?
+
+\section{Homotopy and simply connected spaces}
+\prototype{$\CC$ and $\CC \setminus \{0\}$.}
+\label{sec:meteor}
+
+Now let's motivate the idea of homotopy.
+Consider the example of the complex plane $\CC$ (which you can
+think of just as $\RR^2$) with two points $p$ and $q$.
+There's a whole bunch of paths from $p$ to $q$ but somehow
+they're not very different from one another.
+If I told you ``walk from $p$ to $q$'' you wouldn't have too many questions.
+
+\begin{center}
+	\begin{asy}
+		unitsize(0.8cm);
+		bigbox("$\mathbb C$");
+		pair A = Drawing("p", (-3,0), dir(180));
+		pair B = Drawing("q", (3,0), dir(0));
+		draw(A..(-2,0.5)..(0,2)..(1,1.2)..B, red, EndArrow(TeXHead));
+		draw(A--B, mediumgreen, EndArrow(TeXHead));
+		draw(A--(-1,-1)--(2,-1)--B, blue, EndArrow(TeXHead));
+		// draw(A..(1.5,-2)..(-1.5,-2)..B, orange, EndArrow(TeXHead));
+	\end{asy}
+\end{center}
+
+So we're living happily in $\CC$ until a meteor strikes the origin,
+blowing it out of existence.
+Then suddenly to get from $p$ to $q$, people might tell you two different things:
+``go left around the meteor'' or ``go right around the meteor''.
+
+\begin{center}
+	\begin{asy}
+		unitsize(0.8cm);
+		bigbox("$\mathbb C \setminus \{0\}$");
+		pair A = Drawing("p", (-3,0), dir(180));
+		pair B = Drawing("q", (3,0), dir(0));
+		draw(A..(-2,0.5)..(0,2)..(1,1.2)..B, red, EndArrow(TeXHead));
+		draw(A--(-1,-1)--(2,-1)--B, blue, EndArrow(TeXHead));
+		filldraw(scale(0.5)*unitcircle, grey, black);
+	\end{asy}
+\end{center}
+
+So what's happening?
+In the first picture, the red, green, and blue paths somehow all looked
+the same: if you imagine them as pieces of elastic string pinned down
+at $p$ and $q$, you can stretch each one to any other one.
+
+But in the second picture,
+you can't move the red string to match with the blue string:
+there's a meteor in the way.
+The paths are actually different.\footnote{If you know about winding numbers,
+	you might feel this is familiar.
+	We'll talk more about this in the chapter on the fundamental group.}
+
+The formal notion we'll use to capture this is \emph{homotopy equivalence}.
+We want to write a definition such that in the first picture,
+the three paths are all \emph{homotopic}, but the two paths in the
+second picture are somehow not homotopic.
+And the idea is just continuous deformation.
+
+\begin{definition}
+	Let $\alpha$ and $\beta$ be paths in $X$ whose endpoints coincide.
+	A (path) \vocab{homotopy} from $\alpha$ to $\beta$ is a continuous function
+	$F : [0,1]^2 \to X$, which we'll write $F_s(t)$ for $s,t \in [0,1]$,
+	such that
+	\[ F_0(t) = \alpha(t) \text{ and } F_1(t) = \beta(t)
+		\text{ for all $t \in [0,1]$} \]
+	and moreover
+	\[ \alpha(0) = \beta(0) = F_s(0)
+		\text{ and }
+		\alpha(1) = \beta(1) = F_s(1)
+		\text{ for all $s \in [0,1]$}. \]
+	If a path homotopy exists, we say $\alpha$ and $\beta$
+	are path \vocab{homotopic} and write $\alpha \simeq \beta$.
+\end{definition}
+\begin{abuse}
+	While I strictly should say ``path homotopy'' to describe this relation
+	between two paths, I will shorten this to just ``homotopy'' instead.
+	Similarly I will shorten ``path homotopic'' to ``homotopic''.
+\end{abuse}
+Animated picture: \url{https://commons.wikimedia.org/wiki/File:HomotopySmall.gif}.
+Needless to say, $\simeq$ is an equivalence relation.
+
+What this definition is doing is taking $\alpha$ and ``continuously deforming'' it to $\beta$, while keeping the endpoints fixed.
+Note that for each particular $s$, $F_s$ is itself a function.
+So $s$ represents time as we deform $\alpha$ to $\beta$:
+it goes from $0$ to $1$, starting at $\alpha$ and ending at $\beta$.
+
+\begin{center}
+	\begin{asy}
+		size(9cm);
+		bigbox("$\mathbb C$");
+		pair A = Drawing("p", (-3,0), dir(180));
+		pair B = Drawing("q", (3,0), dir(0));
+		draw(A..MP("F_{0} = \alpha", (0,2), dir(45))..B, heavygreen);
+		draw(A..MP("F_{0.25}", (0,1), dir(45))..B, mediumgreen);
+		draw(A..MP("F_{0.5}", (0,0), dir(90))..B, palecyan);
+		draw(A..MP("F_{0.75}", (0,-1), dir(-45))..B, mediumcyan);
+		draw(A..MP("F_{1} = \beta", (0,-2), dir(-45))..B, heavycyan);
+		// draw(A..(1.5,-2)..(-1.5,-2)..B, orange, EndArrow);
+	\end{asy}
+\end{center}
+
+\begin{ques}
+	Convince yourself the above definition is right.
+	What goes wrong when the meteor strikes?
+\end{ques}
+
+So now I can tell you what makes $\CC$ special:
+\begin{definition}
+	A space $X$ is \vocab{simply connected} if it's path-connected and
+	for any points $p$ and $q$, all paths from $p$ to $q$ are homotopic.
+\end{definition}
+That's why you don't ask questions when walking from $p$ to $q$ in $\CC$:
+there's really only one way to walk. Hence the term ``simply'' connected.
+
+\begin{ques}
+	Convince yourself that $\RR^n$ is simply connected for all $n$.
+\end{ques}
+
+\section{Bases of spaces}
+\prototype{$\RR$ has a basis of open intervals, and $\RR^2$ has a basis of open disks.}
+
+You might have noticed that the open sets of $\RR$ are a little annoying to describe:
+the prototypical example of an open set is $(0,1)$,
+but there are other open sets like
+\[
+	(0,1)
+	\cup \left( 1, \frac32 \right)
+	\cup \left( 2, \frac 73 \right)
+	\cup (2014, 2015). \]
+\begin{ques}
+	Check this is an open set.
+\end{ques}
+
+But okay, this isn't \emph{that} different.
+All I've done is taken a bunch of my prototypes and threw a bunch of $\cup$ signs at it.
+And that's the idea behind a basis.
+
+\begin{definition}
+	A \vocab{basis} for a topological space $X$
+	is a subset $\mathcal B$ of the open sets
+	such that every open set in $X$
+	is a union of some (possibly infinite) number of elements in
+	$\mathcal B$.
+\end{definition}
+
+And all we're doing is saying
+\begin{example}[Basis of $\RR$]
+	The open intervals form a basis of $\RR$.
+\end{example}
+In fact, more generally we have:
+\begin{theorem}[Basis of metric spaces]
+	The $r$-neighborhoods form a basis of any metric space $M$.
+\end{theorem}
+\begin{proof}
+	Kind of silly -- given an open set $U$
+	draw an $r_p$-neighborhood $U_p$ contained entirely inside $U$.
+	Then $\bigcup_p U_p$ is contained in $U$ and covers
+	every point inside it.
+\end{proof}
+
+Hence, an open set in $\RR^2$ is nothing more than a union
+of a bunch of open disks, and so on.
+The point is that in a metric space, the only open sets you really
+ever have to worry too much about are the $r$-neighborhoods.
+
+
+\section{\problemhead}
+
+\begin{dproblem}
+	Let $X$ be a topological space.
+	Show that there exists a nonconstant continuous function $X \to \{0,1\}$ if and
+	only if $X$ is disconnected (here $\{0,1\}$ is given the discrete topology).
+	\label{prob:disconnected_better_def}
+\end{dproblem}
+
+\begin{sproblem}
+	Let $X$ and $Y$ be topological spaces
+	and let $f \colon X \to Y$ be a continuous function.
+	\begin{enumerate}[(a)]
+		\ii Show that if $X$ is connected then so is $f\im(X)$.
+		\ii Show that if $X$ is path-connected then so is $f\im(X)$.
+	\end{enumerate}
+\end{sproblem}
+
+\begin{problem}
+	[Hausdorff implies $T_1$ axiom]
+	Let $X$ be a Hausdorff topological space.
+	Prove that for any point $p \in X$
+	the set $\{p\}$ is closed.
+\end{problem}
+
+\begin{problem}
+	[\cite{ref:pugh}, Exercise 2.56]
+	Let $M$ be a metric space with more than one point
+	but at most countably infinitely many points.
+	Show that $M$ is disconnected.
+	\begin{hint}
+		Let $p$ be any point.
+		If there is a real number $r$
+		such that $d(p,q) \ne r$ for any $q \in M$,
+		then the $r$-neighborhood of $p$ is clopen.
+	\end{hint}
+\end{problem}
+
+\begin{problem}[Furstenberg]
+	We declare a subset of $\ZZ$ to be open
+	if it's the union (possibly empty or infinite)
+	of arithmetic sequences $\left\{ a + nd \mid n \in \ZZ \right\}$,
+	where $a$ and $d$ are positive integers.
+	\begin{enumerate}[(a)]
+		\ii Verify this forms a topology on $\ZZ$,
+		called the \vocab{evenly spaced integer topology}.
+		\ii Prove there are infinitely many primes by considering $\bigcup_p p\ZZ$
+		for primes $p$.
+	\end{enumerate}
+	\begin{hint}
+		Note that $p\ZZ$ is closed for each $p$.
+		If there were finitely many primes, then
+		$\bigcup p\ZZ = \ZZ \setminus \{-1,1\}$ would have to be closed;
+		i.e.\ $\{-1,1\}$ would be open, but all open sets here are infinite.
+	\end{hint}
+\end{problem}
+
+\begin{problem}
+	\gim
+	Prove that the evenly spaced integer topology on $\ZZ$ is metrizable.
+	In other words, show that one can impose a metric $d : \ZZ^2 \to \RR$
+	which makes $\ZZ$ into a metric space whose open sets are those described above.
+	% https://teratologicmuseum.wordpress.com/2009/05/05/a-metric-for-the-evenly-spaced-integer-topology/
+	\begin{hint}
+		The balls at $0$ should be of the form $n! \cdot \ZZ$.
+	\end{hint}
+	\begin{sol}
+		Let $d(x,y) = 2017^{-n}$,
+		where $n$ is the largest integer
+		such that $n!$ divides $\left\lvert x-y \right\rvert$.
+	\end{sol}
+\end{problem}
+
+%\begin{problem}
+%	A topological space $X$ is called \vocab{locally path-connected}
+%	if for every point $x \in X$ and open neighborhood $U$ of $x$,
+%	some open neighborhood $V$ of $x$ contained in $U$ is path-connected.
+%	Prove that $X$ is path-connected if and only if it is connected
+%	and locally path-connected.
+%	\label{prob:local_path_connected}
+%\end{problem}
+
+\begin{problem}
+	\gim
+	We know that any open set $U \subseteq \RR$
+	is a union of open intervals (allowing $\pm\infty$ as endpoints).
+	One can show that it's actually possible to write $U$ as the
+	union of \emph{pairwise disjoint} open intervals.\footnote{You are invited to try
+	and prove this, but I personally found the proof quite boring.}
+	Prove that there exists such a disjoint union with at most \emph{countably many}
+	intervals in it.
+	\begin{hint}
+		Appeal to $\QQ$.
+	\end{hint}
+	\begin{sol}
+		You can pick a rational number in each interval and
+		there are only countably many rational numbers. Done!
+	\end{sol}
+\end{problem}

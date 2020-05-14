@@ -1,0 +1,801 @@
+\chapter{The Frobenius element}
+Throughout this chapter $K/\QQ$ is a Galois extension with Galois group $G$,
+$p$ is an \emph{unramified} rational prime in $K$, and $\kp$ is a prime above it.
+Picture:
+\begin{diagram}
+	K & \supset & \OO_K & \kp & & \OO_K / \kp \cong \FF_{p^f} \\
+	\dLine && \dLine & \dLine & & \dLine \\
+	\QQ & \supset & \ZZ & (p) & & \FF_p
+\end{diagram}
+If $p$ is unramified, then one can show there
+is a unique $\sigma \in \Gal(L/K)$ such that
+$\sigma(\alpha) \equiv \alpha^p \pmod{\kp}$ for every prime $p$.
+
+\section{Frobenius elements}
+\prototype{$\Frob_\kp$ in $\ZZ[i]$ depends on $p \pmod 4$.}
+
+Here is the theorem statement again:
+\begin{theorem}[The Frobenius element]
+	Assume $K/\QQ$ is Galois with Galois group $G$.
+	Let $p$ be a rational prime unramified in $K$, and $\kp$ a prime above it.
+	There is a \emph{unique} element $\Frob_\kp \in G$
+	with the property that
+	\[ \Frob_\kp(\alpha) \equiv \alpha^{p} \pmod{\kp}. \]
+	It is called the \vocab{Frobenius element} at $\kp$, and has order $f$.
+\end{theorem}
+The \emph{uniqueness} part is pretty important:
+it allows us to show that a given $\sigma \in \Gal(L/K)$
+is the Frobenius element by just observing that it satisfies
+the above functional equation.
+
+Let's see an example of this:
+\begin{example}[Frobenius elements of the Gaussian integers]
+	Let's actually compute some Frobenius elements for $K = \QQ(i)$,
+	which has $\OO_K = \ZZ[i]$.
+	This is a Galois extension, with $G = \Zm2$,
+	corresponding to the identity and complex conjugation.
+
+	If $p$ is an odd prime with $\kp$ above it,
+	then $\Frob_\kp$ is the unique element such that
+	\[ (a+bi)^p \equiv \Frob_\kp(a+bi) \pmod{\kp} \]
+	in $\ZZ[i]$. In particular,
+	\[ \Frob_\kp(i) = i^p = 
+		\begin{cases}
+			i & p \equiv 1 \pmod 4 \\
+			-i & p \equiv 3 \pmod 4.
+		\end{cases}
+	\]
+	From this we see that $\Frob_\kp$ is the identity when $p \equiv 1 \pmod 4$
+	and $\Frob_\kp$ is complex conjugation when $p \equiv 3 \pmod 4$.
+\end{example}
+Note that we really only needed to compute $\Frob_\kp$ on $i$.
+If this seems too good to be true,
+a philosophical reason is ``freshman's dream''
+where $(x+y)^p \equiv x^p + y^p \pmod{p}$ (and hence mod $\kp$).
+So if $\sigma$ satisfies the functional equation on generators,
+it satisfies the functional equation everywhere.
+
+We also have an important lemma:
+\begin{lemma}
+	[Order of the Frobenius element]
+	Let $\Frob_\kp$ be a Frobenius element from an extension $K/\QQ$.
+	Then the order of $\kp$ is equal to the inertial degree $f_\kp$.
+	In particular, $(p)$ splits completely in $\OO_K$
+	if and only if $\Frob_\kp = \id$.
+\end{lemma}
+\begin{exercise}
+	Prove this lemma as by using the fact that $\OO_K / \kp$
+	is the finite field of order $f_\kp$,
+	and the Frobenius element is just $x \mapsto x^p$ on this field.
+\end{exercise}
+
+Let us now prove the main theorem.
+This will only make sense in the context of decomposition groups,
+so readers which skipped that part should omit this proof.
+\begin{proof}
+	[Proof of existence of Frobenius element]
+	The entire theorem is just a rephrasing of the fact
+	that the map $\theta$ defined in the last section
+	is an isomorphism when $p$ is unramified.
+	Picture:
+	\begin{center}
+		\begin{asy}
+			size(12cm);
+			filldraw( (-4,-2)--(-4,2)--(1.5,2)--(1.5,-2)--cycle, lightblue+opacity(0.2), black);
+			label("$G = \operatorname{Gal}(K/\mathbb Q)$", (-1,2), dir(90));
+			dot( (-1.1,-1.2) );
+			dot( (-1.4,0.9) );
+			dot( (-2,1.4) );
+			dot( (-2.7,-0.4) );
+			dot( (-3.1,0.2) );
+			dot( (-3.4,-1.6) );
+
+			filldraw(scale(0.8,1.8)*unitcircle, lightcyan+opacity(0.4), black);
+			label("$D_{\mathfrak p}$", (0.8,2), dir(-90));
+			for (real y=-1.5; y<2; ++y) { dot( (0,y) ); }
+			label("$\operatorname{Frob}_{\mathfrak p}$", (0,-1.5), dir(90));
+
+			filldraw(shift(5,0)*scale(0.8,1.8)*unitcircle, lightcyan+opacity(0.4), black);
+			for (real y=0.5; y<2; ++y) { dot( (5,y) ); }
+			dot("$T$", (5,-1.5), dir(45));
+			dot("$T^2$", (5,-0.5), dir(45));
+			draw( (1,0)--(4,0), Arrows );
+			label("$\left<T \mid T^f=1\right>$", (5,1.8), dir(90));
+
+			draw( (0.2,-1.5)--(4.8,-1.5), dashed, EndArrow);
+			label("$\theta(\operatorname{Frob}_{\mathfrak p}) = T$", (2.8,-1.5), dir(-90));
+			label("$\theta$", (2.5,0), dir(90));
+			label("$\cong$", (2.5,0), dir(-90));
+		\end{asy}
+	\end{center}
+	In here we can restrict our attention to $D_\kp$
+	since we need to have $\sigma(\alpha) \equiv 0 \pmod \kp$
+	when $\alpha \equiv 0 \pmod \kp$.
+	Thus we have the isomorphism
+	\[ D_\kp \taking\theta \Gal\left( (\OO_K/\kp) / \FF_p \right). \]
+	But we already know $\Gal\left( (\OO_K/\kp)/\FF_p \right)$,
+	according to the string of isomorphisms
+	\[
+		\Gal\left( (\OO_K/\kp) / \FF_p \right)
+		\cong \Gal\left( \FF_{p^f} / \FF_p \right)
+		\cong \left< T = x \mapsto x^p \right>
+		\cong \Zc{f} .
+	\]
+	So the unique such element is the pre-image of $T$ under $\theta$.
+\end{proof}
+
+
+\section{Conjugacy classes}
+Now suppose $\kp_1$ and $\kp_2$ are \emph{two} primes above an unramified rational prime $p$.
+Then we can define $\Frob_{\kp_1}$ and $\Frob_{\kp_2}$.
+Since the Galois group acts transitively,
+we can select $\sigma \in \Gal(K/\QQ)$ be such that
+\[ \sigma(\kp_1) = \kp_2. \]
+We claim that
+\[
+	\Frob_{\kp_2} = \sigma \circ \Frob_{\kp_1} \circ \sigma\inv.
+\]
+Note that this is an equation in $G$.
+\begin{ques}
+	Prove this.
+\end{ques}
+
+More generally, for a given unramified rational prime $p$, we obtain:
+\begin{theorem}
+	[Conjugacy classes in Galois groups]
+	The set
+	\[ \left\{ \Frob_\kp \mid \kp \text{ above } p \right\} \]
+	is one of the conjugacy classes of $G$.
+\end{theorem}
+\begin{proof}
+	We've used the fact that $G = \Gal(K/\QQ)$ is transitive
+	to show that $\Frob_{\kp_1}$ and $\Frob_{\kp_2}$ are conjugate
+	if they both lie above $p$; hence it's \emph{contained} in some
+	conjugacy class.
+	So it remains to check that for any $\kp$, $\sigma$,
+	we have $\sigma \circ \Frob_\kp \circ \sigma\inv = \Frob_{\kp'}$
+	for some $\kp'$. For this, just take $\kp' = \sigma\kp$.
+	Hence the set is indeed a conjugacy class.
+\end{proof}
+%We denote the conjugacy class by the \vocab{Frobenius symbol}
+%\[ \left( \frac{K/\QQ}{p} \right). \]
+
+In summary,
+\begin{moral}
+	$\Frob_{\kp}$ is determined up to conjugation by the prime $p$
+	from which $\kp$ arises.
+\end{moral}
+So even though the Gothic letters look scary, the content of $\Frob_{\kp}$
+really just comes from the more friendly-looking rational prime $p$.
+
+
+\begin{example}
+	[Frobenius elements in $\QQ(\cbrt2,\omega)$]
+	With those remarks, here is a more involved example of a Frobenius map.
+	Let $K = \QQ(\cbrt2, \omega)$ be the splitting field of 
+	\[ t^3-2 = (t-\cbrt2)(t-\omega\cbrt2)(t-\omega^2\cbrt2). \]
+	Thus $K/\QQ$ is Galois.
+	We've seen in an earlier example that
+	\[ \OO_K = \ZZ[\eps] \quad\text{where}\quad \eps \text { is a root of } t^6+3t^5-5t^3+3t+1. \]
+
+	Let's consider the prime $5$ which factors (trust me here) as
+	\[ (5) = (5, \eps^2+\eps+2)(5, \eps^2+3\eps+3)(5, \eps^2+4\eps+1)
+		= \kp_1 \kp_2 \kp_3. \]
+	Note that all the prime ideals have inertial degree $2$.
+	Thus $\Frob_{\kp_i}$ will have order $2$ for each $i$.
+
+	Note that 
+	\[ \Gal(K/\QQ) =
+		\text{permutations of } \{\cbrt2,\omega\cbrt2,\omega^2\cbrt2\}
+		\cong S_3.  \]
+	In this $S_3$ there are $3$ elements of order three:
+	fixing one root and swapping the other two.
+	These correspond to each of $\Frob_{\kp_1}$, $\Frob{\kp_2}$, $\Frob_{\kp_3}$.
+
+	In conclusion, the conjugacy class
+	$\left\{ \Frob_{\kp_1}, \Frob_{\kp_2}, \Frob_{\kp_3} \right\}$
+	associated to $(5)$ is the
+	cycle type $(\bullet)(\bullet \; \bullet)$ in $S_3$.
+\end{example}
+
+
+\section{Chebotarev density theorem}
+Natural question: can we represent every conjugacy class in this way?
+In other words, is every element of $G$ equal to $\Frob_\kp$ for some $\kp$?
+
+Miraculously, not only is the answer ``yes'', but in fact it does so in the nicest way possible:
+the $\Frob_\kp$'s are ``equally distributed'' when we pick a random $\kp$.
+\begin{theorem}
+	[Chebotarev density theorem over $\QQ$]
+	Let $C$ be a conjugacy class of $G = \Gal(K/\QQ)$.
+	The density of (unramified) primes $p$ such that $\{ \Frob_\kp \mid \kp \text{ above } p \} = C$
+	%\[ \left( \frac{K/\QQ}{p} \right) = C \]
+	is exactly $\left\lvert C \right\rvert / \left\lvert G \right\rvert$.
+	In particular, for any $\sigma \in G$ there are infinitely many rational primes $p$
+	with $\kp$ above $p$ so that $\Frob_{\kp} = \sigma$.
+\end{theorem}
+
+By density, I mean that the proportion of primes $p \le x$ that work 
+approaches $\frac{\left\lvert C \right\rvert}{\left\lvert G \right\rvert}$ as $x \to \infty$.
+Note that I'm throwing out the primes that ramify in $K$.
+This is no issue, since the only primes that ramify are those dividing $\Delta_K$,
+of which there are only finitely many.
+
+In other words, if I pick a random prime $p$ and look at the resulting conjugacy class,
+it's a lot like throwing a dart at $G$:
+the probability of hitting any conjugacy class depends just on the size of the class.
+\begin{center}
+	\begin{asy}
+		size(8cm);
+		bigbox("$G$");
+		pen b = lightcyan + opacity(0.4);
+		pen k = black;
+		filldraw( (-2.6,2.5)--(0.6,2.5)--(0.6,0.5)--(-2.6,0.5)--cycle, b, k);
+		filldraw( (-2.6,-2.5)--(0.6,-2.5)--(0.6,-0.5)--(-2.6,-0.5)--cycle, b, k);
+		filldraw( (2,0)--(3.5,0)--(3.5,2.5)--(2,2.5)--cycle, b, k);
+		filldraw( (2,-1)--(3.5,-1)--(3.5,-2)--(2,-2)--cycle, b, k);
+		for (real x = -2; x < 1; ++x) {
+			dot( (x, 1.9) ); 
+			dot( (x, 1.1) ); 
+			dot( (x, -1.9) ); 
+			dot( (x, -1.1) ); 
+		}
+		label("$37.5\%$", (-2.6, 0.5), dir(140));
+		label("$37.5\%$", (-2.6,-2.5), dir(140));
+		label("$C_1$", (-2.6, 2.5), dir(225));
+		label("$C_2$", (-2.6, -.5), dir(225));
+		dot( (2.75, 2.0) );
+		dot( (2.75, 1.25) );
+		dot( (2.75, 0.50) );
+		dot( (2.75, -1.50) );
+		label("$C_3$", (2, 0), dir(-90));
+		label("$18.75\%$", (3, 0), dir(-75));
+		label("$C_4$", (2, -2), dir(-90));
+		label("$6.25\%$", (3, -2), dir(-75));
+	\end{asy}
+\end{center}
+
+\begin{remark}
+Happily, this theorem (and preceding discussion)
+also works if we replace $K/\QQ$ with any Galois extension $K/F$;
+in that case we replace ``$\kp$ over $p$'' with ``$\kP$ over $\kp$''.
+In that case, we use $\Norm(\kp) \le x$ rather than $p \le x$ as the way
+to define density.
+\end{remark}
+
+\section{Example: Frobenius elements of cyclotomic fields}
+Let $q$ be a prime, and consider $L = \QQ(\zeta_q)$,
+with $\zeta_q$ a primitive $q$th root of unity.
+You should recall from various starred problems that
+\begin{itemize}
+	\ii $\Delta_L = \pm q^{q-2}$,
+	\ii $\OO_L = \ZZ[\zeta_q]$, and
+	\ii The map \[ \sigma_n : L \to L \quad\text{by}\quad \zeta_q \mapsto \zeta_q^n \]
+	is an automorphism of $L$ whenever $\gcd(n,q)=1$,
+	and depends only on $n \pmod q$.
+	In other words, the automorphisms of $L/\QQ$ just shuffle around the $q$th roots of unity.
+	In fact the Galois group consists exactly of the elements $\{\sigma_n\}$, namely
+	\[ \Gal(L/\QQ) = \{ \sigma_n \mid n \not\equiv 0 \pmod q \}. \]
+	As a group, \[ \Gal(L/\QQ) = \Zm q \cong \Zcc{q-1}. \]
+\end{itemize}
+This is surprisingly nice,
+because \textbf{elements of $\Gal(L/\QQ)$ look a lot
+like Frobenius elements already}.
+Specifically:
+
+\begin{lemma}[Cyclotomic Frobenius elements]
+	\label{lem:cyclo_frob}
+	In the cyclotomic setting $L = \QQ(\zeta_q)$,
+	let $p$ be a rational unramified prime
+	and $\kp$ above it. Then \[ \Frob_\kp = \sigma_p. \]
+\end{lemma}
+\begin{proof}
+	Observe that $\sigma_p$ satisfies the functional equation
+	(check on generators).
+	Done by uniqueness.
+%	We know $\Frob_\kp(\alpha) \equiv \alpha^p \pmod{\kp}$ by definition,
+%	but also that $\Frob_\kp = \sigma_n$ for some $n$
+%	We want $n=p$; since $\sigma_n(\zeta_q)^n = \zeta_q^n$ by definition
+%	it would be very weird if this wasn't true!
+%
+%	Given $\zeta_q^n \equiv \zeta_q^p \pmod{\kp}$, it suffices to
+%	prove that the $q$th roots of unity are distinct mod $\kp$.
+%	Look at the polynomial $F(x) = x^q-1$ in $\ZZ[\zeta_p]/\kp \cong \FF_{p^f}$.
+%	Its derivative is \[ F'(x) = qx^{q-1} \not\equiv 0 \pmod{\kp} \]
+%	(since $\FF_{p^f}$ has characteristic $p \nmid q$).
+%	The only root of $F'$ is zero, hence $F$ has no double roots mod $\kp$.
+\end{proof}
+
+\begin{ques}
+	Conclude that a rational prime $p$
+	splits completely in $\OO_L$ if and only if $p \equiv 1 \pmod m$.
+\end{ques}
+
+\section{Frobenius elements behave well with restriction}
+Let $L/\QQ$ and $K/\QQ$ be Galois extensions, and consider the setup
+\begin{diagram}
+	L & \supseteq & \kP & \rDotted & \Frob_{\kP} \in \Gal(L/\QQ)\\
+	\dLine && \dLine && \\
+	K & \supseteq & \kp & \rDotted & \Frob_\kp \in \Gal(K/\QQ) \\
+	\dLine && \dLine && \\
+	\QQ & \supseteq & (p) &&
+\end{diagram}
+Here $\kp$ is above $(p)$ and $\kP$ is above $\kp$.
+We may define
+\[ \Frob_\kp : K \to K
+\quad\text{and}\quad
+\Frob_{\kP} : L \to L \]
+and want to know how these are related.
+
+\begin{theorem}
+	[Restrictions of Frobenius elements]
+	Assume $L/\QQ$ and $K/\QQ$ are both Galois.
+	Let $\kP$ and $\kp$ be unramified as above.
+	Then $\Frob_{\kP} \restrict{K} = \Frob_{\kp}$,
+	i.e.\ for every $\alpha \in K$,
+	\[ \Frob_\kp(\alpha) = \Frob_{\kP}(\alpha). \]
+\end{theorem}
+\begin{proof}
+	We know
+	\[ \Frob_{\kP}(\alpha) \equiv \alpha^p \pmod{\kP}
+		\quad \forall \alpha \in \OO_L \]
+	from the definition.
+	\begin{ques}
+		Deduce that
+		\[ \Frob_{\kP}(\alpha) \equiv \alpha^p \pmod{\kp}
+			\quad \forall \alpha \in \OO_K. \]
+		(This is weaker than the previous statement in two ways!)
+	\end{ques}
+	Thus $\Frob_{\kP}$ restricted to $\OO_K$ satisfies the
+	characterizing property of $\Frob_\kp$.
+\end{proof}
+In short, the point of this section is that
+\begin{moral}
+	Frobenius elements upstairs restrict to Frobenius elements downstairs.
+\end{moral}
+
+\section{Application: Quadratic reciprocity}
+We now aim to prove:
+\begin{theorem}
+	[Quadratic reciprocity]
+	Let $p$ and $q$ be distinct odd primes.
+	Then
+	\[ \left( \frac pq \right)\left( \frac qp \right)
+		= (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}. \]
+\end{theorem}
+(See, e.g. \cite{ref:holden} for an exposition on quadratic reciprocity,
+if you're not familiar with it.)
+
+\subsection{Step 1: Setup}
+For this proof, we first define
+\[ L = \QQ(\zeta_q) \]
+where $\zeta_q$ is a primitive $q$th root of unity.
+Then $L/\QQ$ is Galois, with Galois group $G$.
+\begin{ques}
+	Show that $G$ has a unique subgroup $H$ of order two.
+\end{ques}
+In fact, we can describe it exactly: viewing $G \cong \Zm q$, we have
+\[ H = \left\{ \sigma_n \mid \text{$n$ quadratic residue mod $q$} \right\}. \]
+By the fundamental theorem of Galois Theory, there ought to be a degree $2$
+extension of $\QQ$ inside $\QQ(\zeta_q)$ (that is, a quadratic field).
+Call it $\QQ(\sqrt{q^\ast})$, for $q^\ast$ squarefree:
+\begin{diagram}
+	L = \QQ(\zeta_q) & \rIsom & \{1\} \\
+	\dLine^{\frac{q-1}{2}} && \dLine \\
+	K = \QQ(\sqrt{q^\ast}) & \rIsom & H \\
+	\dLine^2 && \dLine \\
+	\QQ & \rIsom & G \\
+\end{diagram}
+\begin{exercise}
+	Note that if a rational prime $\ell$ ramifies in $K$,
+	then it ramifies in $L$.
+	Use this to show that
+	\[ q^\ast = \pm q \text{ and } q^\ast \equiv 1 \pmod 4. \]
+	Together these determine the value of $q^\ast$.
+\end{exercise}
+(Actually, it is true in general 
+$\Delta_K$ divides $\Delta_L$ in a tower $L/K/\QQ$.)
+
+\subsection{Step 2: Reformulation}
+Now we are going to prove:
+\begin{theorem}
+	[Quadratic reciprocity, equivalent formulation]
+	For distinct odd primes $p$, $q$ we have
+	\[ \left( \frac pq \right) = \left( \frac{q^\ast}{p} \right). \]
+\end{theorem}
+\begin{exercise}
+	Using the fact that $\left( \frac{-1}{p} \right) = (-1)^{\frac{p-1}{2}}$,
+	show that this is equivalent to quadratic reciprocity as we know it.
+\end{exercise}
+
+We look at the rational prime $p$ in $\ZZ$.
+Either it splits into two in $K$ or is inert; either way let $\kp$ be a prime factor
+in the resulting decomposition (so $\kp$ is either $p \cdot \OO_K$ in the inert case,
+or one of the primes in the split case).
+Then let ${\kP}$ be above $\kp$.
+It could possibly also split in $K$: the picture looks like
+\begin{diagram}
+	\OO_L = \ZZ[\zeta_q] & \supset {\kP} & \rDotted & \ZZ[\zeta_p]/{\kP} \cong \FF_{p^f} \\
+	\OO_K = \ZZ[\frac{1+\sqrt{q^\ast}}{2}] & \supseteq \kp & \rDotted & \FF_p \text{ or } \FF_{p^2} \\
+	\ZZ & \supseteq (p) & \rDotted & \FF_p
+\end{diagram}
+\begin{ques}
+	Why is $p$ not ramified in either $K$ or $L$?
+\end{ques}
+
+\subsection{Step 3: Introducing the Frobenius}
+Now, we take the Frobenius 
+\[ \sigma_p = \Frob_{\kP} \in \Gal(L/\QQ). \]
+We claim that
+\[ \Frob_{\kP} \in H \iff \text{$p$ splits in $K$}. \]
+To see this, note that $\Frob_{\kP}$ is in $H$ if and only if it acts
+as the identity on $K$.
+But $\Frob_{\kP} \restrict{K}$ is $\Frob_\kp$!
+So \[ \Frob_{\kP} \in H \iff \Frob_\kp = \id_K. \]
+Finally note that $\Frob_\kp$ has order $1$ if $p$ splits
+($\kp$ has inertial degree $1$)
+and order $2$ if $p$ is inert.
+This completes the proof of the claim.
+
+\subsection{Finishing up}
+We already know by \Cref{lem:cyclo_frob} that $\Frob_{\kP} = \sigma_p \in H$
+if and only if $p$ is a quadratic residue.
+On the other hand,
+\begin{exercise}
+	Show that $p$ splits in $\OO_K = \ZZ[\frac12(1+\sqrt{q^\ast})]$
+	if and only if $\left( \frac{q^\ast}{p} \right) = 1$.
+	(Use the factoring algorithm. You need the fact that $p \neq 2$ here.)
+\end{exercise}
+In other words
+\[ \left( \frac pq \right) = 1
+	\iff \sigma_p \in H \iff \text{$p$ splits in $\ZZ\left[ \tfrac12(1+\sqrt{q^\ast}) \right]$}
+	\iff \left( \frac{q^\ast}{p} \right) = 1.
+\]
+This completes the proof.
+
+
+\section{Frobenius elements control factorization}
+\prototype{$\Frob_\kp$ controlled the splitting of $p$ in the proof of quadratic reciprocity;
+the same holds in general.}
+In the proof of quadratic reciprocity, we used the fact that Frobenius elements behaved
+well with restriction in order to relate the splitting of $p$ with properties of $\Frob_\kp$.
+
+In fact, there is a much stronger statement for
+any intermediate field $\QQ \subseteq E \subseteq K$
+which works even if $E/\QQ$ is not Galois.
+It relies on the notion of a \emph{factorization pattern}.
+Here is how it goes.
+
+Set $n = [E:\QQ]$, and let $p$ be a rational prime unramified in $K$.
+Then $p$ can be broken in $E$ as
+\[ p \cdot \OO_E = \kp_1 \kp_2 \dots \kp_g \]
+with inertial degrees $f_1$, \dots, $f_g$:
+(these inertial degrees might be different since $E/\QQ$ isn't Galois).
+The numbers $f_1 + \dots + f_g = n$ form a partition of the number $n$.
+For example, in the quadratic reciprocity proof we had $n = 2$,
+with possible partitions $1 + 1$ (if $p$ split) and $2$ (if $p$ was inert).
+We call this the \vocab{factorization pattern} of $p$ in $E$.
+
+Next, we introduce a Frobenius $\Frob_{\kP}$ above $(p)$, all the way in $K$;
+this is an element of $G = \Gal(K/\QQ)$.
+Then let $H$ be the group corresponding to the field $E$.
+Diagram:
+\begin{diagram}
+	K & \rIsom & \{1\} && \Frob_{\kP} & \\
+	\dLine && \dLine &&& \\
+	E & \rIsom & H && \kp_1 \dots \kp_g & \qquad f_1 + \dots + f_g = n \\
+	\dLine^n && \dLine_n && \dLine & \\
+	\QQ & \rIsom & G && (p) &
+\end{diagram}
+Then $\Frob_{\kP}$ induces a \emph{permutation}
+of the $n$ left cosets $gH$ by left multiplication
+(after all, $\Frob_{\kP}$ is an element of $G$ too!).
+Just as with any permutation, we may look at the resulting cycle decomposition,
+which has a natural ``cycle structure'': a partition of $n$.
+\begin{center}
+	\begin{asy}
+		size(8cm);
+		pen tg = heavyred; // "times g"
+
+		pen pointpen = lightblue;
+		pair A = Drawing("g_1H", dir(80), dir(80), pointpen);
+		pair B = Drawing("g_2H", A*dir(120), A*dir(120), pointpen);
+		pair C = Drawing("g_3H", A*dir(240), A*dir(240), pointpen);
+		draw(A--B, dashed + pointpen, EndArrow, Margin(2,2));
+		draw(B--C, dashed + pointpen, EndArrow, Margin(2,2));
+		draw(C--A, dashed + pointpen, EndArrow, Margin(2,2));
+		label("$\times g$", midpoint(A--B), A+B, tg);
+		label("$\times g$", midpoint(B--C), B+C, tg);
+		label("$\times g$", midpoint(C--A), C+A, tg);
+		label("$3$", origin, origin, pointpen);
+		add(shift( (-3.2,0.1) ) * CC());
+
+		label("$g = \operatorname{Frob}_{\mathfrak P}$", (-1.7,1.7), origin, tg);
+
+		pointpen = heavygreen;
+		pair W = Drawing("g_4H", dir(50), dir(50), pointpen);
+		pair X = Drawing("g_5H", W*dir(90), W*dir(90), pointpen);
+		pair Y = Drawing("g_6H", W*dir(180), W*dir(180), pointpen);
+		pair Z = Drawing("g_7H", W*dir(270), W*dir(270), pointpen);
+		draw(W--X, dashed + pointpen, EndArrow, Margin(2,2));
+		draw(X--Y, dashed + pointpen, EndArrow, Margin(2,2));
+		draw(Y--Z, dashed + pointpen, EndArrow, Margin(2,2));
+		draw(Z--W, dashed + pointpen, EndArrow, Margin(2,2));
+		defaultpen(red);
+		label("$\times g$", W--X, W+X, tg);
+		label("$\times g$", X--Y, X+Y, tg);
+		label("$\times g$", Y--Z, Y+Z, tg);
+		label("$\times g$", Z--W, Z+W, tg);
+		label("$4$", origin, origin, pointpen);
+
+		label("$\boxed{n = 7 = 3+4}$", (-2,-1.8), origin, black);
+	\end{asy}
+\end{center}
+
+The theorem is that these coincide:
+\begin{theorem}
+	[Frobenius elements control decomposition]
+	\label{thm:frob_control_decomp}
+	Let $\QQ \subseteq E \subseteq K$ an extension of number fields
+	and assume $K/\QQ$ is Galois (though $E/\QQ$ need not be).
+	Pick an unramified rational prime $p$; let $G = \Gal(K/\QQ)$
+	and $H$ the corresponding intermediate subgroup.
+	Finally, let $\kP$ be a prime above $p$ in $K$.
+
+	Then the \emph{factorization pattern} of $p$ in $E$ is given by
+	the \emph{cycle structure} of $\Frob_{\kP}$ acting on the left cosets of $H$.
+\end{theorem}
+Often, we take $E = K$, in which case this is just asserting
+that the decomposition of the prime $p$ is controlled by a Frobenius element over it.
+
+An important special case is when $E = \QQ(\alpha)$,
+because as we will see it is let us determine how the minimal
+polynomial of $\alpha$ factors modulo $p$.
+To motivate this, let's go back a few chapters
+and think about the Factoring Algorithm.
+
+Let $\alpha$ be an algebraic integer and $f$ its minimal polynomial (of degree $n$).
+Set $E = \QQ(\alpha)$ (which has degree $n$ over $\QQ$).
+Suppose we're lucky enough that $\OO_E = \ZZ[\alpha]$,
+i.e.\ that $E$ is monogenic.
+Then we know by the Factoring Algorithm,
+to factor any $p$ in $E$, all we have to do is factor $f$ modulo $p$,
+since if $f = f_1^{e_1} \dots f_g^{e_g} \pmod p$ then we have
+\[ (p) = \prod_i \kp_i = \prod_i (f_i(\alpha), p)^{e_i}. \]
+This gives us complete information about the ramification indices and inertial degrees;
+the $e_i$ are the ramification indices, and $\deg f_i$ are the inertial degrees
+(since $\OO_E / \kp_i \cong \FF_p[X] / (f_i(X))$).
+
+In particular, if $p$ is unramified then all the $e_i$ are equal to $1$, and we get
+\[ n = \deg f = \deg f_1 + \deg f_2 + \dots + \deg f_g. \]
+Once again we have a partition of $n$;
+we call this the \vocab{factorization pattern} of $f$ modulo $p$.
+So, to see the factorization pattern of an unramified $p$ in $\OO_E$,
+we just have to know the factorization pattern of the $f \pmod p$.
+
+Turning this on its head, if we want to know the factorization pattern of $f \pmod p$,
+we just need to know how $p$ decomposes.
+And it turns out these coincide even without the assumption that $E$ is monogenic.
+
+\begin{theorem}[Frobenius controls polynomial factorization]
+	\label{thm:factor_poly_frob}
+	Let $\alpha$ be an algebraic integer with minimal polynomial $f$,
+	and let $E = \QQ(\alpha)$.
+	Then for any prime $p$ unramified in the splitting field $K$ of $f$,
+	the following coincide:
+	\begin{enumerate}[(i)]
+		\ii The factorization pattern of $p$ in $E$.
+		\ii The factorization pattern of $f \pmod p$.
+		\ii The cycle structure associated to the action
+		of $\Frob_{\kP} \in \Gal(K/\QQ)$ on the roots of $f$,
+		where $\kP$ is above $p$ in $K$.
+	\end{enumerate}
+\end{theorem}
+\begin{example}[Factoring $x^3-2 \pmod 5$]
+	Let $\alpha = \cbrt2$ and $f = x^3-2$, so $E = \QQ(\cbrt2)$.
+	Set $p=5$ and let finally, let $K = \QQ(\cbrt2, \omega)$ be the splitting field.
+	Setup:
+	\begin{diagram}
+		K = \QQ(\cbrt2, \omega) && \kP && x^3-2 = (x-\cbrt2)(x-\cbrt2\omega)(x-\cbrt2\omega^2) \\
+		\dLine~2 && \dLine \\
+		E = \QQ(\sqrt[3]{2}) && \kp && x^3-2 = (x-\cbrt2)(x^2+\cbrt2x+\cbrt4) \\
+		\dLine~3 && \dLine \\
+		\QQ && (5) && x^3-2 \text{ irreducible over } \QQ
+	\end{diagram}
+	The three claimed objects now all have shape $2+1$:
+	\begin{enumerate}[(i)]
+		\ii By the Factoring Algorithm, we have
+		$(5) = (5, \cbrt2-3)(5, 9+3\cbrt2+\cbrt4)$.
+		\ii We have $x^3-2 \equiv (x-3)(x^2+3x+9) \pmod 5$.
+		\ii We saw before that $\Frob_{\kP} = (\bullet)(\bullet \; \bullet)$.
+	\end{enumerate}
+\end{example}
+
+\begin{proof}[Sketch of Proof]
+	Letting $n = \deg f$.
+	Let $H$ be the subgroup of $G = \Gal(K/\QQ)$ corresponding to $E$, so $[G:E] = n$.
+	Pictorially, we have
+	\begin{diagram}
+		K && \{1\} && \kP \\
+		\dLine && \dLine && \dLine \\
+		E = \QQ(\alpha) && H && \kp \\
+		\dLine && \dLine && \dLine \\
+		\QQ && G && (p)
+	\end{diagram}
+	We claim that (i), (ii), (iii) are all equivalent to
+	\begin{center}
+		(iv) The pattern of the action of $\Frob_{\kP}$ on the $G/H$.
+	\end{center}
+	In other words we claim the cosets correspond to the $n$ roots of $f$ in $K$.
+	Indeed $H$ is just the set of $\tau \in G$ such that $\tau(\alpha)=\alpha$,
+	so there's a bijection between the roots and the cosets $G/H$
+	by $\tau H \mapsto \tau(\alpha)$.
+	Think of it this way: if $G = S_n$, and $H = \{\tau : \tau(1) = 1\}$,
+	then $G/H$ has order $n! / (n-1)! = n$ and corresponds to the elements $\{1, \dots, n\}$.
+	So there is a natural bijection from (iii) to (iv).
+
+	The fact that (i) is in bijection to (iv) was the previous theorem,
+	\Cref{thm:frob_control_decomp}.
+	The correspondence (i) $\iff$ (ii) is a fact of Galois theory,
+	so we omit the proof here.
+\end{proof}
+
+All this can be done in general with $\QQ$ replaced by $F$;
+for example, in \cite{ref:lenstra_chebotarev}.
+
+\section{Example application: IMO 2003 problem 6}
+As an example of the power we now have at our disposal, let's prove:
+
+\begin{center}
+	\begin{minipage}{4.5cm}
+		\includegraphics[width=4cm]{media/IMO-2003-logo.png}
+	\end{minipage}%
+	\begin{minipage}{10cm}
+		\textbf{Problem 6}.
+		Let $p$ be a prime number.
+		Prove that there exists a prime number $q$ such that for every integer $n$,
+		the number $n^p-p$ is not divisible by $q$.
+	\end{minipage}
+\end{center}
+We will show, much more strongly, that there exist infinitely many primes $q$
+such that $X^p-p$ is irreducible modulo $q$.
+
+\begin{proof}[Solution]
+	Okay! First, we draw the tower of fields
+	\[ \QQ \subseteq \QQ(\sqrt[p]{p}) \subseteq K \]
+	where $K$ is the splitting field of $f(x) = x^p-p$.
+	Let $E = \QQ(\sqrt[p]{p})$ for brevity and note it has degree $[E:\QQ] = p$.
+	Let $G = \Gal(K/\QQ)$.
+	\begin{ques}
+		Show that $p$ divides the order of $G$. (Look at $E$.)
+	\end{ques}
+	Hence by Cauchy's theorem (\Cref{thm:cauchy_group}, which is a purely group-theoretic fact)
+	we can find a $\sigma \in G$ of order $p$.
+	By Chebotarev, there exist infinitely many rational (unramified) primes $q \neq p$
+	and primes $\kQ \subseteq \OO_K$ above $q$
+	such that $\Frob_\kQ = \sigma$.
+	(Yes, that's an uppercase Gothic $Q$. Sorry.)
+
+	We claim that all these $q$ work.
+
+	By \Cref{thm:factor_poly_frob}, the factorization of $f \pmod q$ is
+	controlled by the action of $\sigma = \Frob_\kQ$ on the roots of $f$.
+	But $\sigma$ has prime order $p$ in $G$!
+	So all the lengths in the cycle structure have to divide $p$.
+	Thus the possible factorization patterns of $f$ are
+	\[ p = \underbrace{1 + 1 + \dots + 1}_{\text{$p$ times}}
+	\quad\text{or}\quad p = p. \]
+	So we just need to rule out the $p = 1 + \dots + 1$ case now:
+	this only happens if $f$ breaks into linear factors mod $q$.
+	Intuitively this edge case seems highly unlikely (are we really so unlucky
+	that $f$ factors into \emph{linear} factors when we want it to be irreducible?).
+	And indeed this is easy to see: this means that $\sigma$ fixes all
+	of the roots of $f$ in $K$, but that means $\sigma$ fixes $K$ altogether,
+	and hence is the identity of $G$, contradiction.
+\end{proof}
+\begin{remark}
+	In fact $K = \QQ(\sqrt[p]{p}, \zeta_p)$, and $\left\lvert G \right\rvert = p(p-1)$.
+	With a little more group theory, we can show that in fact the density of
+	primes $q$ that work is $\frac 1p$.
+\end{remark}
+
+\section\problemhead
+
+\begin{problem}
+	Show that for an odd prime $p$, \[ \left( \frac 2p \right) = (-1)^{\frac 18(p^2-1)}. \]
+	\begin{hint}
+		Modify the end of the proof of quadratic reciprocity.
+	\end{hint}
+	\begin{sol}
+		It is still true that
+		\[ \left( \frac 2q \right) = 1
+		\iff \sigma_2 \in H \iff \text{$2$ splits in $\ZZ\left[ \tfrac12(1+\sqrt{q^\ast}) \right]$}. \]
+		Now, $2$ splits in the ring if and only if $t^2 - t - \tfrac14(1-q^\ast)$
+		factors mod $2$. This happens if and only if $q^\ast \equiv 1 \pmod 8$.
+		One can check this is exactly if $q \equiv \pm 1 \pmod 8$, which gives the conclusion.
+	\end{sol}
+\end{problem}
+
+\begin{problem}
+	Let $f$ be a nonconstant polynomial with integer coefficients.
+	Suppose $f \pmod p$ splits completely into linear factors
+	for all sufficiently large primes $p$.
+	Show that $f$ splits completely into linear factors.
+\end{problem}
+
+\begin{dproblem}
+	[Dirichlet's theorem on arithmetic progressions]
+	Let $a$ and $m$ be relatively prime positive integers.
+	Show that the density of primes $p \equiv a \pmod m$ is exactly $\frac{1}{\phi(m)}$.
+	\begin{hint}
+		Chebotarev Density on $\QQ(\zeta_m)$.
+	\end{hint}
+	\begin{sol}
+		Let $K = \Gal(\QQ(\zeta_m)/\QQ)$.
+		One can show that $\Gal(K/\QQ) \cong \Zm m$ exactly as before.
+		In particular, $\Gal(K/\QQ)$ is abelian and therefore its conjugacy classes
+		are singleton sets; there are $\phi(m)$ of them.
+
+		As long as $p$ is sufficiently large, it is unramified
+		and $\sigma_p = \Frob_\kp$ for any $\kp$ above $p$
+		(as $m$th roots of unity will be distinct modulo $p$;
+		differentiate $x^m-1$ mod $p$ again).
+	\end{sol}
+\end{dproblem}
+
+\begin{problem}
+	Let $n$ be an odd integer which is not a prime power.
+	Show that the $n$th cyclotomic polynomial is not
+	irreducible modulo \emph{any} rational prime.
+	% http://mathoverflow.net/questions/12366/how-many-primes-stay-inert-in-a-finite-non-cyclic-extension-of-number-fields
+\end{problem}
+
+\begin{problem}
+	[Putnam 2012 B6]
+	\yod
+	Let $p$ be an odd prime such that $p \equiv 2 \pmod 3$.
+	Let $\pi$ be a permutation of $\FF_p$ by $\pi(x) = x^3 \pmod p$.
+	Show that $\pi$ is even if and only if $p \equiv 3 \pmod 4$.
+	\begin{hint}
+		By primitive roots, it's the same as the action of $\times 3$ on $\Zcc{p-1}$.
+		Let $\zeta$ be a $(p-1)$st root of unity.
+		Take $d = \prod_{i < j} (\zeta^i - \zeta^j)$, think about $\QQ(d)$,
+		and figure out how to act on it by $x \mapsto x^3$.
+	\end{hint}
+	\begin{sol}
+		This solution is by David Corwin.
+		By primitive roots, it's the same as the action of $\times 3$ on $\Zcc{p-1}$.
+		Let $\zeta$ be a $(p-1)$st root of unity.
+
+		Consider 
+		\[ d = \prod_{0 \le i < j < p-1} (\zeta^i - \zeta^j). \]
+		This is the square root of the discriminant of 
+		the polynomial $X^{p-1}-1$; in other words $d^2 \in \ZZ$.
+		In fact, by elementary methods one can compute
+		\[ (-1)^{\binom{p-1}{2}} d^2 = -(p-1)^{p-1} \]
+
+		Now take the extension $K = \QQ(d)$, noting that
+		\begin{itemize}
+			\ii If $p \equiv 3 \pmod 4$, then $d = (p-1)^{\half(p-1)}$, so $K = \QQ$.
+			\ii If $p \equiv 1 \pmod 4$, then $d = i(p-1)^{\half(p-1)}$, so $K = \QQ(i)$.
+		\end{itemize}
+		Either way, in $\OO_K$, let $\kp$ be a prime ideal above $(3) \subseteq \OO_K$.
+		Let $\sigma = \Frob_\kp$ then be the unique element such that
+		$\sigma(x) = x^3 \pmod{\kp}$ for all $x$.
+		Then, we observe that
+		\[
+			\sigma(d) \equiv \prod_{0 \le i < j < p-1} (\zeta^{3i} - \zeta^{3j})
+			\equiv \begin{cases}
+				+d & \text{if $\pi$ is even} \\
+				-d & \text{if $\pi$ is odd}
+			\end{cases} \pmod{\kp}.
+		\]
+		Now if $K = \QQ$, then $\sigma$ is the identity, thus $\sigma$ even.
+		Conversely, if $K = \QQ(i)$, then $3$ does not split, so $\sigma(d) = -d$
+		(actually $\sigma$ is complex conjugation) thus $\pi$ is odd.
+
+		Note the condition that $p \equiv 2 \pmod 3$ is used only
+		to guarantee that $\pi$ is actually a permutation (and thus $d \neq 0$);
+		it does not play any substantial role in the solution.
+	\end{sol}
+\end{problem}

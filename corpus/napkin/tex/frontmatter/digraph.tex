@@ -1,0 +1,73 @@
+%\chapter*{Graph of Chapter Dependencies}
+%\addcontentsline{toc}{chapter}{Graph of Chapter Dependencies}
+
+\bgroup
+\renewcommand{\href}[1]{} % temp disable links
+\renewcommand{\solidwidth}{0.7pt}
+\renewcommand{\boldwidth}{1.5pt}
+
+\setcounter{diagheight}{50}
+\begin{chart}
+\reqhalfcourse 20,45:{Ch 1,3-5}{Abs Alg}{}
+\reqhalfcourse 55,45:{Ch 2,6-8}{Topology}{}
+\halfcourse 33,45:{Ch 9-15,18}{Lin Alg}{}
+\halfcourse 5,35:{Ch 16}{Grp Act}{}
+\halfcourse 5,24:{Ch 17}{Grp Classif}{}
+\halfcourse 30,35:{Ch 19-22}{Rep Th}{}
+\halfcourse 45,43:{Ch 23-25}{Quantum}{}
+\halfcourse 64,38:{Ch 26-30}{Calc}{}
+\halfcourse 64,30:{Ch 31-33}{Cmplx Ana}{}
+\halfcourse 55,20:{Ch 34-41}{Measure/Pr}{}
+\halfcourse 48,28:{Ch 42-45}{Diff Geo}{}
+\halfcourse 40,10:{Ch 46-51}{Alg NT 1}{}
+\halfcourse 40,0:{Ch 52-56}{Alg NT 2}{}
+\halfcourse 23,10:{Ch 57-59}{Alg Top 1}{}
+\halfcourse 20,28:{Ch 60-63}{Cat Th}{}
+\halfcourse 23,0:{Ch 64-69}{Alg Top 2}{}
+\halfcourse 6,10:{Ch 70-74}{Alg Geo 1}{}
+\halfcourse 6,0:{Ch 75-80}{Alg Geo 2-3}{}
+\reqhalfcourse 5,45:{Ch 81-87}{Set Theory}{}
+
+%% Basic alg ch
+\prereqc 20,45,30,35;0:    % Abs Alg -> Rep Th
+\coreqc  20,45,33,45;0:    % Abs Alg -> Lin Alg
+\prereqc 33,45,30,35;0:    % Lin Alg -> Rep Th
+\prereqc 33,45,45,43;0:    % Lin Alg -> Quantum
+%% Category theory
+\prereqc 20,45,20,28;0:    % Grp -> Cat Th
+\coreqc  20,45,20,28;0:    % Abs Alg -> Cat Th
+\coreqc  33,45,20,28;80:   % Lin Alg -> Cat Th
+\coreqc  55,45,20,28;-40:  % Top -> Cat Th
+\coreqc  20,28,30,35;0:    % Cat Th -> Rep Th
+%% Group theory chain
+\prereqc 20,45,5,35;0:     % Grp -> Grp Act
+\prereqc  5,35,5,24;0:     % Grp Act -> Grp Class
+%% Analysis chain
+\prereqc 33,45,48,28;30:   % Lin Alg -> Diff Geo
+\prereqc 55,45,64,38;0:    % Top -> Diff Geo
+\coreqc  64,38,48,28;50:   % Calc -> Diff Geo
+\prereqc 55,45,48,28;10:   % Top -> Diff Geo
+\prereqc 55,45,64,38;0:    % Top -> Calc
+\coreqc  64,38,64,30;0:    % Calc -> Cmplx Ana
+\prereqc 55,45,64,30;-10:  % Top -> Cmplx Ana
+\prereqc 55,45,55,20;0:    % Top -> Meas/Pr
+\coreqc  64,38,55,20;50:   % Calc -> Meas/Pr
+%% Alg Geom
+\prereqc 6,10,6,0;0:       % AG1 -> AG2
+\prereqc 20,45,6,10;0:     % Abs Alg -> AG1
+\prereqc 55,45,6,10;-40:   % Top -> AG1
+\coreqc  20,28,6,10;0:     % Cat Th -> AG1
+\prereqc 20,28,6,0;-18:    % Cat -> AG2
+%% Alg Top
+\prereqc 23,10,23,0;0:     % AT1 -> AT2
+\prereqc 55,45,23,10;0:    % Top -> AT1
+\prereqc  5,35,23,10;20:   % Grp Act -> AT1
+\coreqc 23,10,20,28;20:    % AT1 -> Cat
+\prereqc 20,28,23,0;-190:  % Cat -> AT2
+%% Alg NT
+\prereqc 40,10,40,0;0:     % ANT1 -> ANT2
+\prereqc 20,45,40,10;-40:  % Abs Alg -> ANT1
+\prereqc 33,45,40,10;50:   % Lin Alg -> ANT1
+\prereqc  5,35,40,0;10:    % Grp Act -> ANT2
+\end{chart}
+\egroup

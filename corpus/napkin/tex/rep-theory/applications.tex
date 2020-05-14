@@ -1,0 +1,245 @@
+\chapter{Some applications}
+With all this setup, we now take the time to develop some nice
+results which are of independent interest.
+
+\section{Frobenius divisibility}
+\begin{theorem}
+	[Frobenius divisibility]
+	Let $V$ be a complex irrep of a finite group $G$.
+	Then $\dim V$ divides $|G|$.
+\end{theorem}
+The proof of this will require algebraic integers
+(developed in the algebraic number theory chapter).
+Recall that an \emph{algebraic integer} is a complex number
+which is the root of a polynomial with integer coefficients,
+and that these algebraic integers form a ring $\ol\ZZ$
+under addition and multiplication, and that $\ol\ZZ \cap \QQ = \ZZ$.
+
+First, we prove:
+\newcommand{\tempuuujbhtkx}{$\ZZ[G]$}
+\begin{lemma}[Elements of \tempuuujbhtkx\ are integral]
+	\label{lem:group_ring_integral}
+	Let $\alpha \in \ZZ[G]$.
+	Then there exists a monic polynomial $P$ with integer coefficients
+	such that $P(\alpha) = 0$.
+\end{lemma}
+\begin{proof}
+	Let $A_k$ be the $\ZZ$-span of $1, \alpha^1, \dots, \alpha^k$.
+	Since $\ZZ[G]$ is Noetherian,
+	the inclusions $A_0 \subseteq A_1 \subseteq A_2 \subseteq \dots$
+	cannot all be strict, hence $A_k = A_{k+1}$ for some $k$,
+	which means $\alpha^{k+1}$ can be expressed in terms of
+	lower powers of $\alpha$.
+\end{proof}
+
+\begin{proof}
+	[Proof of Frobenius divisibility]
+	Let $C_1$, \dots, $C_m$ denote the conjugacy classes of $G$.
+	Then consider the rational number \[ \frac{|G|}{\dim V}; \]
+	we will show it is an algebraic integer, which will prove the theorem.
+	Observe that we can rewrite it as
+	\[
+		\frac{|G|}{\dim V}
+		= \frac{|G| \left< \chi_V, \chi_V \right>}{\dim V}
+		= \sum_{g \in G} \frac{\chi_V(g) \ol{\chi_V(g)}}{\dim V}.
+	\]
+	We split the sum over conjugacy classes, so
+	\[
+		\frac{|G|}{\dim V}
+		=
+		\sum_{i=1}^m \ol{\chi_V(C_i)} \cdot \frac{|C_i| \chi_V(C_i)}{\dim V}.
+	\]
+	We claim that for every $i$,
+	\[ \frac{|C_i| \chi_V(C_i)}{\dim V}
+		= \frac{1}{\dim V} \Tr T_i \]
+	is an algebraic integer,
+	where \[ T_i \defeq \rho\left(\sum_{h \in C_i} h\right). \]
+	To see this, note that $T_i$ commutes with elements of $G$,
+	and hence is an intertwining operator $T_i : V \to V$.
+	Thus by Schur's lemma, $T_i = \lambda_i \cdot \id_V$
+	and $\Tr T = \lambda_i \dim V$.
+	By \Cref{lem:group_ring_integral}, $\lambda_i \in \ol\ZZ$, as desired.
+	
+	Now we are done, since $\ol{\chi_V(C_i)} \in \ol\ZZ$ too
+	(it is the sum of conjugates of roots of unity),
+	so $\frac{|G|}{\dim V}$ is the sum of products of algebraic integers,
+	hence itself an algebraic integer.
+\end{proof}
+
+\section{Burnside's theorem}
+We now prove a group-theoretic result.
+This is the famous poster child for representation theory
+(in the same way that RSA is the poster child of number theory)
+because the result is purely group theoretic.
+
+Recall that a group is \vocab{simple} if it has no normal subgroups.
+In fact, we will prove:
+\begin{theorem}[Burnside]
+	Let $G$ be a nonabelian group of order $p^a q^b$ (where $p,q$ are distinct primes and $a,b \ge 0$).
+	Then $G$ is not simple.
+\end{theorem}
+In what follows $p$ and $q$ will always denote prime numbers.
+
+\begin{lemma}[On $\gcd(|C|, \dim V) = 1$]
+	\label{lem:burnside_ant_lemma}
+	Let $V = (V, \rho)$ be an complex irrep of $G$.
+	Assume $C$ is a conjugacy class of $G$ with $\gcd(|C|, \dim V) = 1$.
+	Then for any $g \in C$, either
+	\begin{itemize}
+		\ii $\rho(g)$ is multiplication by a scalar, or
+		\ii $\chi_V(g) = \Tr \rho(g) = 0$.
+	\end{itemize}
+\end{lemma}
+\begin{proof}
+	If $\eps_i$ are the $n$ eigenvalues of $\rho(g)$ (which are roots of unity),
+	then from the proof of Frobenius divisibility we know
+	$\frac{|C|}{n} \chi_V(g) \in \ol\ZZ$,
+	thus from $\gcd(|C|, n) = 1$ we get 
+	\[ \frac1n \chi_V(g) = \frac1n(\eps_1 + \dots + \eps_n) \in \ol\ZZ. \]
+	So this follows readily from a fact from algebraic number theory,
+	namely \Cref{prob:rep_lemma}:
+	either $\eps_1 = \dots = \eps_n$ (first case) or
+	$\eps_1 + \dots + \eps_n = 0$ (second case).
+\end{proof}
+
+\begin{lemma}
+	[Simple groups don't have prime power conjugacy classes]
+	Let $G$ be a finite simple group.
+	Then $G$ cannot have a conjugacy class of order $p^k$ (where $k > 0$).
+\end{lemma}
+\begin{proof}
+	By contradiction.
+	Assume $C$ is such a conjugacy class, and fix any $g \in C$.
+	By the second orthogonality formula (\Cref{prob:second_orthog})
+	applied $g$ and $1_G$ (which are not conjugate since $g \neq 1_G$) we have
+	\[ \sum_{i=1}^r \dim V_i \chi_{V_i}(g) = 0 \]
+	where $V_i$ are as usual all irreps of $G$.
+	\begin{exercise}
+		Show that there exists a nontrivial irrep $V$
+		such that $p \nmid \dim V$ and $\chi_V(g) \neq 0$.
+		(Proceed by contradiction to show that $-\frac1p \in \ol\ZZ$ if not.)
+	\end{exercise}
+	Let $V = (V, \rho)$ be the irrep mentioned.
+	By the previous lemma, we now know that $\rho(g)$ acts as a scalar in $V$.
+
+	Now consider the subgroup
+	\[ H = \left< ab\inv \mid a,b \in C \right> \subseteq G. \]
+	We claim this is a nontrivial normal subgroup of $G$.
+	It is easy to check $H$ is normal,
+	and since $|C| > 1$ we have that $H$ is nontrivial.
+	As represented by $V$ each element of $H$ acts trivially in $G$,
+	so since $V$ is nontrivial and irreducible, $H \neq G$.
+	This contradicts the assumption that $G$ was simple.
+\end{proof}
+
+With this lemma, Burnside's theorem follows by partitioning
+the $|G|$ elements of our group into conjugacy classes.
+Assume for contradiction $G$ is simple.
+Each conjugacy class must have order either $1$ (of which there are $|Z(G)|$ by \Cref{prob:class_eq})
+or divisible by $pq$ (by the previous lemma), but on the other hand the sum equals $|G| = p^aq^b$.
+Consequently, we must have $|Z(G)| > 1$.
+But $G$ is not abelian, hence $Z(G) \neq G$,
+thus the center $Z(G)$ is a nontrivial normal subgroup,
+contradicting the assumption that $G$ was simple.
+
+
+
+\section{Frobenius determinant}
+We finish with the following result,
+the problem that started the branch of representation theory.
+Given a finite group $G$,
+we create $n$ variables $\{x_g\}_{g \in G}$,
+and an $n \times n$ matrix $M_G$ whose $(g,h)$th entry is $x_{gh}$.
+\begin{example}[Frobenius determinants]
+	\listhack
+	\begin{enumerate}[(a)]
+	\ii If $G = \Zc 2 = \left< T \mid T^2 = 1\right>$
+	then the matrix would be \[ M_G =
+	\begin{bmatrix} x_{\id} & x_T \\ x_T & x_{\id} \end{bmatrix}. \]
+	Then $\det M_G = (x_{\id}-x_T)(x_{\id}+x_T)$.
+	\ii If $G = S_3$, a long computation gives
+	the irreducible factorization of $\det M_G$ is
+	\[
+		\left( \sum_{\sigma \in S_3} x_{\sigma} \right)
+		\left( \sum_{\sigma \in S_3} \sign(\sigma)x_\sigma \right)
+		\Big( F\left(x_\id, x_{(123)}, x_{(321)}\right)
+		- F\left(x_{(12)}, x_{(23)}, x_{(31)}\right) \Big)^2 \]
+	where $F(a,b,c) = a^2+b^2+c^2-ab-bc-ca$;
+	the latter factor is irreducible.
+	\end{enumerate}
+\end{example}
+\begin{theorem}
+	[Frobenius determinant]
+	The polynomial $\det M_G$ (in $|G|$ variables) factors
+	into a product of irreducible polynomials such that
+	\begin{enumerate}[(i)]
+		\ii The number of polynomials equals the number
+		of conjugacy classes of $G$, and
+		\ii The multiplicity of each polynomial
+		equals its degree.
+	\end{enumerate}
+\end{theorem}
+You may already be able to guess how the ``sum of squares'' result
+is related! (Indeed, look at $\deg\det M_G$.)
+
+Legend has it that Dedekind observed this behavior first in 1896.
+He didn't know how to prove it in general,
+so he sent it in a letter to Frobenius,
+who created representation theory to solve the problem.
+
+With all the tools we've built, it is now fairly straightforward
+to prove the result.
+
+\begin{proof}
+	Let $V = (V, \rho) = \Reg(\CC[G])$ and let $V_1$, \dots, $V_r$
+	be the irreps of $G$.
+	Let's consider the map $T \colon \CC[G] \to \CC[G]$
+	which has matrix $M_G$ in the usual basis of $\CC[G]$, namely
+	\[ T : T(\{x_g\}_{g \in G}) = \sum_{g \in G} x_g \rho(g) \in \Mat(V). \]
+	Thus we want to examine $\det T$.
+
+	But we know that $V = \bigoplus_{i=1}^r V_i^{\oplus \dim V_i}$
+	as before, and so breaking down $T$ over its subspaces we know
+	\[
+		\det T
+		= \prod_{i=1}^r \left( \det (T \restrict{V_i})  \right)^{\dim V_i}.
+	\]
+	So we only have to show two things:
+	the polynomials $\det T_{V_i}$ are irreducible,
+	and they are pairwise different for different $i$.
+
+	Let $V_i = (V_i, \rho)$, and pick $k = \dim V_i$.
+	\begin{itemize}
+		\ii \emph{Irreducible}:
+		By the density theorem, for any $M \in \Mat(V_i)$ there exists
+		a \emph{particular} choice of complex numbers $x_g \in G$ such that
+		\[
+			M = \sum_{g \in G} x_g
+			\cdot \rho_i(g)
+			= (T \restrict{V_i})(\{x_g\}).
+		\]
+		View $\rho_i(g)$ as a $k \times k$ matrix with complex coefficients.
+		Thus the ``generic'' $(T \restrict{V_i})(\{x_g\})$, viewed as a matrix with
+		polynomial entries, must have linearly independent entries
+		(or there would be some matrix in $\Mat(V_i)$ that we can't achieve).
+
+		Then, the assertion follows (by a linear variable change)
+		from the simple fact that the polynomial
+		$\det (y_{ij})_{1 \le i, j \le m}$ in $m^2$ variables
+		is always irreducible.
+
+		\ii \emph{Pairwise distinct}:
+		We show that from $\det T|_{V_i}(\{x_g\})$ we can read
+		off the character $\chi_{V_i}$, which proves the claim.
+		In fact
+		\begin{exercise}
+			Pick \emph{any} basis for $V_i$.
+			If $\dim V_i = k$, and $1_G \neq g \in G$, then
+			\[
+				\chi_{V_i} (g)
+				\text{ is the coefficient of } x_g x_{1_G}^{k-1}.
+			\]
+		\end{exercise}
+		Thus, we are done. \qedhere
+	\end{itemize}
+\end{proof}

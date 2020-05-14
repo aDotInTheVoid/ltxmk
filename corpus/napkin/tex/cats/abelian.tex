@@ -1,0 +1,412 @@
+\chapter{Abelian categories}
+In this chapter I'll translate some more familiar concepts into categorical language;
+this will require some additional assumptions about our category,
+culminating in the definition of a so-called ``abelian category''.
+Once that's done, I'll be able to tell you what this ``diagram chasing'' thing is all about.
+
+Throughout this chapter, ``$\injto$'' will be used for monic maps and ``$\surjto$'' for epic maps.
+
+\section{Zero objects, kernels, cokernels, and images}
+\prototype{In $\catname{Grp}$, the trivial group and homomorphism
+are the zero objects and morphisms.
+If $G$, $H$ are abelian then the cokernel
+of $\phi : G \to H$ is $H/\img \phi$.}
+
+A \vocab{zero object} of a category is an object $0$ which is both initial and terminal;
+of course, it's unique up to unique isomorphism.
+For example, in $\catname{Grp}$ the zero object is the trivial group, 
+in $\catname{Vect}_k$ it's the zero-dimensional vector space consisting of one point, and so on.
+\begin{ques}
+	Show that $\catname{Set}$ and $\catname{Top}$ don't have zero objects.
+\end{ques}
+For the rest of this chapter, all categories will have zero objects.
+
+In a category $\AA$ with zero objects, any two objects $A$ and $B$ thus have a distinguished morphism
+\[ A \to 0 \to B \]
+which is called the \vocab{zero morphism} and also denoted $0$.
+For example, in $\catname{Grp}$ this is the trivial homomorphism.
+
+We can now define:
+\begin{definition}
+	Consider a map $A \taking f B$.
+	The \vocab{kernel} is defined as the equalizer of this map and the map $A \taking 0 B$.
+	Thus, it's a map $\ker f : \Ker f \injto A$ such that
+	\begin{diagram}
+		\Ker f && \\
+		\dInj^{\ker f} & \rdDashed^0 & \\
+		A & \rTo_f & B
+	\end{diagram}
+	commutes, and moreover any other map with the same property factors uniquely through $\Ker A$
+	(so it is universal with this property).
+	By \Cref{prob:equalizer_monic}, $\ker f$ is a monic morphism, 
+	which justifies the use of ``$\injto$''.
+\end{definition}
+Notice that we're using $\ker f$ to represent the map and $\Ker f$ to represent the object
+Similarly, we define the cokernel, the dual notion:
+\begin{definition}
+	Consider a map $A \taking f B$.
+	The \vocab{cokernel} of $f$ is a map $\coker f: B \surjto \Coker f$ such that
+	\begin{diagram}
+		A & \rTo^f & B \\
+		& \rdDashed_0 & \dSurj_{\coker f} \\
+		&& \Coker f
+	\end{diagram}
+	commutes, and moreover any other map with the same property factors
+	uniquely through $\Coker f$ (so it is universal with this property).
+	Thus it is the ``coequalizer'' of this map and the map $A \taking 0 B$.
+	By the dual of \Cref{prob:equalizer_monic}, $\coker f$ is an epic morphism,
+	which justifies the use of ``$\surjto$''.
+\end{definition}
+Think of the cokernel of a map $A \taking f B$ as ``$B$ modulo the image of $f$'', e.g.
+\begin{example}
+	[Cokernels]
+	Consider the map $\Zc6 \to D_{12} = \left\langle r,s \mid r^6=s^2=1, rs=sr\inv\right\rangle$.
+	Then the cokernel of this map in $\catname{Grp}$ is $D_{12} / \left\langle r \right\rangle \cong \Zc 2$.
+\end{example}
+This doesn't always work out quite the way we want since in general the image of
+a homomorphism need not be normal in the codomain.
+Nonetheless, we can use this to define:
+\begin{definition}
+	The \vocab{image} of $A \taking f B$ is the kernel of $\coker f$.
+	We denote $\Img f = \Ker(\coker f)$.
+	This gives a unique map $\img f : A \to \Img f$.
+\end{definition}
+When it exists, this coincides with our concrete notion of ``image''.
+Picture:
+\begin{diagram}
+	A & \rTo^f & B \\
+	& \rdTo(1,2)~{\exists!} \rdDashed(3,2)^{0\qquad\qquad} \ruInj(1,2) & & \rdSurj(1,2)^{\coker f} \\
+	& \Img f & \rDashed^0 & \Coker f
+\end{diagram}
+Note that by universality of $\Img f$,
+we find that there is a unique map $\img f : A \to \Img f$ that makes the entire diagram commute.
+
+\section{Additive and abelian categories}
+\prototype{$\catname{Ab}$, $\catname{Vect}_k$, or more generally $\catname{Mod}_R$.}
+We can now define the notion of an additive and abelian category,
+which are the types of categories where this notion is most useful.
+
+\begin{definition}
+	An \vocab{additive category} $\AA$ is one such that:
+	\begin{itemize}
+		\ii $\AA$ has a zero object, and any two objects have a product.
+		\ii More importantly: every $\Hom_\AA(A, B)$ forms an \emph{abelian group} (written additively)
+		such that composition distributes over addition:
+		\[ (g+h)\circ f = g\circ f + h\circ f
+			\quad\text{and}\quad
+			f\circ(g+h) = f\circ g + f \circ h. \]
+		The zero map serves as the identity element for each group.
+\end{itemize}
+\end{definition}
+\begin{definition}
+	An \vocab{abelian category} $\AA$ is one with the additional properties that
+	for any morphism $A \taking f B$,
+	\begin{itemize}
+		\ii The kernel and cokernel exist, and
+		\ii The morphism factors through the image so that $\img(f)$ is epic.
+	\end{itemize}
+	So, this yields a diagram
+	\begin{diagram}
+		\Ker(f) & \rInj^{\quad\ker(f)} & A & \rSurj^{\img(f)\quad} & \Img(f) & \rInj & B & \rSurj^{\coker(f)} \Coker(f).
+	\end{diagram}
+\end{definition}
+
+\begin{example}[Examples of abelian categories]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii $\catname{Vect}_k$, $\catname{Ab}$ are abelian categories,
+		where $f+g$ takes its usual meaning.
+		\ii Generalizing this, the category $\catname{Mod}_R$ of $R$-modules is abelian.
+		\ii $\catname{Grp}$ is not even additive, because there is no way to assign
+		a commutative addition to pairs of morphisms.
+	\end{enumerate}
+\end{example}
+
+In general, once you assume a category is abelian, all the properties you would want
+of these kernels, cokernels, \dots\ that you would guess hold true.
+For example,
+\begin{proposition}[Monic $\iff$ trival kernel]
+	A map $A \taking f B$ is monic if and only if its kernel is $0 \to A$.
+	Dually, $A \taking f B$ is epic if and only if its cokernel is $B \to 0$.
+\end{proposition}
+\begin{proof}
+	The easy direction is:
+	\begin{exercise}
+		Show that if $A \taking f B$ is monic, then $0 \to A$ is a kernel.
+		(This holds even in non-abelian categories.)
+	\end{exercise}
+	Of course, since kernels are unique up to isomorphism, monic $\implies$ $0$ kernel.
+	On the other hand, assume that $0 \to A$ is a kernel of $A \taking f B$.
+	For this we can exploit the group structure of the underlying homomorphisms now.
+	Assume the diagram
+	\begin{diagram}
+		Z & \pile{\rTo^g \\ \rTo_h} & A & \rTo^f & B
+	\end{diagram}
+	commutes.
+	Then $(g - h) \circ f = g \circ f - h \circ f = 0$, and we've arrived at a commutative diagram.
+	\begin{diagram}
+		Z && \\
+		\dTo^{g-h} & \rdDotted^0 & \\
+		A & \rTo_f & B
+	\end{diagram}
+	But since $0 \to A$ is a kernel it follows that $g-h$ factors through $0$,
+	so $g-h = 0 \implies g = h$, which is to say that $f$ is monic.
+\end{proof}
+\begin{proposition}[Isomorphism $\iff$ monic and epic]
+	In an abelian category,
+	a map is an isomorphism if and only if it is monic and epic.
+\end{proposition}
+\begin{proof}
+	Omitted. (The Mitchell embedding theorem
+	presented later implies this anyways for
+	most situations we care about,
+	by looking at a small sub-category.)
+\end{proof}
+
+\section{Exact sequences}
+\prototype{$0 \to G \to G \times H \to H \to 0$ is exact.}
+Exact sequences will seem exceedingly unmotivated until you learn about homology groups,
+which is one of the most natural places that exact sequences appear.
+In light of this, it might be worth trying to read the chapter on homology groups
+simultaneously with this one.
+
+First, let me state the definition for groups, to motivate the general categorical definition.
+A sequence of groups
+\[ G_0 \taking{f_1} G_1 \taking{f_2} G_2 \taking{f_3} \dots \taking{f_n} G_n \]
+is \emph{exact} at $G_k$ if the image of $f_k$ is the kernel of $f_{k+1}$.
+We say the entire sequence is exact if it's exact at $k=1,\dots,n-1$.
+\begin{example}
+	[Exact sequences]
+	\listhack
+	\begin{enumerate}[(a)]
+		\ii The sequence
+		\[ 0 \to \Zc 3
+			\overset{\times 5}{\injto} \Zc{15}
+			\surjto \Zc{5}
+			\to 0 \]
+		is exact.
+		Actually, $0 \to G \injto G \times H \surjto H \to 0$ is exact in general.
+		(Here $0$ denotes the trivial group.)
+		\ii For groups, the map $0 \to A \to B$ is exact if and only if $A \to B$ is injective.
+		\ii For groups, the map $A \to B \to 0$ is exact if and only if $A \to B$ is surjective.
+	\end{enumerate}
+\end{example}
+
+Now, we want to mimic this definition in a general \emph{abelian} category $\AA$.
+So, let's write down a criterion for when $A \taking f B \taking g C$ is exact.
+First, we had better have that $g \circ f = 0$,
+which encodes the fact that $\img(f) \subseteq \ker(g)$.
+Adding in all the relevant objects, we get the commutative diagram below.
+\begin{diagram}
+	A && \rDashed^0 && C \\
+	\dSurj^{\img f} & \rdTo(2,1)^f & B & \ruTo(2,1)^g & \uDashed_0 \\
+	\Img f & \ruInj(2,1)_{\iota} & \rDotted_{\exists!} & \luInj(2,1) & \Ker g \\
+\end{diagram}
+Here the map $A \surjto \Img f$ is epic since we are assuming $\AA$ is an abelian category.
+So, we have that
+\[ 0 = (g \circ \iota) \circ \img f = g \circ (\iota \circ \img f) = g \circ f = 0 \]
+but since $\img f$ is epic, this means that $g \circ \iota = 0$.
+So there is a \emph{unique} map $\Img f \to \Ker g$, and we require that this diagram commutes.
+In short,
+\begin{definition}
+	Let $\AA$ be an abelian category. The sequence
+	\[ \dots \to A_{n-1} \taking{f_n} A_n \taking{f_{n+1}} A_{n+1} \to \dots \]
+	is \vocab{exact} at $A_n$ if $f_n \circ f_{n+1} = 0$ and
+	the canonical map $\Img f_n \to \Ker f_{n+1}$ is an isomorphism.
+	The entire sequence is exact if it is exact at each $A_i$.
+	(For finite sequences we don't impose condition on the very first and very last object.)
+\end{definition}
+
+\begin{exercise}
+	Show that, as before, $0 \to A \to B$ is exact $\iff$ $A \to B$ is monic.
+\end{exercise}
+
+\section{The Freyd-Mitchell embedding theorem}
+We now introduce the Freyd-Mitchell embedding theorem,
+which essentially says that any abelian category can be realized as a concrete one.
+
+\begin{definition}
+	A category is \vocab{small} if $\obj(\AA)$ is a set (as opposed to a class),
+	i.e.\ there is a ``set of all objects in $\AA$''.
+	For example, $\catname{Set}$ is not small because there is no set of all sets.
+\end{definition}
+
+\begin{theorem}
+	[Freyd-Mitchell embedding theorem]
+	Let $\AA$ be a small abelian category.
+	Then there exists a ring $R$ (with $1$ but possibly non-commutative)
+	and a full, faithful, exact functor onto the category of left $R$-modules.
+\end{theorem}
+Here a functor is \vocab{exact} if it preserves exact sequences.
+This theorem is good because it means
+\begin{moral}
+	You can basically forget about all the weird definitions
+	that work in any abelian category.
+\end{moral}
+Any time you're faced with a statement about an abelian category,
+it suffices to just prove it for a ``concrete'' category
+where injective/surjective/kernel/image/exact/etc.\
+agree with your previous notions.
+A proof by this means is sometimes called \emph{diagram chasing}.
+
+\begin{remark}
+	The ``small'' condition is a technical obstruction
+	that requires the objects $\AA$ to actually form a set.
+	I'll ignore this distinction,
+	because one can almost always work around it
+	by doing enough set-theoretic technicalities.
+\end{remark}
+
+For example, let's prove:
+\begin{lemma}
+	[Short five lemma]
+	In an abelian category, consider the commutative diagram
+	\begin{diagram}
+		0 & \rTo & A & \rInj^p & B & \rSurj^q & C & \rTo & 0 \\
+		&& \dTo^\cong_\alpha && \dTo_\beta && \dTo^\cong_\gamma && \\
+		0 & \rTo & A' & \rInj^{p'} & B' & \rSurj^{q'} & C' & \rTo & 0
+	\end{diagram}
+	and assume the top and bottom rows are exact.
+	If $\alpha$ and $\gamma$ are isomorphisms, then so is $\beta$.
+\end{lemma}
+
+\begin{proof}
+	We prove that $\beta$ is epic (with a similar proof to get monic).
+%	One can show that it's possible to take a small subcategory of $\AA$
+%	containing the $10$ elements and $13$ arrows above, as well as all necessary
+%	kernels, cokernels, et cetera.
+%	(Essentially, let $\BB_0$ be the diagram above and let $\BB_{i+1}$ add in any needed objects;
+%	then $\bigcup \BB_i$ is a set-sized category).
+	By the embedding theorem we can treat the category as $R$-modules over some $R$.
+	This lets us do a so-called ``diagram chase'' where we move elements around the picture,
+	using the concrete interpretation of our category as $R$-modules.
+
+	Let $b'$ be an element of $B'$.
+	Then $q'(b') \in C'$, and since $\gamma$ is surjective, we have a $c$ such that $\gamma(c) = b'$,
+	and finally a $b \in B$ such that $q(b) = c$.
+	Picture:
+	\begin{diagram}
+		b \in B & \rMapsto^q & c \in C \\
+		\dDashed_\beta && \dMapsto^\cong_\gamma \\
+		b' \in B' & \rMapsto^{q'} & c' \in C'
+	\end{diagram}
+	Now, it is not necessarily the case that $\beta(b) = b'$.
+	However, since the diagram commutes we at least have that
+	\[ q'(b') = q'(\beta(b)) \]
+	so $b' - \beta(b) \in \Ker q' = \Img p'$, and there is an $a' \in A'$ such that
+	$p'(a') = b' - \beta(b)$;
+	use $\alpha$ now to lift it to $a \in A$.
+	Picture:
+	\begin{diagram}
+		a \in A && b \in B && \\
+		\dMapsto && && \\
+		a' \in A' & \rMapsto & b'-\beta(b) \in B' & \rMapsto & 0 \in C'
+	\end{diagram}
+	Then, we have
+	\[
+		\beta(b + q(a)) = \beta b + \beta p a
+		= \beta b + p' \alpha a
+		= \beta b + (b' - \beta b)
+		= b'
+	\]
+	so $b' \in \Img \beta$ which completes the proof that $\beta'$ is surjective.
+\end{proof}
+
+\section{Breaking long exact sequences}
+\prototype{First isomorphism theorem.}
+
+In fact, it turns out that any exact sequence breaks into short exact sequences.
+This relies on:
+\begin{proposition}[``First isomorphism theorem'' in abelian categories]
+	\label{prop:break_exact}
+	Let $A \taking f B$ be an arrow of an abelian category.
+	Then there is an exact sequence
+	\[ 0 \to \Ker f \taking{\ker f} A \taking{\img f} \Img f \to 0. \]
+\end{proposition}
+
+\begin{example}
+Let's analyze this theorem in our two examples of abelian categories:
+\begin{enumerate}[(a)]
+	\ii In the category of abelian groups, 
+	this is basically the first isomorphism theorem.
+	\ii In the category $\catname{Vect}_k$,
+	this amounts to the rank-nullity theorem, \Cref{thm:rank_nullity}.
+\end{enumerate}
+\end{example}
+Thus, any exact sequence can be broken into short exact sequences, as
+\begin{diagram}
+	&& 0 & & 0 && 0 && 0 \\
+	&&& \rdDotted(1,1) C_n \ruDotted(1,1) &&&& \rdDotted(1,1) C_{n+2} \ruDotted(1,1) & \\
+	\dots & \rTo & A_{n-1} \ruDotted(1,1) & \rTo^{f_{n-1}} & \rdDotted(1,1) A_n & \rTo^{f_n} &
+	A_{n+1} \ruDotted(1,1)  & \rTo^{f_{n+1}} & \rdDotted(1,1) \dots \\
+	& \rdDotted(1,1) C_{n-1} \ruDotted(1,1) &&&& \rdDotted(1,1) C_{n+1} \ruDotted(1,1) &&& \\
+	0 \ruDotted(1,1) && \rdDotted(1,1) 0 && 0 \ruDotted(1,1) && \rdDotted(1,1) 0 &&
+\end{diagram}
+where $C_k = \img f_{k-1} = \ker f_k$ for every $k$.
+
+\section\problemhead
+
+\begin{problem}
+	[Four lemma]
+	In an abelian category, consider the commutative diagram
+	\begin{diagram}
+		A & \rTo^p & B & \rTo^q & C & \rTo^r & D \\
+		\dSurj_\alpha && \dInj_\beta && \dTo_\gamma && \dInj_\delta \\
+		A' & \rTo_{p'} & B' & \rTo_{q'} & C' & \rTo_{r'} & D'
+	\end{diagram}
+	where the first and second rows are exact.
+	Prove that if $\alpha$ is epic, and $\beta$ and $\delta$ are monic,
+	then $\gamma$ is epic.
+	\begin{soln}
+		Let $c \in C$ with $\gamma(c) = 0$.
+		We show $c = 0$.
+		This proceeds in a diagram chase:
+		\begin{itemize}
+			\ii Note that $0 = r'(\gamma(c)) = \delta(r(c))$, and since $\delta$
+			is injective, it follows that $r(c) = 0$.
+			\ii Since the top row is exact,
+			it follows $c = q(b)$ for some $b \in B$.
+			\ii Then $q'(\beta(b)) = 0$,
+			so if we let $b' = \beta(b)$,
+			then $b' \in \ker(q')$.
+			As the bottom row is exact, there exists $a'$ with $p'(a') = b'$.
+			\ii Since $\alpha$ is injective,
+			there is $a \in A$ with $\alpha(a') = a$.
+			\ii Since $\beta$ is injective,
+			it follows that $p(a) = b$.
+			\ii Since the top row is exact, and $b$ is in the image of $p$,
+			it follows that $0 = q(b) = c$ as needed.
+		\end{itemize}
+
+
+	\end{soln}<++>
+\end{problem}
+
+\begin{problem}
+	[Five lemma]
+	\gim
+	In an abelian category, consider the commutative diagram
+	\begin{diagram}
+		A & \rTo^p & B & \rTo^q & C & \rTo^r & D & \rTo^s & E \\
+		\dSurj_\alpha && \dTo^\cong_\beta && \dTo_\gamma && \dTo^\cong_\delta && \dInj_\eps \\
+		A' & \rTo_{p'} & B' & \rTo_{q'} & C' & \rTo_{r'} & D' & \rTo_{s'} & E'
+	\end{diagram}
+	where the first and second rows are exact.
+	Prove that if $\alpha$ is epic, $\eps$ is monic, and $\beta$, $\delta$ are isomorphisms,
+	then $\gamma$ is an isomorphism as well.
+	Thus this is a stronger version of the short five lemma.
+\end{problem}
+
+\begin{sproblem}
+	[Snake lemma]
+	\yod
+	In an abelian category, consider the diagram
+	\begin{diagram}
+		&& A & \rTo^f & B & \rSurj^g & C & \rTo & 0 \\
+		&& \dTo_a && \dTo_b && \dTo_c && \\
+		0 & \rTo & A' & \rInj_{f'} & B' & \rTo_{g'} & C' && 
+	\end{diagram}
+	where the first and second rows are exact sequences.
+	Prove that there is an exact sequence
+	\[ \Ker a \to \Ker b \to \Ker c \to \Coker a \to \Coker b \to \Coker c. \]
+\end{sproblem}
