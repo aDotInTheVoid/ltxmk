@@ -1,0 +1,31 @@
+\hypertarget{version_8c}{}\doxysection{version.\+c File Reference}
+\label{version_8c}\index{version.c@{version.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{version_8c_a3c2fa93a985c6c52960abc57b09cbce9}{gsasl\+\_\+check\+\_\+version}} (const char $\ast$req\+\_\+version)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{version_8c_a3c2fa93a985c6c52960abc57b09cbce9}\label{version_8c_a3c2fa93a985c6c52960abc57b09cbce9}} 
+\index{version.c@{version.c}!gsasl\_check\_version@{gsasl\_check\_version}}
+\index{gsasl\_check\_version@{gsasl\_check\_version}!version.c@{version.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_check\_version()}{gsasl\_check\_version()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+check\+\_\+version (\begin{DoxyParamCaption}\item[{const char $\ast$}]{req\+\_\+version }\end{DoxyParamCaption})}
+
+gsasl\+\_\+check\+\_\+version\+: 
+\begin{DoxyParams}{Parameters}
+{\em req\+\_\+version} & version string to compare with, or N\+U\+LL.\\
+\hline
+\end{DoxyParams}
+Check library version.
+
+See G\+S\+A\+S\+L\+\_\+\+V\+E\+R\+S\+I\+ON for a suitable @req\+\_\+version string.
+
+Return value\+: Check that the the version of the library is at minimum the one given as a string in @req\+\_\+version and return the actual version string of the library; return N\+U\+LL if the condition is not met. If N\+U\+LL is passed to this function no check is done and only the version string is returned. 
+
+Definition at line 42 of file version.\+c.
+

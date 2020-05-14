@@ -1,0 +1,102 @@
+\hypertarget{crypto_8c}{}\doxysection{crypto.\+c File Reference}
+\label{crypto_8c}\index{crypto.c@{crypto.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gc.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{crypto_8c_a5c0a0b50e8e2785606da8240062dcfe7}{gsasl\+\_\+nonce}} (char $\ast$data, size\+\_\+t datalen)
+\item 
+int \mbox{\hyperlink{crypto_8c_a01b569cd81d3d5db177440f05d2d2d0f}{gsasl\+\_\+random}} (char $\ast$data, size\+\_\+t datalen)
+\item 
+int \mbox{\hyperlink{crypto_8c_aa5200c2f9ad8de27110b374e5443f23a}{gsasl\+\_\+md5}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$out\mbox{[}16\mbox{]})
+\item 
+int \mbox{\hyperlink{crypto_8c_ad7ddfb8f13e86b0ba228964cc2bf4fdf}{gsasl\+\_\+hmac\+\_\+md5}} (const char $\ast$key, size\+\_\+t keylen, const char $\ast$in, size\+\_\+t inlen, char $\ast$outhash\mbox{[}16\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{crypto_8c_ad7ddfb8f13e86b0ba228964cc2bf4fdf}\label{crypto_8c_ad7ddfb8f13e86b0ba228964cc2bf4fdf}} 
+\index{crypto.c@{crypto.c}!gsasl\_hmac\_md5@{gsasl\_hmac\_md5}}
+\index{gsasl\_hmac\_md5@{gsasl\_hmac\_md5}!crypto.c@{crypto.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_hmac\_md5()}{gsasl\_hmac\_md5()}}
+{\footnotesize\ttfamily int gsasl\+\_\+hmac\+\_\+md5 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{keylen,  }\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$}]{outhash\mbox{[}16\mbox{]} }\end{DoxyParamCaption})}
+
+gsasl\+\_\+hmac\+\_\+md5\+: 
+\begin{DoxyParams}{Parameters}
+{\em key} & input character array with key to use. \\
+\hline
+{\em keylen} & length of input character array with key to use. \\
+\hline
+{\em in} & input character array of data to hash. \\
+\hline
+{\em inlen} & length of input character array of data to hash. \\
+\hline
+{\em outhash} & newly allocated character array with keyed hash of data.\\
+\hline
+\end{DoxyParams}
+Compute keyed checksum of data using H\+M\+A\+C-\/\+M\+D5. The @outhash buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 92 of file crypto.\+c.
+
+\mbox{\Hypertarget{crypto_8c_aa5200c2f9ad8de27110b374e5443f23a}\label{crypto_8c_aa5200c2f9ad8de27110b374e5443f23a}} 
+\index{crypto.c@{crypto.c}!gsasl\_md5@{gsasl\_md5}}
+\index{gsasl\_md5@{gsasl\_md5}!crypto.c@{crypto.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_md5()}{gsasl\_md5()}}
+{\footnotesize\ttfamily int gsasl\+\_\+md5 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$}]{out\mbox{[}16\mbox{]} }\end{DoxyParamCaption})}
+
+gsasl\+\_\+md5\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input character array of data to hash. \\
+\hline
+{\em inlen} & length of input character array of data to hash. \\
+\hline
+{\em out} & newly allocated character array with hash of data.\\
+\hline
+\end{DoxyParams}
+Compute hash of data using M\+D5. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 70 of file crypto.\+c.
+
+\mbox{\Hypertarget{crypto_8c_a5c0a0b50e8e2785606da8240062dcfe7}\label{crypto_8c_a5c0a0b50e8e2785606da8240062dcfe7}} 
+\index{crypto.c@{crypto.c}!gsasl\_nonce@{gsasl\_nonce}}
+\index{gsasl\_nonce@{gsasl\_nonce}!crypto.c@{crypto.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_nonce()}{gsasl\_nonce()}}
+{\footnotesize\ttfamily int gsasl\+\_\+nonce (\begin{DoxyParamCaption}\item[{char $\ast$}]{data,  }\item[{size\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+nonce\+: 
+\begin{DoxyParams}{Parameters}
+{\em data} & output array to be filled with unpredictable random data. \\
+\hline
+{\em datalen} & size of output array.\\
+\hline
+\end{DoxyParams}
+Store unpredictable data of given size in the provided buffer.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 37 of file crypto.\+c.
+
+\mbox{\Hypertarget{crypto_8c_a01b569cd81d3d5db177440f05d2d2d0f}\label{crypto_8c_a01b569cd81d3d5db177440f05d2d2d0f}} 
+\index{crypto.c@{crypto.c}!gsasl\_random@{gsasl\_random}}
+\index{gsasl\_random@{gsasl\_random}!crypto.c@{crypto.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_random()}{gsasl\_random()}}
+{\footnotesize\ttfamily int gsasl\+\_\+random (\begin{DoxyParamCaption}\item[{char $\ast$}]{data,  }\item[{size\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+random\+: 
+\begin{DoxyParams}{Parameters}
+{\em data} & output array to be filled with strong random data. \\
+\hline
+{\em datalen} & size of output array.\\
+\hline
+\end{DoxyParams}
+Store cryptographically strong random data of given size in the provided buffer.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 53 of file crypto.\+c.
+

@@ -1,0 +1,1422 @@
+\hypertarget{gsasl_8h}{}\doxysection{gsasl.\+h File Reference}
+\label{gsasl_8h}\index{gsasl.h@{gsasl.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$gsasl-\/mech.\+h$>$}\newline
+{\ttfamily \#include $<$gsasl-\/compat.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}}
+\item 
+\#define \mbox{\hyperlink{gsasl_8h_a7f4adef14479095d353731a61bff8c84}{G\+S\+A\+S\+L\+\_\+\+V\+E\+R\+S\+I\+ON}}~\char`\"{}1.\+0\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structGsasl}{Gsasl}} \mbox{\hyperlink{gsasl_8h_a07bfe26695bd48bde522eada9a66da69}{Gsasl}}
+\item 
+typedef struct \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} \mbox{\hyperlink{gsasl_8h_aee603752a015e17562f2cbbab95c78a4}{Gsasl\+\_\+session}}
+\item 
+typedef int($\ast$ \mbox{\hyperlink{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}{Gsasl\+\_\+callback\+\_\+function}}) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{gsasl_8h_abed82baf7f470b522273a3e37c24c600ab054d905eaf5f10698d0a3799f66d6b7}{G\+S\+A\+S\+L\+\_\+\+M\+I\+N\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+S\+I\+ZE}} = 1, 
+\mbox{\hyperlink{gsasl_8h_abed82baf7f470b522273a3e37c24c600acfe46bca8a70b89e1072133fc84c6bd8}{G\+S\+A\+S\+L\+\_\+\+M\+A\+X\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+S\+I\+ZE}} = 20
+ \}
+\item 
+enum \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769}{Gsasl\+\_\+rc}} \{ \newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{G\+S\+A\+S\+L\+\_\+\+OK}} = 0, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE}} = 1, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aea2e77abea456f419f274ccfeaf399ce}{G\+S\+A\+S\+L\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+M\+E\+C\+H\+A\+N\+I\+SM}} = 2, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f03526e183c37cdf98ecccf97ed5847}{G\+S\+A\+S\+L\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+A\+L\+L\+E\+D\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+T\+I\+M\+ES}} = 3, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7afb7b1226fbc754dcae537f00d41cb9}{G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR}} = 7, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a45f5b83c85a7ce59000dd5ea1c77f622}{G\+S\+A\+S\+L\+\_\+\+B\+A\+S\+E64\+\_\+\+E\+R\+R\+OR}} = 8, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ab036baf08fc3a1894da3e6b217f8709c}{G\+S\+A\+S\+L\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+E\+R\+R\+OR}} = 9, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769abd662feca33432d8778ad505c26a1567}{G\+S\+A\+S\+L\+\_\+\+S\+A\+S\+L\+P\+R\+E\+P\+\_\+\+E\+R\+R\+OR}} = 29, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aacf0af305eaf44291eea6fbee165b0c5}{G\+S\+A\+S\+L\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+OR}} = 30, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5ef8fc6f12237bd5e7cbf057f39582eb}{G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR}} = 31, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ae69817fc66cae68c374478b7d8e8f45a}{G\+S\+A\+S\+L\+\_\+\+I\+N\+T\+E\+G\+R\+I\+T\+Y\+\_\+\+E\+R\+R\+OR}} = 33, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a049d56f9b749f56ad6713c1f06d8f4a8}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+C\+O\+DE}} = 35, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ace6c12a41ec76e99702e0b7fb008492d}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+C\+O\+DE}} = 36, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0567f600af32e509adc4409e512dcbfb}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+A\+L\+L\+B\+A\+CK}} = 51, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769acd5f877c80686f74f129028aded24900}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN}} = 52, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa1724a853e660018bf5c4af9e8f7063d}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+U\+T\+H\+ID}} = 53, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89512022ef1a38060a084fc2af8d0b84}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+U\+T\+H\+Z\+ID}} = 54, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7e4b87b88df7211d7a371ef6815d05fd}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+A\+S\+S\+W\+O\+RD}} = 55, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a85826282a6bd90af063ec3c4b41c8e4e}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+A\+S\+S\+C\+O\+DE}} = 56, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aae92201bd532dd5f696ca6617f2ce882}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+IN}} = 57, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a859863a99f78ed153aa36190f843fe17}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+S\+E\+R\+V\+I\+CE}} = 58, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f7ddf3e80c39bc3d69c8bec91c052b5}{G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+H\+O\+S\+T\+N\+A\+ME}} = 59, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a292d14253867b97c894e7cb54ee589fa}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+R\+E\+L\+E\+A\+S\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+R\+R\+OR}} = 37, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0754b2a1e86895d007a044b601496682}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+I\+M\+P\+O\+R\+T\+\_\+\+N\+A\+M\+E\+\_\+\+E\+R\+R\+OR}} = 38, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af0233e6256e6642dc9d7715ab8d5be3a}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+I\+N\+I\+T\+\_\+\+S\+E\+C\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+E\+R\+R\+OR}} = 39, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a3c20ab813f184933eef2651b6715f47b}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+A\+C\+C\+E\+P\+T\+\_\+\+S\+E\+C\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+E\+R\+R\+OR}} = 40, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a02a5be54a35f8c5971481db173d7877f}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+U\+N\+W\+R\+A\+P\+\_\+\+E\+R\+R\+OR}} = 41, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa22510a2411e8cbe68d2938406543404}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+W\+R\+A\+P\+\_\+\+E\+R\+R\+OR}} = 42, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89610c9cc7bb59cc45904b2643ab3eec}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+A\+C\+Q\+U\+I\+R\+E\+\_\+\+C\+R\+E\+D\+\_\+\+E\+R\+R\+OR}} = 43, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8196458e93c1692de895d041ade86585}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+E\+R\+R\+OR}} = 44, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769afce281b507445d0301e67f22e5fd49f6}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR}} = 45, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a1af870d8c48d91f558505be62462fa62}{G\+S\+A\+S\+L\+\_\+\+K\+E\+R\+B\+E\+R\+O\+S\+\_\+\+V5\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+OR}} = 46, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769adf6153abe469dd4d4dda837214ce520b}{G\+S\+A\+S\+L\+\_\+\+K\+E\+R\+B\+E\+R\+O\+S\+\_\+\+V5\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+OR}} = 47, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af5f3551f32e21ca9dda75b326c1c1608}{G\+S\+A\+S\+L\+\_\+\+S\+H\+I\+S\+H\+I\+\_\+\+E\+R\+R\+OR}} = G\+S\+A\+S\+L\+\_\+\+K\+E\+R\+B\+E\+R\+O\+S\+\_\+\+V5\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+OR, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a282a53d4785b8c35fb221c031050691e}{G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+A\+L\+\_\+\+P\+A\+S\+S\+C\+O\+DE}} = 48, 
+\mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a53643025548f3a520bbdefcb98e236be}{G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+N\+E\+W\+\_\+\+P\+IN}} = 49
+ \}
+\item 
+enum \mbox{\hyperlink{gsasl_8h_a42d5571161a4b3905ef108ecba95df8b}{Gsasl\+\_\+qop}} \{ \mbox{\hyperlink{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba184640a70c69048ee7ea797ccedea6fd}{G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+TH}} = 1, 
+\mbox{\hyperlink{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba3dffa7b0281ea42cc8fd64f2870b55ef}{G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+I\+NT}} = 2, 
+\mbox{\hyperlink{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba10e2d4846d767d23592bbf8aada1ddfc}{G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+C\+O\+NF}} = 4
+ \}
+\item 
+enum \mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9}{Gsasl\+\_\+cipher}} \{ \newline
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a342db673f59bba57fef4aebbe072aeb0}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+D\+ES}} = 1, 
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9acdfb5d72ed692da4ce341e7892bebef0}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+3\+D\+ES}} = 2, 
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a51bf474ce72c6e6439b628dbe55b6774}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4}} = 4, 
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ad57483f2a91c5dfe81344b8eafac56db}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+40}} = 8, 
+\newline
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a956311fbc13091e8efd2022e223afef7}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+56}} = 16, 
+\mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ae4894dba58aadd50a2106fbf8f54c938}{G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+A\+ES}} = 32
+ \}
+\item 
+enum \mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}} \{ \mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9ae64344257b76178a82e44009e664dd41}{G\+S\+A\+S\+L\+\_\+\+A\+L\+L\+O\+W\+\_\+\+U\+N\+A\+S\+S\+I\+G\+N\+ED}} = 1
+ \}
+\item 
+enum \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} \{ \newline
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+ID}} = 1, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a2069dbfaa07de9e49ae7e772c8b66e24}{G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+Z\+ID}} = 2, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}{G\+S\+A\+S\+L\+\_\+\+P\+A\+S\+S\+W\+O\+RD}} = 3, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae1eb28db573e3824552c385853f7f8f4}{G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN}} = 4, 
+\newline
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a42ea388bfcdfef077c166691c336b456}{G\+S\+A\+S\+L\+\_\+\+S\+E\+R\+V\+I\+CE}} = 5, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a1ca2ef0215bb420064dbc6e6160a4c64}{G\+S\+A\+S\+L\+\_\+\+H\+O\+S\+T\+N\+A\+ME}} = 6, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a508be475b74389be1a4a2dbebe20907f}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+N\+A\+ME}} = 7, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad2747c00845b60b88e473cac8d741136}{G\+S\+A\+S\+L\+\_\+\+P\+A\+S\+S\+C\+O\+DE}} = 8, 
+\newline
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae892b69bdadd98126066a7518096327d}{G\+S\+A\+S\+L\+\_\+\+S\+U\+G\+G\+E\+S\+T\+E\+D\+\_\+\+P\+IN}} = 9, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad5fcd27b6fb6721653c8eafe14cc90e1}{G\+S\+A\+S\+L\+\_\+\+P\+IN}} = 10, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac989e48f2e69633c60720c38c2625b22}{G\+S\+A\+S\+L\+\_\+\+R\+E\+A\+LM}} = 11, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a09961f19729911ee6704ed1c29b47389}{G\+S\+A\+S\+L\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+H\+A\+S\+H\+E\+D\+\_\+\+P\+A\+S\+S\+W\+O\+RD}} = 12, 
+\newline
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a5ccab7ca2f5b610185ed3b94c6021c77}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+S\+I\+M\+P\+LE}} = 500, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a67915e26f80a9e03c906d944ad52e99a}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL}} = 501, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adcb2782b4f1a4ba183e3e40c5a4a08bd}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+US}} = 502, 
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a22c7da9900ab87f4df8c92a985eb9f38}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+G\+S\+S\+A\+PI}} = 503, 
+\newline
+\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adb3d5bfafdb397cdc9a0baaa71605c15}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+S\+E\+C\+U\+R\+ID}} = 504
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\+\_\+init}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$$\ast$ctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_ac7deb87c1101cbf194d0731a2c38944f}{gsasl\+\_\+done}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_a488746d9786aee6dd51e2bdb1b0c43bf}{gsasl\+\_\+check\+\_\+version}} (const char $\ast$req\+\_\+version)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a5dd3661300400d6387f52dad4831dbfa}{gsasl\+\_\+callback\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}{Gsasl\+\_\+callback\+\_\+function}} cb)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a92443c50851ed96bd49b64fcc1c3b85a}{gsasl\+\_\+callback}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a3cac87f74c9ace72ffada29382ec041a}{gsasl\+\_\+callback\+\_\+hook\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, void $\ast$hook)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void $\ast$ \mbox{\hyperlink{gsasl_8h_ade24e994fc1fc935d0ad196248c520b9}{gsasl\+\_\+callback\+\_\+hook\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a8967689efeb659a80da8c7f69c3c94d8}{gsasl\+\_\+session\+\_\+hook\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$hook)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void $\ast$ \mbox{\hyperlink{gsasl_8h_a4026d33c75dba3e7c5ed4b173cf3ed77}{gsasl\+\_\+session\+\_\+hook\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\+\_\+property\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop, const char $\ast$data)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a83f99ecf4399c0c35e2e161689f0577b}{gsasl\+\_\+property\+\_\+set\+\_\+raw}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop, const char $\ast$data, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_a1d2f9b940203ca1d9e7f41902b9f7bc4}{gsasl\+\_\+property\+\_\+fast}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a99120c8bd1aa853f9c199208e4df066b}{gsasl\+\_\+client\+\_\+mechlist}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$$\ast$out)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a2a1dff7b718738278c78fb1023a9cdfb}{gsasl\+\_\+client\+\_\+support\+\_\+p}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$\mbox{\hyperlink{error_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_a64a704afec782f93873a504a864ba8d3}{gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mechlist)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a029858ca2a1f6b82e57eb79da12bacda}{gsasl\+\_\+server\+\_\+mechlist}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$$\ast$out)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_aa7f6cd56191b88c239325f045821c695}{gsasl\+\_\+server\+\_\+support\+\_\+p}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$\mbox{\hyperlink{error_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}{gsasl\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mech, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$sctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a05ac84259bd548f31b40aab25096aff5}{gsasl\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mech, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$sctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a0a3dcfe02502ecadd6484ff1181e1924}{gsasl\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\+\_\+step64}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$b64input, char $\ast$$\ast$b64output)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_acb04314f06183b048ca0bb543d0cd4ea}{gsasl\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a31cbf3e7ec2cea4ea2b9a460b718d8c3}{gsasl\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_ae1cfcb4a797f8d6c12d4b0df2e398ad3}{gsasl\+\_\+mechanism\+\_\+name}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_a9b89e839d731bffb733e2d950ad52dc9}{gsasl\+\_\+strerror}} (int err)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_a5d7172903f7670ac314a405a82e98a96}{gsasl\+\_\+strerror\+\_\+name}} (int err)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_af30e2a33d1f3b6da519750754c339468}{gsasl\+\_\+saslprep}} (const char $\ast$in, \mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}} flags, char $\ast$$\ast$out, int $\ast$stringpreprc)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_ad4ed7472e5992d92b0e8327fdc96239d}{gsasl\+\_\+simple\+\_\+getpass}} (const char $\ast$filename, const char $\ast$username, char $\ast$$\ast$key)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a81bac6c42269fe00c1fb0cf77e5b4e25}{gsasl\+\_\+base64\+\_\+to}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$$\ast$out, size\+\_\+t $\ast$outlen)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a3d59a49df0dd30cbeabb052365a5abd7}{gsasl\+\_\+base64\+\_\+from}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$$\ast$out, size\+\_\+t $\ast$outlen)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_acd2bc8a83014277e5e4d359af143d115}{gsasl\+\_\+nonce}} (char $\ast$data, size\+\_\+t datalen)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a8243d0fb884c505ecdce2634e38ad0b9}{gsasl\+\_\+random}} (char $\ast$data, size\+\_\+t datalen)
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a4cc2d3494722e471ced9c4fa7e206e7d}{gsasl\+\_\+md5}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$out\mbox{[}16\mbox{]})
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl_8h_a1edd3e81c9b12ff4b9a5f07f078baed4}{gsasl\+\_\+hmac\+\_\+md5}} (const char $\ast$key, size\+\_\+t keylen, const char $\ast$in, size\+\_\+t inlen, char $\ast$outhash\mbox{[}16\mbox{]})
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void \mbox{\hyperlink{gsasl_8h_a1cbed8da948a29f5eee652b25e2390e1}{gsasl\+\_\+free}} (void $\ast$ptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char $\ast$ \mbox{\hyperlink{gsasl_8h_ac972160b2b87a4380e4838ed7c2d700f}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gsasl_8h_a9456922879452d4e57ae9c017b56da36}\label{gsasl_8h_a9456922879452d4e57ae9c017b56da36}} 
+\index{gsasl.h@{gsasl.h}!GSASL\_API@{GSASL\_API}}
+\index{GSASL\_API@{GSASL\_API}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_API}{GSASL\_API}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+A\+PI}
+
+
+
+Definition at line 41 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a7f4adef14479095d353731a61bff8c84}\label{gsasl_8h_a7f4adef14479095d353731a61bff8c84}} 
+\index{gsasl.h@{gsasl.h}!GSASL\_VERSION@{GSASL\_VERSION}}
+\index{GSASL\_VERSION@{GSASL\_VERSION}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_VERSION}{GSASL\_VERSION}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+V\+E\+R\+S\+I\+ON~\char`\"{}1.\+0\char`\"{}}
+
+G\+S\+A\+S\+L\+\_\+\+V\+E\+R\+S\+I\+ON
+
+String defined via C\+PP denoting the header file version number. Used together with stringprep\+\_\+check\+\_\+version() to verify header file and run-\/time library consistency. 
+
+Definition at line 57 of file gsasl.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{gsasl_8h_a07bfe26695bd48bde522eada9a66da69}\label{gsasl_8h_a07bfe26695bd48bde522eada9a66da69}} 
+\index{gsasl.h@{gsasl.h}!Gsasl@{Gsasl}}
+\index{Gsasl@{Gsasl}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl}{Gsasl}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structGsasl}{Gsasl}} \mbox{\hyperlink{structGsasl}{Gsasl}}}
+
+
+
+Definition at line 68 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}\label{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_callback\_function@{Gsasl\_callback\_function}}
+\index{Gsasl\_callback\_function@{Gsasl\_callback\_function}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_callback\_function}{Gsasl\_callback\_function}}
+{\footnotesize\ttfamily typedef int($\ast$ Gsasl\+\_\+callback\+\_\+function) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)}
+
+Gsasl\+\_\+callback\+\_\+function\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em sctx} & session handle, may be N\+U\+LL. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type.\\
+\hline
+\end{DoxyParams}
+Prototype of function that the application should implement. Use \mbox{\hyperlink{gsasl_8h_a5dd3661300400d6387f52dad4831dbfa}{gsasl\+\_\+callback\+\_\+set()}} to inform the library about your callback function.
+
+It is called by the S\+A\+SL library when it need some information from the application. Depending on the value of @prop, it should either set some property (e.\+g., username or password) using \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\+\_\+property\+\_\+set()}}, or it should extract some properties (e.\+g., authentication and authorization identities) using \mbox{\hyperlink{gsasl_8h_a1d2f9b940203ca1d9e7f41902b9f7bc4}{gsasl\+\_\+property\+\_\+fast()}} and use them to make a policy decision, perhaps returning G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR or G\+S\+A\+S\+L\+\_\+\+OK depending on whether the policy permitted the operation.
+
+Return value\+: Any valid return code, the interpretation of which depend on the @prop value.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 189 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_aee603752a015e17562f2cbbab95c78a4}\label{gsasl_8h_aee603752a015e17562f2cbbab95c78a4}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_session@{Gsasl\_session}}
+\index{Gsasl\_session@{Gsasl\_session}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_session}{Gsasl\_session}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}}}
+
+
+
+Definition at line 68 of file gsasl.\+h.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{gsasl_8h_abed82baf7f470b522273a3e37c24c600}\label{gsasl_8h_abed82baf7f470b522273a3e37c24c600}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_MIN\_MECHANISM\_SIZE@{GSASL\_MIN\_MECHANISM\_SIZE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_MIN\_MECHANISM\_SIZE@{GSASL\_MIN\_MECHANISM\_SIZE}}}\mbox{\Hypertarget{gsasl_8h_abed82baf7f470b522273a3e37c24c600ab054d905eaf5f10698d0a3799f66d6b7}\label{gsasl_8h_abed82baf7f470b522273a3e37c24c600ab054d905eaf5f10698d0a3799f66d6b7}} 
+G\+S\+A\+S\+L\+\_\+\+M\+I\+N\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+S\+I\+ZE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_MAX\_MECHANISM\_SIZE@{GSASL\_MAX\_MECHANISM\_SIZE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_MAX\_MECHANISM\_SIZE@{GSASL\_MAX\_MECHANISM\_SIZE}}}\mbox{\Hypertarget{gsasl_8h_abed82baf7f470b522273a3e37c24c600acfe46bca8a70b89e1072133fc84c6bd8}\label{gsasl_8h_abed82baf7f470b522273a3e37c24c600acfe46bca8a70b89e1072133fc84c6bd8}} 
+G\+S\+A\+S\+L\+\_\+\+M\+A\+X\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+S\+I\+ZE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 63 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_cipher@{Gsasl\_cipher}}
+\index{Gsasl\_cipher@{Gsasl\_cipher}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_cipher}{Gsasl\_cipher}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9}{Gsasl\+\_\+cipher}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_DES@{GSASL\_CIPHER\_DES}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_DES@{GSASL\_CIPHER\_DES}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a342db673f59bba57fef4aebbe072aeb0}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a342db673f59bba57fef4aebbe072aeb0}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+D\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_3DES@{GSASL\_CIPHER\_3DES}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_3DES@{GSASL\_CIPHER\_3DES}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9acdfb5d72ed692da4ce341e7892bebef0}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9acdfb5d72ed692da4ce341e7892bebef0}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+3\+D\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_RC4@{GSASL\_CIPHER\_RC4}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_RC4@{GSASL\_CIPHER\_RC4}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a51bf474ce72c6e6439b628dbe55b6774}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a51bf474ce72c6e6439b628dbe55b6774}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_RC4\_40@{GSASL\_CIPHER\_RC4\_40}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_RC4\_40@{GSASL\_CIPHER\_RC4\_40}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ad57483f2a91c5dfe81344b8eafac56db}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ad57483f2a91c5dfe81344b8eafac56db}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+40&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_RC4\_56@{GSASL\_CIPHER\_RC4\_56}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_RC4\_56@{GSASL\_CIPHER\_RC4\_56}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a956311fbc13091e8efd2022e223afef7}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9a956311fbc13091e8efd2022e223afef7}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+56&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CIPHER\_AES@{GSASL\_CIPHER\_AES}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CIPHER\_AES@{GSASL\_CIPHER\_AES}}}\mbox{\Hypertarget{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ae4894dba58aadd50a2106fbf8f54c938}\label{gsasl_8h_a884789bd1284be61e8f3fa59a1f794c9ae4894dba58aadd50a2106fbf8f54c938}} 
+G\+S\+A\+S\+L\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+A\+ES&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 121 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_property@{Gsasl\_property}}
+\index{Gsasl\_property@{Gsasl\_property}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_property}{Gsasl\_property}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_AUTHID@{GSASL\_AUTHID}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_AUTHID@{GSASL\_AUTHID}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}} 
+G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_AUTHZID@{GSASL\_AUTHZID}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_AUTHZID@{GSASL\_AUTHZID}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a2069dbfaa07de9e49ae7e772c8b66e24}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a2069dbfaa07de9e49ae7e772c8b66e24}} 
+G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+Z\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_PASSWORD@{GSASL\_PASSWORD}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_PASSWORD@{GSASL\_PASSWORD}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}} 
+G\+S\+A\+S\+L\+\_\+\+P\+A\+S\+S\+W\+O\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_ANONYMOUS\_TOKEN@{GSASL\_ANONYMOUS\_TOKEN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_ANONYMOUS\_TOKEN@{GSASL\_ANONYMOUS\_TOKEN}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae1eb28db573e3824552c385853f7f8f4}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae1eb28db573e3824552c385853f7f8f4}} 
+G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SERVICE@{GSASL\_SERVICE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SERVICE@{GSASL\_SERVICE}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a42ea388bfcdfef077c166691c336b456}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a42ea388bfcdfef077c166691c336b456}} 
+G\+S\+A\+S\+L\+\_\+\+S\+E\+R\+V\+I\+CE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_HOSTNAME@{GSASL\_HOSTNAME}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_HOSTNAME@{GSASL\_HOSTNAME}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a1ca2ef0215bb420064dbc6e6160a4c64}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a1ca2ef0215bb420064dbc6e6160a4c64}} 
+G\+S\+A\+S\+L\+\_\+\+H\+O\+S\+T\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_DISPLAY\_NAME@{GSASL\_GSSAPI\_DISPLAY\_NAME}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_DISPLAY\_NAME@{GSASL\_GSSAPI\_DISPLAY\_NAME}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a508be475b74389be1a4a2dbebe20907f}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a508be475b74389be1a4a2dbebe20907f}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_PASSCODE@{GSASL\_PASSCODE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_PASSCODE@{GSASL\_PASSCODE}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad2747c00845b60b88e473cac8d741136}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad2747c00845b60b88e473cac8d741136}} 
+G\+S\+A\+S\+L\+\_\+\+P\+A\+S\+S\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SUGGESTED\_PIN@{GSASL\_SUGGESTED\_PIN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SUGGESTED\_PIN@{GSASL\_SUGGESTED\_PIN}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae892b69bdadd98126066a7518096327d}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ae892b69bdadd98126066a7518096327d}} 
+G\+S\+A\+S\+L\+\_\+\+S\+U\+G\+G\+E\+S\+T\+E\+D\+\_\+\+P\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_PIN@{GSASL\_PIN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_PIN@{GSASL\_PIN}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad5fcd27b6fb6721653c8eafe14cc90e1}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad5fcd27b6fb6721653c8eafe14cc90e1}} 
+G\+S\+A\+S\+L\+\_\+\+P\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_REALM@{GSASL\_REALM}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_REALM@{GSASL\_REALM}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac989e48f2e69633c60720c38c2625b22}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac989e48f2e69633c60720c38c2625b22}} 
+G\+S\+A\+S\+L\+\_\+\+R\+E\+A\+LM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_DIGEST\_MD5\_HASHED\_PASSWORD@{GSASL\_DIGEST\_MD5\_HASHED\_PASSWORD}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_DIGEST\_MD5\_HASHED\_PASSWORD@{GSASL\_DIGEST\_MD5\_HASHED\_PASSWORD}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a09961f19729911ee6704ed1c29b47389}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a09961f19729911ee6704ed1c29b47389}} 
+G\+S\+A\+S\+L\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+H\+A\+S\+H\+E\+D\+\_\+\+P\+A\+S\+S\+W\+O\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_VALIDATE\_SIMPLE@{GSASL\_VALIDATE\_SIMPLE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_VALIDATE\_SIMPLE@{GSASL\_VALIDATE\_SIMPLE}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a5ccab7ca2f5b610185ed3b94c6021c77}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a5ccab7ca2f5b610185ed3b94c6021c77}} 
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+S\+I\+M\+P\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_VALIDATE\_EXTERNAL@{GSASL\_VALIDATE\_EXTERNAL}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_VALIDATE\_EXTERNAL@{GSASL\_VALIDATE\_EXTERNAL}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a67915e26f80a9e03c906d944ad52e99a}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a67915e26f80a9e03c906d944ad52e99a}} 
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+E\+X\+T\+E\+R\+N\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_VALIDATE\_ANONYMOUS@{GSASL\_VALIDATE\_ANONYMOUS}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_VALIDATE\_ANONYMOUS@{GSASL\_VALIDATE\_ANONYMOUS}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adcb2782b4f1a4ba183e3e40c5a4a08bd}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adcb2782b4f1a4ba183e3e40c5a4a08bd}} 
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+US&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_VALIDATE\_GSSAPI@{GSASL\_VALIDATE\_GSSAPI}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_VALIDATE\_GSSAPI@{GSASL\_VALIDATE\_GSSAPI}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a22c7da9900ab87f4df8c92a985eb9f38}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766a22c7da9900ab87f4df8c92a985eb9f38}} 
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+G\+S\+S\+A\+PI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_VALIDATE\_SECURID@{GSASL\_VALIDATE\_SECURID}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_VALIDATE\_SECURID@{GSASL\_VALIDATE\_SECURID}}}\mbox{\Hypertarget{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adb3d5bfafdb397cdc9a0baaa71605c15}\label{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766adb3d5bfafdb397cdc9a0baaa71605c15}} 
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+\+S\+E\+C\+U\+R\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 142 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a42d5571161a4b3905ef108ecba95df8b}\label{gsasl_8h_a42d5571161a4b3905ef108ecba95df8b}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_qop@{Gsasl\_qop}}
+\index{Gsasl\_qop@{Gsasl\_qop}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_qop}{Gsasl\_qop}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gsasl_8h_a42d5571161a4b3905ef108ecba95df8b}{Gsasl\+\_\+qop}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_QOP\_AUTH@{GSASL\_QOP\_AUTH}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_QOP\_AUTH@{GSASL\_QOP\_AUTH}}}\mbox{\Hypertarget{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba184640a70c69048ee7ea797ccedea6fd}\label{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba184640a70c69048ee7ea797ccedea6fd}} 
+G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+TH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_QOP\_AUTH\_INT@{GSASL\_QOP\_AUTH\_INT}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_QOP\_AUTH\_INT@{GSASL\_QOP\_AUTH\_INT}}}\mbox{\Hypertarget{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba3dffa7b0281ea42cc8fd64f2870b55ef}\label{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba3dffa7b0281ea42cc8fd64f2870b55ef}} 
+G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+I\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_QOP\_AUTH\_CONF@{GSASL\_QOP\_AUTH\_CONF}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_QOP\_AUTH\_CONF@{GSASL\_QOP\_AUTH\_CONF}}}\mbox{\Hypertarget{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba10e2d4846d767d23592bbf8aada1ddfc}\label{gsasl_8h_a42d5571161a4b3905ef108ecba95df8ba10e2d4846d767d23592bbf8aada1ddfc}} 
+G\+S\+A\+S\+L\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+C\+O\+NF&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 113 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_rc@{Gsasl\_rc}}
+\index{Gsasl\_rc@{Gsasl\_rc}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_rc}{Gsasl\_rc}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769}{Gsasl\+\_\+rc}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_OK@{GSASL\_OK}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_OK@{GSASL\_OK}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}} 
+G\+S\+A\+S\+L\+\_\+\+OK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NEEDS\_MORE@{GSASL\_NEEDS\_MORE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NEEDS\_MORE@{GSASL\_NEEDS\_MORE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}} 
+G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_UNKNOWN\_MECHANISM@{GSASL\_UNKNOWN\_MECHANISM}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_UNKNOWN\_MECHANISM@{GSASL\_UNKNOWN\_MECHANISM}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aea2e77abea456f419f274ccfeaf399ce}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aea2e77abea456f419f274ccfeaf399ce}} 
+G\+S\+A\+S\+L\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+M\+E\+C\+H\+A\+N\+I\+SM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_MECHANISM\_CALLED\_TOO\_MANY\_TIMES@{GSASL\_MECHANISM\_CALLED\_TOO\_MANY\_TIMES}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_MECHANISM\_CALLED\_TOO\_MANY\_TIMES@{GSASL\_MECHANISM\_CALLED\_TOO\_MANY\_TIMES}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f03526e183c37cdf98ecccf97ed5847}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f03526e183c37cdf98ecccf97ed5847}} 
+G\+S\+A\+S\+L\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+A\+L\+L\+E\+D\+\_\+\+T\+O\+O\+\_\+\+M\+A\+N\+Y\+\_\+\+T\+I\+M\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_MALLOC\_ERROR@{GSASL\_MALLOC\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_MALLOC\_ERROR@{GSASL\_MALLOC\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7afb7b1226fbc754dcae537f00d41cb9}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7afb7b1226fbc754dcae537f00d41cb9}} 
+G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_BASE64\_ERROR@{GSASL\_BASE64\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_BASE64\_ERROR@{GSASL\_BASE64\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a45f5b83c85a7ce59000dd5ea1c77f622}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a45f5b83c85a7ce59000dd5ea1c77f622}} 
+G\+S\+A\+S\+L\+\_\+\+B\+A\+S\+E64\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_CRYPTO\_ERROR@{GSASL\_CRYPTO\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_CRYPTO\_ERROR@{GSASL\_CRYPTO\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ab036baf08fc3a1894da3e6b217f8709c}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ab036baf08fc3a1894da3e6b217f8709c}} 
+G\+S\+A\+S\+L\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SASLPREP\_ERROR@{GSASL\_SASLPREP\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SASLPREP\_ERROR@{GSASL\_SASLPREP\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769abd662feca33432d8778ad505c26a1567}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769abd662feca33432d8778ad505c26a1567}} 
+G\+S\+A\+S\+L\+\_\+\+S\+A\+S\+L\+P\+R\+E\+P\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_MECHANISM\_PARSE\_ERROR@{GSASL\_MECHANISM\_PARSE\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_MECHANISM\_PARSE\_ERROR@{GSASL\_MECHANISM\_PARSE\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aacf0af305eaf44291eea6fbee165b0c5}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aacf0af305eaf44291eea6fbee165b0c5}} 
+G\+S\+A\+S\+L\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_AUTHENTICATION\_ERROR@{GSASL\_AUTHENTICATION\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_AUTHENTICATION\_ERROR@{GSASL\_AUTHENTICATION\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5ef8fc6f12237bd5e7cbf057f39582eb}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5ef8fc6f12237bd5e7cbf057f39582eb}} 
+G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_INTEGRITY\_ERROR@{GSASL\_INTEGRITY\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_INTEGRITY\_ERROR@{GSASL\_INTEGRITY\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ae69817fc66cae68c374478b7d8e8f45a}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ae69817fc66cae68c374478b7d8e8f45a}} 
+G\+S\+A\+S\+L\+\_\+\+I\+N\+T\+E\+G\+R\+I\+T\+Y\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_CLIENT\_CODE@{GSASL\_NO\_CLIENT\_CODE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_CLIENT\_CODE@{GSASL\_NO\_CLIENT\_CODE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a049d56f9b749f56ad6713c1f06d8f4a8}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a049d56f9b749f56ad6713c1f06d8f4a8}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_SERVER\_CODE@{GSASL\_NO\_SERVER\_CODE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_SERVER\_CODE@{GSASL\_NO\_SERVER\_CODE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ace6c12a41ec76e99702e0b7fb008492d}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769ace6c12a41ec76e99702e0b7fb008492d}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_CALLBACK@{GSASL\_NO\_CALLBACK}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_CALLBACK@{GSASL\_NO\_CALLBACK}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0567f600af32e509adc4409e512dcbfb}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0567f600af32e509adc4409e512dcbfb}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+A\+L\+L\+B\+A\+CK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_ANONYMOUS\_TOKEN@{GSASL\_NO\_ANONYMOUS\_TOKEN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_ANONYMOUS\_TOKEN@{GSASL\_NO\_ANONYMOUS\_TOKEN}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769acd5f877c80686f74f129028aded24900}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769acd5f877c80686f74f129028aded24900}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_AUTHID@{GSASL\_NO\_AUTHID}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_AUTHID@{GSASL\_NO\_AUTHID}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa1724a853e660018bf5c4af9e8f7063d}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa1724a853e660018bf5c4af9e8f7063d}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+U\+T\+H\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_AUTHZID@{GSASL\_NO\_AUTHZID}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_AUTHZID@{GSASL\_NO\_AUTHZID}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89512022ef1a38060a084fc2af8d0b84}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89512022ef1a38060a084fc2af8d0b84}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+A\+U\+T\+H\+Z\+ID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_PASSWORD@{GSASL\_NO\_PASSWORD}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_PASSWORD@{GSASL\_NO\_PASSWORD}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7e4b87b88df7211d7a371ef6815d05fd}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a7e4b87b88df7211d7a371ef6815d05fd}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+A\+S\+S\+W\+O\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_PASSCODE@{GSASL\_NO\_PASSCODE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_PASSCODE@{GSASL\_NO\_PASSCODE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a85826282a6bd90af063ec3c4b41c8e4e}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a85826282a6bd90af063ec3c4b41c8e4e}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+A\+S\+S\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_PIN@{GSASL\_NO\_PIN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_PIN@{GSASL\_NO\_PIN}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aae92201bd532dd5f696ca6617f2ce882}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aae92201bd532dd5f696ca6617f2ce882}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+P\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_SERVICE@{GSASL\_NO\_SERVICE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_SERVICE@{GSASL\_NO\_SERVICE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a859863a99f78ed153aa36190f843fe17}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a859863a99f78ed153aa36190f843fe17}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+S\+E\+R\+V\+I\+CE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_NO\_HOSTNAME@{GSASL\_NO\_HOSTNAME}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_NO\_HOSTNAME@{GSASL\_NO\_HOSTNAME}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f7ddf3e80c39bc3d69c8bec91c052b5}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8f7ddf3e80c39bc3d69c8bec91c052b5}} 
+G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+H\+O\+S\+T\+N\+A\+ME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_RELEASE\_BUFFER\_ERROR@{GSASL\_GSSAPI\_RELEASE\_BUFFER\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_RELEASE\_BUFFER\_ERROR@{GSASL\_GSSAPI\_RELEASE\_BUFFER\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a292d14253867b97c894e7cb54ee589fa}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a292d14253867b97c894e7cb54ee589fa}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+R\+E\+L\+E\+A\+S\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_IMPORT\_NAME\_ERROR@{GSASL\_GSSAPI\_IMPORT\_NAME\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_IMPORT\_NAME\_ERROR@{GSASL\_GSSAPI\_IMPORT\_NAME\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0754b2a1e86895d007a044b601496682}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0754b2a1e86895d007a044b601496682}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+I\+M\+P\+O\+R\+T\+\_\+\+N\+A\+M\+E\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_INIT\_SEC\_CONTEXT\_ERROR@{GSASL\_GSSAPI\_INIT\_SEC\_CONTEXT\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_INIT\_SEC\_CONTEXT\_ERROR@{GSASL\_GSSAPI\_INIT\_SEC\_CONTEXT\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af0233e6256e6642dc9d7715ab8d5be3a}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af0233e6256e6642dc9d7715ab8d5be3a}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+I\+N\+I\+T\+\_\+\+S\+E\+C\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_ACCEPT\_SEC\_CONTEXT\_ERROR@{GSASL\_GSSAPI\_ACCEPT\_SEC\_CONTEXT\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_ACCEPT\_SEC\_CONTEXT\_ERROR@{GSASL\_GSSAPI\_ACCEPT\_SEC\_CONTEXT\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a3c20ab813f184933eef2651b6715f47b}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a3c20ab813f184933eef2651b6715f47b}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+A\+C\+C\+E\+P\+T\+\_\+\+S\+E\+C\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_UNWRAP\_ERROR@{GSASL\_GSSAPI\_UNWRAP\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_UNWRAP\_ERROR@{GSASL\_GSSAPI\_UNWRAP\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a02a5be54a35f8c5971481db173d7877f}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a02a5be54a35f8c5971481db173d7877f}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+U\+N\+W\+R\+A\+P\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_WRAP\_ERROR@{GSASL\_GSSAPI\_WRAP\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_WRAP\_ERROR@{GSASL\_GSSAPI\_WRAP\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa22510a2411e8cbe68d2938406543404}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769aa22510a2411e8cbe68d2938406543404}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+W\+R\+A\+P\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_ACQUIRE\_CRED\_ERROR@{GSASL\_GSSAPI\_ACQUIRE\_CRED\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_ACQUIRE\_CRED\_ERROR@{GSASL\_GSSAPI\_ACQUIRE\_CRED\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89610c9cc7bb59cc45904b2643ab3eec}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a89610c9cc7bb59cc45904b2643ab3eec}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+A\+C\+Q\+U\+I\+R\+E\+\_\+\+C\+R\+E\+D\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_DISPLAY\_NAME\_ERROR@{GSASL\_GSSAPI\_DISPLAY\_NAME\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_DISPLAY\_NAME\_ERROR@{GSASL\_GSSAPI\_DISPLAY\_NAME\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8196458e93c1692de895d041ade86585}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a8196458e93c1692de895d041ade86585}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_GSSAPI\_UNSUPPORTED\_PROTECTION\_ERROR@{GSASL\_GSSAPI\_UNSUPPORTED\_PROTECTION\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_GSSAPI\_UNSUPPORTED\_PROTECTION\_ERROR@{GSASL\_GSSAPI\_UNSUPPORTED\_PROTECTION\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769afce281b507445d0301e67f22e5fd49f6}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769afce281b507445d0301e67f22e5fd49f6}} 
+G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+T\+E\+C\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_KERBEROS\_V5\_INIT\_ERROR@{GSASL\_KERBEROS\_V5\_INIT\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_KERBEROS\_V5\_INIT\_ERROR@{GSASL\_KERBEROS\_V5\_INIT\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a1af870d8c48d91f558505be62462fa62}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a1af870d8c48d91f558505be62462fa62}} 
+G\+S\+A\+S\+L\+\_\+\+K\+E\+R\+B\+E\+R\+O\+S\+\_\+\+V5\+\_\+\+I\+N\+I\+T\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_KERBEROS\_V5\_INTERNAL\_ERROR@{GSASL\_KERBEROS\_V5\_INTERNAL\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_KERBEROS\_V5\_INTERNAL\_ERROR@{GSASL\_KERBEROS\_V5\_INTERNAL\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769adf6153abe469dd4d4dda837214ce520b}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769adf6153abe469dd4d4dda837214ce520b}} 
+G\+S\+A\+S\+L\+\_\+\+K\+E\+R\+B\+E\+R\+O\+S\+\_\+\+V5\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SHISHI\_ERROR@{GSASL\_SHISHI\_ERROR}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SHISHI\_ERROR@{GSASL\_SHISHI\_ERROR}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af5f3551f32e21ca9dda75b326c1c1608}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769af5f3551f32e21ca9dda75b326c1c1608}} 
+G\+S\+A\+S\+L\+\_\+\+S\+H\+I\+S\+H\+I\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SECURID\_SERVER\_NEED\_ADDITIONAL\_PASSCODE@{GSASL\_SECURID\_SERVER\_NEED\_ADDITIONAL\_PASSCODE}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SECURID\_SERVER\_NEED\_ADDITIONAL\_PASSCODE@{GSASL\_SECURID\_SERVER\_NEED\_ADDITIONAL\_PASSCODE}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a282a53d4785b8c35fb221c031050691e}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a282a53d4785b8c35fb221c031050691e}} 
+G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+A\+L\+\_\+\+P\+A\+S\+S\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_SECURID\_SERVER\_NEED\_NEW\_PIN@{GSASL\_SECURID\_SERVER\_NEED\_NEW\_PIN}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_SECURID\_SERVER\_NEED\_NEW\_PIN@{GSASL\_SECURID\_SERVER\_NEED\_NEW\_PIN}}}\mbox{\Hypertarget{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a53643025548f3a520bbdefcb98e236be}\label{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a53643025548f3a520bbdefcb98e236be}} 
+G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+N\+E\+W\+\_\+\+P\+IN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 71 of file gsasl.\+h.
+
+\mbox{\Hypertarget{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}\label{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}} 
+\index{gsasl.h@{gsasl.h}!Gsasl\_saslprep\_flags@{Gsasl\_saslprep\_flags}}
+\index{Gsasl\_saslprep\_flags@{Gsasl\_saslprep\_flags}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_saslprep\_flags}{Gsasl\_saslprep\_flags}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GSASL\_ALLOW\_UNASSIGNED@{GSASL\_ALLOW\_UNASSIGNED}!gsasl.h@{gsasl.h}}\index{gsasl.h@{gsasl.h}!GSASL\_ALLOW\_UNASSIGNED@{GSASL\_ALLOW\_UNASSIGNED}}}\mbox{\Hypertarget{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9ae64344257b76178a82e44009e664dd41}\label{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9ae64344257b76178a82e44009e664dd41}} 
+G\+S\+A\+S\+L\+\_\+\+A\+L\+L\+O\+W\+\_\+\+U\+N\+A\+S\+S\+I\+G\+N\+ED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 132 of file gsasl.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gsasl_8h_a3d59a49df0dd30cbeabb052365a5abd7}\label{gsasl_8h_a3d59a49df0dd30cbeabb052365a5abd7}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_base64\_from@{gsasl\_base64\_from}}
+\index{gsasl\_base64\_from@{gsasl\_base64\_from}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_from()}{gsasl\_base64\_from()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+base64\+\_\+from (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$$\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+from\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input byte array \\
+\hline
+{\em inlen} & size of input byte array \\
+\hline
+{\em out} & pointer to newly allocated output byte array \\
+\hline
+{\em outlen} & pointer to size of newly allocated output byte array\\
+\hline
+\end{DoxyParams}
+Decode Base64 data. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, G\+S\+A\+S\+L\+\_\+\+B\+A\+S\+E64\+\_\+\+E\+R\+R\+OR if input was invalid, and G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR on memory allocation errors.
+
+Since\+: 0.\+2.\+2 
+
+Definition at line 74 of file base64.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a81bac6c42269fe00c1fb0cf77e5b4e25}\label{gsasl_8h_a81bac6c42269fe00c1fb0cf77e5b4e25}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_base64\_to@{gsasl\_base64\_to}}
+\index{gsasl\_base64\_to@{gsasl\_base64\_to}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_to()}{gsasl\_base64\_to()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+base64\+\_\+to (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$$\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+to\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input byte array \\
+\hline
+{\em inlen} & size of input byte array \\
+\hline
+{\em out} & pointer to newly allocated output byte array \\
+\hline
+{\em outlen} & pointer to size of newly allocated output byte array\\
+\hline
+\end{DoxyParams}
+Encode data as base64. The string is zero terminated, and @outlen holds the length excluding the terminating zero. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, or G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR if input was too large or memory allocation fail.
+
+Since\+: 0.\+2.\+2 
+
+Definition at line 44 of file base64.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a92443c50851ed96bd49b64fcc1c3b85a}\label{gsasl_8h_a92443c50851ed96bd49b64fcc1c3b85a}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_callback@{gsasl\_callback}}
+\index{gsasl\_callback@{gsasl\_callback}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback()}{gsasl\_callback()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & handle received from \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\+\_\+init()}}, may be N\+U\+LL to derive it from @sctx. \\
+\hline
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type.\\
+\hline
+\end{DoxyParams}
+Invoke the application callback. The @prop value indicate what the callback is expected to do. For example, for G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, the function is expected to invoke gsasl\+\_\+property\+\_\+set(@\+S\+C\+TX, G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, \char`\"{}token\char`\"{}) where \char`\"{}token\char`\"{} is the anonymous token the application wishes the S\+A\+SL mechanism to use. See the manual for the meaning of all parameters.
+
+Note that if no callback has been set by the application, but the obsolete callback interface has been used, this function will translate the old callback interface into the new. This interface should be sufficient to invoke all callbacks, both new and old.
+
+Return value\+: Returns whatever the application callback return, or G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+A\+L\+L\+B\+A\+CK if no application was known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 75 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_ade24e994fc1fc935d0ad196248c520b9}\label{gsasl_8h_ade24e994fc1fc935d0ad196248c520b9}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_callback\_hook\_get@{gsasl\_callback\_hook\_get}}
+\index{gsasl\_callback\_hook\_get@{gsasl\_callback\_hook\_get}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_hook\_get()}{gsasl\_callback\_hook\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void$\ast$ gsasl\+\_\+callback\+\_\+hook\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+hook\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl handle.
+
+The application data is set using \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}}. This is normally used by the application to maintain a global state between the main program and callbacks.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 128 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a3cac87f74c9ace72ffada29382ec041a}\label{gsasl_8h_a3cac87f74c9ace72ffada29382ec041a}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_callback\_hook\_set@{gsasl\_callback\_hook\_set}}
+\index{gsasl\_callback\_hook\_set@{gsasl\_callback\_hook\_set}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_hook\_set()}{gsasl\_callback\_hook\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+callback\+\_\+hook\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{void $\ast$}]{hook }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+hook\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em hook} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl handle.
+
+The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}}. This is normally used by the application to maintain a global state between the main program and callbacks.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 108 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a5dd3661300400d6387f52dad4831dbfa}\label{gsasl_8h_a5dd3661300400d6387f52dad4831dbfa}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_callback\_set@{gsasl\_callback\_set}}
+\index{gsasl\_callback\_set@{gsasl\_callback\_set}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_set()}{gsasl\_callback\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+callback\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}{Gsasl\+\_\+callback\+\_\+function}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & handle received from \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\+\_\+init()}}. \\
+\hline
+{\em cb} & pointer to function implemented by application.\\
+\hline
+\end{DoxyParams}
+Store the pointer to the application provided callback in the library handle. The callback will be used, via \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}}, by mechanisms to discover various parameters (such as username and passwords). The callback function will be called with a Gsasl\+\_\+property value indicating the requested behaviour. For example, for G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, the function is expected to invoke gsasl\+\_\+property\+\_\+set(@\+C\+TX, G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, \char`\"{}token\char`\"{}) where \char`\"{}token\char`\"{} is the anonymous token the application wishes the S\+A\+SL mechanism to use. See the manual for the meaning of all parameters.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 44 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a488746d9786aee6dd51e2bdb1b0c43bf}\label{gsasl_8h_a488746d9786aee6dd51e2bdb1b0c43bf}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_check\_version@{gsasl\_check\_version}}
+\index{gsasl\_check\_version@{gsasl\_check\_version}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_check\_version()}{gsasl\_check\_version()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+check\+\_\+version (\begin{DoxyParamCaption}\item[{const char $\ast$}]{req\+\_\+version }\end{DoxyParamCaption})}
+
+gsasl\+\_\+check\+\_\+version\+: 
+\begin{DoxyParams}{Parameters}
+{\em req\+\_\+version} & version string to compare with, or N\+U\+LL.\\
+\hline
+\end{DoxyParams}
+Check library version.
+
+See G\+S\+A\+S\+L\+\_\+\+V\+E\+R\+S\+I\+ON for a suitable @req\+\_\+version string.
+
+Return value\+: Check that the the version of the library is at minimum the one given as a string in @req\+\_\+version and return the actual version string of the library; return N\+U\+LL if the condition is not met. If N\+U\+LL is passed to this function no check is done and only the version string is returned. 
+
+Definition at line 42 of file version.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a99120c8bd1aa853f9c199208e4df066b}\label{gsasl_8h_a99120c8bd1aa853f9c199208e4df066b}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_client\_mechlist@{gsasl\_client\_mechlist}}
+\index{gsasl\_client\_mechlist@{gsasl\_client\_mechlist}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_mechlist()}{gsasl\_client\_mechlist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+client\+\_\+mechlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$$\ast$}]{out }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+mechlist\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Return a newly allocated string containing S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl client. @out is allocated by this function, and it is the responsibility of caller to deallocate it.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 74 of file listmech.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}\label{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_client\_start@{gsasl\_client\_start}}
+\index{gsasl\_client\_start@{gsasl\_client\_start}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_start()}{gsasl\_client\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mech,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+start\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mech} & name of S\+A\+SL mechanism. \\
+\hline
+{\em sctx} & pointer to client handle.\\
+\hline
+\end{DoxyParams}
+This functions initiates a client S\+A\+SL authentication. This function must be called before any other gsasl\+\_\+client\+\_\+$\ast$() function is called.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 119 of file xstart.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a64a704afec782f93873a504a864ba8d3}\label{gsasl_8h_a64a704afec782f93873a504a864ba8d3}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_client\_suggest\_mechanism@{gsasl\_client\_suggest\_mechanism}}
+\index{gsasl\_client\_suggest\_mechanism@{gsasl\_client\_suggest\_mechanism}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_suggest\_mechanism()}{gsasl\_client\_suggest\_mechanism()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mechlist }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mechlist} & input character array with S\+A\+SL mechanism names, separated by invalid characters (e.\+g. S\+PC).\\
+\hline
+\end{DoxyParams}
+Given a list of mechanisms, suggest which to use.
+
+Return value\+: Returns name of \char`\"{}best\char`\"{} S\+A\+SL mechanism supported by the libgsasl client which is present in the input string. 
+
+Definition at line 37 of file suggest.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a2a1dff7b718738278c78fb1023a9cdfb}\label{gsasl_8h_a2a1dff7b718738278c78fb1023a9cdfb}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_client\_support\_p@{gsasl\_client\_support\_p}}
+\index{gsasl\_client\_support\_p@{gsasl\_client\_support\_p}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_support\_p()}{gsasl\_client\_support\_p()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+client\+\_\+support\+\_\+p (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+support\+\_\+p\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em name} & name of S\+A\+SL mechanism.\\
+\hline
+\end{DoxyParams}
+Decide whether there is client-\/side support for a specified mechanism.
+
+Return value\+: Returns 1 if the libgsasl client supports the named mechanism, otherwise 0. 
+
+Definition at line 49 of file supportp.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a31cbf3e7ec2cea4ea2b9a460b718d8c3}\label{gsasl_8h_a31cbf3e7ec2cea4ea2b9a460b718d8c3}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_decode@{gsasl\_decode}}
+\index{gsasl\_decode@{gsasl\_decode}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_decode()}{gsasl\_decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+decode\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Decode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+The @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free(@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code. 
+
+Definition at line 96 of file xcode.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_ac7deb87c1101cbf194d0731a2c38944f}\label{gsasl_8h_ac7deb87c1101cbf194d0731a2c38944f}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_done@{gsasl\_done}}
+\index{gsasl\_done@{gsasl\_done}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_done()}{gsasl\_done()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+done (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+done\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+This function destroys a libgsasl handle. The handle must not be used with other libgsasl functions after this call. 
+
+Definition at line 33 of file done.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_acb04314f06183b048ca0bb543d0cd4ea}\label{gsasl_8h_acb04314f06183b048ca0bb543d0cd4ea}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_encode@{gsasl\_encode}}
+\index{gsasl\_encode@{gsasl\_encode}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_encode()}{gsasl\_encode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+encode\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Encode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+The @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free(@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code. 
+
+Definition at line 64 of file xcode.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}\label{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_finish@{gsasl\_finish}}
+\index{gsasl\_finish@{gsasl\_finish}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_finish()}{gsasl\_finish()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+finish\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+Destroy a libgsasl client or server handle. The handle must not be used with other libgsasl functions after this call. 
+
+Definition at line 35 of file xfinish.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a1cbed8da948a29f5eee652b25e2390e1}\label{gsasl_8h_a1cbed8da948a29f5eee652b25e2390e1}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_free@{gsasl\_free}}
+\index{gsasl\_free@{gsasl\_free}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_free()}{gsasl\_free()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+gsasl\+\_\+free\+: 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & memory pointer\\
+\hline
+\end{DoxyParams}
+Invoke free(@ptr) to de-\/allocate memory pointer. Typically used on strings allocated by other libgsasl functions.
+
+This is useful on Windows where libgsasl is linked to one C\+RT and the application is linked to another C\+RT. Then malloc/free will not use the same heap. This happens if you build libgsasl using mingw32 and the application with Visual Studio.
+
+Since\+: 0.\+2.\+19 
+
+Definition at line 41 of file src/free.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a1edd3e81c9b12ff4b9a5f07f078baed4}\label{gsasl_8h_a1edd3e81c9b12ff4b9a5f07f078baed4}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_hmac\_md5@{gsasl\_hmac\_md5}}
+\index{gsasl\_hmac\_md5@{gsasl\_hmac\_md5}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_hmac\_md5()}{gsasl\_hmac\_md5()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+hmac\+\_\+md5 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{size\+\_\+t}]{keylen,  }\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$}]{outhash\mbox{[}16\mbox{]} }\end{DoxyParamCaption})}
+
+gsasl\+\_\+hmac\+\_\+md5\+: 
+\begin{DoxyParams}{Parameters}
+{\em key} & input character array with key to use. \\
+\hline
+{\em keylen} & length of input character array with key to use. \\
+\hline
+{\em in} & input character array of data to hash. \\
+\hline
+{\em inlen} & length of input character array of data to hash. \\
+\hline
+{\em outhash} & newly allocated character array with keyed hash of data.\\
+\hline
+\end{DoxyParams}
+Compute keyed checksum of data using H\+M\+A\+C-\/\+M\+D5. The @outhash buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 92 of file crypto.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}\label{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_init@{gsasl\_init}}
+\index{gsasl\_init@{gsasl\_init}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_init()}{gsasl\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+init\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & pointer to libgsasl handle.\\
+\hline
+\end{DoxyParams}
+This functions initializes libgsasl. The handle pointed to by ctx is valid for use with other libgsasl functions iff this function is successful. It also register all builtin S\+A\+SL mechanisms, using \mbox{\hyperlink{gsasl-mech_8h_a4437b9751250290c1a23e5a6869ff95a}{gsasl\+\_\+register()}}.
+
+Return value\+: G\+S\+A\+S\+L\+\_\+\+OK iff successful, otherwise G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR. 
+
+Definition at line 132 of file init.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a4cc2d3494722e471ced9c4fa7e206e7d}\label{gsasl_8h_a4cc2d3494722e471ced9c4fa7e206e7d}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_md5@{gsasl\_md5}}
+\index{gsasl\_md5@{gsasl\_md5}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_md5()}{gsasl\_md5()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+md5 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$}]{out\mbox{[}16\mbox{]} }\end{DoxyParamCaption})}
+
+gsasl\+\_\+md5\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input character array of data to hash. \\
+\hline
+{\em inlen} & length of input character array of data to hash. \\
+\hline
+{\em out} & newly allocated character array with hash of data.\\
+\hline
+\end{DoxyParams}
+Compute hash of data using M\+D5. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 70 of file crypto.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_ae1cfcb4a797f8d6c12d4b0df2e398ad3}\label{gsasl_8h_ae1cfcb4a797f8d6c12d4b0df2e398ad3}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_mechanism\_name@{gsasl\_mechanism\_name}}
+\index{gsasl\_mechanism\_name@{gsasl\_mechanism\_name}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_mechanism\_name()}{gsasl\_mechanism\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+mechanism\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+mechanism\+\_\+name\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+This function returns the name of the S\+A\+SL mechanism used in the session.
+
+Return value\+: Returns a zero terminated character array with the name of the S\+A\+SL mechanism, or N\+U\+LL if not known.
+
+Since\+: 0.\+2.\+28 
+
+Definition at line 38 of file mechname.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_acd2bc8a83014277e5e4d359af143d115}\label{gsasl_8h_acd2bc8a83014277e5e4d359af143d115}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_nonce@{gsasl\_nonce}}
+\index{gsasl\_nonce@{gsasl\_nonce}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_nonce()}{gsasl\_nonce()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+nonce (\begin{DoxyParamCaption}\item[{char $\ast$}]{data,  }\item[{size\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+nonce\+: 
+\begin{DoxyParams}{Parameters}
+{\em data} & output array to be filled with unpredictable random data. \\
+\hline
+{\em datalen} & size of output array.\\
+\hline
+\end{DoxyParams}
+Store unpredictable data of given size in the provided buffer.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 37 of file crypto.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a1d2f9b940203ca1d9e7f41902b9f7bc4}\label{gsasl_8h_a1d2f9b940203ca1d9e7f41902b9f7bc4}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_property\_fast@{gsasl\_property\_fast}}
+\index{gsasl\_property\_fast@{gsasl\_property\_fast}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_fast()}{gsasl\_property\_fast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+property\+\_\+fast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+fast\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data.\\
+\hline
+\end{DoxyParams}
+Retrieve the data stored in the session handle for given property @prop.
+
+The pointer is to live data, and must not be deallocated or modified in any way.
+
+This function will not invoke the application callback.
+
+Return value\+: Return property value, if known, or N\+U\+LL if no value known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 174 of file property.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}\label{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_property\_get@{gsasl\_property\_get}}
+\index{gsasl\_property\_get@{gsasl\_property\_get}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_get()}{gsasl\_property\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+property\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data.\\
+\hline
+\end{DoxyParams}
+Retrieve the data stored in the session handle for given property @prop, possibly invoking the application callback to get the value.
+
+The pointer is to live data, and must not be deallocated or modified in any way.
+
+This function will invoke the application callback, using \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}}, when a property value is not known.
+
+If no value is known, and no callback is specified or if the callback fail to return data, and if any obsolete callback functions has been set by the application, this function will try to call these obsolete callbacks, and store the returned data as the corresponding property. This behaviour of this function will be removed when the obsolete callback interfaces are removed.
+
+Return value\+: Return data for property, or N\+U\+LL if no value known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 211 of file property.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}\label{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_property\_set@{gsasl\_property\_set}}
+\index{gsasl\_property\_set@{gsasl\_property\_set}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_set()}{gsasl\_property\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+property\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop,  }\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data. \\
+\hline
+{\em data} & zero terminated character string to store.\\
+\hline
+\end{DoxyParams}
+Make a copy of @data and store it in the session handle for the indicated property @prop.
+
+You can immediately deallocate @data after calling this function, without affecting the data stored in the session handle.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 105 of file property.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a83f99ecf4399c0c35e2e161689f0577b}\label{gsasl_8h_a83f99ecf4399c0c35e2e161689f0577b}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_property\_set\_raw@{gsasl\_property\_set\_raw}}
+\index{gsasl\_property\_set\_raw@{gsasl\_property\_set\_raw}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_set\_raw()}{gsasl\_property\_set\_raw()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+property\+\_\+set\+\_\+raw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop,  }\item[{const char $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+set\+\_\+raw\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data. \\
+\hline
+{\em data} & character string to store. \\
+\hline
+{\em len} & length of character string to store.\\
+\hline
+\end{DoxyParams}
+Make a copy of @len sized @data and store a zero terminated version of it in the session handle for the indicated property @prop.
+
+You can immediately deallocate @data after calling this function, without affecting the data stored in the session handle.
+
+Except for the length indicator, this function is identical to gsasl\+\_\+property\+\_\+set.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 131 of file property.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a8243d0fb884c505ecdce2634e38ad0b9}\label{gsasl_8h_a8243d0fb884c505ecdce2634e38ad0b9}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_random@{gsasl\_random}}
+\index{gsasl\_random@{gsasl\_random}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_random()}{gsasl\_random()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+random (\begin{DoxyParamCaption}\item[{char $\ast$}]{data,  }\item[{size\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+random\+: 
+\begin{DoxyParams}{Parameters}
+{\em data} & output array to be filled with strong random data. \\
+\hline
+{\em datalen} & size of output array.\\
+\hline
+\end{DoxyParams}
+Store cryptographically strong random data of given size in the provided buffer.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful. 
+
+Definition at line 53 of file crypto.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_af30e2a33d1f3b6da519750754c339468}\label{gsasl_8h_af30e2a33d1f3b6da519750754c339468}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_saslprep@{gsasl\_saslprep}}
+\index{gsasl\_saslprep@{gsasl\_saslprep}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_saslprep()}{gsasl\_saslprep()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+saslprep (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{\mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}}}]{flags,  }\item[{char $\ast$$\ast$}]{out,  }\item[{int $\ast$}]{stringpreprc }\end{DoxyParamCaption})}
+
+gsasl\+\_\+saslprep -\/ prepare internationalized string 
+\begin{DoxyParams}{Parameters}
+{\em in} & a U\+T\+F-\/8 encoded string. \\
+\hline
+{\em flags} & any S\+A\+S\+Lprep flag, e.\+g., G\+S\+A\+S\+L\+\_\+\+A\+L\+L\+O\+W\+\_\+\+U\+N\+A\+S\+S\+I\+G\+N\+ED. \\
+\hline
+{\em out} & on exit, contains newly allocated output string. \\
+\hline
+{\em stringpreprc} & if non-\/\+N\+U\+LL, will hold precise stringprep return code.\\
+\hline
+\end{DoxyParams}
+Prepare string using S\+A\+S\+Lprep. On success, the @out variable must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, or G\+S\+A\+S\+L\+\_\+\+S\+A\+S\+L\+P\+R\+E\+P\+\_\+\+E\+R\+R\+OR on error.
+
+Since\+: 0.\+2.\+3 
+
+Definition at line 48 of file saslprep.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a029858ca2a1f6b82e57eb79da12bacda}\label{gsasl_8h_a029858ca2a1f6b82e57eb79da12bacda}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_server\_mechlist@{gsasl\_server\_mechlist}}
+\index{gsasl\_server\_mechlist@{gsasl\_server\_mechlist}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_mechlist()}{gsasl\_server\_mechlist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+server\+\_\+mechlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$$\ast$}]{out }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+mechlist\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Return a newly allocated string containing S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl server. @out is allocated by this function, and it is the responsibility of caller to deallocate it.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 93 of file listmech.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a05ac84259bd548f31b40aab25096aff5}\label{gsasl_8h_a05ac84259bd548f31b40aab25096aff5}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_server\_start@{gsasl\_server\_start}}
+\index{gsasl\_server\_start@{gsasl\_server\_start}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_start()}{gsasl\_server\_start()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mech,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+start\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mech} & name of S\+A\+SL mechanism. \\
+\hline
+{\em sctx} & pointer to server handle.\\
+\hline
+\end{DoxyParams}
+This functions initiates a server S\+A\+SL authentication. This function must be called before any other gsasl\+\_\+server\+\_\+$\ast$() function is called.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 137 of file xstart.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_aa7f6cd56191b88c239325f045821c695}\label{gsasl_8h_aa7f6cd56191b88c239325f045821c695}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_server\_support\_p@{gsasl\_server\_support\_p}}
+\index{gsasl\_server\_support\_p@{gsasl\_server\_support\_p}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_support\_p()}{gsasl\_server\_support\_p()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+server\+\_\+support\+\_\+p (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+support\+\_\+p\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em name} & name of S\+A\+SL mechanism.\\
+\hline
+\end{DoxyParams}
+Decide whether there is server-\/side support for a specified mechanism.
+
+Return value\+: Returns 1 if the libgsasl server supports the named mechanism, otherwise 0. 
+
+Definition at line 66 of file supportp.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a4026d33c75dba3e7c5ed4b173cf3ed77}\label{gsasl_8h_a4026d33c75dba3e7c5ed4b173cf3ed77}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_session\_hook\_get@{gsasl\_session\_hook\_get}}
+\index{gsasl\_session\_hook\_get@{gsasl\_session\_hook\_get}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_session\_hook\_get()}{gsasl\_session\_hook\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void$\ast$ gsasl\+\_\+session\+\_\+hook\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+session\+\_\+hook\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl session handle.
+
+The application data is set using \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}}. This is normally used by the application to maintain a per-\/session state between the main program and callbacks.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Since\+: 0.\+2.\+14 
+
+Definition at line 168 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a8967689efeb659a80da8c7f69c3c94d8}\label{gsasl_8h_a8967689efeb659a80da8c7f69c3c94d8}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_session\_hook\_set@{gsasl\_session\_hook\_set}}
+\index{gsasl\_session\_hook\_set@{gsasl\_session\_hook\_set}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_session\_hook\_set()}{gsasl\_session\_hook\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} void gsasl\+\_\+session\+\_\+hook\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{hook }\end{DoxyParamCaption})}
+
+gsasl\+\_\+session\+\_\+hook\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em hook} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl session handle.
+
+The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{callback_8c_a83acd31525f638ec042d160368132e45}{gsasl\+\_\+session\+\_\+hook\+\_\+get()}}. This is normally used by the application to maintain a per-\/session state between the main program and callbacks.
+
+Since\+: 0.\+2.\+14 
+
+Definition at line 148 of file callback.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_ad4ed7472e5992d92b0e8327fdc96239d}\label{gsasl_8h_ad4ed7472e5992d92b0e8327fdc96239d}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_simple\_getpass@{gsasl\_simple\_getpass}}
+\index{gsasl\_simple\_getpass@{gsasl\_simple\_getpass}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_simple\_getpass()}{gsasl\_simple\_getpass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+simple\+\_\+getpass (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{username,  }\item[{char $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
+
+gsasl\+\_\+simple\+\_\+getpass\+: 
+\begin{DoxyParams}{Parameters}
+{\em filename} & filename of file containing passwords. \\
+\hline
+{\em username} & username string. \\
+\hline
+{\em key} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Retrieve password for user from specified file. The buffer @key contain the password if this function is successful. The caller is responsible for deallocating it.
+
+The file should be on the UoW \char`\"{}\+M\+D5 Based Authentication\char`\"{} format, which means it is in text format with comments denoted by \# first on the line, with user entries looking as \char`\"{}username\+T\+A\+Bpassword\char`\"{}. This function removes CR and LF at the end of lines before processing. T\+AB, CR, and LF denote A\+S\+C\+II values 9, 13, and 10, respectively.
+
+Return value\+: Return G\+S\+A\+S\+L\+\_\+\+OK if output buffer contains the password, G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR if the user could not be found, or other error code. 
+
+Definition at line 47 of file md5pwd.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a0a3dcfe02502ecadd6484ff1181e1924}\label{gsasl_8h_a0a3dcfe02502ecadd6484ff1181e1924}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_step@{gsasl\_step}}
+\index{gsasl\_step@{gsasl\_step}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_step()}{gsasl\_step()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+step\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & pointer to output variable with size of output byte array.\\
+\hline
+\end{DoxyParams}
+Perform one step of S\+A\+SL authentication. This reads data from the other end (from @input and @input\+\_\+len), processes it (potentially invoking callbacks to the application), and writes data to server (into newly allocated variable @output and @output\+\_\+len that indicate the length of @output).
+
+The contents of the @output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE. If this function return G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE, however, the @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free (@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code. 
+
+Definition at line 51 of file xstep.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}\label{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_step64@{gsasl\_step64}}
+\index{gsasl\_step64@{gsasl\_step64}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_step64()}{gsasl\_step64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+step64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{b64input,  }\item[{char $\ast$$\ast$}]{b64output }\end{DoxyParamCaption})}
+
+gsasl\+\_\+step64\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle. \\
+\hline
+{\em b64input} & input base64 encoded byte array. \\
+\hline
+{\em b64output} & newly allocated output base64 encoded byte array.\\
+\hline
+\end{DoxyParams}
+This is a simple wrapper around \mbox{\hyperlink{xstep_8c_ade2cdca89b76ca34ae2c6da172ab62d0}{gsasl\+\_\+step()}} that base64 decodes the input and base64 encodes the output.
+
+The contents of the @b64output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE. If this function return G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE, however, the @b64output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free (@b64output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code. 
+
+Definition at line 86 of file xstep.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a9b89e839d731bffb733e2d950ad52dc9}\label{gsasl_8h_a9b89e839d731bffb733e2d950ad52dc9}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_strerror@{gsasl\_strerror}}
+\index{gsasl\_strerror@{gsasl\_strerror}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_strerror()}{gsasl\_strerror()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+strerror (\begin{DoxyParamCaption}\item[{int}]{err }\end{DoxyParamCaption})}
+
+gsasl\+\_\+strerror\+: 
+\begin{DoxyParams}{Parameters}
+{\em err} & libgsasl error code\\
+\hline
+\end{DoxyParams}
+Convert return code to human readable string explanation of the reason for the particular error code.
+
+This string can be used to output a diagnostic message to the user.
+
+Return value\+: Returns a pointer to a statically allocated string containing an explanation of the error code @err. 
+
+Definition at line 204 of file error.\+c.
+
+\mbox{\Hypertarget{gsasl_8h_a5d7172903f7670ac314a405a82e98a96}\label{gsasl_8h_a5d7172903f7670ac314a405a82e98a96}} 
+\index{gsasl.h@{gsasl.h}!gsasl\_strerror\_name@{gsasl\_strerror\_name}}
+\index{gsasl\_strerror\_name@{gsasl\_strerror\_name}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_strerror\_name()}{gsasl\_strerror\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ gsasl\+\_\+strerror\+\_\+name (\begin{DoxyParamCaption}\item[{int}]{err }\end{DoxyParamCaption})}
+
+gsasl\+\_\+strerror\+\_\+name\+: 
+\begin{DoxyParams}{Parameters}
+{\em err} & libgsasl error code\\
+\hline
+\end{DoxyParams}
+Convert return code to human readable string representing the error code symbol itself. For example, gsasl\+\_\+strerror\+\_\+name(G\+S\+A\+S\+L\+\_\+\+OK) returns the string \char`\"{}\+G\+S\+A\+S\+L\+\_\+\+O\+K\char`\"{}.
+
+This string can be used to output a diagnostic message to the user.
+
+Return value\+: Returns a pointer to a statically allocated string containing a string version of the error code @err, or N\+U\+LL if the error code is not known.
+
+Since\+: 0.\+2.\+29 
+
+Definition at line 239 of file error.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gsasl_8h_ac972160b2b87a4380e4838ed7c2d700f}\label{gsasl_8h_ac972160b2b87a4380e4838ed7c2d700f}} 
+\index{gsasl.h@{gsasl.h}!GSASL\_VALID\_MECHANISM\_CHARACTERS@{GSASL\_VALID\_MECHANISM\_CHARACTERS}}
+\index{GSASL\_VALID\_MECHANISM\_CHARACTERS@{GSASL\_VALID\_MECHANISM\_CHARACTERS}!gsasl.h@{gsasl.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_VALID\_MECHANISM\_CHARACTERS}{GSASL\_VALID\_MECHANISM\_CHARACTERS}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} const char$\ast$ G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS}
+
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS\+:
+
+A zero-\/terminated character array, or string, with all A\+S\+C\+II characters that may be used within a S\+A\+SL mechanism name. 
+
+Definition at line 48 of file init.\+c.
+

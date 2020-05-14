@@ -1,0 +1,87 @@
+\hypertarget{kerberos__v5_2server_8c}{}\doxysection{server.\+c File Reference}
+\label{kerberos__v5_2server_8c}\index{server.c@{server.c}}
+{\ttfamily \#include \char`\"{}kerberos\+\_\+v5.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shared.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct__Gsasl__kerberos__v5__server__state}{\+\_\+\+Gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+state}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_a44897fadd766baf4689b07016d777ec4}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+init}} (Gsasl\+\_\+ctx $\ast$ctx)
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_a5cfd608efa57f42f62473b26332b4c72}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_a07927eaa36513aab204f41a208601c56}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_a6bc62425796a641864e5be47c0de5264}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_ae438ad0150249e3b32ef5556c62f34be}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{kerberos__v5_2server_8c_a72029181f75296492b2e1e76a4845bac}{\+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{kerberos__v5_2server_8c_ae438ad0150249e3b32ef5556c62f34be}\label{kerberos__v5_2server_8c_ae438ad0150249e3b32ef5556c62f34be}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_decode@{\_gsasl\_kerberos\_v5\_server\_decode}}
+\index{\_gsasl\_kerberos\_v5\_server\_decode@{\_gsasl\_kerberos\_v5\_server\_decode}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_decode()}{\_gsasl\_kerberos\_v5\_server\_decode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 535 of file kerberos\+\_\+v5/server.\+c.
+
+\mbox{\Hypertarget{kerberos__v5_2server_8c_a6bc62425796a641864e5be47c0de5264}\label{kerberos__v5_2server_8c_a6bc62425796a641864e5be47c0de5264}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_encode@{\_gsasl\_kerberos\_v5\_server\_encode}}
+\index{\_gsasl\_kerberos\_v5\_server\_encode@{\_gsasl\_kerberos\_v5\_server\_encode}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_encode()}{\_gsasl\_kerberos\_v5\_server\_encode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 488 of file kerberos\+\_\+v5/server.\+c.
+
+\mbox{\Hypertarget{kerberos__v5_2server_8c_a72029181f75296492b2e1e76a4845bac}\label{kerberos__v5_2server_8c_a72029181f75296492b2e1e76a4845bac}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_finish@{\_gsasl\_kerberos\_v5\_server\_finish}}
+\index{\_gsasl\_kerberos\_v5\_server\_finish@{\_gsasl\_kerberos\_v5\_server\_finish}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_finish()}{\_gsasl\_kerberos\_v5\_server\_finish()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 586 of file kerberos\+\_\+v5/server.\+c.
+
+\mbox{\Hypertarget{kerberos__v5_2server_8c_a44897fadd766baf4689b07016d777ec4}\label{kerberos__v5_2server_8c_a44897fadd766baf4689b07016d777ec4}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_init@{\_gsasl\_kerberos\_v5\_server\_init}}
+\index{\_gsasl\_kerberos\_v5\_server\_init@{\_gsasl\_kerberos\_v5\_server\_init}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_init()}{\_gsasl\_kerberos\_v5\_server\_init()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+init (\begin{DoxyParamCaption}\item[{Gsasl\+\_\+ctx $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file kerberos\+\_\+v5/server.\+c.
+
+\mbox{\Hypertarget{kerberos__v5_2server_8c_a5cfd608efa57f42f62473b26332b4c72}\label{kerberos__v5_2server_8c_a5cfd608efa57f42f62473b26332b4c72}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_start@{\_gsasl\_kerberos\_v5\_server\_start}}
+\index{\_gsasl\_kerberos\_v5\_server\_start@{\_gsasl\_kerberos\_v5\_server\_start}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_start()}{\_gsasl\_kerberos\_v5\_server\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file kerberos\+\_\+v5/server.\+c.
+
+\mbox{\Hypertarget{kerberos__v5_2server_8c_a07927eaa36513aab204f41a208601c56}\label{kerberos__v5_2server_8c_a07927eaa36513aab204f41a208601c56}} 
+\index{kerberos\_v5/server.c@{kerberos\_v5/server.c}!\_gsasl\_kerberos\_v5\_server\_step@{\_gsasl\_kerberos\_v5\_server\_step}}
+\index{\_gsasl\_kerberos\_v5\_server\_step@{\_gsasl\_kerberos\_v5\_server\_step}!kerberos\_v5/server.c@{kerberos\_v5/server.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_kerberos\_v5\_server\_step()}{\_gsasl\_kerberos\_v5\_server\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+kerberos\+\_\+v5\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file kerberos\+\_\+v5/server.\+c.
+

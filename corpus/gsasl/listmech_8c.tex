@@ -1,0 +1,51 @@
+\hypertarget{listmech_8c}{}\doxysection{listmech.\+c File Reference}
+\label{listmech_8c}\index{listmech.c@{listmech.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{listmech_8c_acea93b44cca08eca5f7a50dedfb4d28b}{gsasl\+\_\+client\+\_\+mechlist}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$$\ast$out)
+\item 
+int \mbox{\hyperlink{listmech_8c_af7efb4661ec64101a81c01144ecc816e}{gsasl\+\_\+server\+\_\+mechlist}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$$\ast$out)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{listmech_8c_acea93b44cca08eca5f7a50dedfb4d28b}\label{listmech_8c_acea93b44cca08eca5f7a50dedfb4d28b}} 
+\index{listmech.c@{listmech.c}!gsasl\_client\_mechlist@{gsasl\_client\_mechlist}}
+\index{gsasl\_client\_mechlist@{gsasl\_client\_mechlist}!listmech.c@{listmech.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_mechlist()}{gsasl\_client\_mechlist()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+mechlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$$\ast$}]{out }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+mechlist\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Return a newly allocated string containing S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl client. @out is allocated by this function, and it is the responsibility of caller to deallocate it.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 74 of file listmech.\+c.
+
+\mbox{\Hypertarget{listmech_8c_af7efb4661ec64101a81c01144ecc816e}\label{listmech_8c_af7efb4661ec64101a81c01144ecc816e}} 
+\index{listmech.c@{listmech.c}!gsasl\_server\_mechlist@{gsasl\_server\_mechlist}}
+\index{gsasl\_server\_mechlist@{gsasl\_server\_mechlist}!listmech.c@{listmech.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_mechlist()}{gsasl\_server\_mechlist()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+mechlist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$$\ast$}]{out }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+mechlist\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Return a newly allocated string containing S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl server. @out is allocated by this function, and it is the responsibility of caller to deallocate it.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 93 of file listmech.\+c.
+

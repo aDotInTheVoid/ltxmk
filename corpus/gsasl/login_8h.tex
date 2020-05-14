@@ -1,0 +1,117 @@
+\hypertarget{login_8h}{}\doxysection{login.\+h File Reference}
+\label{login_8h}\index{login.h@{login.h}}
+{\ttfamily \#include $<$gsasl.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{login_8h_a236556b0654654d04d018970f96c8910}{G\+S\+A\+S\+L\+\_\+\+L\+O\+G\+I\+N\+\_\+\+N\+A\+ME}}~\char`\"{}L\+O\+G\+IN\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{login_8h_a3f2c50b85605f36030cb7191182c336a}{\+\_\+gsasl\+\_\+login\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{login_8h_a003e0d7793e198a74bf0b84307526801}{\+\_\+gsasl\+\_\+login\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{login_8h_add45c1e709ccf044d5c86302d88c36c4}{\+\_\+gsasl\+\_\+login\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{login_8h_a6b3cf19b67cb2fa398a7528156965a85}{\+\_\+gsasl\+\_\+login\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{login_8h_a6cb683f7c5acef747f1d224895886623}{\+\_\+gsasl\+\_\+login\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{login_8h_a7dedf683e9c1ab99691abb92b9cdb6c8}{\+\_\+gsasl\+\_\+login\+\_\+server\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{login_8h_aab2b673ac4d8c13c78e9069082a16967}{gsasl\+\_\+login\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{login_8h_a236556b0654654d04d018970f96c8910}\label{login_8h_a236556b0654654d04d018970f96c8910}} 
+\index{login.h@{login.h}!GSASL\_LOGIN\_NAME@{GSASL\_LOGIN\_NAME}}
+\index{GSASL\_LOGIN\_NAME@{GSASL\_LOGIN\_NAME}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_LOGIN\_NAME}{GSASL\_LOGIN\_NAME}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+L\+O\+G\+I\+N\+\_\+\+N\+A\+ME~\char`\"{}L\+O\+G\+IN\char`\"{}}
+
+
+
+Definition at line 29 of file login.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{login_8h_add45c1e709ccf044d5c86302d88c36c4}\label{login_8h_add45c1e709ccf044d5c86302d88c36c4}} 
+\index{login.h@{login.h}!\_gsasl\_login\_client\_finish@{\_gsasl\_login\_client\_finish}}
+\index{\_gsasl\_login\_client\_finish@{\_gsasl\_login\_client\_finish}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_client\_finish()}{\_gsasl\_login\_client\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+login\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file login/client.\+c.
+
+\mbox{\Hypertarget{login_8h_a3f2c50b85605f36030cb7191182c336a}\label{login_8h_a3f2c50b85605f36030cb7191182c336a}} 
+\index{login.h@{login.h}!\_gsasl\_login\_client\_start@{\_gsasl\_login\_client\_start}}
+\index{\_gsasl\_login\_client\_start@{\_gsasl\_login\_client\_start}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_client\_start()}{\_gsasl\_login\_client\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+login\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file login/client.\+c.
+
+\mbox{\Hypertarget{login_8h_a003e0d7793e198a74bf0b84307526801}\label{login_8h_a003e0d7793e198a74bf0b84307526801}} 
+\index{login.h@{login.h}!\_gsasl\_login\_client\_step@{\_gsasl\_login\_client\_step}}
+\index{\_gsasl\_login\_client\_step@{\_gsasl\_login\_client\_step}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_client\_step()}{\_gsasl\_login\_client\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+login\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 58 of file login/client.\+c.
+
+\mbox{\Hypertarget{login_8h_a7dedf683e9c1ab99691abb92b9cdb6c8}\label{login_8h_a7dedf683e9c1ab99691abb92b9cdb6c8}} 
+\index{login.h@{login.h}!\_gsasl\_login\_server\_finish@{\_gsasl\_login\_server\_finish}}
+\index{\_gsasl\_login\_server\_finish@{\_gsasl\_login\_server\_finish}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_server\_finish()}{\_gsasl\_login\_server\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+login\+\_\+server\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 149 of file login/server.\+c.
+
+\mbox{\Hypertarget{login_8h_a6b3cf19b67cb2fa398a7528156965a85}\label{login_8h_a6b3cf19b67cb2fa398a7528156965a85}} 
+\index{login.h@{login.h}!\_gsasl\_login\_server\_start@{\_gsasl\_login\_server\_start}}
+\index{\_gsasl\_login\_server\_start@{\_gsasl\_login\_server\_start}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_server\_start()}{\_gsasl\_login\_server\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+login\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 47 of file login/server.\+c.
+
+\mbox{\Hypertarget{login_8h_a6cb683f7c5acef747f1d224895886623}\label{login_8h_a6cb683f7c5acef747f1d224895886623}} 
+\index{login.h@{login.h}!\_gsasl\_login\_server\_step@{\_gsasl\_login\_server\_step}}
+\index{\_gsasl\_login\_server\_step@{\_gsasl\_login\_server\_step}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_login\_server\_step()}{\_gsasl\_login\_server\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+login\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file login/server.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{login_8h_aab2b673ac4d8c13c78e9069082a16967}\label{login_8h_aab2b673ac4d8c13c78e9069082a16967}} 
+\index{login.h@{login.h}!gsasl\_login\_mechanism@{gsasl\_login\_mechanism}}
+\index{gsasl\_login\_mechanism@{gsasl\_login\_mechanism}!login.h@{login.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_login\_mechanism}{gsasl\_login\_mechanism}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} gsasl\+\_\+login\+\_\+mechanism}
+
+
+
+Definition at line 30 of file login/mechinfo.\+c.
+

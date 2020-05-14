@@ -1,0 +1,67 @@
+\hypertarget{xcode_8c}{}\doxysection{xcode.\+c File Reference}
+\label{xcode_8c}\index{xcode.c@{xcode.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{xcode_8c_ab745195aedca3f6dfcf589a656e35c01}{gsasl\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{xcode_8c_a303398eb8e13259a26d5f333e6b075cf}{gsasl\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{xcode_8c_a303398eb8e13259a26d5f333e6b075cf}\label{xcode_8c_a303398eb8e13259a26d5f333e6b075cf}} 
+\index{xcode.c@{xcode.c}!gsasl\_decode@{gsasl\_decode}}
+\index{gsasl\_decode@{gsasl\_decode}!xcode.c@{xcode.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_decode()}{gsasl\_decode()}}
+{\footnotesize\ttfamily int gsasl\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+decode\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Decode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+The @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free(@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code. 
+
+Definition at line 96 of file xcode.\+c.
+
+\mbox{\Hypertarget{xcode_8c_ab745195aedca3f6dfcf589a656e35c01}\label{xcode_8c_ab745195aedca3f6dfcf589a656e35c01}} 
+\index{xcode.c@{xcode.c}!gsasl\_encode@{gsasl\_encode}}
+\index{gsasl\_encode@{gsasl\_encode}!xcode.c@{xcode.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_encode()}{gsasl\_encode()}}
+{\footnotesize\ttfamily int gsasl\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+encode\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Encode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+The @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free(@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code. 
+
+Definition at line 64 of file xcode.\+c.
+

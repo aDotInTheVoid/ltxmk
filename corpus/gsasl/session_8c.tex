@@ -1,0 +1,146 @@
+\hypertarget{session_8c}{}\doxysection{session.\+c File Reference}
+\label{session_8c}\index{session.c@{session.c}}
+{\ttfamily \#include \char`\"{}session.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$gc.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{session_8c_a24c645b643ef4755c7b4e9afb237bdf6}{M\+D5\+L\+EN}}~16
+\item 
+\#define \mbox{\hyperlink{session_8c_a6af29b395c614d8d9576f0e34a8c71a4}{S\+A\+S\+L\+\_\+\+I\+N\+T\+E\+G\+R\+I\+T\+Y\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+\+L\+E\+N\+G\+TH}}~4
+\item 
+\#define \mbox{\hyperlink{session_8c_a3bed09ed2926f34ead7784061a334b64}{M\+A\+C\+\_\+\+D\+A\+T\+A\+\_\+\+L\+EN}}~4
+\item 
+\#define \mbox{\hyperlink{session_8c_afb8dd40f12df3bbbde4c697278f7c7ce}{M\+A\+C\+\_\+\+H\+M\+A\+C\+\_\+\+L\+EN}}~10
+\item 
+\#define \mbox{\hyperlink{session_8c_abac1509439bcd1eeefd00f72f45beebc}{M\+A\+C\+\_\+\+M\+S\+G\+\_\+\+T\+Y\+PE}}~\char`\"{}\textbackslash{}x00\textbackslash{}x01\char`\"{}
+\item 
+\#define \mbox{\hyperlink{session_8c_a0ff293273055a10ca6bd0707f8ab3001}{M\+A\+C\+\_\+\+M\+S\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+EN}}~2
+\item 
+\#define \mbox{\hyperlink{session_8c_a1587d4ee46d5df9d6bc48223299b5a7b}{M\+A\+C\+\_\+\+S\+E\+Q\+N\+U\+M\+\_\+\+L\+EN}}~4
+\item 
+\#define \mbox{\hyperlink{session_8c_a8a82f8dbcdae986d077583afe95fb1db}{C2I}}(buf)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{session_8c_a879725bf9ec3d81374fa868a0c588d7f}{digest\+\_\+md5\+\_\+encode}} (const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len, \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}} qop, unsigned long sendseqnum, char key\mbox{[}\mbox{\hyperlink{tokens_8h_af2fc5588b19b26612f28afa6fabc4ef7}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]})
+\item 
+int \mbox{\hyperlink{session_8c_a2691d9ba2706cebd7c55fd5227115fc0}{digest\+\_\+md5\+\_\+decode}} (const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len, \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}} qop, unsigned long readseqnum, char key\mbox{[}\mbox{\hyperlink{tokens_8h_af2fc5588b19b26612f28afa6fabc4ef7}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+TH}}\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{session_8c_a8a82f8dbcdae986d077583afe95fb1db}\label{session_8c_a8a82f8dbcdae986d077583afe95fb1db}} 
+\index{session.c@{session.c}!C2I@{C2I}}
+\index{C2I@{C2I}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{C2I}{C2I}}
+{\footnotesize\ttfamily \#define C2I(\begin{DoxyParamCaption}\item[{}]{buf }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                  ((buf[0] \& 0xFF) |            \(\backslash\)}
+\DoxyCodeLine{                  ((buf[1] \& 0xFF) << 8) |      \(\backslash\)}
+\DoxyCodeLine{                  ((buf[2] \& 0xFF) << 16) |     \(\backslash\)}
+\DoxyCodeLine{                  ((buf[3] \& 0xFF) << 24))}
+
+\end{DoxyCode}
+
+
+Definition at line 117 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a3bed09ed2926f34ead7784061a334b64}\label{session_8c_a3bed09ed2926f34ead7784061a334b64}} 
+\index{session.c@{session.c}!MAC\_DATA\_LEN@{MAC\_DATA\_LEN}}
+\index{MAC\_DATA\_LEN@{MAC\_DATA\_LEN}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MAC\_DATA\_LEN}{MAC\_DATA\_LEN}}
+{\footnotesize\ttfamily \#define M\+A\+C\+\_\+\+D\+A\+T\+A\+\_\+\+L\+EN~4}
+
+
+
+Definition at line 42 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_afb8dd40f12df3bbbde4c697278f7c7ce}\label{session_8c_afb8dd40f12df3bbbde4c697278f7c7ce}} 
+\index{session.c@{session.c}!MAC\_HMAC\_LEN@{MAC\_HMAC\_LEN}}
+\index{MAC\_HMAC\_LEN@{MAC\_HMAC\_LEN}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MAC\_HMAC\_LEN}{MAC\_HMAC\_LEN}}
+{\footnotesize\ttfamily \#define M\+A\+C\+\_\+\+H\+M\+A\+C\+\_\+\+L\+EN~10}
+
+
+
+Definition at line 43 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_abac1509439bcd1eeefd00f72f45beebc}\label{session_8c_abac1509439bcd1eeefd00f72f45beebc}} 
+\index{session.c@{session.c}!MAC\_MSG\_TYPE@{MAC\_MSG\_TYPE}}
+\index{MAC\_MSG\_TYPE@{MAC\_MSG\_TYPE}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MAC\_MSG\_TYPE}{MAC\_MSG\_TYPE}}
+{\footnotesize\ttfamily \#define M\+A\+C\+\_\+\+M\+S\+G\+\_\+\+T\+Y\+PE~\char`\"{}\textbackslash{}x00\textbackslash{}x01\char`\"{}}
+
+
+
+Definition at line 44 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a0ff293273055a10ca6bd0707f8ab3001}\label{session_8c_a0ff293273055a10ca6bd0707f8ab3001}} 
+\index{session.c@{session.c}!MAC\_MSG\_TYPE\_LEN@{MAC\_MSG\_TYPE\_LEN}}
+\index{MAC\_MSG\_TYPE\_LEN@{MAC\_MSG\_TYPE\_LEN}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MAC\_MSG\_TYPE\_LEN}{MAC\_MSG\_TYPE\_LEN}}
+{\footnotesize\ttfamily \#define M\+A\+C\+\_\+\+M\+S\+G\+\_\+\+T\+Y\+P\+E\+\_\+\+L\+EN~2}
+
+
+
+Definition at line 45 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a1587d4ee46d5df9d6bc48223299b5a7b}\label{session_8c_a1587d4ee46d5df9d6bc48223299b5a7b}} 
+\index{session.c@{session.c}!MAC\_SEQNUM\_LEN@{MAC\_SEQNUM\_LEN}}
+\index{MAC\_SEQNUM\_LEN@{MAC\_SEQNUM\_LEN}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MAC\_SEQNUM\_LEN}{MAC\_SEQNUM\_LEN}}
+{\footnotesize\ttfamily \#define M\+A\+C\+\_\+\+S\+E\+Q\+N\+U\+M\+\_\+\+L\+EN~4}
+
+
+
+Definition at line 46 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a24c645b643ef4755c7b4e9afb237bdf6}\label{session_8c_a24c645b643ef4755c7b4e9afb237bdf6}} 
+\index{session.c@{session.c}!MD5LEN@{MD5LEN}}
+\index{MD5LEN@{MD5LEN}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{MD5LEN}{MD5LEN}}
+{\footnotesize\ttfamily \#define M\+D5\+L\+EN~16}
+
+
+
+Definition at line 40 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a6af29b395c614d8d9576f0e34a8c71a4}\label{session_8c_a6af29b395c614d8d9576f0e34a8c71a4}} 
+\index{session.c@{session.c}!SASL\_INTEGRITY\_PREFIX\_LENGTH@{SASL\_INTEGRITY\_PREFIX\_LENGTH}}
+\index{SASL\_INTEGRITY\_PREFIX\_LENGTH@{SASL\_INTEGRITY\_PREFIX\_LENGTH}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{SASL\_INTEGRITY\_PREFIX\_LENGTH}{SASL\_INTEGRITY\_PREFIX\_LENGTH}}
+{\footnotesize\ttfamily \#define S\+A\+S\+L\+\_\+\+I\+N\+T\+E\+G\+R\+I\+T\+Y\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+\+L\+E\+N\+G\+TH~4}
+
+
+
+Definition at line 41 of file session.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{session_8c_a2691d9ba2706cebd7c55fd5227115fc0}\label{session_8c_a2691d9ba2706cebd7c55fd5227115fc0}} 
+\index{session.c@{session.c}!digest\_md5\_decode@{digest\_md5\_decode}}
+\index{digest\_md5\_decode@{digest\_md5\_decode}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_decode()}{digest\_md5\_decode()}}
+{\footnotesize\ttfamily int digest\+\_\+md5\+\_\+decode (\begin{DoxyParamCaption}\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len,  }\item[{\mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}}}]{qop,  }\item[{unsigned long}]{readseqnum,  }\item[{char}]{key\mbox{[}\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+T\+H\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 122 of file session.\+c.
+
+\mbox{\Hypertarget{session_8c_a879725bf9ec3d81374fa868a0c588d7f}\label{session_8c_a879725bf9ec3d81374fa868a0c588d7f}} 
+\index{session.c@{session.c}!digest\_md5\_encode@{digest\_md5\_encode}}
+\index{digest\_md5\_encode@{digest\_md5\_encode}!session.c@{session.c}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_encode()}{digest\_md5\_encode()}}
+{\footnotesize\ttfamily int digest\+\_\+md5\+\_\+encode (\begin{DoxyParamCaption}\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len,  }\item[{\mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}}}]{qop,  }\item[{unsigned long}]{sendseqnum,  }\item[{char}]{key\mbox{[}\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+T\+H\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file session.\+c.
+

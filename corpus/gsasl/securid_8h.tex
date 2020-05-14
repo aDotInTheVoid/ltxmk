@@ -1,0 +1,93 @@
+\hypertarget{securid_8h}{}\doxysection{securid.\+h File Reference}
+\label{securid_8h}\index{securid.h@{securid.h}}
+{\ttfamily \#include $<$gsasl.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{securid_8h_ad4c6b9c38990666f1c28b90070abd276}{G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+N\+A\+ME}}~\char`\"{}S\+E\+C\+U\+R\+ID\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{securid_8h_ad0209b397d816e7c9e6b7c234f01f466}{\+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{securid_8h_a49db26987402e7f75f9bd0bbb218e1bf}{\+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{securid_8h_aaccac765ea78b8ae1a4ac659b3066af7}{\+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{securid_8h_a5ab0a77ccd40fd7205a54e517d7d09b1}{\+\_\+gsasl\+\_\+securid\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{securid_8h_ac65ae00b2322177e1891d357832e1b0c}{gsasl\+\_\+securid\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{securid_8h_ad4c6b9c38990666f1c28b90070abd276}\label{securid_8h_ad4c6b9c38990666f1c28b90070abd276}} 
+\index{securid.h@{securid.h}!GSASL\_SECURID\_NAME@{GSASL\_SECURID\_NAME}}
+\index{GSASL\_SECURID\_NAME@{GSASL\_SECURID\_NAME}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_SECURID\_NAME}{GSASL\_SECURID\_NAME}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+N\+A\+ME~\char`\"{}S\+E\+C\+U\+R\+ID\char`\"{}}
+
+
+
+Definition at line 29 of file securid.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{securid_8h_aaccac765ea78b8ae1a4ac659b3066af7}\label{securid_8h_aaccac765ea78b8ae1a4ac659b3066af7}} 
+\index{securid.h@{securid.h}!\_gsasl\_securid\_client\_finish@{\_gsasl\_securid\_client\_finish}}
+\index{\_gsasl\_securid\_client\_finish@{\_gsasl\_securid\_client\_finish}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_securid\_client\_finish()}{\_gsasl\_securid\_client\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 163 of file securid/client.\+c.
+
+\mbox{\Hypertarget{securid_8h_ad0209b397d816e7c9e6b7c234f01f466}\label{securid_8h_ad0209b397d816e7c9e6b7c234f01f466}} 
+\index{securid.h@{securid.h}!\_gsasl\_securid\_client\_start@{\_gsasl\_securid\_client\_start}}
+\index{\_gsasl\_securid\_client\_start@{\_gsasl\_securid\_client\_start}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_securid\_client\_start()}{\_gsasl\_securid\_client\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file securid/client.\+c.
+
+\mbox{\Hypertarget{securid_8h_a49db26987402e7f75f9bd0bbb218e1bf}\label{securid_8h_a49db26987402e7f75f9bd0bbb218e1bf}} 
+\index{securid.h@{securid.h}!\_gsasl\_securid\_client\_step@{\_gsasl\_securid\_client\_step}}
+\index{\_gsasl\_securid\_client\_step@{\_gsasl\_securid\_client\_step}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_securid\_client\_step()}{\_gsasl\_securid\_client\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+securid\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file securid/client.\+c.
+
+\mbox{\Hypertarget{securid_8h_a5ab0a77ccd40fd7205a54e517d7d09b1}\label{securid_8h_a5ab0a77ccd40fd7205a54e517d7d09b1}} 
+\index{securid.h@{securid.h}!\_gsasl\_securid\_server\_step@{\_gsasl\_securid\_server\_step}}
+\index{\_gsasl\_securid\_server\_step@{\_gsasl\_securid\_server\_step}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_securid\_server\_step()}{\_gsasl\_securid\_server\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+securid\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file securid/server.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{securid_8h_ac65ae00b2322177e1891d357832e1b0c}\label{securid_8h_ac65ae00b2322177e1891d357832e1b0c}} 
+\index{securid.h@{securid.h}!gsasl\_securid\_mechanism@{gsasl\_securid\_mechanism}}
+\index{gsasl\_securid\_mechanism@{gsasl\_securid\_mechanism}!securid.h@{securid.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_securid\_mechanism}{gsasl\_securid\_mechanism}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} gsasl\+\_\+securid\+\_\+mechanism}
+
+
+
+Definition at line 30 of file securid/mechinfo.\+c.
+

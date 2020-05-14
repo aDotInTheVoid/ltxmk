@@ -1,0 +1,1643 @@
+\hypertarget{obsolete_8c}{}\doxysection{obsolete.\+c File Reference}
+\label{obsolete_8c}\index{obsolete.c@{obsolete.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$minmax.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{obsolete_8c_a3b2f6dd720a0cb47f4b2d1aa38beefb4}{gsasl\+\_\+client\+\_\+listmech}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$out, size\+\_\+t $\ast$outlen)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a89de209adcbd0cd5d907284d7b214763}{gsasl\+\_\+server\+\_\+listmech}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, char $\ast$out, size\+\_\+t $\ast$outlen)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a5cee4a0b335915babdb69dbb98da7785}{gsasl\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a645d0d5f33d2f4ec83df9cef6d02bdf1}{gsasl\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{obsolete_8c_ae6a2be95d19a9794954f8ffb4b3a2877}{gsasl\+\_\+client\+\_\+step\+\_\+base64}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$b64input, char $\ast$b64output, size\+\_\+t b64output\+\_\+len)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a5949d11114d5b4f2fae0a1fdb35ae3a4}{gsasl\+\_\+server\+\_\+step\+\_\+base64}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$b64input, char $\ast$b64output, size\+\_\+t b64output\+\_\+len)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a515ba233104aaf795e1d0aae5c6bfece}{gsasl\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a55169a2c48faab9dd871b88c25b15cb3}{gsasl\+\_\+server\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ \mbox{\hyperlink{obsolete_8c_a9c740f049ce1856dae0364c48cfa18dc}{gsasl\+\_\+client\+\_\+ctx\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_aba9007d08100578b3431975d65e2ec84}{gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$application\+\_\+data)
+\item 
+void $\ast$ \mbox{\hyperlink{obsolete_8c_a86542aefb672cf98807f04d96dd328a1}{gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ \mbox{\hyperlink{obsolete_8c_a95a18c53127defda547f8bb41c1cf8a6}{gsasl\+\_\+server\+\_\+ctx\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_ae0240c6a76e72f07a032ddb2a091df2b}{gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$application\+\_\+data)
+\item 
+void $\ast$ \mbox{\hyperlink{obsolete_8c_a0bbd69b7cfae3032e20c0fb507a67cd8}{gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a0a9d43f5af89f137b4003f6973a5a488}{gsasl\+\_\+randomize}} (int strong, char $\ast$data, size\+\_\+t datalen)
+\item 
+\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ \mbox{\hyperlink{obsolete_8c_a7183e8cbf26220b994f9d9e462ba53b5}{gsasl\+\_\+ctx\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a5f7c1171a8bf113c2638a911c77c644b}{gsasl\+\_\+encode\+\_\+inline}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a86f2f845db7e9cb59375e1409fd79a8f}{gsasl\+\_\+decode\+\_\+inline}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a73c9ed731cbfcfc067a2834c68226f5f}{gsasl\+\_\+application\+\_\+data\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, void $\ast$appdata)
+\item 
+void $\ast$ \mbox{\hyperlink{obsolete_8c_a407431514a4f433f941340dbf50ff65c}{gsasl\+\_\+application\+\_\+data\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a5d27f9efaf5a5eb6662fb7366a045841}{gsasl\+\_\+appinfo\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$appdata)
+\item 
+void $\ast$ \mbox{\hyperlink{obsolete_8c_a54a909bc136a6053234fe6611b92ab5e}{gsasl\+\_\+appinfo\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\item 
+const char $\ast$ \mbox{\hyperlink{obsolete_8c_adaff08895872fe2b3d775d11f9409ffd}{gsasl\+\_\+server\+\_\+suggest\+\_\+mechanism}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mechlist)
+\item 
+void \mbox{\hyperlink{obsolete_8c_aa2425bf876f55d7875d9bd1f93e402c9}{gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_ac8555e791c73ff5fcac2bf3c2da52350}{Gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_ac8555e791c73ff5fcac2bf3c2da52350}{Gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id}} \mbox{\hyperlink{obsolete_8c_ae952ad07a377f5b8935a01a2aa1afa3c}{gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a7e1c3c676b9c4ffb27a01048d5d43de2}{gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a81495cc40702befe2e85aa1405c3cca6}{Gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a81495cc40702befe2e85aa1405c3cca6}{Gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id}} \mbox{\hyperlink{obsolete_8c_a85fef78c4ebfd33a45a6a106212a97a4}{gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a475dddfc35876db971d924d583eef214}{gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a010118f576ed3eaccb27652ecb6a2b7d}{Gsasl\+\_\+client\+\_\+callback\+\_\+password}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a010118f576ed3eaccb27652ecb6a2b7d}{Gsasl\+\_\+client\+\_\+callback\+\_\+password}} \mbox{\hyperlink{obsolete_8c_afa83ecb3d0f70ae3993a4dc94b47c4e3}{gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_acccc58c269e08815773c8b63c83d3c1e}{gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a5725c8b2a2b4006a72adba792e6af840}{Gsasl\+\_\+client\+\_\+callback\+\_\+passcode}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a5725c8b2a2b4006a72adba792e6af840}{Gsasl\+\_\+client\+\_\+callback\+\_\+passcode}} \mbox{\hyperlink{obsolete_8c_a629fc7f7a07a0d2b0e31c6c4e31fef05}{gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a141324ae69f6a214570fe2508e2ac756}{gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a74852ae2369cadf57a09963394053538}{Gsasl\+\_\+client\+\_\+callback\+\_\+pin}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a74852ae2369cadf57a09963394053538}{Gsasl\+\_\+client\+\_\+callback\+\_\+pin}} \mbox{\hyperlink{obsolete_8c_a14e75d16143991529d7e1b16ca5c4b4b}{gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a5ecb73e26ce7c19bd16c72cd79f17bb8}{gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a6af778833a051dc17fc01643149a9aac}{Gsasl\+\_\+client\+\_\+callback\+\_\+service}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a6af778833a051dc17fc01643149a9aac}{Gsasl\+\_\+client\+\_\+callback\+\_\+service}} \mbox{\hyperlink{obsolete_8c_ac93fe4376a9ecdbbb9d78ae2b7f7035c}{gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a217bd9f89b2e766ca1ea0b52233a2fd9}{gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a4b153c1105e9820cbf81a20ee9a93dcb}{Gsasl\+\_\+client\+\_\+callback\+\_\+anonymous}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a4b153c1105e9820cbf81a20ee9a93dcb}{Gsasl\+\_\+client\+\_\+callback\+\_\+anonymous}} \mbox{\hyperlink{obsolete_8c_abc9364fcc5bfc9bb97ed0ed09b9a0f03}{gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_ac048f528ae9d93cb0c34eee5e2d2d001}{gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a7e3314b9f927f693529a4005cff04334}{Gsasl\+\_\+client\+\_\+callback\+\_\+qop}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a7e3314b9f927f693529a4005cff04334}{Gsasl\+\_\+client\+\_\+callback\+\_\+qop}} \mbox{\hyperlink{obsolete_8c_a1eae89634ea328242333169ef9ee8db4}{gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a0a7d5878650db3aec3e4842bc6439a06}{gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a0d673524e4bb05be49d587e70beab4d5}{Gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a0d673524e4bb05be49d587e70beab4d5}{Gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf}} \mbox{\hyperlink{obsolete_8c_a8bbf3cd2fc9db50f933ae7e3ca7da77e}{gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a302a97e8dabde4251f8061a996d4b859}{gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a2c7b63891c9820aa8b77fc2194aafe25}{Gsasl\+\_\+client\+\_\+callback\+\_\+realm}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a2c7b63891c9820aa8b77fc2194aafe25}{Gsasl\+\_\+client\+\_\+callback\+\_\+realm}} \mbox{\hyperlink{obsolete_8c_a8b29872e998f8f515b819f14c1ac8fa3}{gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_af673aec89812b4ba275d1898a8e26d48}{gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a03bce4dd512f5d0d5ee3f977c6b87f6a}{Gsasl\+\_\+server\+\_\+callback\+\_\+validate}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a03bce4dd512f5d0d5ee3f977c6b87f6a}{Gsasl\+\_\+server\+\_\+callback\+\_\+validate}} \mbox{\hyperlink{obsolete_8c_a6d66b2151c736f43c4d5673b6e7bd121}{gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a41cacd1ea10013c2e9f92d61c0c88355}{gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a572c91d5c0963b3b775f74e5938b7581}{Gsasl\+\_\+server\+\_\+callback\+\_\+retrieve}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a572c91d5c0963b3b775f74e5938b7581}{Gsasl\+\_\+server\+\_\+callback\+\_\+retrieve}} \mbox{\hyperlink{obsolete_8c_a15a998dc34bd7f818442c3fcaa60f88d}{gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a9c009c95bac46f03f9438a0f97895dd7}{gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_addb1c86a0a9908ccb835ddeaf34e5ea2}{Gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_addb1c86a0a9908ccb835ddeaf34e5ea2}{Gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5}} \mbox{\hyperlink{obsolete_8c_a0c7e9f44cead2c56e9d16bb4fd406657}{gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a061182fa5cf35d87afbd306f6ac7488e}{gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_ad0737620bb63522ded27db6aa942c56e}{Gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_ad0737620bb63522ded27db6aa942c56e}{Gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5}} \mbox{\hyperlink{obsolete_8c_ab4a669b587a359c28ba60a67f4879778}{gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a6408fea359979309bad73ab3bd9d1c80}{gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a8d2e1580285fc0da4b9b6e178bf94c84}{Gsasl\+\_\+server\+\_\+callback\+\_\+external}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a8d2e1580285fc0da4b9b6e178bf94c84}{Gsasl\+\_\+server\+\_\+callback\+\_\+external}} \mbox{\hyperlink{obsolete_8c_a802a437f04c9eff9e9e0e37de9e07da8}{gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a4117d82012ebd829e7698a4804603621}{gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a3b63a6c34282d706b34c8b4968496e8b}{Gsasl\+\_\+server\+\_\+callback\+\_\+anonymous}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a3b63a6c34282d706b34c8b4968496e8b}{Gsasl\+\_\+server\+\_\+callback\+\_\+anonymous}} \mbox{\hyperlink{obsolete_8c_af229d5e0af2d8291850cdb52415d2d8d}{gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_aa86c739ca7a801770ce9e9d35af4e5a3}{gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_aef39cc72c54b3cb124d26c791bb129b0}{Gsasl\+\_\+server\+\_\+callback\+\_\+realm}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_aef39cc72c54b3cb124d26c791bb129b0}{Gsasl\+\_\+server\+\_\+callback\+\_\+realm}} \mbox{\hyperlink{obsolete_8c_aa4cd3736d6bae5fe36f5383241d1a7dd}{gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_ae0ebffca9ff972745db3c62207ad239d}{gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a2a897b076c2af7ead9e18622ca57e382}{Gsasl\+\_\+server\+\_\+callback\+\_\+qop}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a2a897b076c2af7ead9e18622ca57e382}{Gsasl\+\_\+server\+\_\+callback\+\_\+qop}} \mbox{\hyperlink{obsolete_8c_a88439bc92cdab7c67222bf312fc11f4f}{gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a04f2dca58933e710149085ff3a31c893}{gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a27e0adb1eefaacb0e89ee8a6c67d77f3}{Gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a27e0adb1eefaacb0e89ee8a6c67d77f3}{Gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf}} \mbox{\hyperlink{obsolete_8c_af2b753c56c0bfd119953157e93be94a4}{gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a7b99c0c465bab749a8e2e9849ad8b406}{gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_ad23322994716fbb0bd356fcf35953d3c}{Gsasl\+\_\+server\+\_\+callback\+\_\+cipher}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_ad23322994716fbb0bd356fcf35953d3c}{Gsasl\+\_\+server\+\_\+callback\+\_\+cipher}} \mbox{\hyperlink{obsolete_8c_a8d73dd09113439e109e7ab17abbcdb4c}{gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a88318c367ccf4a8fbd73405bb1d05ef8}{gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a101c03588d22076866b9d4d2acbcde46}{Gsasl\+\_\+server\+\_\+callback\+\_\+securid}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a101c03588d22076866b9d4d2acbcde46}{Gsasl\+\_\+server\+\_\+callback\+\_\+securid}} \mbox{\hyperlink{obsolete_8c_aff3544f97453e3738bd4ab36883c15fb}{gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a0a4bad5ef8c1683e32b9e59f5f28dff7}{gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a4be0cf84dec5549191fe3520ab88a4f8}{Gsasl\+\_\+server\+\_\+callback\+\_\+gssapi}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a4be0cf84dec5549191fe3520ab88a4f8}{Gsasl\+\_\+server\+\_\+callback\+\_\+gssapi}} \mbox{\hyperlink{obsolete_8c_aebd925eb089f69a31f72fb3d44f8fc3f}{gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{obsolete_8c_a51d726a4d6d5ab9998b0a774692e4cb1}{gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl-compat_8h_a3553ae4dfda2bba1df70cc92eaab873a}{Gsasl\+\_\+server\+\_\+callback\+\_\+service}} cb)
+\item 
+\mbox{\hyperlink{gsasl-compat_8h_a3553ae4dfda2bba1df70cc92eaab873a}{Gsasl\+\_\+server\+\_\+callback\+\_\+service}} \mbox{\hyperlink{obsolete_8c_aac2890fb0123fe02ed29e935c839b6d2}{gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+char $\ast$ \mbox{\hyperlink{obsolete_8c_a8c17cae9df282afe7bb77d9086d0d3fd}{gsasl\+\_\+stringprep\+\_\+nfkc}} (const char $\ast$in, ssize\+\_\+t len)
+\item 
+char $\ast$ \mbox{\hyperlink{obsolete_8c_ae1633383a3c92dbd901a37507efb7805}{gsasl\+\_\+stringprep\+\_\+saslprep}} (const char $\ast$in, int $\ast$stringprep\+\_\+rc)
+\item 
+char $\ast$ \mbox{\hyperlink{obsolete_8c_a33aeb4b7948f546956bf95395c62506c}{gsasl\+\_\+stringprep\+\_\+trace}} (const char $\ast$in, int $\ast$stringprep\+\_\+rc)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a4d3341989b499938f252a9b3e81b5039}{gsasl\+\_\+md5pwd\+\_\+get\+\_\+password}} (const char $\ast$filename, const char $\ast$username, char $\ast$key, size\+\_\+t $\ast$keylen)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a26b5633b33ddd86aeadba1e4a71b11c8}{gsasl\+\_\+base64\+\_\+encode}} (char const $\ast$src, size\+\_\+t srclength, char $\ast$target, size\+\_\+t targsize)
+\item 
+int \mbox{\hyperlink{obsolete_8c_ae772041a1a1fbb9e2c8f1402750ccbf5}{gsasl\+\_\+base64\+\_\+decode}} (char const $\ast$src, char $\ast$target, size\+\_\+t targsize)
+\item 
+const char $\ast$ \mbox{\hyperlink{obsolete_8c_af7f23b4a807ae6b00faece8f68b96a02}{\+\_\+gsasl\+\_\+obsolete\+\_\+property\+\_\+map}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+int \mbox{\hyperlink{obsolete_8c_a8eae1975e261f58c17636983854ae4b4}{\+\_\+gsasl\+\_\+obsolete\+\_\+callback}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{obsolete_8c_a8eae1975e261f58c17636983854ae4b4}\label{obsolete_8c_a8eae1975e261f58c17636983854ae4b4}} 
+\index{obsolete.c@{obsolete.c}!\_gsasl\_obsolete\_callback@{\_gsasl\_obsolete\_callback}}
+\index{\_gsasl\_obsolete\_callback@{\_gsasl\_obsolete\_callback}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_obsolete\_callback()}{\_gsasl\_obsolete\_callback()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+obsolete\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1959 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_af7f23b4a807ae6b00faece8f68b96a02}\label{obsolete_8c_af7f23b4a807ae6b00faece8f68b96a02}} 
+\index{obsolete.c@{obsolete.c}!\_gsasl\_obsolete\_property\_map@{\_gsasl\_obsolete\_property\_map}}
+\index{\_gsasl\_obsolete\_property\_map@{\_gsasl\_obsolete\_property\_map}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_obsolete\_property\_map()}{\_gsasl\_obsolete\_property\_map()}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+gsasl\+\_\+obsolete\+\_\+property\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1813 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a54a909bc136a6053234fe6611b92ab5e}\label{obsolete_8c_a54a909bc136a6053234fe6611b92ab5e}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_appinfo\_get@{gsasl\_appinfo\_get}}
+\index{gsasl\_appinfo\_get@{gsasl\_appinfo\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_appinfo\_get()}{gsasl\_appinfo\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+appinfo\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+appinfo\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl session handle. The application data is set using \mbox{\hyperlink{obsolete_8c_a5d27f9efaf5a5eb6662fb7366a045841}{gsasl\+\_\+appinfo\+\_\+set()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}} instead. 
+
+Definition at line 596 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a5d27f9efaf5a5eb6662fb7366a045841}\label{obsolete_8c_a5d27f9efaf5a5eb6662fb7366a045841}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_appinfo\_set@{gsasl\_appinfo\_set}}
+\index{gsasl\_appinfo\_set@{gsasl\_appinfo\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_appinfo\_set()}{gsasl\_appinfo\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+appinfo\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{appdata }\end{DoxyParamCaption})}
+
+gsasl\+\_\+appinfo\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em appdata} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl session handle. The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{obsolete_8c_a54a909bc136a6053234fe6611b92ab5e}{gsasl\+\_\+appinfo\+\_\+get()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}} instead. 
+
+Definition at line 577 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a407431514a4f433f941340dbf50ff65c}\label{obsolete_8c_a407431514a4f433f941340dbf50ff65c}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_application\_data\_get@{gsasl\_application\_data\_get}}
+\index{gsasl\_application\_data\_get@{gsasl\_application\_data\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_application\_data\_get()}{gsasl\_application\_data\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+application\+\_\+data\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+application\+\_\+data\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl handle. The application data is set using \mbox{\hyperlink{obsolete_8c_a73c9ed731cbfcfc067a2834c68226f5f}{gsasl\+\_\+application\+\_\+data\+\_\+set()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}} instead. 
+
+Definition at line 558 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a73c9ed731cbfcfc067a2834c68226f5f}\label{obsolete_8c_a73c9ed731cbfcfc067a2834c68226f5f}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_application\_data\_set@{gsasl\_application\_data\_set}}
+\index{gsasl\_application\_data\_set@{gsasl\_application\_data\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_application\_data\_set()}{gsasl\_application\_data\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+application\+\_\+data\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{void $\ast$}]{appdata }\end{DoxyParamCaption})}
+
+gsasl\+\_\+application\+\_\+data\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em appdata} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl handle. The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{obsolete_8c_a407431514a4f433f941340dbf50ff65c}{gsasl\+\_\+application\+\_\+data\+\_\+get()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}} instead. 
+
+Definition at line 539 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae772041a1a1fbb9e2c8f1402750ccbf5}\label{obsolete_8c_ae772041a1a1fbb9e2c8f1402750ccbf5}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_base64\_decode@{gsasl\_base64\_decode}}
+\index{gsasl\_base64\_decode@{gsasl\_base64\_decode}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_decode()}{gsasl\_base64\_decode()}}
+{\footnotesize\ttfamily int gsasl\+\_\+base64\+\_\+decode (\begin{DoxyParamCaption}\item[{char const $\ast$}]{src,  }\item[{char $\ast$}]{target,  }\item[{size\+\_\+t}]{targsize }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+decode\+: 
+\begin{DoxyParams}{Parameters}
+{\em src} & input byte array \\
+\hline
+{\em target} & output byte array \\
+\hline
+{\em targsize} & size of output byte array\\
+\hline
+\end{DoxyParams}
+Decode Base64 data. Skips all whitespace anywhere. Converts characters, four at a time, starting at (or after) src from Base64 numbers into three 8 bit bytes in the target area.
+
+Return value\+: Returns the number of data bytes stored at the target, or -\/1 on error.
+
+Deprecated\+: Use \mbox{\hyperlink{base64_8c_a242baf6a3e3b344fc1d1b6e1c766e198}{gsasl\+\_\+base64\+\_\+from()}} instead. 
+
+Definition at line 1794 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a26b5633b33ddd86aeadba1e4a71b11c8}\label{obsolete_8c_a26b5633b33ddd86aeadba1e4a71b11c8}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_base64\_encode@{gsasl\_base64\_encode}}
+\index{gsasl\_base64\_encode@{gsasl\_base64\_encode}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_encode()}{gsasl\_base64\_encode()}}
+{\footnotesize\ttfamily int gsasl\+\_\+base64\+\_\+encode (\begin{DoxyParamCaption}\item[{char const $\ast$}]{src,  }\item[{size\+\_\+t}]{srclength,  }\item[{char $\ast$}]{target,  }\item[{size\+\_\+t}]{targsize }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+encode\+: 
+\begin{DoxyParams}{Parameters}
+{\em src} & input byte array \\
+\hline
+{\em srclength} & size of input byte array \\
+\hline
+{\em target} & output byte array \\
+\hline
+{\em targsize} & size of output byte array\\
+\hline
+\end{DoxyParams}
+Encode data as base64. Converts characters, three at a time, starting at src into four base64 characters in the target area until the entire input buffer is encoded.
+
+Return value\+: Returns the number of data bytes stored at the target, or -\/1 on error.
+
+Deprecated\+: Use \mbox{\hyperlink{base64_8c_a9cabce698357603f0e19c68b6e26d561}{gsasl\+\_\+base64\+\_\+to()}} instead. 
+
+Definition at line 1759 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a86542aefb672cf98807f04d96dd328a1}\label{obsolete_8c_a86542aefb672cf98807f04d96dd328a1}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_application\_data\_get@{gsasl\_client\_application\_data\_get}}
+\index{gsasl\_client\_application\_data\_get@{gsasl\_client\_application\_data\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_application\_data\_get()}{gsasl\_client\_application\_data\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl client handle. The application data is set using \mbox{\hyperlink{obsolete_8c_aba9007d08100578b3431975d65e2ec84}{gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+set()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}} or \mbox{\hyperlink{callback_8c_a83acd31525f638ec042d160368132e45}{gsasl\+\_\+session\+\_\+hook\+\_\+get()}} instead. 
+
+Definition at line 350 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aba9007d08100578b3431975d65e2ec84}\label{obsolete_8c_aba9007d08100578b3431975d65e2ec84}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_application\_data\_set@{gsasl\_client\_application\_data\_set}}
+\index{gsasl\_client\_application\_data\_set@{gsasl\_client\_application\_data\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_application\_data\_set()}{gsasl\_client\_application\_data\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{application\+\_\+data }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle. \\
+\hline
+{\em application\+\_\+data} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl client handle. The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{obsolete_8c_a86542aefb672cf98807f04d96dd328a1}{gsasl\+\_\+client\+\_\+application\+\_\+data\+\_\+get()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}} or \mbox{\hyperlink{callback_8c_a6929de65496900aab89ae0bc1b4925f2}{gsasl\+\_\+session\+\_\+hook\+\_\+set()}} instead. 
+
+Definition at line 329 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_abc9364fcc5bfc9bb97ed0ed09b9a0f03}\label{obsolete_8c_abc9364fcc5bfc9bb97ed0ed09b9a0f03}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_anonymous\_get@{gsasl\_client\_callback\_anonymous\_get}}
+\index{gsasl\_client\_callback\_anonymous\_get@{gsasl\_client\_callback\_anonymous\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_anonymous\_get()}{gsasl\_client\_callback\_anonymous\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a4b153c1105e9820cbf81a20ee9a93dcb}{Gsasl\+\_\+client\+\_\+callback\+\_\+anonymous}} gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a217bd9f89b2e766ca1ea0b52233a2fd9}{gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 897 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a217bd9f89b2e766ca1ea0b52233a2fd9}\label{obsolete_8c_a217bd9f89b2e766ca1ea0b52233a2fd9}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_anonymous\_set@{gsasl\_client\_callback\_anonymous\_set}}
+\index{gsasl\_client\_callback\_anonymous\_set@{gsasl\_client\_callback\_anonymous\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_anonymous\_set()}{gsasl\_client\_callback\_anonymous\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a4b153c1105e9820cbf81a20ee9a93dcb}{Gsasl\+\_\+client\+\_\+callback\+\_\+anonymous}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the anonymous token, which usually is the users email address. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_abc9364fcc5bfc9bb97ed0ed09b9a0f03}{gsasl\+\_\+client\+\_\+callback\+\_\+anonymous\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 878 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae952ad07a377f5b8935a01a2aa1afa3c}\label{obsolete_8c_ae952ad07a377f5b8935a01a2aa1afa3c}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_authentication\_id\_get@{gsasl\_client\_callback\_authentication\_id\_get}}
+\index{gsasl\_client\_callback\_authentication\_id\_get@{gsasl\_client\_callback\_authentication\_id\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_authentication\_id\_get()}{gsasl\_client\_callback\_authentication\_id\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_ac8555e791c73ff5fcac2bf3c2da52350}{Gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id}} gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_aa2425bf876f55d7875d9bd1f93e402c9}{gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 654 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aa2425bf876f55d7875d9bd1f93e402c9}\label{obsolete_8c_aa2425bf876f55d7875d9bd1f93e402c9}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_authentication\_id\_set@{gsasl\_client\_callback\_authentication\_id\_set}}
+\index{gsasl\_client\_callback\_authentication\_id\_set@{gsasl\_client\_callback\_authentication\_id\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_authentication\_id\_set()}{gsasl\_client\_callback\_authentication\_id\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_ac8555e791c73ff5fcac2bf3c2da52350}{Gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the authentication identity. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_ae952ad07a377f5b8935a01a2aa1afa3c}{gsasl\+\_\+client\+\_\+callback\+\_\+authentication\+\_\+id\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 634 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a85fef78c4ebfd33a45a6a106212a97a4}\label{obsolete_8c_a85fef78c4ebfd33a45a6a106212a97a4}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_authorization\_id\_get@{gsasl\_client\_callback\_authorization\_id\_get}}
+\index{gsasl\_client\_callback\_authorization\_id\_get@{gsasl\_client\_callback\_authorization\_id\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_authorization\_id\_get()}{gsasl\_client\_callback\_authorization\_id\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a81495cc40702befe2e85aa1405c3cca6}{Gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id}} gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a7e1c3c676b9c4ffb27a01048d5d43de2}{gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 694 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a7e1c3c676b9c4ffb27a01048d5d43de2}\label{obsolete_8c_a7e1c3c676b9c4ffb27a01048d5d43de2}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_authorization\_id\_set@{gsasl\_client\_callback\_authorization\_id\_set}}
+\index{gsasl\_client\_callback\_authorization\_id\_set@{gsasl\_client\_callback\_authorization\_id\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_authorization\_id\_set()}{gsasl\_client\_callback\_authorization\_id\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a81495cc40702befe2e85aa1405c3cca6}{Gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the authorization identity. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a85fef78c4ebfd33a45a6a106212a97a4}{gsasl\+\_\+client\+\_\+callback\+\_\+authorization\+\_\+id\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 674 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a8bbf3cd2fc9db50f933ae7e3ca7da77e}\label{obsolete_8c_a8bbf3cd2fc9db50f933ae7e3ca7da77e}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_maxbuf\_get@{gsasl\_client\_callback\_maxbuf\_get}}
+\index{gsasl\_client\_callback\_maxbuf\_get@{gsasl\_client\_callback\_maxbuf\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_maxbuf\_get()}{gsasl\_client\_callback\_maxbuf\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a0d673524e4bb05be49d587e70beab4d5}{Gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf}} gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a0a7d5878650db3aec3e4842bc6439a06}{gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 977 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a0a7d5878650db3aec3e4842bc6439a06}\label{obsolete_8c_a0a7d5878650db3aec3e4842bc6439a06}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_maxbuf\_set@{gsasl\_client\_callback\_maxbuf\_set}}
+\index{gsasl\_client\_callback\_maxbuf\_set@{gsasl\_client\_callback\_maxbuf\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_maxbuf\_set()}{gsasl\_client\_callback\_maxbuf\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a0d673524e4bb05be49d587e70beab4d5}{Gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to inform the server of the largest buffer the client is able to receive when using the D\+I\+G\+E\+S\+T-\/\+M\+D5 \char`\"{}auth-\/int\char`\"{} or \char`\"{}auth-\/conf\char`\"{} Quality of Protection (qop). If this directive is missing, the default value 65536 will be assumed. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a8bbf3cd2fc9db50f933ae7e3ca7da77e}{gsasl\+\_\+client\+\_\+callback\+\_\+maxbuf\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 958 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a629fc7f7a07a0d2b0e31c6c4e31fef05}\label{obsolete_8c_a629fc7f7a07a0d2b0e31c6c4e31fef05}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_passcode\_get@{gsasl\_client\_callback\_passcode\_get}}
+\index{gsasl\_client\_callback\_passcode\_get@{gsasl\_client\_callback\_passcode\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_passcode\_get()}{gsasl\_client\_callback\_passcode\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a5725c8b2a2b4006a72adba792e6af840}{Gsasl\+\_\+client\+\_\+callback\+\_\+passcode}} gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_acccc58c269e08815773c8b63c83d3c1e}{gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 774 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_acccc58c269e08815773c8b63c83d3c1e}\label{obsolete_8c_acccc58c269e08815773c8b63c83d3c1e}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_passcode\_set@{gsasl\_client\_callback\_passcode\_set}}
+\index{gsasl\_client\_callback\_passcode\_set@{gsasl\_client\_callback\_passcode\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_passcode\_set()}{gsasl\_client\_callback\_passcode\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a5725c8b2a2b4006a72adba792e6af840}{Gsasl\+\_\+client\+\_\+callback\+\_\+passcode}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the passcode. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a629fc7f7a07a0d2b0e31c6c4e31fef05}{gsasl\+\_\+client\+\_\+callback\+\_\+passcode\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 754 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_afa83ecb3d0f70ae3993a4dc94b47c4e3}\label{obsolete_8c_afa83ecb3d0f70ae3993a4dc94b47c4e3}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_password\_get@{gsasl\_client\_callback\_password\_get}}
+\index{gsasl\_client\_callback\_password\_get@{gsasl\_client\_callback\_password\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_password\_get()}{gsasl\_client\_callback\_password\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a010118f576ed3eaccb27652ecb6a2b7d}{Gsasl\+\_\+client\+\_\+callback\+\_\+password}} gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a475dddfc35876db971d924d583eef214}{gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 734 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a475dddfc35876db971d924d583eef214}\label{obsolete_8c_a475dddfc35876db971d924d583eef214}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_password\_set@{gsasl\_client\_callback\_password\_set}}
+\index{gsasl\_client\_callback\_password\_set@{gsasl\_client\_callback\_password\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_password\_set()}{gsasl\_client\_callback\_password\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a010118f576ed3eaccb27652ecb6a2b7d}{Gsasl\+\_\+client\+\_\+callback\+\_\+password}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the password. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_afa83ecb3d0f70ae3993a4dc94b47c4e3}{gsasl\+\_\+client\+\_\+callback\+\_\+password\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 714 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a14e75d16143991529d7e1b16ca5c4b4b}\label{obsolete_8c_a14e75d16143991529d7e1b16ca5c4b4b}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_pin\_get@{gsasl\_client\_callback\_pin\_get}}
+\index{gsasl\_client\_callback\_pin\_get@{gsasl\_client\_callback\_pin\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_pin\_get()}{gsasl\_client\_callback\_pin\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a74852ae2369cadf57a09963394053538}{Gsasl\+\_\+client\+\_\+callback\+\_\+pin}} gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a141324ae69f6a214570fe2508e2ac756}{gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 815 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a141324ae69f6a214570fe2508e2ac756}\label{obsolete_8c_a141324ae69f6a214570fe2508e2ac756}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_pin\_set@{gsasl\_client\_callback\_pin\_set}}
+\index{gsasl\_client\_callback\_pin\_set@{gsasl\_client\_callback\_pin\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_pin\_set()}{gsasl\_client\_callback\_pin\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a74852ae2369cadf57a09963394053538}{Gsasl\+\_\+client\+\_\+callback\+\_\+pin}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to chose a new pin, possibly suggested by the server, for the S\+E\+C\+U\+R\+ID mechanism. This is not normally invoked, but only when the server requests it. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a14e75d16143991529d7e1b16ca5c4b4b}{gsasl\+\_\+client\+\_\+callback\+\_\+pin\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 796 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a1eae89634ea328242333169ef9ee8db4}\label{obsolete_8c_a1eae89634ea328242333169ef9ee8db4}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_qop\_get@{gsasl\_client\_callback\_qop\_get}}
+\index{gsasl\_client\_callback\_qop\_get@{gsasl\_client\_callback\_qop\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_qop\_get()}{gsasl\_client\_callback\_qop\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a7e3314b9f927f693529a4005cff04334}{Gsasl\+\_\+client\+\_\+callback\+\_\+qop}} gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_ac048f528ae9d93cb0c34eee5e2d2d001}{gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 935 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ac048f528ae9d93cb0c34eee5e2d2d001}\label{obsolete_8c_ac048f528ae9d93cb0c34eee5e2d2d001}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_qop\_set@{gsasl\_client\_callback\_qop\_set}}
+\index{gsasl\_client\_callback\_qop\_set@{gsasl\_client\_callback\_qop\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_qop\_set()}{gsasl\_client\_callback\_qop\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a7e3314b9f927f693529a4005cff04334}{Gsasl\+\_\+client\+\_\+callback\+\_\+qop}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to determine the qop to use after looking at what the server offered. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a1eae89634ea328242333169ef9ee8db4}{gsasl\+\_\+client\+\_\+callback\+\_\+qop\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 917 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a8b29872e998f8f515b819f14c1ac8fa3}\label{obsolete_8c_a8b29872e998f8f515b819f14c1ac8fa3}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_realm\_get@{gsasl\_client\_callback\_realm\_get}}
+\index{gsasl\_client\_callback\_realm\_get@{gsasl\_client\_callback\_realm\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_realm\_get()}{gsasl\_client\_callback\_realm\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a2c7b63891c9820aa8b77fc2194aafe25}{Gsasl\+\_\+client\+\_\+callback\+\_\+realm}} gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a302a97e8dabde4251f8061a996d4b859}{gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1016 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a302a97e8dabde4251f8061a996d4b859}\label{obsolete_8c_a302a97e8dabde4251f8061a996d4b859}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_realm\_set@{gsasl\_client\_callback\_realm\_set}}
+\index{gsasl\_client\_callback\_realm\_set@{gsasl\_client\_callback\_realm\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_realm\_set()}{gsasl\_client\_callback\_realm\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a2c7b63891c9820aa8b77fc2194aafe25}{Gsasl\+\_\+client\+\_\+callback\+\_\+realm}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to know which realm it belongs to. The realm is used by the server to determine which username and password to use. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a8b29872e998f8f515b819f14c1ac8fa3}{gsasl\+\_\+client\+\_\+callback\+\_\+realm\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 998 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ac93fe4376a9ecdbbb9d78ae2b7f7035c}\label{obsolete_8c_ac93fe4376a9ecdbbb9d78ae2b7f7035c}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_service\_get@{gsasl\_client\_callback\_service\_get}}
+\index{gsasl\_client\_callback\_service\_get@{gsasl\_client\_callback\_service\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_service\_get()}{gsasl\_client\_callback\_service\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a6af778833a051dc17fc01643149a9aac}{Gsasl\+\_\+client\+\_\+callback\+\_\+service}} gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a5ecb73e26ce7c19bd16c72cd79f17bb8}{gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 857 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a5ecb73e26ce7c19bd16c72cd79f17bb8}\label{obsolete_8c_a5ecb73e26ce7c19bd16c72cd79f17bb8}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_callback\_service\_set@{gsasl\_client\_callback\_service\_set}}
+\index{gsasl\_client\_callback\_service\_set@{gsasl\_client\_callback\_service\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_callback\_service\_set()}{gsasl\_client\_callback\_service\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a6af778833a051dc17fc01643149a9aac}{Gsasl\+\_\+client\+\_\+callback\+\_\+service}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the client to set the name of the service. The service buffer should be a registered G\+S\+S\+A\+PI host-\/based service name, hostname the name of the server. Servicename is used by D\+I\+G\+E\+S\+T-\/\+M\+D5 and should be the name of generic server in case of a replicated service. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_ac93fe4376a9ecdbbb9d78ae2b7f7035c}{gsasl\+\_\+client\+\_\+callback\+\_\+service\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 838 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a9c740f049ce1856dae0364c48cfa18dc}\label{obsolete_8c_a9c740f049ce1856dae0364c48cfa18dc}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_ctx\_get@{gsasl\_client\_ctx\_get}}
+\index{gsasl\_client\_ctx\_get@{gsasl\_client\_ctx\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_ctx\_get()}{gsasl\_client\_ctx\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl}{Gsasl}}$\ast$ gsasl\+\_\+client\+\_\+ctx\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+ctx\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the libgsasl handle given a libgsasl client handle.
+
+Deprecated\+: This function is not useful with the new 0.\+2.\+0 A\+PI. 
+
+Definition at line 309 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a515ba233104aaf795e1d0aae5c6bfece}\label{obsolete_8c_a515ba233104aaf795e1d0aae5c6bfece}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_finish@{gsasl\_client\_finish}}
+\index{gsasl\_client\_finish@{gsasl\_client\_finish}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_finish()}{gsasl\_client\_finish()}}
+{\footnotesize\ttfamily void gsasl\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+finish\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle.\\
+\hline
+\end{DoxyParams}
+Destroy a libgsasl client handle. The handle must not be used with other libgsasl functions after this call.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\+\_\+finish()}} instead. 
+
+Definition at line 280 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a3b2f6dd720a0cb47f4b2d1aa38beefb4}\label{obsolete_8c_a3b2f6dd720a0cb47f4b2d1aa38beefb4}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_listmech@{gsasl\_client\_listmech}}
+\index{gsasl\_client\_listmech@{gsasl\_client\_listmech}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_listmech()}{gsasl\_client\_listmech()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+listmech (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+listmech\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & output character array. \\
+\hline
+{\em outlen} & input maximum size of output character array, on output contains actual length of output array.\\
+\hline
+\end{DoxyParams}
+Write S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl client to the output array. To find out how large the output array must be, call this function with a N\+U\+LL @out parameter.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a99120c8bd1aa853f9c199208e4df066b}{gsasl\+\_\+client\+\_\+mechlist()}} instead. 
+
+Definition at line 42 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a5cee4a0b335915babdb69dbb98da7785}\label{obsolete_8c_a5cee4a0b335915babdb69dbb98da7785}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_step@{gsasl\_client\_step}}
+\index{gsasl\_client\_step@{gsasl\_client\_step}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_step()}{gsasl\_client\_step()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+step\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Perform one step of S\+A\+SL authentication in client. This reads data from server (specified with input and input\+\_\+len), processes it (potentially invoking callbacks to the application), and writes data to server (into variables output and output\+\_\+len).
+
+The contents of the output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a0a3dcfe02502ecadd6484ff1181e1924}{gsasl\+\_\+step()}} instead. 
+
+Definition at line 163 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae6a2be95d19a9794954f8ffb4b3a2877}\label{obsolete_8c_ae6a2be95d19a9794954f8ffb4b3a2877}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_client\_step\_base64@{gsasl\_client\_step\_base64}}
+\index{gsasl\_client\_step\_base64@{gsasl\_client\_step\_base64}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_step\_base64()}{gsasl\_client\_step\_base64()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+step\+\_\+base64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{b64input,  }\item[{char $\ast$}]{b64output,  }\item[{size\+\_\+t}]{b64output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+step\+\_\+base64\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle. \\
+\hline
+{\em b64input} & input base64 encoded byte array. \\
+\hline
+{\em b64output} & output base64 encoded byte array. \\
+\hline
+{\em b64output\+\_\+len} & size of output base64 encoded byte array.\\
+\hline
+\end{DoxyParams}
+This is a simple wrapper around \mbox{\hyperlink{obsolete_8c_a5cee4a0b335915babdb69dbb98da7785}{gsasl\+\_\+client\+\_\+step()}} that base64 decodes the input and base64 encodes the output.
+
+Return value\+: See \mbox{\hyperlink{obsolete_8c_a5cee4a0b335915babdb69dbb98da7785}{gsasl\+\_\+client\+\_\+step()}}.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\+\_\+step64()}} instead. 
+
+Definition at line 241 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a7183e8cbf26220b994f9d9e462ba53b5}\label{obsolete_8c_a7183e8cbf26220b994f9d9e462ba53b5}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_ctx\_get@{gsasl\_ctx\_get}}
+\index{gsasl\_ctx\_get@{gsasl\_ctx\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_ctx\_get()}{gsasl\_ctx\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl}{Gsasl}}$\ast$ gsasl\+\_\+ctx\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+ctx\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the libgsasl handle given a libgsasl session handle.
+
+Deprecated\+: This function is not useful with the new 0.\+2.\+0 A\+PI. 
+
+Definition at line 440 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a86f2f845db7e9cb59375e1409fd79a8f}\label{obsolete_8c_a86f2f845db7e9cb59375e1409fd79a8f}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_decode\_inline@{gsasl\_decode\_inline}}
+\index{gsasl\_decode\_inline@{gsasl\_decode\_inline}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_decode\_inline()}{gsasl\_decode\_inline()}}
+{\footnotesize\ttfamily int gsasl\+\_\+decode\+\_\+inline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+decode\+\_\+inline\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Decode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a31cbf3e7ec2cea4ea2b9a460b718d8c3}{gsasl\+\_\+decode()}} instead.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 504 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a5f7c1171a8bf113c2638a911c77c644b}\label{obsolete_8c_a5f7c1171a8bf113c2638a911c77c644b}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_encode\_inline@{gsasl\_encode\_inline}}
+\index{gsasl\_encode\_inline@{gsasl\_encode\_inline}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_encode\_inline()}{gsasl\_encode\_inline()}}
+{\footnotesize\ttfamily int gsasl\+\_\+encode\+\_\+inline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+encode\+\_\+inline\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Encode data according to negotiated S\+A\+SL mechanism. This might mean that data is integrity or privacy protected.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if encoding was successful, otherwise an error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_acb04314f06183b048ca0bb543d0cd4ea}{gsasl\+\_\+encode()}} instead.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 464 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a4d3341989b499938f252a9b3e81b5039}\label{obsolete_8c_a4d3341989b499938f252a9b3e81b5039}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_md5pwd\_get\_password@{gsasl\_md5pwd\_get\_password}}
+\index{gsasl\_md5pwd\_get\_password@{gsasl\_md5pwd\_get\_password}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_md5pwd\_get\_password()}{gsasl\_md5pwd\_get\_password()}}
+{\footnotesize\ttfamily int gsasl\+\_\+md5pwd\+\_\+get\+\_\+password (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{username,  }\item[{char $\ast$}]{key,  }\item[{size\+\_\+t $\ast$}]{keylen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+md5pwd\+\_\+get\+\_\+password\+: 
+\begin{DoxyParams}{Parameters}
+{\em filename} & filename of file containing passwords. \\
+\hline
+{\em username} & username string. \\
+\hline
+{\em key} & output character array. \\
+\hline
+{\em keylen} & input maximum size of output character array, on output contains actual length of output array.\\
+\hline
+\end{DoxyParams}
+Retrieve password for user from specified file. To find out how large the output array must be, call this function with out=N\+U\+LL.
+
+The file should be on the UoW \char`\"{}\+M\+D5 Based Authentication\char`\"{} format, which means it is in text format with comments denoted by \# first on the line, with user entries looking as \char`\"{}username\+T\+A\+Bpassword\char`\"{}. This function removes CR and LF at the end of lines before processing. T\+AB, CR, and LF denote A\+S\+C\+II values 9, 13, and 10, respectively.
+
+Return value\+: Return G\+S\+A\+S\+L\+\_\+\+OK if output buffer contains the password, G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR if the user could not be found, or other error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_ad4ed7472e5992d92b0e8327fdc96239d}{gsasl\+\_\+simple\+\_\+getpass()}} instead. 
+
+Definition at line 1687 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a0a9d43f5af89f137b4003f6973a5a488}\label{obsolete_8c_a0a9d43f5af89f137b4003f6973a5a488}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_randomize@{gsasl\_randomize}}
+\index{gsasl\_randomize@{gsasl\_randomize}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_randomize()}{gsasl\_randomize()}}
+{\footnotesize\ttfamily int gsasl\+\_\+randomize (\begin{DoxyParamCaption}\item[{int}]{strong,  }\item[{char $\ast$}]{data,  }\item[{size\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+randomize\+: 
+\begin{DoxyParams}{Parameters}
+{\em strong} & 0 iff operation should not block, non-\/0 for very strong randomness. \\
+\hline
+{\em data} & output array to be filled with random data. \\
+\hline
+{\em datalen} & size of output array.\\
+\hline
+\end{DoxyParams}
+Store cryptographically random data of given size in the provided buffer.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK iff successful.
+
+Deprecated\+: Use \mbox{\hyperlink{crypto_8c_a01b569cd81d3d5db177440f05d2d2d0f}{gsasl\+\_\+random()}} or \mbox{\hyperlink{crypto_8c_a5c0a0b50e8e2785606da8240062dcfe7}{gsasl\+\_\+nonce()}} instead. 
+
+Definition at line 424 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a0bbd69b7cfae3032e20c0fb507a67cd8}\label{obsolete_8c_a0bbd69b7cfae3032e20c0fb507a67cd8}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_application\_data\_get@{gsasl\_server\_application\_data\_get}}
+\index{gsasl\_server\_application\_data\_get@{gsasl\_server\_application\_data\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_application\_data\_get()}{gsasl\_server\_application\_data\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl server handle. The application data is set using \mbox{\hyperlink{obsolete_8c_ae0240c6a76e72f07a032ddb2a091df2b}{gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+set()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}} or \mbox{\hyperlink{callback_8c_a83acd31525f638ec042d160368132e45}{gsasl\+\_\+session\+\_\+hook\+\_\+get()}} instead. 
+
+Definition at line 405 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae0240c6a76e72f07a032ddb2a091df2b}\label{obsolete_8c_ae0240c6a76e72f07a032ddb2a091df2b}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_application\_data\_set@{gsasl\_server\_application\_data\_set}}
+\index{gsasl\_server\_application\_data\_set@{gsasl\_server\_application\_data\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_application\_data\_set()}{gsasl\_server\_application\_data\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{application\+\_\+data }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle. \\
+\hline
+{\em application\+\_\+data} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl server handle. The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{obsolete_8c_a0bbd69b7cfae3032e20c0fb507a67cd8}{gsasl\+\_\+server\+\_\+application\+\_\+data\+\_\+get()}}. It is normally used by the application to maintain state between the main program and the callback.
+
+Deprecated\+: Use \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}} or \mbox{\hyperlink{callback_8c_a6929de65496900aab89ae0bc1b4925f2}{gsasl\+\_\+session\+\_\+hook\+\_\+set()}} instead. 
+
+Definition at line 384 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_af229d5e0af2d8291850cdb52415d2d8d}\label{obsolete_8c_af229d5e0af2d8291850cdb52415d2d8d}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_anonymous\_get@{gsasl\_server\_callback\_anonymous\_get}}
+\index{gsasl\_server\_callback\_anonymous\_get@{gsasl\_server\_callback\_anonymous\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_anonymous\_get()}{gsasl\_server\_callback\_anonymous\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a3b63a6c34282d706b34c8b4968496e8b}{Gsasl\+\_\+server\+\_\+callback\+\_\+anonymous}} gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a4117d82012ebd829e7698a4804603621}{gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1254 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a4117d82012ebd829e7698a4804603621}\label{obsolete_8c_a4117d82012ebd829e7698a4804603621}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_anonymous\_set@{gsasl\_server\_callback\_anonymous\_set}}
+\index{gsasl\_server\_callback\_anonymous\_set@{gsasl\_server\_callback\_anonymous\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_anonymous\_set()}{gsasl\_server\_callback\_anonymous\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a3b63a6c34282d706b34c8b4968496e8b}{Gsasl\+\_\+server\+\_\+callback\+\_\+anonymous}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for deciding if user is permitted anonymous access. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_af229d5e0af2d8291850cdb52415d2d8d}{gsasl\+\_\+server\+\_\+callback\+\_\+anonymous\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1235 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a8d73dd09113439e109e7ab17abbcdb4c}\label{obsolete_8c_a8d73dd09113439e109e7ab17abbcdb4c}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_cipher\_get@{gsasl\_server\_callback\_cipher\_get}}
+\index{gsasl\_server\_callback\_cipher\_get@{gsasl\_server\_callback\_cipher\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_cipher\_get()}{gsasl\_server\_callback\_cipher\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_ad23322994716fbb0bd356fcf35953d3c}{Gsasl\+\_\+server\+\_\+callback\+\_\+cipher}} gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a7b99c0c465bab749a8e2e9849ad8b406}{gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1416 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a7b99c0c465bab749a8e2e9849ad8b406}\label{obsolete_8c_a7b99c0c465bab749a8e2e9849ad8b406}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_cipher\_set@{gsasl\_server\_callback\_cipher\_set}}
+\index{gsasl\_server\_callback\_cipher\_set@{gsasl\_server\_callback\_cipher\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_cipher\_set()}{gsasl\_server\_callback\_cipher\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_ad23322994716fbb0bd356fcf35953d3c}{Gsasl\+\_\+server\+\_\+callback\+\_\+cipher}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server to inform the client of the cipher suites supported. The D\+ES and 3D\+ES ciphers must be supported for interoperability. It is currently used by the D\+I\+G\+E\+S\+T-\/\+M\+D5 mechanism. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a8d73dd09113439e109e7ab17abbcdb4c}{gsasl\+\_\+server\+\_\+callback\+\_\+cipher\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1397 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a0c7e9f44cead2c56e9d16bb4fd406657}\label{obsolete_8c_a0c7e9f44cead2c56e9d16bb4fd406657}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_cram\_md5\_get@{gsasl\_server\_callback\_cram\_md5\_get}}
+\index{gsasl\_server\_callback\_cram\_md5\_get@{gsasl\_server\_callback\_cram\_md5\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_cram\_md5\_get()}{gsasl\_server\_callback\_cram\_md5\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_addb1c86a0a9908ccb835ddeaf34e5ea2}{Gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5}} gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a9c009c95bac46f03f9438a0f97895dd7}{gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1136 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a9c009c95bac46f03f9438a0f97895dd7}\label{obsolete_8c_a9c009c95bac46f03f9438a0f97895dd7}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_cram\_md5\_set@{gsasl\_server\_callback\_cram\_md5\_set}}
+\index{gsasl\_server\_callback\_cram\_md5\_set@{gsasl\_server\_callback\_cram\_md5\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_cram\_md5\_set()}{gsasl\_server\_callback\_cram\_md5\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_addb1c86a0a9908ccb835ddeaf34e5ea2}{Gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for deciding if user is authenticated using C\+R\+A\+M-\/\+M\+D5 challenge and response. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a0c7e9f44cead2c56e9d16bb4fd406657}{gsasl\+\_\+server\+\_\+callback\+\_\+cram\+\_\+md5\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1117 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ab4a669b587a359c28ba60a67f4879778}\label{obsolete_8c_ab4a669b587a359c28ba60a67f4879778}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_digest\_md5\_get@{gsasl\_server\_callback\_digest\_md5\_get}}
+\index{gsasl\_server\_callback\_digest\_md5\_get@{gsasl\_server\_callback\_digest\_md5\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_digest\_md5\_get()}{gsasl\_server\_callback\_digest\_md5\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_ad0737620bb63522ded27db6aa942c56e}{Gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5}} gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Return the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a061182fa5cf35d87afbd306f6ac7488e}{gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1176 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a061182fa5cf35d87afbd306f6ac7488e}\label{obsolete_8c_a061182fa5cf35d87afbd306f6ac7488e}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_digest\_md5\_set@{gsasl\_server\_callback\_digest\_md5\_set}}
+\index{gsasl\_server\_callback\_digest\_md5\_set@{gsasl\_server\_callback\_digest\_md5\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_digest\_md5\_set()}{gsasl\_server\_callback\_digest\_md5\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_ad0737620bb63522ded27db6aa942c56e}{Gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for retrieving the secret hash of the username, realm and password for use in the D\+I\+G\+E\+S\+T-\/\+M\+D5 mechanism. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_ab4a669b587a359c28ba60a67f4879778}{gsasl\+\_\+server\+\_\+callback\+\_\+digest\+\_\+md5\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1157 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a802a437f04c9eff9e9e0e37de9e07da8}\label{obsolete_8c_a802a437f04c9eff9e9e0e37de9e07da8}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_external\_get@{gsasl\_server\_callback\_external\_get}}
+\index{gsasl\_server\_callback\_external\_get@{gsasl\_server\_callback\_external\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_external\_get()}{gsasl\_server\_callback\_external\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a8d2e1580285fc0da4b9b6e178bf94c84}{Gsasl\+\_\+server\+\_\+callback\+\_\+external}} gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a6408fea359979309bad73ab3bd9d1c80}{gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1215 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a6408fea359979309bad73ab3bd9d1c80}\label{obsolete_8c_a6408fea359979309bad73ab3bd9d1c80}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_external\_set@{gsasl\_server\_callback\_external\_set}}
+\index{gsasl\_server\_callback\_external\_set@{gsasl\_server\_callback\_external\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_external\_set()}{gsasl\_server\_callback\_external\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a8d2e1580285fc0da4b9b6e178bf94c84}{Gsasl\+\_\+server\+\_\+callback\+\_\+external}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for deciding if user is authenticated out of band. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a802a437f04c9eff9e9e0e37de9e07da8}{gsasl\+\_\+server\+\_\+callback\+\_\+external\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1196 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aebd925eb089f69a31f72fb3d44f8fc3f}\label{obsolete_8c_aebd925eb089f69a31f72fb3d44f8fc3f}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_gssapi\_get@{gsasl\_server\_callback\_gssapi\_get}}
+\index{gsasl\_server\_callback\_gssapi\_get@{gsasl\_server\_callback\_gssapi\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_gssapi\_get()}{gsasl\_server\_callback\_gssapi\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a4be0cf84dec5549191fe3520ab88a4f8}{Gsasl\+\_\+server\+\_\+callback\+\_\+gssapi}} gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a0a4bad5ef8c1683e32b9e59f5f28dff7}{gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1504 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a0a4bad5ef8c1683e32b9e59f5f28dff7}\label{obsolete_8c_a0a4bad5ef8c1683e32b9e59f5f28dff7}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_gssapi\_set@{gsasl\_server\_callback\_gssapi\_set}}
+\index{gsasl\_server\_callback\_gssapi\_set@{gsasl\_server\_callback\_gssapi\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_gssapi\_set()}{gsasl\_server\_callback\_gssapi\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a4be0cf84dec5549191fe3520ab88a4f8}{Gsasl\+\_\+server\+\_\+callback\+\_\+gssapi}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for checking if a G\+S\+S\+A\+PI user is authorized for username (by, e.\+g., calling krb5\+\_\+userok()). The function should return G\+S\+A\+S\+L\+\_\+\+OK if the user should be permitted access, or an error code such as G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR on failure. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_aebd925eb089f69a31f72fb3d44f8fc3f}{gsasl\+\_\+server\+\_\+callback\+\_\+gssapi\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1485 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_af2b753c56c0bfd119953157e93be94a4}\label{obsolete_8c_af2b753c56c0bfd119953157e93be94a4}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_maxbuf\_get@{gsasl\_server\_callback\_maxbuf\_get}}
+\index{gsasl\_server\_callback\_maxbuf\_get@{gsasl\_server\_callback\_maxbuf\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_maxbuf\_get()}{gsasl\_server\_callback\_maxbuf\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a27e0adb1eefaacb0e89ee8a6c67d77f3}{Gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf}} gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a04f2dca58933e710149085ff3a31c893}{gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1375 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a04f2dca58933e710149085ff3a31c893}\label{obsolete_8c_a04f2dca58933e710149085ff3a31c893}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_maxbuf\_set@{gsasl\_server\_callback\_maxbuf\_set}}
+\index{gsasl\_server\_callback\_maxbuf\_set@{gsasl\_server\_callback\_maxbuf\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_maxbuf\_set()}{gsasl\_server\_callback\_maxbuf\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a27e0adb1eefaacb0e89ee8a6c67d77f3}{Gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server to inform the client of the largest buffer the server is able to receive when using the D\+I\+G\+E\+S\+T-\/\+M\+D5 \char`\"{}auth-\/int\char`\"{} or \char`\"{}auth-\/conf\char`\"{} Quality of Protection (qop). If this directive is missing, the default value 65536 will be assumed. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_af2b753c56c0bfd119953157e93be94a4}{gsasl\+\_\+server\+\_\+callback\+\_\+maxbuf\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1356 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a88439bc92cdab7c67222bf312fc11f4f}\label{obsolete_8c_a88439bc92cdab7c67222bf312fc11f4f}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_qop\_get@{gsasl\_server\_callback\_qop\_get}}
+\index{gsasl\_server\_callback\_qop\_get@{gsasl\_server\_callback\_qop\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_qop\_get()}{gsasl\_server\_callback\_qop\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a2a897b076c2af7ead9e18622ca57e382}{Gsasl\+\_\+server\+\_\+callback\+\_\+qop}} gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_ae0ebffca9ff972745db3c62207ad239d}{gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1333 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae0ebffca9ff972745db3c62207ad239d}\label{obsolete_8c_ae0ebffca9ff972745db3c62207ad239d}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_qop\_set@{gsasl\_server\_callback\_qop\_set}}
+\index{gsasl\_server\_callback\_qop\_set@{gsasl\_server\_callback\_qop\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_qop\_set()}{gsasl\_server\_callback\_qop\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a2a897b076c2af7ead9e18622ca57e382}{Gsasl\+\_\+server\+\_\+callback\+\_\+qop}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server to know which quality of protection it accepts. The quality of protection eventually used is selected by the client though. It is currently used by the D\+I\+G\+E\+S\+T-\/\+M\+D5 mechanism. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a88439bc92cdab7c67222bf312fc11f4f}{gsasl\+\_\+server\+\_\+callback\+\_\+qop\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1315 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aa4cd3736d6bae5fe36f5383241d1a7dd}\label{obsolete_8c_aa4cd3736d6bae5fe36f5383241d1a7dd}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_realm\_get@{gsasl\_server\_callback\_realm\_get}}
+\index{gsasl\_server\_callback\_realm\_get@{gsasl\_server\_callback\_realm\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_realm\_get()}{gsasl\_server\_callback\_realm\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_aef39cc72c54b3cb124d26c791bb129b0}{Gsasl\+\_\+server\+\_\+callback\+\_\+realm}} gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_aa86c739ca7a801770ce9e9d35af4e5a3}{gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1293 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aa86c739ca7a801770ce9e9d35af4e5a3}\label{obsolete_8c_aa86c739ca7a801770ce9e9d35af4e5a3}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_realm\_set@{gsasl\_server\_callback\_realm\_set}}
+\index{gsasl\_server\_callback\_realm\_set@{gsasl\_server\_callback\_realm\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_realm\_set()}{gsasl\_server\_callback\_realm\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_aef39cc72c54b3cb124d26c791bb129b0}{Gsasl\+\_\+server\+\_\+callback\+\_\+realm}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server to know which realm it serves. The realm is used by the user to determine which username and password to use. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_aa4cd3736d6bae5fe36f5383241d1a7dd}{gsasl\+\_\+server\+\_\+callback\+\_\+realm\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1275 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a15a998dc34bd7f818442c3fcaa60f88d}\label{obsolete_8c_a15a998dc34bd7f818442c3fcaa60f88d}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_retrieve\_get@{gsasl\_server\_callback\_retrieve\_get}}
+\index{gsasl\_server\_callback\_retrieve\_get@{gsasl\_server\_callback\_retrieve\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_retrieve\_get()}{gsasl\_server\_callback\_retrieve\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a572c91d5c0963b3b775f74e5938b7581}{Gsasl\+\_\+server\+\_\+callback\+\_\+retrieve}} gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a41cacd1ea10013c2e9f92d61c0c88355}{gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1096 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a41cacd1ea10013c2e9f92d61c0c88355}\label{obsolete_8c_a41cacd1ea10013c2e9f92d61c0c88355}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_retrieve\_set@{gsasl\_server\_callback\_retrieve\_set}}
+\index{gsasl\_server\_callback\_retrieve\_set@{gsasl\_server\_callback\_retrieve\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_retrieve\_set()}{gsasl\_server\_callback\_retrieve\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a572c91d5c0963b3b775f74e5938b7581}{Gsasl\+\_\+server\+\_\+callback\+\_\+retrieve}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for deciding if user is authenticated using authentication identity, authorization identity and password. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a15a998dc34bd7f818442c3fcaa60f88d}{gsasl\+\_\+server\+\_\+callback\+\_\+retrieve\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1077 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aff3544f97453e3738bd4ab36883c15fb}\label{obsolete_8c_aff3544f97453e3738bd4ab36883c15fb}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_securid\_get@{gsasl\_server\_callback\_securid\_get}}
+\index{gsasl\_server\_callback\_securid\_get@{gsasl\_server\_callback\_securid\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_securid\_get()}{gsasl\_server\_callback\_securid\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a101c03588d22076866b9d4d2acbcde46}{Gsasl\+\_\+server\+\_\+callback\+\_\+securid}} gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a88318c367ccf4a8fbd73405bb1d05ef8}{gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1462 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a88318c367ccf4a8fbd73405bb1d05ef8}\label{obsolete_8c_a88318c367ccf4a8fbd73405bb1d05ef8}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_securid\_set@{gsasl\_server\_callback\_securid\_set}}
+\index{gsasl\_server\_callback\_securid\_set@{gsasl\_server\_callback\_securid\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_securid\_set()}{gsasl\_server\_callback\_securid\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a101c03588d22076866b9d4d2acbcde46}{Gsasl\+\_\+server\+\_\+callback\+\_\+securid}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for validating a user via the S\+E\+C\+U\+R\+ID mechanism. The function should return G\+S\+A\+S\+L\+\_\+\+OK if user authenticated successfully, G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+A\+D\+D\+I\+T\+I\+O\+N\+A\+L\+\_\+\+P\+A\+S\+S\+C\+O\+DE if it wants another passcode, G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+N\+E\+W\+\_\+\+P\+IN if it wants a P\+IN change, or an error. When (and only when) G\+S\+A\+S\+L\+\_\+\+S\+E\+C\+U\+R\+I\+D\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+E\+E\+D\+\_\+\+N\+E\+W\+\_\+\+P\+IN is returned, suggestpin can be populated with a P\+IN code the server suggests, and suggestpinlen set to the length of the P\+IN. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_aff3544f97453e3738bd4ab36883c15fb}{gsasl\+\_\+server\+\_\+callback\+\_\+securid\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1443 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_aac2890fb0123fe02ed29e935c839b6d2}\label{obsolete_8c_aac2890fb0123fe02ed29e935c839b6d2}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_service\_get@{gsasl\_server\_callback\_service\_get}}
+\index{gsasl\_server\_callback\_service\_get@{gsasl\_server\_callback\_service\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_service\_get()}{gsasl\_server\_callback\_service\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a3553ae4dfda2bba1df70cc92eaab873a}{Gsasl\+\_\+server\+\_\+callback\+\_\+service}} gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_a51d726a4d6d5ab9998b0a774692e4cb1}{gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1545 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a51d726a4d6d5ab9998b0a774692e4cb1}\label{obsolete_8c_a51d726a4d6d5ab9998b0a774692e4cb1}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_service\_set@{gsasl\_server\_callback\_service\_set}}
+\index{gsasl\_server\_callback\_service\_set@{gsasl\_server\_callback\_service\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_service\_set()}{gsasl\_server\_callback\_service\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a3553ae4dfda2bba1df70cc92eaab873a}{Gsasl\+\_\+server\+\_\+callback\+\_\+service}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server to set the name of the service. The service buffer should be a registered G\+S\+S\+A\+PI host-\/based service name, hostname the name of the server. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_aac2890fb0123fe02ed29e935c839b6d2}{gsasl\+\_\+server\+\_\+callback\+\_\+service\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1526 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a6d66b2151c736f43c4d5673b6e7bd121}\label{obsolete_8c_a6d66b2151c736f43c4d5673b6e7bd121}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_validate\_get@{gsasl\_server\_callback\_validate\_get}}
+\index{gsasl\_server\_callback\_validate\_get@{gsasl\_server\_callback\_validate\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_validate\_get()}{gsasl\_server\_callback\_validate\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl-compat_8h_a03bce4dd512f5d0d5ee3f977c6b87f6a}{Gsasl\+\_\+server\+\_\+callback\+\_\+validate}} gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the callback earlier set by calling \mbox{\hyperlink{obsolete_8c_af673aec89812b4ba275d1898a8e26d48}{gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+set()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1056 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_af673aec89812b4ba275d1898a8e26d48}\label{obsolete_8c_af673aec89812b4ba275d1898a8e26d48}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_callback\_validate\_set@{gsasl\_server\_callback\_validate\_set}}
+\index{gsasl\_server\_callback\_validate\_set@{gsasl\_server\_callback\_validate\_set}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_callback\_validate\_set()}{gsasl\_server\_callback\_validate\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl-compat_8h_a03bce4dd512f5d0d5ee3f977c6b87f6a}{Gsasl\+\_\+server\+\_\+callback\+\_\+validate}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em cb} & callback function\\
+\hline
+\end{DoxyParams}
+Specify the callback function to use in the server for deciding if user is authenticated using authentication identity, authorization identity and password. The function can be later retrieved using \mbox{\hyperlink{obsolete_8c_a6d66b2151c736f43c4d5673b6e7bd121}{gsasl\+\_\+server\+\_\+callback\+\_\+validate\+\_\+get()}}.
+
+Deprecated\+: This function is part of the old callback interface. The new interface uses \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set()}} to set the application callback, and uses \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}} or \mbox{\hyperlink{gsasl_8h_aa0cae2a9a9cfc284d771fc98b72b92ec}{gsasl\+\_\+property\+\_\+get()}} to invoke the callback for certain properties. 
+
+Definition at line 1037 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a95a18c53127defda547f8bb41c1cf8a6}\label{obsolete_8c_a95a18c53127defda547f8bb41c1cf8a6}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_ctx\_get@{gsasl\_server\_ctx\_get}}
+\index{gsasl\_server\_ctx\_get@{gsasl\_server\_ctx\_get}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_ctx\_get()}{gsasl\_server\_ctx\_get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl}{Gsasl}}$\ast$ gsasl\+\_\+server\+\_\+ctx\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+ctx\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns the libgsasl handle given a libgsasl server handle.
+
+Deprecated\+: This function is not useful with the new 0.\+2.\+0 A\+PI. 
+
+Definition at line 364 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a55169a2c48faab9dd871b88c25b15cb3}\label{obsolete_8c_a55169a2c48faab9dd871b88c25b15cb3}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_finish@{gsasl\_server\_finish}}
+\index{gsasl\_server\_finish@{gsasl\_server\_finish}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_finish()}{gsasl\_server\_finish()}}
+{\footnotesize\ttfamily void gsasl\+\_\+server\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+finish\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle.\\
+\hline
+\end{DoxyParams}
+Destroy a libgsasl server handle. The handle must not be used with other libgsasl functions after this call.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\+\_\+finish()}} instead. 
+
+Definition at line 295 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a89de209adcbd0cd5d907284d7b214763}\label{obsolete_8c_a89de209adcbd0cd5d907284d7b214763}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_listmech@{gsasl\_server\_listmech}}
+\index{gsasl\_server\_listmech@{gsasl\_server\_listmech}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_listmech()}{gsasl\_server\_listmech()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+listmech (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{char $\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+listmech\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em out} & output character array. \\
+\hline
+{\em outlen} & input maximum size of output character array, on output contains actual length of output array.\\
+\hline
+\end{DoxyParams}
+Write S\+A\+SL names, separated by space, of mechanisms supported by the libgsasl server to the output array. To find out how large the output array must be, call this function with a N\+U\+LL @out parameter.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a029858ca2a1f6b82e57eb79da12bacda}{gsasl\+\_\+server\+\_\+mechlist()}} instead. 
+
+Definition at line 85 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a645d0d5f33d2f4ec83df9cef6d02bdf1}\label{obsolete_8c_a645d0d5f33d2f4ec83df9cef6d02bdf1}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_step@{gsasl\_server\_step}}
+\index{gsasl\_server\_step@{gsasl\_server\_step}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_step()}{gsasl\_server\_step()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+step\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & output byte array. \\
+\hline
+{\em output\+\_\+len} & size of output byte array.\\
+\hline
+\end{DoxyParams}
+Perform one step of S\+A\+SL authentication in server. This reads data from client (specified with input and input\+\_\+len), processes it (potentially invoking callbacks to the application), and writes data to client (into variables output and output\+\_\+len).
+
+The contents of the output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a0a3dcfe02502ecadd6484ff1181e1924}{gsasl\+\_\+step()}} instead. 
+
+Definition at line 193 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a5949d11114d5b4f2fae0a1fdb35ae3a4}\label{obsolete_8c_a5949d11114d5b4f2fae0a1fdb35ae3a4}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_step\_base64@{gsasl\_server\_step\_base64}}
+\index{gsasl\_server\_step\_base64@{gsasl\_server\_step\_base64}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_step\_base64()}{gsasl\_server\_step\_base64()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+step\+\_\+base64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{b64input,  }\item[{char $\ast$}]{b64output,  }\item[{size\+\_\+t}]{b64output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+step\+\_\+base64\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl server handle. \\
+\hline
+{\em b64input} & input base64 encoded byte array. \\
+\hline
+{\em b64output} & output base64 encoded byte array. \\
+\hline
+{\em b64output\+\_\+len} & size of output base64 encoded byte array.\\
+\hline
+\end{DoxyParams}
+This is a simple wrapper around \mbox{\hyperlink{obsolete_8c_a645d0d5f33d2f4ec83df9cef6d02bdf1}{gsasl\+\_\+server\+\_\+step()}} that base64 decodes the input and base64 encodes the output.
+
+Return value\+: See \mbox{\hyperlink{obsolete_8c_a645d0d5f33d2f4ec83df9cef6d02bdf1}{gsasl\+\_\+server\+\_\+step()}}.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\+\_\+step64()}} instead. 
+
+Definition at line 263 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_adaff08895872fe2b3d775d11f9409ffd}\label{obsolete_8c_adaff08895872fe2b3d775d11f9409ffd}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_server\_suggest\_mechanism@{gsasl\_server\_suggest\_mechanism}}
+\index{gsasl\_server\_suggest\_mechanism@{gsasl\_server\_suggest\_mechanism}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_suggest\_mechanism()}{gsasl\_server\_suggest\_mechanism()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+server\+\_\+suggest\+\_\+mechanism (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mechlist }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+suggest\+\_\+mechanism\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mechlist} & input character array with S\+A\+SL mechanism names, separated by invalid characters (e.\+g. S\+PC).\\
+\hline
+\end{DoxyParams}
+Return value\+: Returns name of \char`\"{}best\char`\"{} S\+A\+SL mechanism supported by the libgsasl server which is present in the input string.
+
+Deprecated\+: This function was never useful, since it is the client that chose which mechanism to use. 
+
+Definition at line 614 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a8c17cae9df282afe7bb77d9086d0d3fd}\label{obsolete_8c_a8c17cae9df282afe7bb77d9086d0d3fd}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_stringprep\_nfkc@{gsasl\_stringprep\_nfkc}}
+\index{gsasl\_stringprep\_nfkc@{gsasl\_stringprep\_nfkc}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_stringprep\_nfkc()}{gsasl\_stringprep\_nfkc()}}
+{\footnotesize\ttfamily char$\ast$ gsasl\+\_\+stringprep\+\_\+nfkc (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{ssize\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+stringprep\+\_\+nfkc\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & a U\+T\+F-\/8 encoded string. \\
+\hline
+{\em len} & length of @str, in bytes, or -\/1 if @str is nul-\/terminated.\\
+\hline
+\end{DoxyParams}
+Converts a string into canonical form, standardizing such issues as whether a character with an accent is represented as a base character and combining accent or as a single precomposed character.
+
+The normalization mode is N\+F\+KC (A\+LL C\+O\+M\+P\+O\+SE). It standardizes differences that do not affect the text content, such as the above-\/mentioned accent representation. It standardizes the \char`\"{}compatibility\char`\"{} characters in Unicode, such as S\+U\+P\+E\+R\+S\+C\+R\+I\+PT T\+H\+R\+EE to the standard forms (in this case D\+I\+G\+IT T\+H\+R\+EE). Formatting information may be lost but for most text operations such characters should be considered the same. It returns a result with composed forms rather than a maximally decomposed form.
+
+Return value\+: Return a newly allocated string, that is the N\+F\+KC normalized form of @str, o N\+U\+LL on error.
+
+Deprecated\+: No replacement functionality in G\+NU S\+A\+SL, use G\+NU Libidn instead. Note that in S\+A\+SL, you most likely want to use S\+A\+S\+Lprep and not bare N\+F\+KC, see \mbox{\hyperlink{gsasl_8h_af30e2a33d1f3b6da519750754c339468}{gsasl\+\_\+saslprep()}}. 
+
+Definition at line 1581 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_ae1633383a3c92dbd901a37507efb7805}\label{obsolete_8c_ae1633383a3c92dbd901a37507efb7805}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_stringprep\_saslprep@{gsasl\_stringprep\_saslprep}}
+\index{gsasl\_stringprep\_saslprep@{gsasl\_stringprep\_saslprep}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_stringprep\_saslprep()}{gsasl\_stringprep\_saslprep()}}
+{\footnotesize\ttfamily char$\ast$ gsasl\+\_\+stringprep\+\_\+saslprep (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{int $\ast$}]{stringprep\+\_\+rc }\end{DoxyParamCaption})}
+
+gsasl\+\_\+stringprep\+\_\+saslprep\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input A\+S\+C\+II or U\+T\+F-\/8 string with data to prepare according to S\+A\+S\+Lprep. \\
+\hline
+{\em stringprep\+\_\+rc} & pointer to output variable with stringprep error code, or N\+U\+LL to indicate that you don\textquotesingle{}t care about it.\\
+\hline
+\end{DoxyParams}
+Process a Unicode string for comparison, according to the \char`\"{}\+S\+A\+S\+Lprep\char`\"{} stringprep profile. This function is intended to be used by Simple Authentication and Security Layer (S\+A\+SL) mechanisms (such as P\+L\+A\+IN, C\+R\+A\+M-\/\+M\+D5, and D\+I\+G\+E\+S\+T-\/\+M\+D5) as well as other protocols exchanging user names and/or passwords.
+
+Return value\+: Return a newly allocated string that is the \char`\"{}\+S\+A\+S\+Lprep\char`\"{} processed form of the input string, or N\+U\+LL on error, in which case @stringprep\+\_\+rc contain the stringprep library error code.
+
+Deprecated\+: Use \mbox{\hyperlink{gsasl_8h_af30e2a33d1f3b6da519750754c339468}{gsasl\+\_\+saslprep()}} instead. 
+
+Definition at line 1612 of file obsolete.\+c.
+
+\mbox{\Hypertarget{obsolete_8c_a33aeb4b7948f546956bf95395c62506c}\label{obsolete_8c_a33aeb4b7948f546956bf95395c62506c}} 
+\index{obsolete.c@{obsolete.c}!gsasl\_stringprep\_trace@{gsasl\_stringprep\_trace}}
+\index{gsasl\_stringprep\_trace@{gsasl\_stringprep\_trace}!obsolete.c@{obsolete.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_stringprep\_trace()}{gsasl\_stringprep\_trace()}}
+{\footnotesize\ttfamily char$\ast$ gsasl\+\_\+stringprep\+\_\+trace (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{int $\ast$}]{stringprep\+\_\+rc }\end{DoxyParamCaption})}
+
+gsasl\+\_\+stringprep\+\_\+trace\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input A\+S\+C\+II or U\+T\+F-\/8 string with data to prepare according to \char`\"{}trace\char`\"{}. \\
+\hline
+{\em stringprep\+\_\+rc} & pointer to output variable with stringprep error code, or N\+U\+LL to indicate that you don\textquotesingle{}t care about it.\\
+\hline
+\end{DoxyParams}
+Process a Unicode string for use as trace information, according to the \char`\"{}trace\char`\"{} stringprep profile. The profile is designed for use with the S\+A\+SL A\+N\+O\+N\+Y\+M\+O\+US Mechanism.
+
+Return value\+: Return a newly allocated string that is the \char`\"{}trace\char`\"{} processed form of the input string, or N\+U\+LL on error, in which case @stringprep\+\_\+rc contain the stringprep library error code.
+
+Deprecated\+: No replacement functionality in G\+NU S\+A\+SL, use G\+NU Libidn instead. 
+
+Definition at line 1646 of file obsolete.\+c.
+

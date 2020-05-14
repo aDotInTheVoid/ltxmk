@@ -1,0 +1,55 @@
+\hypertarget{xstart_8c}{}\doxysection{xstart.\+c File Reference}
+\label{xstart_8c}\index{xstart.c@{xstart.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{xstart_8c_a609c287f9c3da5855c756a753e4fc923}{gsasl\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mech, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$sctx)
+\item 
+int \mbox{\hyperlink{xstart_8c_aa0fdc4ab3add8a22ab4ff9c32d941409}{gsasl\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mech, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$sctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{xstart_8c_a609c287f9c3da5855c756a753e4fc923}\label{xstart_8c_a609c287f9c3da5855c756a753e4fc923}} 
+\index{xstart.c@{xstart.c}!gsasl\_client\_start@{gsasl\_client\_start}}
+\index{gsasl\_client\_start@{gsasl\_client\_start}!xstart.c@{xstart.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_start()}{gsasl\_client\_start()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mech,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+start\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mech} & name of S\+A\+SL mechanism. \\
+\hline
+{\em sctx} & pointer to client handle.\\
+\hline
+\end{DoxyParams}
+This functions initiates a client S\+A\+SL authentication. This function must be called before any other gsasl\+\_\+client\+\_\+$\ast$() function is called.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 119 of file xstart.\+c.
+
+\mbox{\Hypertarget{xstart_8c_aa0fdc4ab3add8a22ab4ff9c32d941409}\label{xstart_8c_aa0fdc4ab3add8a22ab4ff9c32d941409}} 
+\index{xstart.c@{xstart.c}!gsasl\_server\_start@{gsasl\_server\_start}}
+\index{gsasl\_server\_start@{gsasl\_server\_start}!xstart.c@{xstart.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_start()}{gsasl\_server\_start()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mech,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$$\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+start\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mech} & name of S\+A\+SL mechanism. \\
+\hline
+{\em sctx} & pointer to server handle.\\
+\hline
+\end{DoxyParams}
+This functions initiates a server S\+A\+SL authentication. This function must be called before any other gsasl\+\_\+server\+\_\+$\ast$() function is called.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if successful, or error code. 
+
+Definition at line 137 of file xstart.\+c.
+

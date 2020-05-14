@@ -1,0 +1,154 @@
+\hypertarget{gsasl-mech_8h}{}\doxysection{gsasl-\/mech.h File Reference}
+\label{gsasl-mech_8h}\index{gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}}
+\item 
+struct \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int($\ast$ \mbox{\hyperlink{gsasl-mech_8h_a7001a63f5bd247ba2e3f1acf29b2a29f}{Gsasl\+\_\+init\+\_\+function}}) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+typedef void($\ast$ \mbox{\hyperlink{gsasl-mech_8h_a5237d2db3be9ccd4a1abc9e16968ce0f}{Gsasl\+\_\+done\+\_\+function}}) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+typedef int($\ast$ \mbox{\hyperlink{gsasl-mech_8h_a19a8565707db5517d732dfeaa6113119}{Gsasl\+\_\+start\+\_\+function}}) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+typedef int($\ast$ \mbox{\hyperlink{gsasl-mech_8h_a3b7f33c36947d75113befce6c119b990}{Gsasl\+\_\+step\+\_\+function}}) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+typedef void($\ast$ \mbox{\hyperlink{gsasl-mech_8h_a6695300ea84bff131219c6fdbfa9eedc}{Gsasl\+\_\+finish\+\_\+function}}) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+typedef int($\ast$ \mbox{\hyperlink{gsasl-mech_8h_ab9445322f92e9cbf21b353d2dc7453c6}{Gsasl\+\_\+code\+\_\+function}}) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+typedef struct \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}} \mbox{\hyperlink{gsasl-mech_8h_a529add7518a940eeebdf780615a76a94}{Gsasl\+\_\+mechanism\+\_\+functions}}
+\item 
+typedef struct \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{gsasl-mech_8h_ab69b111ebfe91eac586f86be64854881}{Gsasl\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int \mbox{\hyperlink{gsasl-mech_8h_a4437b9751250290c1a23e5a6869ff95a}{gsasl\+\_\+register}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} $\ast$mech)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}} \mbox{\hyperlink{gsasl-mech_8h_a365d7eada991ae04ad123b9ef1253be1}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{gsasl-mech_8h_ab9445322f92e9cbf21b353d2dc7453c6}\label{gsasl-mech_8h_ab9445322f92e9cbf21b353d2dc7453c6}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_code\_function@{Gsasl\_code\_function}}
+\index{Gsasl\_code\_function@{Gsasl\_code\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_code\_function}{Gsasl\_code\_function}}
+{\footnotesize\ttfamily typedef int($\ast$ Gsasl\+\_\+code\+\_\+function) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)}
+
+
+
+Definition at line 34 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a5237d2db3be9ccd4a1abc9e16968ce0f}\label{gsasl-mech_8h_a5237d2db3be9ccd4a1abc9e16968ce0f}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_done\_function@{Gsasl\_done\_function}}
+\index{Gsasl\_done\_function@{Gsasl\_done\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_done\_function}{Gsasl\_done\_function}}
+{\footnotesize\ttfamily typedef void($\ast$ Gsasl\+\_\+done\+\_\+function) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)}
+
+
+
+Definition at line 28 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a6695300ea84bff131219c6fdbfa9eedc}\label{gsasl-mech_8h_a6695300ea84bff131219c6fdbfa9eedc}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_finish\_function@{Gsasl\_finish\_function}}
+\index{Gsasl\_finish\_function@{Gsasl\_finish\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_finish\_function}{Gsasl\_finish\_function}}
+{\footnotesize\ttfamily typedef void($\ast$ Gsasl\+\_\+finish\+\_\+function) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)}
+
+
+
+Definition at line 33 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a7001a63f5bd247ba2e3f1acf29b2a29f}\label{gsasl-mech_8h_a7001a63f5bd247ba2e3f1acf29b2a29f}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_init\_function@{Gsasl\_init\_function}}
+\index{Gsasl\_init\_function@{Gsasl\_init\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_init\_function}{Gsasl\_init\_function}}
+{\footnotesize\ttfamily typedef int($\ast$ Gsasl\+\_\+init\+\_\+function) (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)}
+
+
+
+Definition at line 27 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_ab69b111ebfe91eac586f86be64854881}\label{gsasl-mech_8h_ab69b111ebfe91eac586f86be64854881}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_mechanism@{Gsasl\_mechanism}}
+\index{Gsasl\_mechanism@{Gsasl\_mechanism}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_mechanism}{Gsasl\_mechanism}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}}}
+
+
+
+Definition at line 34 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a529add7518a940eeebdf780615a76a94}\label{gsasl-mech_8h_a529add7518a940eeebdf780615a76a94}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_mechanism\_functions@{Gsasl\_mechanism\_functions}}
+\index{Gsasl\_mechanism\_functions@{Gsasl\_mechanism\_functions}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_mechanism\_functions}{Gsasl\_mechanism\_functions}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}} \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}}}
+
+
+
+Definition at line 34 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a19a8565707db5517d732dfeaa6113119}\label{gsasl-mech_8h_a19a8565707db5517d732dfeaa6113119}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_start\_function@{Gsasl\_start\_function}}
+\index{Gsasl\_start\_function@{Gsasl\_start\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_start\_function}{Gsasl\_start\_function}}
+{\footnotesize\ttfamily typedef int($\ast$ Gsasl\+\_\+start\+\_\+function) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)}
+
+
+
+Definition at line 29 of file gsasl-\/mech.\+h.
+
+\mbox{\Hypertarget{gsasl-mech_8h_a3b7f33c36947d75113befce6c119b990}\label{gsasl-mech_8h_a3b7f33c36947d75113befce6c119b990}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!Gsasl\_step\_function@{Gsasl\_step\_function}}
+\index{Gsasl\_step\_function@{Gsasl\_step\_function}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{Gsasl\_step\_function}{Gsasl\_step\_function}}
+{\footnotesize\ttfamily typedef int($\ast$ Gsasl\+\_\+step\+\_\+function) (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)}
+
+
+
+Definition at line 30 of file gsasl-\/mech.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gsasl-mech_8h_a4437b9751250290c1a23e5a6869ff95a}\label{gsasl-mech_8h_a4437b9751250290c1a23e5a6869ff95a}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!gsasl\_register@{gsasl\_register}}
+\index{gsasl\_register@{gsasl\_register}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_register()}{gsasl\_register()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gsasl_8h_a9456922879452d4e57ae9c017b56da36}{G\+S\+A\+S\+L\+\_\+\+A\+PI}} int gsasl\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} $\ast$}]{mech }\end{DoxyParamCaption})}
+
+gsasl\+\_\+register\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & pointer to libgsasl handle. \\
+\hline
+{\em mech} & plugin structure with information about plugin.\\
+\hline
+\end{DoxyParams}
+This function initialize given mechanism, and if successful, add it to the list of plugins that is used by the library.
+
+Return value\+: G\+S\+A\+S\+L\+\_\+\+OK iff successful, otherwise G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 38 of file register.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gsasl-mech_8h_a365d7eada991ae04ad123b9ef1253be1}\label{gsasl-mech_8h_a365d7eada991ae04ad123b9ef1253be1}} 
+\index{gsasl-\/mech.h@{gsasl-\/mech.h}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!gsasl-\/mech.h@{gsasl-\/mech.h}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_}{\_\_attribute\_\_}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structGsasl__mechanism__functions}{Gsasl\+\_\+mechanism\+\_\+functions}} \+\_\+\+\_\+attribute\+\_\+\+\_\+}
+

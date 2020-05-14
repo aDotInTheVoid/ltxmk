@@ -1,0 +1,66 @@
+\hypertarget{init_8c}{}\doxysection{init.\+c File Reference}
+\label{init_8c}\index{init.c@{init.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$gc.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cram-\/md5/cram-\/md5.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external/external.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gssapi/x-\/gssapi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gs2/gs2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}anonymous/anonymous.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plain/plain.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}securid/securid.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}digest-\/md5/digest-\/md5.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}login/login.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ntlm/x-\/ntlm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}kerberos\+\_\+v5/kerberos\+\_\+v5.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{init_8c_ab6d4bb2e14faa543fc8165a2377da9ea}{gsasl\+\_\+init}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$$\ast$ctx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{init_8c_a1447450808c1173c52a1aabd799baab6}{G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{init_8c_ab6d4bb2e14faa543fc8165a2377da9ea}\label{init_8c_ab6d4bb2e14faa543fc8165a2377da9ea}} 
+\index{init.c@{init.c}!gsasl\_init@{gsasl\_init}}
+\index{gsasl\_init@{gsasl\_init}!init.c@{init.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_init()}{gsasl\_init()}}
+{\footnotesize\ttfamily int gsasl\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$$\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+init\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & pointer to libgsasl handle.\\
+\hline
+\end{DoxyParams}
+This functions initializes libgsasl. The handle pointed to by ctx is valid for use with other libgsasl functions iff this function is successful. It also register all builtin S\+A\+SL mechanisms, using \mbox{\hyperlink{gsasl-mech_8h_a4437b9751250290c1a23e5a6869ff95a}{gsasl\+\_\+register()}}.
+
+Return value\+: G\+S\+A\+S\+L\+\_\+\+OK iff successful, otherwise G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR. 
+
+Definition at line 132 of file init.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{init_8c_a1447450808c1173c52a1aabd799baab6}\label{init_8c_a1447450808c1173c52a1aabd799baab6}} 
+\index{init.c@{init.c}!GSASL\_VALID\_MECHANISM\_CHARACTERS@{GSASL\_VALID\_MECHANISM\_CHARACTERS}}
+\index{GSASL\_VALID\_MECHANISM\_CHARACTERS@{GSASL\_VALID\_MECHANISM\_CHARACTERS}!init.c@{init.c}}
+\doxysubsubsection{\texorpdfstring{GSASL\_VALID\_MECHANISM\_CHARACTERS}{GSASL\_VALID\_MECHANISM\_CHARACTERS}}
+{\footnotesize\ttfamily const char$\ast$ G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{  \textcolor{stringliteral}{"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-\/\_"}}
+
+\end{DoxyCode}
+G\+S\+A\+S\+L\+\_\+\+V\+A\+L\+I\+D\+\_\+\+M\+E\+C\+H\+A\+N\+I\+S\+M\+\_\+\+C\+H\+A\+R\+A\+C\+T\+E\+RS\+:
+
+A zero-\/terminated character array, or string, with all A\+S\+C\+II characters that may be used within a S\+A\+SL mechanism name. 
+
+Definition at line 48 of file init.\+c.
+

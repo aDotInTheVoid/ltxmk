@@ -1,0 +1,30 @@
+\hypertarget{mechname_8c}{}\doxysection{mechname.\+c File Reference}
+\label{mechname_8c}\index{mechname.c@{mechname.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{mechname_8c_a0e668218ee4b7671e0b49c9afb21ba82}{gsasl\+\_\+mechanism\+\_\+name}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mechname_8c_a0e668218ee4b7671e0b49c9afb21ba82}\label{mechname_8c_a0e668218ee4b7671e0b49c9afb21ba82}} 
+\index{mechname.c@{mechname.c}!gsasl\_mechanism\_name@{gsasl\_mechanism\_name}}
+\index{gsasl\_mechanism\_name@{gsasl\_mechanism\_name}!mechname.c@{mechname.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_mechanism\_name()}{gsasl\_mechanism\_name()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+mechanism\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+mechanism\+\_\+name\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+This function returns the name of the S\+A\+SL mechanism used in the session.
+
+Return value\+: Returns a zero terminated character array with the name of the S\+A\+SL mechanism, or N\+U\+LL if not known.
+
+Since\+: 0.\+2.\+28 
+
+Definition at line 38 of file mechname.\+c.
+

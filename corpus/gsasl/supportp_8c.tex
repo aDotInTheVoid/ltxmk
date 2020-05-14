@@ -1,0 +1,51 @@
+\hypertarget{supportp_8c}{}\doxysection{supportp.\+c File Reference}
+\label{supportp_8c}\index{supportp.c@{supportp.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{supportp_8c_a4ba34a026710ff1d2fc277a205c8075b}{gsasl\+\_\+client\+\_\+support\+\_\+p}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$\mbox{\hyperlink{error_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+int \mbox{\hyperlink{supportp_8c_a6cddd5bfbc95d83d1786014ebfc2b494}{gsasl\+\_\+server\+\_\+support\+\_\+p}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$\mbox{\hyperlink{error_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{supportp_8c_a4ba34a026710ff1d2fc277a205c8075b}\label{supportp_8c_a4ba34a026710ff1d2fc277a205c8075b}} 
+\index{supportp.c@{supportp.c}!gsasl\_client\_support\_p@{gsasl\_client\_support\_p}}
+\index{gsasl\_client\_support\_p@{gsasl\_client\_support\_p}!supportp.c@{supportp.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_support\_p()}{gsasl\_client\_support\_p()}}
+{\footnotesize\ttfamily int gsasl\+\_\+client\+\_\+support\+\_\+p (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+support\+\_\+p\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em name} & name of S\+A\+SL mechanism.\\
+\hline
+\end{DoxyParams}
+Decide whether there is client-\/side support for a specified mechanism.
+
+Return value\+: Returns 1 if the libgsasl client supports the named mechanism, otherwise 0. 
+
+Definition at line 49 of file supportp.\+c.
+
+\mbox{\Hypertarget{supportp_8c_a6cddd5bfbc95d83d1786014ebfc2b494}\label{supportp_8c_a6cddd5bfbc95d83d1786014ebfc2b494}} 
+\index{supportp.c@{supportp.c}!gsasl\_server\_support\_p@{gsasl\_server\_support\_p}}
+\index{gsasl\_server\_support\_p@{gsasl\_server\_support\_p}!supportp.c@{supportp.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_server\_support\_p()}{gsasl\_server\_support\_p()}}
+{\footnotesize\ttfamily int gsasl\+\_\+server\+\_\+support\+\_\+p (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+gsasl\+\_\+server\+\_\+support\+\_\+p\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em name} & name of S\+A\+SL mechanism.\\
+\hline
+\end{DoxyParams}
+Decide whether there is server-\/side support for a specified mechanism.
+
+Return value\+: Returns 1 if the libgsasl server supports the named mechanism, otherwise 0. 
+
+Definition at line 66 of file supportp.\+c.
+

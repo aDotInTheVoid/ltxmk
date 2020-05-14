@@ -1,0 +1,141 @@
+\hypertarget{x-gssapi_8h}{}\doxysection{x-\/gssapi.h File Reference}
+\label{x-gssapi_8h}\index{x-\/gssapi.h@{x-\/gssapi.h}}
+{\ttfamily \#include $<$gsasl.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{x-gssapi_8h_a3741b817c74f3add37d74847d77e865e}{G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+N\+A\+ME}}~\char`\"{}G\+S\+S\+A\+PI\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_a3aeac19764ca1101245be520d3e3acf2}{\+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_a5af7ed53b807930944873109b89cdf06}{\+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{x-gssapi_8h_a067684c3165ac8a01e115653cc8d6067}{\+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_a364f90f3815dede1fa6eb47c135bb22a}{\+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_a47e830346f5fce79716a12d48c3d993a}{\+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_aaccda1f9621d6db14e075a7779a6d9e8}{\+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{x-gssapi_8h_adfc9b25646223f76b84316fc4bb153ba}{\+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{x-gssapi_8h_a462b16277440f8504b6c68f3e9817bc2}{\+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{x-gssapi_8h_aedf729bd9287b60dc7017a54306357b6}{gsasl\+\_\+gssapi\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{x-gssapi_8h_a3741b817c74f3add37d74847d77e865e}\label{x-gssapi_8h_a3741b817c74f3add37d74847d77e865e}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!GSASL\_GSSAPI\_NAME@{GSASL\_GSSAPI\_NAME}}
+\index{GSASL\_GSSAPI\_NAME@{GSASL\_GSSAPI\_NAME}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_GSSAPI\_NAME}{GSASL\_GSSAPI\_NAME}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+G\+S\+S\+A\+P\+I\+\_\+\+N\+A\+ME~\char`\"{}G\+S\+S\+A\+PI\char`\"{}}
+
+
+
+Definition at line 29 of file x-\/gssapi.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{x-gssapi_8h_a47e830346f5fce79716a12d48c3d993a}\label{x-gssapi_8h_a47e830346f5fce79716a12d48c3d993a}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_client\_decode@{\_gsasl\_gssapi\_client\_decode}}
+\index{\_gsasl\_gssapi\_client\_decode@{\_gsasl\_gssapi\_client\_decode}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_client\_decode()}{\_gsasl\_gssapi\_client\_decode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 330 of file gssapi/client.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_a364f90f3815dede1fa6eb47c135bb22a}\label{x-gssapi_8h_a364f90f3815dede1fa6eb47c135bb22a}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_client\_encode@{\_gsasl\_gssapi\_client\_encode}}
+\index{\_gsasl\_gssapi\_client\_encode@{\_gsasl\_gssapi\_client\_encode}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_client\_encode()}{\_gsasl\_gssapi\_client\_encode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 275 of file gssapi/client.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_a067684c3165ac8a01e115653cc8d6067}\label{x-gssapi_8h_a067684c3165ac8a01e115653cc8d6067}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_client\_finish@{\_gsasl\_gssapi\_client\_finish}}
+\index{\_gsasl\_gssapi\_client\_finish@{\_gsasl\_gssapi\_client\_finish}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_client\_finish()}{\_gsasl\_gssapi\_client\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 257 of file gssapi/client.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_a3aeac19764ca1101245be520d3e3acf2}\label{x-gssapi_8h_a3aeac19764ca1101245be520d3e3acf2}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_client\_start@{\_gsasl\_gssapi\_client\_start}}
+\index{\_gsasl\_gssapi\_client\_start@{\_gsasl\_gssapi\_client\_start}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_client\_start()}{\_gsasl\_gssapi\_client\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 59 of file gssapi/client.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_a5af7ed53b807930944873109b89cdf06}\label{x-gssapi_8h_a5af7ed53b807930944873109b89cdf06}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_client\_step@{\_gsasl\_gssapi\_client\_step}}
+\index{\_gsasl\_gssapi\_client\_step@{\_gsasl\_gssapi\_client\_step}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_client\_step()}{\_gsasl\_gssapi\_client\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file gssapi/client.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_a462b16277440f8504b6c68f3e9817bc2}\label{x-gssapi_8h_a462b16277440f8504b6c68f3e9817bc2}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_server\_finish@{\_gsasl\_gssapi\_server\_finish}}
+\index{\_gsasl\_gssapi\_server\_finish@{\_gsasl\_gssapi\_server\_finish}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_server\_finish()}{\_gsasl\_gssapi\_server\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 268 of file gssapi/server.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_aaccda1f9621d6db14e075a7779a6d9e8}\label{x-gssapi_8h_aaccda1f9621d6db14e075a7779a6d9e8}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_server\_start@{\_gsasl\_gssapi\_server\_start}}
+\index{\_gsasl\_gssapi\_server\_start@{\_gsasl\_gssapi\_server\_start}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_server\_start()}{\_gsasl\_gssapi\_server\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 59 of file gssapi/server.\+c.
+
+\mbox{\Hypertarget{x-gssapi_8h_adfc9b25646223f76b84316fc4bb153ba}\label{x-gssapi_8h_adfc9b25646223f76b84316fc4bb153ba}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!\_gsasl\_gssapi\_server\_step@{\_gsasl\_gssapi\_server\_step}}
+\index{\_gsasl\_gssapi\_server\_step@{\_gsasl\_gssapi\_server\_step}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_gssapi\_server\_step()}{\_gsasl\_gssapi\_server\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+gssapi\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 121 of file gssapi/server.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{x-gssapi_8h_aedf729bd9287b60dc7017a54306357b6}\label{x-gssapi_8h_aedf729bd9287b60dc7017a54306357b6}} 
+\index{x-\/gssapi.h@{x-\/gssapi.h}!gsasl\_gssapi\_mechanism@{gsasl\_gssapi\_mechanism}}
+\index{gsasl\_gssapi\_mechanism@{gsasl\_gssapi\_mechanism}!x-\/gssapi.h@{x-\/gssapi.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_gssapi\_mechanism}{gsasl\_gssapi\_mechanism}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} gsasl\+\_\+gssapi\+\_\+mechanism}
+
+
+
+Definition at line 30 of file gssapi/mechinfo.\+c.
+

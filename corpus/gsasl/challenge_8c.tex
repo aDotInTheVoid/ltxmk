@@ -1,0 +1,75 @@
+\hypertarget{challenge_8c}{}\doxysection{challenge.\+c File Reference}
+\label{challenge_8c}\index{challenge.c@{challenge.c}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}challenge.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$gc.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{challenge_8c_a0cce3f0e6d96b903ab5f0e899e957469}{N\+O\+N\+C\+E\+L\+EN}}~10
+\item 
+\#define \mbox{\hyperlink{challenge_8c_a491ddbf322aef9661794e38b7ff82c02}{T\+E\+M\+P\+L\+A\+TE}}~\char`\"{}$<$X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X.\+0@localhost$>$\char`\"{}
+\item 
+\#define \mbox{\hyperlink{challenge_8c_ac3409a4a6e7e551d12696906dcf29e0e}{D\+I\+G\+IT}}(c)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{challenge_8c_af734cbea9c81e48bc989404512e9280a}{cram\+\_\+md5\+\_\+challenge}} (char challenge\mbox{[}\mbox{\hyperlink{challenge_8h_aaeedd4cc091e8aaf859e965096fff04a}{C\+R\+A\+M\+\_\+\+M\+D5\+\_\+\+C\+H\+A\+L\+L\+E\+N\+G\+E\+\_\+\+L\+EN}}\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{challenge_8c_ac3409a4a6e7e551d12696906dcf29e0e}\label{challenge_8c_ac3409a4a6e7e551d12696906dcf29e0e}} 
+\index{challenge.c@{challenge.c}!DIGIT@{DIGIT}}
+\index{DIGIT@{DIGIT}!challenge.c@{challenge.c}}
+\doxysubsubsection{\texorpdfstring{DIGIT}{DIGIT}}
+{\footnotesize\ttfamily \#define D\+I\+G\+IT(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{                    (((c) \& 0x0F) > 9 ?         \(\backslash\)}
+\DoxyCodeLine{                    \textcolor{charliteral}{'0'} + ((c) \& 0x0F) -\/ 10 :   \(\backslash\)}
+\DoxyCodeLine{                    \textcolor{charliteral}{'0'} + ((c) \& 0x0F))}
+
+\end{DoxyCode}
+
+
+Definition at line 61 of file challenge.\+c.
+
+\mbox{\Hypertarget{challenge_8c_a0cce3f0e6d96b903ab5f0e899e957469}\label{challenge_8c_a0cce3f0e6d96b903ab5f0e899e957469}} 
+\index{challenge.c@{challenge.c}!NONCELEN@{NONCELEN}}
+\index{NONCELEN@{NONCELEN}!challenge.c@{challenge.c}}
+\doxysubsubsection{\texorpdfstring{NONCELEN}{NONCELEN}}
+{\footnotesize\ttfamily \#define N\+O\+N\+C\+E\+L\+EN~10}
+
+
+
+Definition at line 56 of file challenge.\+c.
+
+\mbox{\Hypertarget{challenge_8c_a491ddbf322aef9661794e38b7ff82c02}\label{challenge_8c_a491ddbf322aef9661794e38b7ff82c02}} 
+\index{challenge.c@{challenge.c}!TEMPLATE@{TEMPLATE}}
+\index{TEMPLATE@{TEMPLATE}!challenge.c@{challenge.c}}
+\doxysubsubsection{\texorpdfstring{TEMPLATE}{TEMPLATE}}
+{\footnotesize\ttfamily \#define T\+E\+M\+P\+L\+A\+TE~\char`\"{}$<$X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X\+X.\+0@localhost$>$\char`\"{}}
+
+
+
+Definition at line 57 of file challenge.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{challenge_8c_af734cbea9c81e48bc989404512e9280a}\label{challenge_8c_af734cbea9c81e48bc989404512e9280a}} 
+\index{challenge.c@{challenge.c}!cram\_md5\_challenge@{cram\_md5\_challenge}}
+\index{cram\_md5\_challenge@{cram\_md5\_challenge}!challenge.c@{challenge.c}}
+\doxysubsubsection{\texorpdfstring{cram\_md5\_challenge()}{cram\_md5\_challenge()}}
+{\footnotesize\ttfamily int cram\+\_\+md5\+\_\+challenge (\begin{DoxyParamCaption}\item[{char}]{challenge\mbox{[}\+C\+R\+A\+M\+\_\+\+M\+D5\+\_\+\+C\+H\+A\+L\+L\+E\+N\+G\+E\+\_\+\+L\+E\+N\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file challenge.\+c.
+

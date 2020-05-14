@@ -1,0 +1,34 @@
+\hypertarget{md5pwd_8c}{}\doxysection{md5pwd.\+c File Reference}
+\label{md5pwd_8c}\index{md5pwd.c@{md5pwd.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{md5pwd_8c_aa1796c5bd92c54700528e471200c87b0}{gsasl\+\_\+simple\+\_\+getpass}} (const char $\ast$filename, const char $\ast$username, char $\ast$$\ast$key)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{md5pwd_8c_aa1796c5bd92c54700528e471200c87b0}\label{md5pwd_8c_aa1796c5bd92c54700528e471200c87b0}} 
+\index{md5pwd.c@{md5pwd.c}!gsasl\_simple\_getpass@{gsasl\_simple\_getpass}}
+\index{gsasl\_simple\_getpass@{gsasl\_simple\_getpass}!md5pwd.c@{md5pwd.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_simple\_getpass()}{gsasl\_simple\_getpass()}}
+{\footnotesize\ttfamily int gsasl\+\_\+simple\+\_\+getpass (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{username,  }\item[{char $\ast$$\ast$}]{key }\end{DoxyParamCaption})}
+
+gsasl\+\_\+simple\+\_\+getpass\+: 
+\begin{DoxyParams}{Parameters}
+{\em filename} & filename of file containing passwords. \\
+\hline
+{\em username} & username string. \\
+\hline
+{\em key} & newly allocated output character array.\\
+\hline
+\end{DoxyParams}
+Retrieve password for user from specified file. The buffer @key contain the password if this function is successful. The caller is responsible for deallocating it.
+
+The file should be on the UoW \char`\"{}\+M\+D5 Based Authentication\char`\"{} format, which means it is in text format with comments denoted by \# first on the line, with user entries looking as \char`\"{}username\+T\+A\+Bpassword\char`\"{}. This function removes CR and LF at the end of lines before processing. T\+AB, CR, and LF denote A\+S\+C\+II values 9, 13, and 10, respectively.
+
+Return value\+: Return G\+S\+A\+S\+L\+\_\+\+OK if output buffer contains the password, G\+S\+A\+S\+L\+\_\+\+A\+U\+T\+H\+E\+N\+T\+I\+C\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR if the user could not be found, or other error code. 
+
+Definition at line 47 of file md5pwd.\+c.
+

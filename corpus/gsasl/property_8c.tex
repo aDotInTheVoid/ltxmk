@@ -1,0 +1,119 @@
+\hypertarget{property_8c}{}\doxysection{property.\+c File Reference}
+\label{property_8c}\index{property.c@{property.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{property_8c_a22aca7582ef1f86de970b67ffd2edf45}{gsasl\+\_\+property\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop, const char $\ast$data)
+\item 
+void \mbox{\hyperlink{property_8c_aa51f8900bcd538885865bedd15b73e4b}{gsasl\+\_\+property\+\_\+set\+\_\+raw}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop, const char $\ast$data, size\+\_\+t len)
+\item 
+const char $\ast$ \mbox{\hyperlink{property_8c_ab74cec58af5324f09b323953182896e8}{gsasl\+\_\+property\+\_\+fast}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+const char $\ast$ \mbox{\hyperlink{property_8c_a0953eb842aa2e149748896b96c40ce9e}{gsasl\+\_\+property\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{property_8c_ab74cec58af5324f09b323953182896e8}\label{property_8c_ab74cec58af5324f09b323953182896e8}} 
+\index{property.c@{property.c}!gsasl\_property\_fast@{gsasl\_property\_fast}}
+\index{gsasl\_property\_fast@{gsasl\_property\_fast}!property.c@{property.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_fast()}{gsasl\_property\_fast()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+property\+\_\+fast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+fast\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data.\\
+\hline
+\end{DoxyParams}
+Retrieve the data stored in the session handle for given property @prop.
+
+The pointer is to live data, and must not be deallocated or modified in any way.
+
+This function will not invoke the application callback.
+
+Return value\+: Return property value, if known, or N\+U\+LL if no value known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 174 of file property.\+c.
+
+\mbox{\Hypertarget{property_8c_a0953eb842aa2e149748896b96c40ce9e}\label{property_8c_a0953eb842aa2e149748896b96c40ce9e}} 
+\index{property.c@{property.c}!gsasl\_property\_get@{gsasl\_property\_get}}
+\index{gsasl\_property\_get@{gsasl\_property\_get}!property.c@{property.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_get()}{gsasl\_property\_get()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+property\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data.\\
+\hline
+\end{DoxyParams}
+Retrieve the data stored in the session handle for given property @prop, possibly invoking the application callback to get the value.
+
+The pointer is to live data, and must not be deallocated or modified in any way.
+
+This function will invoke the application callback, using \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}}, when a property value is not known.
+
+If no value is known, and no callback is specified or if the callback fail to return data, and if any obsolete callback functions has been set by the application, this function will try to call these obsolete callbacks, and store the returned data as the corresponding property. This behaviour of this function will be removed when the obsolete callback interfaces are removed.
+
+Return value\+: Return data for property, or N\+U\+LL if no value known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 211 of file property.\+c.
+
+\mbox{\Hypertarget{property_8c_a22aca7582ef1f86de970b67ffd2edf45}\label{property_8c_a22aca7582ef1f86de970b67ffd2edf45}} 
+\index{property.c@{property.c}!gsasl\_property\_set@{gsasl\_property\_set}}
+\index{gsasl\_property\_set@{gsasl\_property\_set}!property.c@{property.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_set()}{gsasl\_property\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+property\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop,  }\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data. \\
+\hline
+{\em data} & zero terminated character string to store.\\
+\hline
+\end{DoxyParams}
+Make a copy of @data and store it in the session handle for the indicated property @prop.
+
+You can immediately deallocate @data after calling this function, without affecting the data stored in the session handle.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 105 of file property.\+c.
+
+\mbox{\Hypertarget{property_8c_aa51f8900bcd538885865bedd15b73e4b}\label{property_8c_aa51f8900bcd538885865bedd15b73e4b}} 
+\index{property.c@{property.c}!gsasl\_property\_set\_raw@{gsasl\_property\_set\_raw}}
+\index{gsasl\_property\_set\_raw@{gsasl\_property\_set\_raw}!property.c@{property.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_property\_set\_raw()}{gsasl\_property\_set\_raw()}}
+{\footnotesize\ttfamily void gsasl\+\_\+property\+\_\+set\+\_\+raw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop,  }\item[{const char $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+property\+\_\+set\+\_\+raw\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type, indicating the type of data in @data. \\
+\hline
+{\em data} & character string to store. \\
+\hline
+{\em len} & length of character string to store.\\
+\hline
+\end{DoxyParams}
+Make a copy of @len sized @data and store a zero terminated version of it in the session handle for the indicated property @prop.
+
+You can immediately deallocate @data after calling this function, without affecting the data stored in the session handle.
+
+Except for the length indicator, this function is identical to gsasl\+\_\+property\+\_\+set.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 131 of file property.\+c.
+

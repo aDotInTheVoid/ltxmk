@@ -1,0 +1,149 @@
+\hypertarget{callback_8c}{}\doxysection{callback.\+c File Reference}
+\label{callback_8c}\index{callback.c@{callback.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\+\_\+callback\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}{Gsasl\+\_\+callback\+\_\+function}} cb)
+\item 
+int \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}} prop)
+\item 
+void \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, void $\ast$hook)
+\item 
+void $\ast$ \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{callback_8c_a6929de65496900aab89ae0bc1b4925f2}{gsasl\+\_\+session\+\_\+hook\+\_\+set}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$hook)
+\item 
+void $\ast$ \mbox{\hyperlink{callback_8c_a83acd31525f638ec042d160368132e45}{gsasl\+\_\+session\+\_\+hook\+\_\+get}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}\label{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}} 
+\index{callback.c@{callback.c}!gsasl\_callback@{gsasl\_callback}}
+\index{gsasl\_callback@{gsasl\_callback}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback()}{gsasl\_callback()}}
+{\footnotesize\ttfamily int gsasl\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{\mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\+\_\+property}}}]{prop }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & handle received from \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\+\_\+init()}}, may be N\+U\+LL to derive it from @sctx. \\
+\hline
+{\em sctx} & session handle. \\
+\hline
+{\em prop} & enumerated value of Gsasl\+\_\+property type.\\
+\hline
+\end{DoxyParams}
+Invoke the application callback. The @prop value indicate what the callback is expected to do. For example, for G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, the function is expected to invoke gsasl\+\_\+property\+\_\+set(@\+S\+C\+TX, G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, \char`\"{}token\char`\"{}) where \char`\"{}token\char`\"{} is the anonymous token the application wishes the S\+A\+SL mechanism to use. See the manual for the meaning of all parameters.
+
+Note that if no callback has been set by the application, but the obsolete callback interface has been used, this function will translate the old callback interface into the new. This interface should be sufficient to invoke all callbacks, both new and old.
+
+Return value\+: Returns whatever the application callback return, or G\+S\+A\+S\+L\+\_\+\+N\+O\+\_\+\+C\+A\+L\+L\+B\+A\+CK if no application was known.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 75 of file callback.\+c.
+
+\mbox{\Hypertarget{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}\label{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}} 
+\index{callback.c@{callback.c}!gsasl\_callback\_hook\_get@{gsasl\_callback\_hook\_get}}
+\index{gsasl\_callback\_hook\_get@{gsasl\_callback\_hook\_get}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_hook\_get()}{gsasl\_callback\_hook\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+callback\+\_\+hook\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+hook\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl handle.
+
+The application data is set using \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}}. This is normally used by the application to maintain a global state between the main program and callbacks.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 128 of file callback.\+c.
+
+\mbox{\Hypertarget{callback_8c_af4a4279b77da7c5018e75039d633424d}\label{callback_8c_af4a4279b77da7c5018e75039d633424d}} 
+\index{callback.c@{callback.c}!gsasl\_callback\_hook\_set@{gsasl\_callback\_hook\_set}}
+\index{gsasl\_callback\_hook\_set@{gsasl\_callback\_hook\_set}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_hook\_set()}{gsasl\_callback\_hook\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+callback\+\_\+hook\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{void $\ast$}]{hook }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+hook\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em hook} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl handle.
+
+The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{callback_8c_a74333848de28ae2fb05f7bc9532dbd30}{gsasl\+\_\+callback\+\_\+hook\+\_\+get()}}. This is normally used by the application to maintain a global state between the main program and callbacks.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 108 of file callback.\+c.
+
+\mbox{\Hypertarget{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}\label{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}} 
+\index{callback.c@{callback.c}!gsasl\_callback\_set@{gsasl\_callback\_set}}
+\index{gsasl\_callback\_set@{gsasl\_callback\_set}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_callback\_set()}{gsasl\_callback\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+callback\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{\mbox{\hyperlink{gsasl_8h_a59a00a7e88ff7d432f9a086e416629db}{Gsasl\+\_\+callback\+\_\+function}}}]{cb }\end{DoxyParamCaption})}
+
+gsasl\+\_\+callback\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & handle received from \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\+\_\+init()}}. \\
+\hline
+{\em cb} & pointer to function implemented by application.\\
+\hline
+\end{DoxyParams}
+Store the pointer to the application provided callback in the library handle. The callback will be used, via \mbox{\hyperlink{callback_8c_abf495dc11359ec995c2a3bf3ba310ad4}{gsasl\+\_\+callback()}}, by mechanisms to discover various parameters (such as username and passwords). The callback function will be called with a Gsasl\+\_\+property value indicating the requested behaviour. For example, for G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, the function is expected to invoke gsasl\+\_\+property\+\_\+set(@\+C\+TX, G\+S\+A\+S\+L\+\_\+\+A\+N\+O\+N\+Y\+M\+O\+U\+S\+\_\+\+T\+O\+K\+EN, \char`\"{}token\char`\"{}) where \char`\"{}token\char`\"{} is the anonymous token the application wishes the S\+A\+SL mechanism to use. See the manual for the meaning of all parameters.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 44 of file callback.\+c.
+
+\mbox{\Hypertarget{callback_8c_a83acd31525f638ec042d160368132e45}\label{callback_8c_a83acd31525f638ec042d160368132e45}} 
+\index{callback.c@{callback.c}!gsasl\_session\_hook\_get@{gsasl\_session\_hook\_get}}
+\index{gsasl\_session\_hook\_get@{gsasl\_session\_hook\_get}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_session\_hook\_get()}{gsasl\_session\_hook\_get()}}
+{\footnotesize\ttfamily void$\ast$ gsasl\+\_\+session\+\_\+hook\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+session\+\_\+hook\+\_\+get\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+Retrieve application specific data from libgsasl session handle.
+
+The application data is set using \mbox{\hyperlink{callback_8c_af4a4279b77da7c5018e75039d633424d}{gsasl\+\_\+callback\+\_\+hook\+\_\+set()}}. This is normally used by the application to maintain a per-\/session state between the main program and callbacks.
+
+Return value\+: Returns the application specific data, or N\+U\+LL.
+
+Since\+: 0.\+2.\+14 
+
+Definition at line 168 of file callback.\+c.
+
+\mbox{\Hypertarget{callback_8c_a6929de65496900aab89ae0bc1b4925f2}\label{callback_8c_a6929de65496900aab89ae0bc1b4925f2}} 
+\index{callback.c@{callback.c}!gsasl\_session\_hook\_set@{gsasl\_session\_hook\_set}}
+\index{gsasl\_session\_hook\_set@{gsasl\_session\_hook\_set}!callback.c@{callback.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_session\_hook\_set()}{gsasl\_session\_hook\_set()}}
+{\footnotesize\ttfamily void gsasl\+\_\+session\+\_\+hook\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{hook }\end{DoxyParamCaption})}
+
+gsasl\+\_\+session\+\_\+hook\+\_\+set\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em hook} & opaque pointer to application specific data.\\
+\hline
+\end{DoxyParams}
+Store application specific data in the libgsasl session handle.
+
+The application data can be later (for instance, inside a callback) be retrieved by calling \mbox{\hyperlink{callback_8c_a83acd31525f638ec042d160368132e45}{gsasl\+\_\+session\+\_\+hook\+\_\+get()}}. This is normally used by the application to maintain a per-\/session state between the main program and callbacks.
+
+Since\+: 0.\+2.\+14 
+
+Definition at line 148 of file callback.\+c.
+

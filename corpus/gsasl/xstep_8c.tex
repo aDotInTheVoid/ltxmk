@@ -1,0 +1,63 @@
+\hypertarget{xstep_8c}{}\doxysection{xstep.\+c File Reference}
+\label{xstep_8c}\index{xstep.c@{xstep.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{xstep_8c_ade2cdca89b76ca34ae2c6da172ab62d0}{gsasl\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{xstep_8c_abbb26427864b9f3f08e3c4d97b8659dd}{gsasl\+\_\+step64}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, const char $\ast$b64input, char $\ast$$\ast$b64output)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{xstep_8c_ade2cdca89b76ca34ae2c6da172ab62d0}\label{xstep_8c_ade2cdca89b76ca34ae2c6da172ab62d0}} 
+\index{xstep.c@{xstep.c}!gsasl\_step@{gsasl\_step}}
+\index{gsasl\_step@{gsasl\_step}!xstep.c@{xstep.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_step()}{gsasl\_step()}}
+{\footnotesize\ttfamily int gsasl\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+gsasl\+\_\+step\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle. \\
+\hline
+{\em input} & input byte array. \\
+\hline
+{\em input\+\_\+len} & size of input byte array. \\
+\hline
+{\em output} & newly allocated output byte array. \\
+\hline
+{\em output\+\_\+len} & pointer to output variable with size of output byte array.\\
+\hline
+\end{DoxyParams}
+Perform one step of S\+A\+SL authentication. This reads data from the other end (from @input and @input\+\_\+len), processes it (potentially invoking callbacks to the application), and writes data to server (into newly allocated variable @output and @output\+\_\+len that indicate the length of @output).
+
+The contents of the @output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE. If this function return G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE, however, the @output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free (@output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code. 
+
+Definition at line 51 of file xstep.\+c.
+
+\mbox{\Hypertarget{xstep_8c_abbb26427864b9f3f08e3c4d97b8659dd}\label{xstep_8c_abbb26427864b9f3f08e3c4d97b8659dd}} 
+\index{xstep.c@{xstep.c}!gsasl\_step64@{gsasl\_step64}}
+\index{gsasl\_step64@{gsasl\_step64}!xstep.c@{xstep.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_step64()}{gsasl\_step64()}}
+{\footnotesize\ttfamily int gsasl\+\_\+step64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{const char $\ast$}]{b64input,  }\item[{char $\ast$$\ast$}]{b64output }\end{DoxyParamCaption})}
+
+gsasl\+\_\+step64\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl client handle. \\
+\hline
+{\em b64input} & input base64 encoded byte array. \\
+\hline
+{\em b64output} & newly allocated output base64 encoded byte array.\\
+\hline
+\end{DoxyParams}
+This is a simple wrapper around \mbox{\hyperlink{xstep_8c_ade2cdca89b76ca34ae2c6da172ab62d0}{gsasl\+\_\+step()}} that base64 decodes the input and base64 encodes the output.
+
+The contents of the @b64output buffer is unspecified if this functions returns anything other than G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE. If this function return G\+S\+A\+S\+L\+\_\+\+OK or G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE, however, the @b64output buffer is allocated by this function, and it is the responsibility of caller to deallocate it by calling free (@b64output).
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK if authenticated terminated successfully, G\+S\+A\+S\+L\+\_\+\+N\+E\+E\+D\+S\+\_\+\+M\+O\+RE if more data is needed, or error code. 
+
+Definition at line 86 of file xstep.\+c.
+

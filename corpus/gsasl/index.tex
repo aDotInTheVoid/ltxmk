@@ -1,0 +1,575 @@
+\hypertarget{index_intro}{}\doxysection{Introduction}\label{index_intro}
+G\+NU S\+A\+SL is an implementation of the Simple Authentication and Security Layer framework and a few common S\+A\+SL mechanisms. S\+A\+SL is used by network servers (e.\+g., I\+M\+AP, S\+M\+TP) to request authentication from clients, and in clients to authenticate against servers.
+
+G\+NU S\+A\+SL consists of a library (`libgsasl'), a command line utility (`gsasl') to access the library from the shell, and a manual. The library includes support for the framework (with authentication functions and application data privacy and integrity functions) and at least partial support for the C\+R\+A\+M-\/\+M\+D5, E\+X\+T\+E\+R\+N\+AL, G\+S\+S\+A\+PI, A\+N\+O\+N\+Y\+M\+O\+US, P\+L\+A\+IN, S\+E\+C\+U\+R\+ID, D\+I\+G\+E\+S\+T-\/\+M\+D5, L\+O\+G\+IN, and N\+T\+LM mechanisms.
+
+The library is easily ported because it does not do network communication by itself, but rather leaves it up to the calling application. The library is flexible with regards to the authorization infrastructure used, as it utilize a callback into the application to decide whether a user is authorized or not.
+
+G\+NU S\+A\+SL is developed for the G\+N\+U/\+Linux system, but runs on over 20 platforms including most major Unix platforms and Windows, and many kind of devices including i\+P\+AQ handhelds and S/390 mainframes.
+
+G\+NU S\+A\+SL is written in pure A\+N\+SI C89 to be portable to embedded and otherwise limited platforms. The entire library, with full support for A\+N\+O\+N\+Y\+M\+O\+US, E\+X\+T\+E\+R\+N\+AL, P\+L\+A\+IN, L\+O\+G\+IN and C\+R\+A\+M-\/\+M\+D5, and the front-\/end that support client and server mode, and the I\+M\+AP and S\+M\+TP protocols, fits in under 60kb on an Intel x86 platform, without any modifications to the code. (This figure was accurate as of version 0.\+0.\+13.)
+
+The library is licensed under the G\+NU Lesser General Public License, and the command-\/line interface, self-\/tests and examples are licensed under the G\+NU General Public License.
+
+The project web page\+:~\newline
+\href{http://www.gnu.org/software/gsasl/}{\texttt{ http\+://www.\+gnu.\+org/software/gsasl/}}
+
+The software archive\+:~\newline
+\href{ftp://alpha.gnu.org/pub/gnu/gsasl/}{\texttt{ ftp\+://alpha.\+gnu.\+org/pub/gnu/gsasl/}}
+
+Further information and paid contract development\+:~\newline
+Simon Josefsson \href{mailto:simon@josefsson.org}{\texttt{ simon@josefsson.\+org}}\hypertarget{index_abstraction}{}\doxysection{Logical overview}\label{index_abstraction}
+ 
+\begin{DoxyImage}
+\includegraphics[width=10cm]{abstraction}
+\doxyfigcaption{Logical overview}
+\end{DoxyImage}
+\hypertarget{index_controlflow}{}\doxysection{Control flow in application using the library}\label{index_controlflow}
+ 
+\begin{DoxyImage}
+\includegraphics[width=15cm]{controlflow}
+\doxyfigcaption{Control flow}
+\end{DoxyImage}
+
+
+ 
+\begin{DoxyImage}
+\includegraphics[width=16cm]{controlflow2}
+\doxyfigcaption{Control flow}
+\end{DoxyImage}
+\hypertarget{index_examples}{}\doxysection{Examples}\label{index_examples}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{/* client.c -\/-\/-\/ Example SASL client.}}
+\DoxyCodeLine{\textcolor{comment}{ * Copyright (C) 2004, 2005, 2007  Simon Josefsson}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This file is part of GNU SASL.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{\textcolor{comment}{ * it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\textcolor{comment}{ * the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{\textcolor{comment}{ * (at your option) any later version.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\textcolor{comment}{ * but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\textcolor{comment}{ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\textcolor{comment}{ * GNU General Public License for more details.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\textcolor{comment}{ * along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <\mbox{\hyperlink{gsasl_8h}{gsasl.h}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client\_authenticate (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} * session)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} buf[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} *p;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* This loop mimic a protocol where the client send data first. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{do}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      \textcolor{comment}{/* Generate client output. */}}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\_step64}} (session, buf, \&p);}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}} || \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{          \textcolor{comment}{/* If sucessful, print it. */}}
+\DoxyCodeLine{          printf (\textcolor{stringliteral}{"Output:\(\backslash\)n\%s\(\backslash\)n"}, p);}
+\DoxyCodeLine{          free (p);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}})}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{          \textcolor{comment}{/* If the client need more data from server, get it here. */}}
+\DoxyCodeLine{          printf (\textcolor{stringliteral}{"Input base64 encoded data from server:\(\backslash\)n"});}
+\DoxyCodeLine{          fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{          \textcolor{keywordflow}{if} (buf[strlen (buf) -\/ 1] == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{            buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Authentication error (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* The client is done.  Here you would typically check if the server}}
+\DoxyCodeLine{\textcolor{comment}{     let the client in.  If not, you could try again. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"If server accepted us, we're done.\(\backslash\)n"});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} *session;}
+\DoxyCodeLine{  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *mech = \textcolor{stringliteral}{"PLAIN"};}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Create new authentication session. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}{gsasl\_client\_start}} (ctx, mech, \&session)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize client (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Set username and password in session handle.  This info will be}}
+\DoxyCodeLine{\textcolor{comment}{     lost when this session is deallocated below.  */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{GSASL\_AUTHID}}, \textcolor{stringliteral}{"jas"});}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}{GSASL\_PASSWORD}}, \textcolor{stringliteral}{"secret"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client\_authenticate (ctx, session);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\_finish}} (session);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}}
+\DoxyCodeLine{\mbox{\hyperlink{digest-md5_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[])}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl}{Gsasl}} *ctx = NULL;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Initialize library. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\_init}} (\&ctx)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize libgsasl (\%d): \%s"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{done_8c_af05bd27285aaf0bacaafeeff14ec88ec}{gsasl\_done}} (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+\end{DoxyCodeInclude}
+ 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{/* client-\/serverfirst.c -\/-\/-\/ Example SASL client, where server send data first.}}
+\DoxyCodeLine{\textcolor{comment}{ * Copyright (C) 2004, 2005, 2007  Simon Josefsson}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This file is part of GNU SASL.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{\textcolor{comment}{ * it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\textcolor{comment}{ * the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{\textcolor{comment}{ * (at your option) any later version.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\textcolor{comment}{ * but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\textcolor{comment}{ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\textcolor{comment}{ * GNU General Public License for more details.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\textcolor{comment}{ * along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <\mbox{\hyperlink{gsasl_8h}{gsasl.h}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client\_authenticate (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} * session)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} buf[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} *p;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* This loop mimic a protocol where the server get to send data first. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{do}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Input base64 encoded data from server:\(\backslash\)n"});}
+\DoxyCodeLine{      fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (buf[strlen (buf) -\/ 1] == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{        buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\_step64}} (session, buf, \&p);}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}} || \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{          printf (\textcolor{stringliteral}{"Output:\(\backslash\)n\%s\(\backslash\)n"}, p);}
+\DoxyCodeLine{          free (p);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Authentication error (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* The client is done.  Here you would typically check if the server}}
+\DoxyCodeLine{\textcolor{comment}{     let the client in.  If not, you could try again. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"If server accepted us, we're done.\(\backslash\)n"});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} *session;}
+\DoxyCodeLine{  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *mech = \textcolor{stringliteral}{"CRAM-\/MD5"};}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Create new authentication session. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}{gsasl\_client\_start}} (ctx, mech, \&session)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize client (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Set username and password in session handle.  This info will be}}
+\DoxyCodeLine{\textcolor{comment}{     lost when this session is deallocated below.  */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{GSASL\_AUTHID}}, \textcolor{stringliteral}{"jas"});}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}{GSASL\_PASSWORD}}, \textcolor{stringliteral}{"secret"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client\_authenticate (ctx, session);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\_finish}} (session);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}}
+\DoxyCodeLine{\mbox{\hyperlink{digest-md5_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[])}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl}{Gsasl}} *ctx = NULL;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Initialize library. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\_init}} (\&ctx)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize libgsasl (\%d): \%s"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{done_8c_af05bd27285aaf0bacaafeeff14ec88ec}{gsasl\_done}} (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+\end{DoxyCodeInclude}
+ 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{/* client-\/mech.c -\/-\/-\/ Example SASL client, with a choice of mechanism to use.}}
+\DoxyCodeLine{\textcolor{comment}{ * Copyright (C) 2004, 2005, 2007  Simon Josefsson}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This file is part of GNU SASL.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{\textcolor{comment}{ * it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\textcolor{comment}{ * the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{\textcolor{comment}{ * (at your option) any later version.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\textcolor{comment}{ * but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\textcolor{comment}{ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\textcolor{comment}{ * GNU General Public License for more details.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\textcolor{comment}{ * along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <\mbox{\hyperlink{gsasl_8h}{gsasl.h}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client\_authenticate (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} * session)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} buf[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} *p;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* This loop mimic a protocol where the server get to send data first. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{do}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Input base64 encoded data from server:\(\backslash\)n"});}
+\DoxyCodeLine{      fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (buf[strlen (buf) -\/ 1] == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{        buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\_step64}} (session, buf, \&p);}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}} || \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{          printf (\textcolor{stringliteral}{"Output:\(\backslash\)n\%s\(\backslash\)n"}, p);}
+\DoxyCodeLine{          free (p);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Authentication error (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* The client is done.  Here you would typically check if the server}}
+\DoxyCodeLine{\textcolor{comment}{     let the client in.  If not, you could try again. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"If server accepted us, we're done.\(\backslash\)n"});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{char} *}
+\DoxyCodeLine{client\_mechanism (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keyword}{static} \textcolor{keywordtype}{char} mech[\mbox{\hyperlink{gsasl_8h_abed82baf7f470b522273a3e37c24c600acfe46bca8a70b89e1072133fc84c6bd8}{GSASL\_MAX\_MECHANISM\_SIZE}} + 1] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} mechlist[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *suggestion;}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"Enter list of mechanism that server support, separate by SPC:\(\backslash\)n"});}
+\DoxyCodeLine{  fgets (mechlist, \textcolor{keyword}{sizeof} (mechlist) -\/ 1, stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  suggestion = \mbox{\hyperlink{gsasl_8h_a64a704afec782f93873a504a864ba8d3}{gsasl\_client\_suggest\_mechanism}} (ctx, mechlist);}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (suggestion)}
+\DoxyCodeLine{    printf (\textcolor{stringliteral}{"Library suggest use of `\%s'.\(\backslash\)n"}, suggestion);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"Enter mechanism to use:\(\backslash\)n"});}
+\DoxyCodeLine{  fgets (mech, \textcolor{keyword}{sizeof} (mech) -\/ 1, stdin);}
+\DoxyCodeLine{  mech[strlen (mech) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} mech;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} *session;}
+\DoxyCodeLine{  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *mech;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Find out which mechanism to use. */}}
+\DoxyCodeLine{  mech = client\_mechanism (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Create new authentication session. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}{gsasl\_client\_start}} (ctx, mech, \&session)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize client (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Set username and password in session handle.  This info will be}}
+\DoxyCodeLine{\textcolor{comment}{     lost when this session is deallocated below.  */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{GSASL\_AUTHID}}, \textcolor{stringliteral}{"jas"});}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (session, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ac04e69824dfb91cd0eec0a61f7d251da}{GSASL\_PASSWORD}}, \textcolor{stringliteral}{"secret"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client\_authenticate (ctx, session);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\_finish}} (session);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}}
+\DoxyCodeLine{\mbox{\hyperlink{digest-md5_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[])}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl}{Gsasl}} *ctx = NULL;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Initialize library. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\_init}} (\&ctx)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize libgsasl (\%d): \%s"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{done_8c_af05bd27285aaf0bacaafeeff14ec88ec}{gsasl\_done}} (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+\end{DoxyCodeInclude}
+ 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{comment}{/* client-\/callback.c -\/-\/-\/ Example SASL client, with callback for user info.}}
+\DoxyCodeLine{\textcolor{comment}{ * Copyright (C) 2004, 2005, 2007  Simon Josefsson}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This file is part of GNU SASL.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is free software: you can redistribute it and/or modify}}
+\DoxyCodeLine{\textcolor{comment}{ * it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\textcolor{comment}{ * the Free Software Foundation, either version 3 of the License, or}}
+\DoxyCodeLine{\textcolor{comment}{ * (at your option) any later version.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\textcolor{comment}{ * but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\textcolor{comment}{ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\textcolor{comment}{ * GNU General Public License for more details.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\textcolor{comment}{ * along with this program.  If not, see <http://www.gnu.org/licenses/>.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdarg.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include <\mbox{\hyperlink{gsasl_8h}{gsasl.h}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client\_authenticate (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} * session)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} buf[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} *p;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* This loop mimic a protocol where the server get to send data first. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{do}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Input base64 encoded data from server:\(\backslash\)n"});}
+\DoxyCodeLine{      fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (buf[strlen (buf) -\/ 1] == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{        buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a8e6fd16d650a8a6576f04fc978db598b}{gsasl\_step64}} (session, buf, \&p);}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}} || \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{          printf (\textcolor{stringliteral}{"Output:\(\backslash\)n\%s\(\backslash\)n"}, p);}
+\DoxyCodeLine{          free (p);}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} == \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a5f1c7bfb0c19a0baeb6a594a38e45652}{GSASL\_NEEDS\_MORE}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Authentication error (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* The client is done.  Here you would typically check if the server}}
+\DoxyCodeLine{\textcolor{comment}{     let the client in.  If not, you could try again. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"If server accepted us, we're done.\(\backslash\)n"});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{void}}
+\DoxyCodeLine{client (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} *session;}
+\DoxyCodeLine{  \textcolor{keyword}{const} \textcolor{keywordtype}{char} *mech = \textcolor{stringliteral}{"SECURID"};}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Create new authentication session. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a89cb67a6cb52ef7a30e337bb5c4dacf1}{gsasl\_client\_start}} (ctx, mech, \&session)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize client (\%d): \%s\(\backslash\)n"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client\_authenticate (ctx, session);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{gsasl_8h_a087eb7a9e68f466949c5bec650bace81}{gsasl\_finish}} (session);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static} \textcolor{keywordtype}{int}}
+\DoxyCodeLine{callback (\mbox{\hyperlink{structGsasl}{Gsasl}} * ctx, \mbox{\hyperlink{structGsasl__session}{Gsasl\_session}} * sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766}{Gsasl\_property}} prop)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \textcolor{keywordtype}{char} buf[BUFSIZ] = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a0567f600af32e509adc4409e512dcbfb}{GSASL\_NO\_CALLBACK}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Get user info from user. */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  printf (\textcolor{stringliteral}{"Callback invoked, for property \%d.\(\backslash\)n"}, prop);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{switch} (prop)}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{case} \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad2747c00845b60b88e473cac8d741136}{GSASL\_PASSCODE}}:}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Enter passcode:\(\backslash\)n"});}
+\DoxyCodeLine{      fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{      buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad2747c00845b60b88e473cac8d741136}{GSASL\_PASSCODE}}, buf);}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}};}
+\DoxyCodeLine{      \textcolor{keywordflow}{break};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{case} \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{GSASL\_AUTHID}}:}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Enter username:\(\backslash\)n"});}
+\DoxyCodeLine{      fgets (buf, \textcolor{keyword}{sizeof} (buf) -\/ 1, stdin);}
+\DoxyCodeLine{      buf[strlen (buf) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{}
+\DoxyCodeLine{      \mbox{\hyperlink{gsasl_8h_a2613860124a5966ffb84b7c1ec800418}{gsasl\_property\_set}} (sctx, \mbox{\hyperlink{gsasl_8h_ab7fb4101d9edbc241ae40f53df03d766ad35100bf4bbd143559b59a4e9f580d9a}{GSASL\_AUTHID}}, buf);}
+\DoxyCodeLine{      \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}};}
+\DoxyCodeLine{      \textcolor{keywordflow}{break};}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Unknown property!  Don't worry.\(\backslash\)n"});}
+\DoxyCodeLine{      \textcolor{keywordflow}{break};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}}
+\DoxyCodeLine{\mbox{\hyperlink{digest-md5_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[])}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  \mbox{\hyperlink{structGsasl}{Gsasl}} *ctx = NULL;}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Initialize library. */}}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} ((\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}} = \mbox{\hyperlink{gsasl_8h_a2b99508ed3c7a180f544f5604ed80543}{gsasl\_init}} (\&ctx)) != \mbox{\hyperlink{gsasl_8h_a65ba3dad7c138c7863f65ec8088d7769a2049f16855c4fd2ec285663af2fcaa60}{GSASL\_OK}})}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{      printf (\textcolor{stringliteral}{"Cannot initialize libgsasl (\%d): \%s"}, \mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}, \mbox{\hyperlink{error_8c_a99822d6f2059d3654334b545db049547}{gsasl\_strerror}} (\mbox{\hyperlink{error_8c_ac6509c6fe4cbf7bde170597172f8a288}{rc}}));}
+\DoxyCodeLine{      \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Set the callback handler for the library. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{callback_8c_a35a03c3e0e6b5a17674fae51d42f02fe}{gsasl\_callback\_set}} (ctx, callback);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Do it. */}}
+\DoxyCodeLine{  client (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{comment}{/* Cleanup. */}}
+\DoxyCodeLine{  \mbox{\hyperlink{done_8c_af05bd27285aaf0bacaafeeff14ec88ec}{gsasl\_done}} (ctx);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\}}
+\end{DoxyCodeInclude}
+ 

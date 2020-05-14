@@ -1,0 +1,189 @@
+\hypertarget{tokens_8h}{}\doxysection{tokens.\+h File Reference}
+\label{tokens_8h}\index{tokens.h@{tokens.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdigest__md5__challenge}{digest\+\_\+md5\+\_\+challenge}}
+\item 
+struct \mbox{\hyperlink{structdigest__md5__response}{digest\+\_\+md5\+\_\+response}}
+\item 
+struct \mbox{\hyperlink{structdigest__md5__finish}{digest\+\_\+md5\+\_\+finish}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tokens_8h_af2fc5588b19b26612f28afa6fabc4ef7}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+TH}}~16
+\item 
+\#define \mbox{\hyperlink{tokens_8h_ac4a597d2cd1652de2a3d8fe68c7fb8f1}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+\+L\+E\+N\+G\+TH}}~32
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}} \mbox{\hyperlink{tokens_8h_ab2425d3950b6f7de6df5c8cf9e11eac1}{digest\+\_\+md5\+\_\+qop}}
+\item 
+typedef enum \mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}{digest\+\_\+md5\+\_\+cipher}} \mbox{\hyperlink{tokens_8h_ae918e0b7232fabcd3841ddb49648d7c6}{digest\+\_\+md5\+\_\+cipher}}
+\item 
+typedef struct \mbox{\hyperlink{structdigest__md5__challenge}{digest\+\_\+md5\+\_\+challenge}} \mbox{\hyperlink{tokens_8h_a252c238ebeb1265203c28cf967bb358b}{digest\+\_\+md5\+\_\+challenge}}
+\item 
+typedef struct \mbox{\hyperlink{structdigest__md5__response}{digest\+\_\+md5\+\_\+response}} \mbox{\hyperlink{tokens_8h_a649381fa8465c0426db028f9337e174c}{digest\+\_\+md5\+\_\+response}}
+\item 
+typedef struct \mbox{\hyperlink{structdigest__md5__finish}{digest\+\_\+md5\+\_\+finish}} \mbox{\hyperlink{tokens_8h_a0f69d0787b71dd4c64038c78dd8a50ff}{digest\+\_\+md5\+\_\+finish}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}} \{ \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43ae19ee56edb6de1e56a5569c9640bceb1}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+TH}} = 1, 
+\mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43a70f05474020f5b3a1dee07e32a8c9d8b}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+I\+NT}} = 2, 
+\mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43ad23cad40cead4b88bb830efe35e277e3}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+C\+O\+NF}} = 4
+ \}
+\item 
+enum \mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}{digest\+\_\+md5\+\_\+cipher}} \{ \newline
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a42908309c05d74d8f3401e47e093ed43}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+D\+ES}} = 1, 
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a19023b930cdab78a8281bf234cc35f78}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+3\+D\+ES}} = 2, 
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a9d33a8c1befd006b634526951009ddeb}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4}} = 4, 
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209ada495eabd624f0aad1fd51b73c40892e}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+40}} = 8, 
+\newline
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a06da890a7cd48a1555b185b8c449e675}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+56}} = 16, 
+\mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a95ec2f1798518b2fa25a7c2cb3b767f5}{D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+A\+E\+S\+\_\+\+C\+BC}} = 32
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tokens_8h_af2fc5588b19b26612f28afa6fabc4ef7}\label{tokens_8h_af2fc5588b19b26612f28afa6fabc4ef7}} 
+\index{tokens.h@{tokens.h}!DIGEST\_MD5\_LENGTH@{DIGEST\_MD5\_LENGTH}}
+\index{DIGEST\_MD5\_LENGTH@{DIGEST\_MD5\_LENGTH}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{DIGEST\_MD5\_LENGTH}{DIGEST\_MD5\_LENGTH}}
+{\footnotesize\ttfamily \#define D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+L\+E\+N\+G\+TH~16}
+
+
+
+Definition at line 31 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_ac4a597d2cd1652de2a3d8fe68c7fb8f1}\label{tokens_8h_ac4a597d2cd1652de2a3d8fe68c7fb8f1}} 
+\index{tokens.h@{tokens.h}!DIGEST\_MD5\_RESPONSE\_LENGTH@{DIGEST\_MD5\_RESPONSE\_LENGTH}}
+\index{DIGEST\_MD5\_RESPONSE\_LENGTH@{DIGEST\_MD5\_RESPONSE\_LENGTH}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{DIGEST\_MD5\_RESPONSE\_LENGTH}{DIGEST\_MD5\_RESPONSE\_LENGTH}}
+{\footnotesize\ttfamily \#define D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+R\+E\+S\+P\+O\+N\+S\+E\+\_\+\+L\+E\+N\+G\+TH~32}
+
+
+
+Definition at line 96 of file tokens.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{tokens_8h_a252c238ebeb1265203c28cf967bb358b}\label{tokens_8h_a252c238ebeb1265203c28cf967bb358b}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_challenge@{digest\_md5\_challenge}}
+\index{digest\_md5\_challenge@{digest\_md5\_challenge}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_challenge}{digest\_md5\_challenge}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdigest__md5__challenge}{digest\+\_\+md5\+\_\+challenge}} \mbox{\hyperlink{structdigest__md5__challenge}{digest\+\_\+md5\+\_\+challenge}}}
+
+
+
+Definition at line 1 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_ae918e0b7232fabcd3841ddb49648d7c6}\label{tokens_8h_ae918e0b7232fabcd3841ddb49648d7c6}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_cipher@{digest\_md5\_cipher}}
+\index{digest\_md5\_cipher@{digest\_md5\_cipher}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_cipher}{digest\_md5\_cipher}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}{digest\+\_\+md5\+\_\+cipher}} \mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}{digest\+\_\+md5\+\_\+cipher}}}
+
+
+
+Definition at line 1 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_a0f69d0787b71dd4c64038c78dd8a50ff}\label{tokens_8h_a0f69d0787b71dd4c64038c78dd8a50ff}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_finish@{digest\_md5\_finish}}
+\index{digest\_md5\_finish@{digest\_md5\_finish}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_finish}{digest\_md5\_finish}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdigest__md5__finish}{digest\+\_\+md5\+\_\+finish}} \mbox{\hyperlink{structdigest__md5__finish}{digest\+\_\+md5\+\_\+finish}}}
+
+
+
+Definition at line 1 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_ab2425d3950b6f7de6df5c8cf9e11eac1}\label{tokens_8h_ab2425d3950b6f7de6df5c8cf9e11eac1}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_qop@{digest\_md5\_qop}}
+\index{digest\_md5\_qop@{digest\_md5\_qop}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_qop}{digest\_md5\_qop}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}} \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}}}
+
+
+
+Definition at line 1 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_a649381fa8465c0426db028f9337e174c}\label{tokens_8h_a649381fa8465c0426db028f9337e174c}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_response@{digest\_md5\_response}}
+\index{digest\_md5\_response@{digest\_md5\_response}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_response}{digest\_md5\_response}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdigest__md5__response}{digest\+\_\+md5\+\_\+response}} \mbox{\hyperlink{structdigest__md5__response}{digest\+\_\+md5\+\_\+response}}}
+
+
+
+Definition at line 1 of file tokens.\+h.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_cipher@{digest\_md5\_cipher}}
+\index{digest\_md5\_cipher@{digest\_md5\_cipher}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_cipher}{digest\_md5\_cipher}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209}{digest\+\_\+md5\+\_\+cipher}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_DES@{DIGEST\_MD5\_CIPHER\_DES}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_DES@{DIGEST\_MD5\_CIPHER\_DES}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a42908309c05d74d8f3401e47e093ed43}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a42908309c05d74d8f3401e47e093ed43}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+D\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_3DES@{DIGEST\_MD5\_CIPHER\_3DES}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_3DES@{DIGEST\_MD5\_CIPHER\_3DES}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a19023b930cdab78a8281bf234cc35f78}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a19023b930cdab78a8281bf234cc35f78}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+3\+D\+ES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_RC4@{DIGEST\_MD5\_CIPHER\_RC4}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_RC4@{DIGEST\_MD5\_CIPHER\_RC4}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a9d33a8c1befd006b634526951009ddeb}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a9d33a8c1befd006b634526951009ddeb}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_RC4\_40@{DIGEST\_MD5\_CIPHER\_RC4\_40}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_RC4\_40@{DIGEST\_MD5\_CIPHER\_RC4\_40}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209ada495eabd624f0aad1fd51b73c40892e}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209ada495eabd624f0aad1fd51b73c40892e}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+40&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_RC4\_56@{DIGEST\_MD5\_CIPHER\_RC4\_56}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_RC4\_56@{DIGEST\_MD5\_CIPHER\_RC4\_56}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a06da890a7cd48a1555b185b8c449e675}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a06da890a7cd48a1555b185b8c449e675}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+R\+C4\+\_\+56&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_CIPHER\_AES\_CBC@{DIGEST\_MD5\_CIPHER\_AES\_CBC}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_CIPHER\_AES\_CBC@{DIGEST\_MD5\_CIPHER\_AES\_CBC}}}\mbox{\Hypertarget{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a95ec2f1798518b2fa25a7c2cb3b767f5}\label{tokens_8h_a41e68cae6a6be9e7bbac762b4cc1f209a95ec2f1798518b2fa25a7c2cb3b767f5}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+C\+I\+P\+H\+E\+R\+\_\+\+A\+E\+S\+\_\+\+C\+BC&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 42 of file tokens.\+h.
+
+\mbox{\Hypertarget{tokens_8h_a26b76072deceaaefabe564d737783a43}\label{tokens_8h_a26b76072deceaaefabe564d737783a43}} 
+\index{tokens.h@{tokens.h}!digest\_md5\_qop@{digest\_md5\_qop}}
+\index{digest\_md5\_qop@{digest\_md5\_qop}!tokens.h@{tokens.h}}
+\doxysubsubsection{\texorpdfstring{digest\_md5\_qop}{digest\_md5\_qop}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tokens_8h_a26b76072deceaaefabe564d737783a43}{digest\+\_\+md5\+\_\+qop}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_QOP\_AUTH@{DIGEST\_MD5\_QOP\_AUTH}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_QOP\_AUTH@{DIGEST\_MD5\_QOP\_AUTH}}}\mbox{\Hypertarget{tokens_8h_a26b76072deceaaefabe564d737783a43ae19ee56edb6de1e56a5569c9640bceb1}\label{tokens_8h_a26b76072deceaaefabe564d737783a43ae19ee56edb6de1e56a5569c9640bceb1}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+TH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_QOP\_AUTH\_INT@{DIGEST\_MD5\_QOP\_AUTH\_INT}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_QOP\_AUTH\_INT@{DIGEST\_MD5\_QOP\_AUTH\_INT}}}\mbox{\Hypertarget{tokens_8h_a26b76072deceaaefabe564d737783a43a70f05474020f5b3a1dee07e32a8c9d8b}\label{tokens_8h_a26b76072deceaaefabe564d737783a43a70f05474020f5b3a1dee07e32a8c9d8b}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+I\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIGEST\_MD5\_QOP\_AUTH\_CONF@{DIGEST\_MD5\_QOP\_AUTH\_CONF}!tokens.h@{tokens.h}}\index{tokens.h@{tokens.h}!DIGEST\_MD5\_QOP\_AUTH\_CONF@{DIGEST\_MD5\_QOP\_AUTH\_CONF}}}\mbox{\Hypertarget{tokens_8h_a26b76072deceaaefabe564d737783a43ad23cad40cead4b88bb830efe35e277e3}\label{tokens_8h_a26b76072deceaaefabe564d737783a43ad23cad40cead4b88bb830efe35e277e3}} 
+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+Q\+O\+P\+\_\+\+A\+U\+T\+H\+\_\+\+C\+O\+NF&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 33 of file tokens.\+h.
+

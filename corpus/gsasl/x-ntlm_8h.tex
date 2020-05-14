@@ -1,0 +1,81 @@
+\hypertarget{x-ntlm_8h}{}\doxysection{x-\/ntlm.h File Reference}
+\label{x-ntlm_8h}\index{x-\/ntlm.h@{x-\/ntlm.h}}
+{\ttfamily \#include $<$gsasl.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{x-ntlm_8h_a0c7ba17fa52fe8d32fc28457d0914732}{G\+S\+A\+S\+L\+\_\+\+N\+T\+L\+M\+\_\+\+N\+A\+ME}}~\char`\"{}N\+T\+LM\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{x-ntlm_8h_aef540ddf22f56abc475e4b61655be52c}{\+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{x-ntlm_8h_a1fbfdce4687180e661dc03219a6d4a74}{\+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{x-ntlm_8h_ac1877f45114e94e466b8b3548ae0bb6b}{\+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{x-ntlm_8h_a6aa0778d1074e459eb7c4c81828c25da}{gsasl\+\_\+ntlm\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{x-ntlm_8h_a0c7ba17fa52fe8d32fc28457d0914732}\label{x-ntlm_8h_a0c7ba17fa52fe8d32fc28457d0914732}} 
+\index{x-\/ntlm.h@{x-\/ntlm.h}!GSASL\_NTLM\_NAME@{GSASL\_NTLM\_NAME}}
+\index{GSASL\_NTLM\_NAME@{GSASL\_NTLM\_NAME}!x-\/ntlm.h@{x-\/ntlm.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_NTLM\_NAME}{GSASL\_NTLM\_NAME}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+N\+T\+L\+M\+\_\+\+N\+A\+ME~\char`\"{}N\+T\+LM\char`\"{}}
+
+
+
+Definition at line 29 of file x-\/ntlm.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{x-ntlm_8h_ac1877f45114e94e466b8b3548ae0bb6b}\label{x-ntlm_8h_ac1877f45114e94e466b8b3548ae0bb6b}} 
+\index{x-\/ntlm.h@{x-\/ntlm.h}!\_gsasl\_ntlm\_client\_finish@{\_gsasl\_ntlm\_client\_finish}}
+\index{\_gsasl\_ntlm\_client\_finish@{\_gsasl\_ntlm\_client\_finish}!x-\/ntlm.h@{x-\/ntlm.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_ntlm\_client\_finish()}{\_gsasl\_ntlm\_client\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 135 of file ntlm.\+c.
+
+\mbox{\Hypertarget{x-ntlm_8h_aef540ddf22f56abc475e4b61655be52c}\label{x-ntlm_8h_aef540ddf22f56abc475e4b61655be52c}} 
+\index{x-\/ntlm.h@{x-\/ntlm.h}!\_gsasl\_ntlm\_client\_start@{\_gsasl\_ntlm\_client\_start}}
+\index{\_gsasl\_ntlm\_client\_start@{\_gsasl\_ntlm\_client\_start}!x-\/ntlm.h@{x-\/ntlm.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_ntlm\_client\_start()}{\_gsasl\_ntlm\_client\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file ntlm.\+c.
+
+\mbox{\Hypertarget{x-ntlm_8h_a1fbfdce4687180e661dc03219a6d4a74}\label{x-ntlm_8h_a1fbfdce4687180e661dc03219a6d4a74}} 
+\index{x-\/ntlm.h@{x-\/ntlm.h}!\_gsasl\_ntlm\_client\_step@{\_gsasl\_ntlm\_client\_step}}
+\index{\_gsasl\_ntlm\_client\_step@{\_gsasl\_ntlm\_client\_step}!x-\/ntlm.h@{x-\/ntlm.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_ntlm\_client\_step()}{\_gsasl\_ntlm\_client\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+ntlm\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file ntlm.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{x-ntlm_8h_a6aa0778d1074e459eb7c4c81828c25da}\label{x-ntlm_8h_a6aa0778d1074e459eb7c4c81828c25da}} 
+\index{x-\/ntlm.h@{x-\/ntlm.h}!gsasl\_ntlm\_mechanism@{gsasl\_ntlm\_mechanism}}
+\index{gsasl\_ntlm\_mechanism@{gsasl\_ntlm\_mechanism}!x-\/ntlm.h@{x-\/ntlm.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_ntlm\_mechanism}{gsasl\_ntlm\_mechanism}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} gsasl\+\_\+ntlm\+\_\+mechanism}
+
+
+
+Definition at line 30 of file ntlm/mechinfo.\+c.
+

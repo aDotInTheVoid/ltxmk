@@ -1,0 +1,32 @@
+\hypertarget{register_8c}{}\doxysection{register.\+c File Reference}
+\label{register_8c}\index{register.c@{register.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{register_8c_ab29d3c10470f792a5b652bf5846e4513}{gsasl\+\_\+register}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} $\ast$mech)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{register_8c_ab29d3c10470f792a5b652bf5846e4513}\label{register_8c_ab29d3c10470f792a5b652bf5846e4513}} 
+\index{register.c@{register.c}!gsasl\_register@{gsasl\_register}}
+\index{gsasl\_register@{gsasl\_register}!register.c@{register.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_register()}{gsasl\_register()}}
+{\footnotesize\ttfamily int gsasl\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} $\ast$}]{mech }\end{DoxyParamCaption})}
+
+gsasl\+\_\+register\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & pointer to libgsasl handle. \\
+\hline
+{\em mech} & plugin structure with information about plugin.\\
+\hline
+\end{DoxyParams}
+This function initialize given mechanism, and if successful, add it to the list of plugins that is used by the library.
+
+Return value\+: G\+S\+A\+S\+L\+\_\+\+OK iff successful, otherwise G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR.
+
+Since\+: 0.\+2.\+0 
+
+Definition at line 38 of file register.\+c.
+

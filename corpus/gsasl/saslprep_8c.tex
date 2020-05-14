@@ -1,0 +1,36 @@
+\hypertarget{saslprep_8c}{}\doxysection{saslprep.\+c File Reference}
+\label{saslprep_8c}\index{saslprep.c@{saslprep.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{saslprep_8c_a30bf2dcdd83012614e42a7579a352181}{gsasl\+\_\+saslprep}} (const char $\ast$in, \mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}} flags, char $\ast$$\ast$out, int $\ast$stringpreprc)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{saslprep_8c_a30bf2dcdd83012614e42a7579a352181}\label{saslprep_8c_a30bf2dcdd83012614e42a7579a352181}} 
+\index{saslprep.c@{saslprep.c}!gsasl\_saslprep@{gsasl\_saslprep}}
+\index{gsasl\_saslprep@{gsasl\_saslprep}!saslprep.c@{saslprep.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_saslprep()}{gsasl\_saslprep()}}
+{\footnotesize\ttfamily int gsasl\+\_\+saslprep (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{\mbox{\hyperlink{gsasl_8h_a11307b0260e4ba261ad7845fc04a9cf9}{Gsasl\+\_\+saslprep\+\_\+flags}}}]{flags,  }\item[{char $\ast$$\ast$}]{out,  }\item[{int $\ast$}]{stringpreprc }\end{DoxyParamCaption})}
+
+gsasl\+\_\+saslprep -\/ prepare internationalized string 
+\begin{DoxyParams}{Parameters}
+{\em in} & a U\+T\+F-\/8 encoded string. \\
+\hline
+{\em flags} & any S\+A\+S\+Lprep flag, e.\+g., G\+S\+A\+S\+L\+\_\+\+A\+L\+L\+O\+W\+\_\+\+U\+N\+A\+S\+S\+I\+G\+N\+ED. \\
+\hline
+{\em out} & on exit, contains newly allocated output string. \\
+\hline
+{\em stringpreprc} & if non-\/\+N\+U\+LL, will hold precise stringprep return code.\\
+\hline
+\end{DoxyParams}
+Prepare string using S\+A\+S\+Lprep. On success, the @out variable must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, or G\+S\+A\+S\+L\+\_\+\+S\+A\+S\+L\+P\+R\+E\+P\+\_\+\+E\+R\+R\+OR on error.
+
+Since\+: 0.\+2.\+3 
+
+Definition at line 48 of file saslprep.\+c.
+

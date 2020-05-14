@@ -1,0 +1,30 @@
+\hypertarget{src_2free_8c}{}\doxysection{free.\+c File Reference}
+\label{src_2free_8c}\index{free.c@{free.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{src_2free_8c_a8d8cca0e550c13d2aa86fe7a44ca7758}{gsasl\+\_\+free}} (void $\ast$ptr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{src_2free_8c_a8d8cca0e550c13d2aa86fe7a44ca7758}\label{src_2free_8c_a8d8cca0e550c13d2aa86fe7a44ca7758}} 
+\index{src/free.c@{src/free.c}!gsasl\_free@{gsasl\_free}}
+\index{gsasl\_free@{gsasl\_free}!src/free.c@{src/free.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_free()}{gsasl\_free()}}
+{\footnotesize\ttfamily void gsasl\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+gsasl\+\_\+free\+: 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & memory pointer\\
+\hline
+\end{DoxyParams}
+Invoke free(@ptr) to de-\/allocate memory pointer. Typically used on strings allocated by other libgsasl functions.
+
+This is useful on Windows where libgsasl is linked to one C\+RT and the application is linked to another C\+RT. Then malloc/free will not use the same heap. This happens if you build libgsasl using mingw32 and the application with Visual Studio.
+
+Since\+: 0.\+2.\+19 
+
+Definition at line 41 of file src/free.\+c.
+

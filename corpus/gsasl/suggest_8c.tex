@@ -1,0 +1,30 @@
+\hypertarget{suggest_8c}{}\doxysection{suggest.\+c File Reference}
+\label{suggest_8c}\index{suggest.c@{suggest.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{suggest_8c_aa14b412d4c150b12e55cb1371c572523}{gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism}} (\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$ctx, const char $\ast$mechlist)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{suggest_8c_aa14b412d4c150b12e55cb1371c572523}\label{suggest_8c_aa14b412d4c150b12e55cb1371c572523}} 
+\index{suggest.c@{suggest.c}!gsasl\_client\_suggest\_mechanism@{gsasl\_client\_suggest\_mechanism}}
+\index{gsasl\_client\_suggest\_mechanism@{gsasl\_client\_suggest\_mechanism}!suggest.c@{suggest.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_client\_suggest\_mechanism()}{gsasl\_client\_suggest\_mechanism()}}
+{\footnotesize\ttfamily const char$\ast$ gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl}{Gsasl}} $\ast$}]{ctx,  }\item[{const char $\ast$}]{mechlist }\end{DoxyParamCaption})}
+
+gsasl\+\_\+client\+\_\+suggest\+\_\+mechanism\+: 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & libgsasl handle. \\
+\hline
+{\em mechlist} & input character array with S\+A\+SL mechanism names, separated by invalid characters (e.\+g. S\+PC).\\
+\hline
+\end{DoxyParams}
+Given a list of mechanisms, suggest which to use.
+
+Return value\+: Returns name of \char`\"{}best\char`\"{} S\+A\+SL mechanism supported by the libgsasl client which is present in the input string. 
+
+Definition at line 37 of file suggest.\+c.
+

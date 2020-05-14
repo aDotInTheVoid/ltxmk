@@ -1,0 +1,165 @@
+\hypertarget{digest-md5_8h}{}\doxysection{digest-\/md5.h File Reference}
+\label{digest-md5_8h}\index{digest-\/md5.h@{digest-\/md5.h}}
+{\ttfamily \#include $<$gsasl.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{digest-md5_8h_a6bc8142d5e07e67309baac507c680355}{G\+S\+A\+S\+L\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+N\+A\+ME}}~\char`\"{}D\+I\+G\+E\+ST-\/M\+D5\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{digest-md5_8h_a0473fa0bce3f83e5d4747c9d25b6c5bc}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_aa040ae41c3474a367c891376c09a17bd}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{digest-md5_8h_acded0df1a5ea83fae9d70a68fa7ca3e2}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_aa9df4e0b21d36526af0b671df8035340}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_aa81b99f3d9465ca4f057a7b5257995d3}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_a4e500cab12089f430cc76d243cc4820e}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+start}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$$\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_a1f68843478decea8e65f05e54b8c20f5}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+step}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+void \mbox{\hyperlink{digest-md5_8h_a00df84a8f501d93dc0e21ab11c325475}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_a9b41cdb2515301116152ce39c9b7e104}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+encode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\item 
+int \mbox{\hyperlink{digest-md5_8h_a520fba422441d275be3247ad0fbacd72}{\+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+decode}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx, void $\ast$mech\+\_\+data, const char $\ast$input, size\+\_\+t input\+\_\+len, char $\ast$$\ast$output, size\+\_\+t $\ast$output\+\_\+len)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} \mbox{\hyperlink{digest-md5_8h_ac3b2e5499d22db2b1ebe8845e6731b13}{gsasl\+\_\+digest\+\_\+md5\+\_\+mechanism}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{digest-md5_8h_a6bc8142d5e07e67309baac507c680355}\label{digest-md5_8h_a6bc8142d5e07e67309baac507c680355}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!GSASL\_DIGEST\_MD5\_NAME@{GSASL\_DIGEST\_MD5\_NAME}}
+\index{GSASL\_DIGEST\_MD5\_NAME@{GSASL\_DIGEST\_MD5\_NAME}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{GSASL\_DIGEST\_MD5\_NAME}{GSASL\_DIGEST\_MD5\_NAME}}
+{\footnotesize\ttfamily \#define G\+S\+A\+S\+L\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+M\+D5\+\_\+\+N\+A\+ME~\char`\"{}D\+I\+G\+E\+ST-\/M\+D5\char`\"{}}
+
+
+
+Definition at line 29 of file digest-\/md5.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{digest-md5_8h_aa81b99f3d9465ca4f057a7b5257995d3}\label{digest-md5_8h_aa81b99f3d9465ca4f057a7b5257995d3}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_client\_decode@{\_gsasl\_digest\_md5\_client\_decode}}
+\index{\_gsasl\_digest\_md5\_client\_decode@{\_gsasl\_digest\_md5\_client\_decode}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_client\_decode()}{\_gsasl\_digest\_md5\_client\_decode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 302 of file digest-\/md5/client.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_aa9df4e0b21d36526af0b671df8035340}\label{digest-md5_8h_aa9df4e0b21d36526af0b671df8035340}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_client\_encode@{\_gsasl\_digest\_md5\_client\_encode}}
+\index{\_gsasl\_digest\_md5\_client\_encode@{\_gsasl\_digest\_md5\_client\_encode}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_client\_encode()}{\_gsasl\_digest\_md5\_client\_encode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 278 of file digest-\/md5/client.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_acded0df1a5ea83fae9d70a68fa7ca3e2}\label{digest-md5_8h_acded0df1a5ea83fae9d70a68fa7ca3e2}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_client\_finish@{\_gsasl\_digest\_md5\_client\_finish}}
+\index{\_gsasl\_digest\_md5\_client\_finish@{\_gsasl\_digest\_md5\_client\_finish}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_client\_finish()}{\_gsasl\_digest\_md5\_client\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 263 of file digest-\/md5/client.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a0473fa0bce3f83e5d4747c9d25b6c5bc}\label{digest-md5_8h_a0473fa0bce3f83e5d4747c9d25b6c5bc}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_client\_start@{\_gsasl\_digest\_md5\_client\_start}}
+\index{\_gsasl\_digest\_md5\_client\_start@{\_gsasl\_digest\_md5\_client\_start}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_client\_start()}{\_gsasl\_digest\_md5\_client\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file digest-\/md5/client.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_aa040ae41c3474a367c891376c09a17bd}\label{digest-md5_8h_aa040ae41c3474a367c891376c09a17bd}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_client\_step@{\_gsasl\_digest\_md5\_client\_step}}
+\index{\_gsasl\_digest\_md5\_client\_step@{\_gsasl\_digest\_md5\_client\_step}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_client\_step()}{\_gsasl\_digest\_md5\_client\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+client\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file digest-\/md5/client.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a520fba422441d275be3247ad0fbacd72}\label{digest-md5_8h_a520fba422441d275be3247ad0fbacd72}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_server\_decode@{\_gsasl\_digest\_md5\_server\_decode}}
+\index{\_gsasl\_digest\_md5\_server\_decode@{\_gsasl\_digest\_md5\_server\_decode}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_server\_decode()}{\_gsasl\_digest\_md5\_server\_decode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 359 of file digest-\/md5/server.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a9b41cdb2515301116152ce39c9b7e104}\label{digest-md5_8h_a9b41cdb2515301116152ce39c9b7e104}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_server\_encode@{\_gsasl\_digest\_md5\_server\_encode}}
+\index{\_gsasl\_digest\_md5\_server\_encode@{\_gsasl\_digest\_md5\_server\_encode}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_server\_encode()}{\_gsasl\_digest\_md5\_server\_encode()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 335 of file digest-\/md5/server.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a00df84a8f501d93dc0e21ab11c325475}\label{digest-md5_8h_a00df84a8f501d93dc0e21ab11c325475}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_server\_finish@{\_gsasl\_digest\_md5\_server\_finish}}
+\index{\_gsasl\_digest\_md5\_server\_finish@{\_gsasl\_digest\_md5\_server\_finish}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_server\_finish()}{\_gsasl\_digest\_md5\_server\_finish()}}
+{\footnotesize\ttfamily void \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 320 of file digest-\/md5/server.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a4e500cab12089f430cc76d243cc4820e}\label{digest-md5_8h_a4e500cab12089f430cc76d243cc4820e}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_server\_start@{\_gsasl\_digest\_md5\_server\_start}}
+\index{\_gsasl\_digest\_md5\_server\_start@{\_gsasl\_digest\_md5\_server\_start}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_server\_start()}{\_gsasl\_digest\_md5\_server\_start()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$$\ast$}]{mech\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file digest-\/md5/server.\+c.
+
+\mbox{\Hypertarget{digest-md5_8h_a1f68843478decea8e65f05e54b8c20f5}\label{digest-md5_8h_a1f68843478decea8e65f05e54b8c20f5}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!\_gsasl\_digest\_md5\_server\_step@{\_gsasl\_digest\_md5\_server\_step}}
+\index{\_gsasl\_digest\_md5\_server\_step@{\_gsasl\_digest\_md5\_server\_step}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{\_gsasl\_digest\_md5\_server\_step()}{\_gsasl\_digest\_md5\_server\_step()}}
+{\footnotesize\ttfamily int \+\_\+gsasl\+\_\+digest\+\_\+md5\+\_\+server\+\_\+step (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx,  }\item[{void $\ast$}]{mech\+\_\+data,  }\item[{const char $\ast$}]{input,  }\item[{size\+\_\+t}]{input\+\_\+len,  }\item[{char $\ast$$\ast$}]{output,  }\item[{size\+\_\+t $\ast$}]{output\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Definition at line 142 of file digest-\/md5/server.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{digest-md5_8h_ac3b2e5499d22db2b1ebe8845e6731b13}\label{digest-md5_8h_ac3b2e5499d22db2b1ebe8845e6731b13}} 
+\index{digest-\/md5.h@{digest-\/md5.h}!gsasl\_digest\_md5\_mechanism@{gsasl\_digest\_md5\_mechanism}}
+\index{gsasl\_digest\_md5\_mechanism@{gsasl\_digest\_md5\_mechanism}!digest-\/md5.h@{digest-\/md5.h}}
+\doxysubsubsection{\texorpdfstring{gsasl\_digest\_md5\_mechanism}{gsasl\_digest\_md5\_mechanism}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGsasl__mechanism}{Gsasl\+\_\+mechanism}} gsasl\+\_\+digest\+\_\+md5\+\_\+mechanism}
+
+
+
+Definition at line 30 of file digest-\/md5/mechinfo.\+c.
+

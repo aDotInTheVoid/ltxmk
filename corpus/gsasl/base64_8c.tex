@@ -1,0 +1,64 @@
+\hypertarget{base64_8c}{}\doxysection{base64.\+c File Reference}
+\label{base64_8c}\index{base64.c@{base64.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base64.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{base64_8c_a9cabce698357603f0e19c68b6e26d561}{gsasl\+\_\+base64\+\_\+to}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$$\ast$out, size\+\_\+t $\ast$outlen)
+\item 
+int \mbox{\hyperlink{base64_8c_a242baf6a3e3b344fc1d1b6e1c766e198}{gsasl\+\_\+base64\+\_\+from}} (const char $\ast$in, size\+\_\+t inlen, char $\ast$$\ast$out, size\+\_\+t $\ast$outlen)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{base64_8c_a242baf6a3e3b344fc1d1b6e1c766e198}\label{base64_8c_a242baf6a3e3b344fc1d1b6e1c766e198}} 
+\index{base64.c@{base64.c}!gsasl\_base64\_from@{gsasl\_base64\_from}}
+\index{gsasl\_base64\_from@{gsasl\_base64\_from}!base64.c@{base64.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_from()}{gsasl\_base64\_from()}}
+{\footnotesize\ttfamily int gsasl\+\_\+base64\+\_\+from (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$$\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+from\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input byte array \\
+\hline
+{\em inlen} & size of input byte array \\
+\hline
+{\em out} & pointer to newly allocated output byte array \\
+\hline
+{\em outlen} & pointer to size of newly allocated output byte array\\
+\hline
+\end{DoxyParams}
+Decode Base64 data. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, G\+S\+A\+S\+L\+\_\+\+B\+A\+S\+E64\+\_\+\+E\+R\+R\+OR if input was invalid, and G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR on memory allocation errors.
+
+Since\+: 0.\+2.\+2 
+
+Definition at line 74 of file base64.\+c.
+
+\mbox{\Hypertarget{base64_8c_a9cabce698357603f0e19c68b6e26d561}\label{base64_8c_a9cabce698357603f0e19c68b6e26d561}} 
+\index{base64.c@{base64.c}!gsasl\_base64\_to@{gsasl\_base64\_to}}
+\index{gsasl\_base64\_to@{gsasl\_base64\_to}!base64.c@{base64.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_base64\_to()}{gsasl\_base64\_to()}}
+{\footnotesize\ttfamily int gsasl\+\_\+base64\+\_\+to (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{size\+\_\+t}]{inlen,  }\item[{char $\ast$$\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{outlen }\end{DoxyParamCaption})}
+
+gsasl\+\_\+base64\+\_\+to\+: 
+\begin{DoxyParams}{Parameters}
+{\em in} & input byte array \\
+\hline
+{\em inlen} & size of input byte array \\
+\hline
+{\em out} & pointer to newly allocated output byte array \\
+\hline
+{\em outlen} & pointer to size of newly allocated output byte array\\
+\hline
+\end{DoxyParams}
+Encode data as base64. The string is zero terminated, and @outlen holds the length excluding the terminating zero. The @out buffer must be deallocated by the caller.
+
+Return value\+: Returns G\+S\+A\+S\+L\+\_\+\+OK on success, or G\+S\+A\+S\+L\+\_\+\+M\+A\+L\+L\+O\+C\+\_\+\+E\+R\+R\+OR if input was too large or memory allocation fail.
+
+Since\+: 0.\+2.\+2 
+
+Definition at line 44 of file base64.\+c.
+

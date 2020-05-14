@@ -1,0 +1,44 @@
+\hypertarget{xfinish_8c}{}\doxysection{xfinish.\+c File Reference}
+\label{xfinish_8c}\index{xfinish.c@{xfinish.c}}
+{\ttfamily \#include \char`\"{}internal.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{xfinish_8c_a7b5d0b59e913e08672a8982fd419a8c5}{free\+\_\+if\+\_\+nonnull}}(p)~if ((p)) free ((p))
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{xfinish_8c_a103cfe9162bce073724375efd0f74302}{gsasl\+\_\+finish}} (\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$sctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{xfinish_8c_a7b5d0b59e913e08672a8982fd419a8c5}\label{xfinish_8c_a7b5d0b59e913e08672a8982fd419a8c5}} 
+\index{xfinish.c@{xfinish.c}!free\_if\_nonnull@{free\_if\_nonnull}}
+\index{free\_if\_nonnull@{free\_if\_nonnull}!xfinish.c@{xfinish.c}}
+\doxysubsubsection{\texorpdfstring{free\_if\_nonnull}{free\_if\_nonnull}}
+{\footnotesize\ttfamily \#define free\+\_\+if\+\_\+nonnull(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~if ((p)) free ((p))}
+
+
+
+Definition at line 26 of file xfinish.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{xfinish_8c_a103cfe9162bce073724375efd0f74302}\label{xfinish_8c_a103cfe9162bce073724375efd0f74302}} 
+\index{xfinish.c@{xfinish.c}!gsasl\_finish@{gsasl\_finish}}
+\index{gsasl\_finish@{gsasl\_finish}!xfinish.c@{xfinish.c}}
+\doxysubsubsection{\texorpdfstring{gsasl\_finish()}{gsasl\_finish()}}
+{\footnotesize\ttfamily void gsasl\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGsasl__session}{Gsasl\+\_\+session}} $\ast$}]{sctx }\end{DoxyParamCaption})}
+
+gsasl\+\_\+finish\+: 
+\begin{DoxyParams}{Parameters}
+{\em sctx} & libgsasl session handle.\\
+\hline
+\end{DoxyParams}
+Destroy a libgsasl client or server handle. The handle must not be used with other libgsasl functions after this call. 
+
+Definition at line 35 of file xfinish.\+c.
+

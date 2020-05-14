@@ -1,0 +1,227 @@
+\hypertarget{gs2_2test-parser_8c}{}\doxysection{test-\/parser.c File Reference}
+\label{gs2_2test-parser_8c}\index{test-\/parser.c@{test-\/parser.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gs2parser.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{Z\+E\+RO}}~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\char`\"{}
+\item 
+\#define \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{O\+NE}}~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x01\char`\"{}
+\item 
+\#define \mbox{\hyperlink{gs2_2test-parser_8c_a888e15353eb3d330c743dbdeb47117e2}{T\+WO}}~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x02\char`\"{}
+\item 
+\#define \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{D\+A\+TA}}~\char`\"{}\textbackslash{}x41\char`\"{}
+\item 
+\#define \mbox{\hyperlink{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}{D\+A\+T\+A2}}~\char`\"{}\textbackslash{}x42\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{gs2_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>char $\ast$ \mbox{\hyperlink{gs2_2test-parser_8c_a5ac083a645d964373f022d03df4849c8}{name}}\\
+\>char $\ast$ \mbox{\hyperlink{gs2_2test-parser_8c_a1d71425d9df28667d528833a4db10432}{token}}\\
+\>size\_t \mbox{\hyperlink{gs2_2test-parser_8c_ae809d5359ac030c60a30a8f0b2294b82}{length}}\\
+\>int \mbox{\hyperlink{gs2_2test-parser_8c_a247afbe36dc0e57fe5c661875eec5f3f}{expected\_rc}}\\
+\>char $\ast$ \mbox{\hyperlink{gs2_2test-parser_8c_a1450b44971600037b0ac71959c3cd352}{expected\_context}}\\
+\>size\_t \mbox{\hyperlink{gs2_2test-parser_8c_a6b2e61f27a1e0d8d5eea3946e4975fb9}{expected\_context\_length}}\\
+\>char $\ast$ \mbox{\hyperlink{gs2_2test-parser_8c_ad1661bde2763b94a4a40d39e515e5a3f}{expected\_wrap}}\\
+\>size\_t \mbox{\hyperlink{gs2_2test-parser_8c_a11d6a131f44f4cd4f166e70614845e05}{expected\_wrap\_length}}\\
+\} \mbox{\hyperlink{gs2_2test-parser_8c_a559edb4e0e4536322815f661d0e932bb}{tv}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}\label{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!DATA@{DATA}}
+\index{DATA@{DATA}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{DATA}{DATA}}
+{\footnotesize\ttfamily \#define D\+A\+TA~\char`\"{}\textbackslash{}x41\char`\"{}}
+
+
+
+Definition at line 33 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}\label{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!DATA2@{DATA2}}
+\index{DATA2@{DATA2}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{DATA2}{DATA2}}
+{\footnotesize\ttfamily \#define D\+A\+T\+A2~\char`\"{}\textbackslash{}x42\char`\"{}}
+
+
+
+Definition at line 34 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}\label{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!ONE@{ONE}}
+\index{ONE@{ONE}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{ONE}{ONE}}
+{\footnotesize\ttfamily \#define O\+NE~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x01\char`\"{}}
+
+
+
+Definition at line 31 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a888e15353eb3d330c743dbdeb47117e2}\label{gs2_2test-parser_8c_a888e15353eb3d330c743dbdeb47117e2}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!TWO@{TWO}}
+\index{TWO@{TWO}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{TWO}{TWO}}
+{\footnotesize\ttfamily \#define T\+WO~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x02\char`\"{}}
+
+
+
+Definition at line 32 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}\label{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!ZERO@{ZERO}}
+\index{ZERO@{ZERO}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{ZERO}{ZERO}}
+{\footnotesize\ttfamily \#define Z\+E\+RO~\char`\"{}\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\char`\"{}}
+
+
+
+Definition at line 30 of file gs2/test-\/parser.\+c.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gs2_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{gs2_2test-parser_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!main@{main}}
+\index{main@{main}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file gs2/test-\/parser.\+c.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gs2_2test-parser_8c_a1450b44971600037b0ac71959c3cd352}\label{gs2_2test-parser_8c_a1450b44971600037b0ac71959c3cd352}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!expected\_context@{expected\_context}}
+\index{expected\_context@{expected\_context}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{expected\_context}{expected\_context}}
+{\footnotesize\ttfamily char$\ast$ expected\+\_\+context}
+
+
+
+Definition at line 41 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a6b2e61f27a1e0d8d5eea3946e4975fb9}\label{gs2_2test-parser_8c_a6b2e61f27a1e0d8d5eea3946e4975fb9}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!expected\_context\_length@{expected\_context\_length}}
+\index{expected\_context\_length@{expected\_context\_length}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{expected\_context\_length}{expected\_context\_length}}
+{\footnotesize\ttfamily size\+\_\+t expected\+\_\+context\+\_\+length}
+
+
+
+Definition at line 42 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a247afbe36dc0e57fe5c661875eec5f3f}\label{gs2_2test-parser_8c_a247afbe36dc0e57fe5c661875eec5f3f}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!expected\_rc@{expected\_rc}}
+\index{expected\_rc@{expected\_rc}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{expected\_rc}{expected\_rc}}
+{\footnotesize\ttfamily int expected\+\_\+rc}
+
+
+
+Definition at line 40 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_ad1661bde2763b94a4a40d39e515e5a3f}\label{gs2_2test-parser_8c_ad1661bde2763b94a4a40d39e515e5a3f}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!expected\_wrap@{expected\_wrap}}
+\index{expected\_wrap@{expected\_wrap}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{expected\_wrap}{expected\_wrap}}
+{\footnotesize\ttfamily char$\ast$ expected\+\_\+wrap}
+
+
+
+Definition at line 43 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a11d6a131f44f4cd4f166e70614845e05}\label{gs2_2test-parser_8c_a11d6a131f44f4cd4f166e70614845e05}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!expected\_wrap\_length@{expected\_wrap\_length}}
+\index{expected\_wrap\_length@{expected\_wrap\_length}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{expected\_wrap\_length}{expected\_wrap\_length}}
+{\footnotesize\ttfamily size\+\_\+t expected\+\_\+wrap\+\_\+length}
+
+
+
+Definition at line 44 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_ae809d5359ac030c60a30a8f0b2294b82}\label{gs2_2test-parser_8c_ae809d5359ac030c60a30a8f0b2294b82}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!length@{length}}
+\index{length@{length}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily size\+\_\+t length}
+
+
+
+Definition at line 39 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a5ac083a645d964373f022d03df4849c8}\label{gs2_2test-parser_8c_a5ac083a645d964373f022d03df4849c8}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!name@{name}}
+\index{name@{name}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily char$\ast$ name}
+
+
+
+Definition at line 37 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a1d71425d9df28667d528833a4db10432}\label{gs2_2test-parser_8c_a1d71425d9df28667d528833a4db10432}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!token@{token}}
+\index{token@{token}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{token}{token}}
+{\footnotesize\ttfamily char$\ast$ token}
+
+
+
+Definition at line 38 of file gs2/test-\/parser.\+c.
+
+\mbox{\Hypertarget{gs2_2test-parser_8c_a559edb4e0e4536322815f661d0e932bb}\label{gs2_2test-parser_8c_a559edb4e0e4536322815f661d0e932bb}} 
+\index{gs2/test-\/parser.c@{gs2/test-\/parser.c}!tv@{tv}}
+\index{tv@{tv}!gs2/test-\/parser.c@{gs2/test-\/parser.c}}
+\doxysubsubsection{\texorpdfstring{tv}{tv}}
+{\footnotesize\ttfamily struct \{ ... \}  tv\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{  }
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string0"}, \textcolor{stringliteral}{"foobarbaz"}, 0, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string1"}, \textcolor{stringliteral}{"foobarbaz"}, 1, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string2"}, \textcolor{stringliteral}{"foobarbaz"}, 2, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string3"}, \textcolor{stringliteral}{"foobarbaz"}, 3, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string4"}, \textcolor{stringliteral}{"foobarbaz"}, 4, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string5"}, \textcolor{stringliteral}{"foobarbaz"}, 5, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string6"}, \textcolor{stringliteral}{"foobarbaz"}, 6, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string7"}, \textcolor{stringliteral}{"foobarbaz"}, 7, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string8"}, \textcolor{stringliteral}{"foobarbaz"}, 8, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"string9"}, \textcolor{stringliteral}{"foobarbaz"}, 9, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"allzero"}, \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}}, 8, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"allzero-\/overlong"}, \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 9, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"one-\/empty"}, \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}}, 8, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"one-\/empty2"}, \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}}, 8, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one"}, \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 9, 0, \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 1, NULL, 0 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one2"}, \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 9, 0, NULL, 0, \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one3"}, \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 10, 0, \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 1, \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one-\/overlong"}, \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 10, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one-\/overlong2"}, \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_ac328e551bde3d39b6d7b8cc9e048d941}{ZERO}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 10, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/one-\/overlong3"}, \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_a206b6f5362e56b51ca957635350b70b6}{ONE}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 11, -\/1 \},}
+\DoxyCodeLine{  \{ \textcolor{stringliteral}{"size-\/two"}, \mbox{\hyperlink{gs2_2test-parser_8c_a888e15353eb3d330c743dbdeb47117e2}{TWO}} \mbox{\hyperlink{gs2_2test-parser_8c_a888e15353eb3d330c743dbdeb47117e2}{TWO}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}{DATA2}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}{DATA2}}, 12, 0,}
+\DoxyCodeLine{    \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}} \mbox{\hyperlink{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}{DATA2}}, 2, \mbox{\hyperlink{gs2_2test-parser_8c_a0646779e9908df0466f50ff6474f0dd1}{DATA2}} \mbox{\hyperlink{gs2_2test-parser_8c_aad9ae913bdfab20dd94ad04ee2d5b045}{DATA}}, 2 \},}
+\DoxyCodeLine{  }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
