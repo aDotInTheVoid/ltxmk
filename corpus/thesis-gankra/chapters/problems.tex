@@ -1,0 +1,415 @@
+\chapter{Safety and Correctness}
+\label{ch:problems}
+
+Programming is hard. [citation needed]
+
+We would like our programs to be correct, but we seem to be very bad at doing
+this. In fact, any assertion that a non-trivial program is totally correct
+will be met with deep suspicion. This isn't unreasonable: any non-trivial property
+one might be interested in is usually \emph{undecidable}, even in trivial programming
+languages. \cite{rice1953classes}
+It's possible to formally verify systems, but this is generally an
+incredibly difficult, constraining, and expensive process. In practical terms,
+this means most programs are essentially validated in a sloppy best-effort manner.
+\cite{andronick2012large}
+Still, some bugs are more pervasive and pernicious than others. It's one thing
+to get a poorly rounded output, but another thing altogether to join a botnet
+because of a sloppy integer parser.
+
+For this reason, it is common to distinguish one major category of bug from
+all others: \emph{memory safety}. A system is said to be memory-safe if access to memory is
+properly restricted. More concretely, a memory-safe system should prevent accessing
+beyond the bounds of the object addressed by a pointer, accessing unallocated
+memory, and reading uninitialized memory. \cite{nagarakatte2014watchdoglite}
+At the heart of memory safety are two major concerns:
+preventing secrets from being stolen, and systems from being hijacked. It is
+of course possible to design a memory-safe system that liberally leaks secrets
+and blindly takes arbitrary commands from the public internet, but an absence
+of memory safety makes even innocuous systems trivial to exploit in this way.
+
+Most importantly, programs must have \emph{some} restriction on what can be read
+and written by what. If a function can freely read and write all the memory
+in a process, then compromising that function can almost certainly make it do
+anything and everything. In particular, overwriting return pointers in a
+program's call stack can often enable an attacker to execute arbitrary
+computations, even in a system with proper code-data separation and address
+space layout randomization. \cite{buchanan2008good}
+
+Even ``only'' being able to read arbitrary memory can be an exploit, particularly
+as reading memory often implies writing the value somewhere else. This is the
+basis for the infamous Heartbleed attack, where clients could ask servers
+to send them random chunks of its memory, leaking the server's private key
+. \cite{schneier2014heartbleed}
+
+Upholding memory safety is a difficult task that must often be approached in
+a holistic manner, because two interfaces that are memory-safe on their own can easily
+be unsafe when combined. For instance, dereferencing a pointer that is known
+to be valid is safe, and offsetting a pointer is technically safe (it's just adding integers),
+but being allowed to dereference \emph{and} offset is unsafe, because this allows
+arbitrary memory to be accessed.
+
+In addition to the matter of memory safety, there is also the broader problem
+of overall correctness. It is of course impossible for a system to enforce
+that all programs are correct, because it requires the programmer to
+correctly interpret and encode their program's requirements. Computers can't
+possibly understand if requirements reflect reality, so they must trust the
+programmer in this regard. That said, it is possible for a system to understand
+\emph{common} errors. Where it's impractical to prevent these errors in general,
+a language can orient itself to make these errors less likely. For instance,
+few programs expect integers to overflow, so a system that does more to prevent
+integer overflow or mitigate its consequences may be regarded as safer.
+
+Rust is fundamentally committed to being memory-safe. If memory safety can
+be violated, this is a critical issue in Rust's design and must be fixed. That said,
+Rust also tries to be safer in general. All else equal, if an interface can
+prevent misuse, it should. The question is if all else is
+\emph{really} equal, or if preventing an error comes at significant ergonomic or
+performance costs.
+
+While the techniques demonstrated in this thesis can be applied generally,
+we will be focusing on a few particularly common problems that can lead to
+memory safety violations: use-after-free, indexing out of bounds,
+iterator invalidation, and data races. In addition, we will consider the problem of
+memory leaks, which aren't a memory-safety problem, but still problematic.
+
+We will see how all of these problems occur in two of the most prolific programming
+languages of all: C and C++. It's worth noting that the practices encouraged
+by ``modern'' C++ can significantly mitigate or eliminate these errors, but
+unfortunately these are only conventions, and must be rigorously followed
+and understood to work correctly. A C++ programmer who is unaware of these
+practices gains little safety from using the latest C++ release, particularly
+since the unsafe practices are often the most convenient and well-supported.
+
+
+
+
+\section{Use-After-Free}
+
+A use-after-free is one of the two canonical memory safety violations. It
+occurs when some memory is marked as unused (freed), but the program
+continues to use that memory. Here's two simple versions of this problem, as
+seen in C:
+
+\begin{minted}{C}
+// use-after-free with heap allocation
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+    // Get some memory from the allocator
+    char* string = (char*) calloc(3, 1);
+    string[0] = 'h';
+    string[1] = 'i';
+
+    // Give the memory back to the system allocator
+    free(string);
+
+    // Use the memory anyway
+    printf("%s\n", string);
+}
+
+\end{minted}
+
+\begin{minted}{C}
+// use-after-free with stack allocation
+
+#include <stdio.h>
+
+int main() {
+    char* ptr = 0;
+
+    if (!ptr) {
+        char data = 17;
+        // take a pointer to `data`
+        ptr = &data;
+    }
+    // data is now out of scope, and undefined
+
+    // read it anyway
+    printf("%u\n", *ptr);
+}
+\end{minted}
+
+In principle, a use-after-free can be harmless if the code in question gets lucky.
+The system may never look at this memory again, allowing it to continue to
+behave in an allocated manner. However the system has been given permission
+to do whatever it pleases with this memory, which can lead to several problems.
+
+First, the memory can be returned to the operating system. If such memory is
+used, this will cause a page fault, causing the program to crash.
+This is annoying, but also arguably memory-safe in the sense that the memory
+is never successfully used after it is freed. The problematic case is when the
+allocator \emph{reuses} the memory. Any subsequent allocation may receive the
+freed memory, leading the memory to be used for two different purposes. This
+violates memory safety, allowing code to read or write memory that it wasn't
+supposed to.
+
+Use-after-frees are solved by almost all languages by requiring
+pervasive garbage collection. See for example: C\#, D, Dart, F\#, Go, Haskell, Java,
+JavaScript, Lisp, Lua, ML, OCaml, Perl, PHP, Python, Ruby, Scala, Scheme, Swift,
+Visual Basic and many, many, more.
+
+C and C++ are the two major exceptions, which
+by default don't use any garbage collection mechanisms. In these two languages
+use-after-free is a rich source of exploits to this day. As we will
+see, this is no coincidence; the solution taken by most languages is
+unacceptable to those who traditionally use C or C++.
+
+Use-after-frees are the canonical example of the more general problem of
+using something after it has been logically destroyed. For instance, a similar
+problem applies to using file handles after they're closed. However the
+use-after-free is particularly problematic because most system allocators
+pool and reuse pages of memory acquired from the operating system, which prevents
+it from understanding misuse.
+
+File handles, on the other hand, are generally not pooled like this. That said,
+it's possible for new handles to match the value of old handles
+(like pointers, they're ultimately just integers). This can lead to a similar
+scenario as a use-after-free, where two distinct handles are independently
+trying to use the same file.
+
+The more general category reveals a fundamental weakness of garbage collection:
+it only solves a use-after-free, and no other kind of use-after. Although all
+resources could be garbage collected, it's common to manually manage many other
+resources because they're much more limited, and have externally observable
+effects. For instance, file writes may not be committed to disk until the file
+is properly closed. Unfortunately, allowing manual management necessitates
+misuse to be guarded against at runtime. Since any program that tries to use-after
+is certainly \emph{wrong}, it's desirable to prevent programs that do this from
+compiling at all.
+
+
+
+
+\section{Index Out Of Bounds}
+
+An index out of bounds is the second canonical memory safety violation. It
+occurs when the index used to access an array is too large or small. A simple
+C version:
+
+\begin{minted}{C}
+#include <stdio.h>
+
+int main() {
+    // An array of 5 elements
+    char data[5] = {1, 2, 3, 4, 5};
+
+    // Print out the 17th element
+    printf("%u\n", data[17]);
+}
+\end{minted}
+
+The consequence of an index out of bounds is quite straight-forward: it reads
+or writes memory that happens to be near the array. For arrays sitting on the
+stack, this is an easy vector for overwriting a function's return pointer.
+
+Like general use-afters, this problem is usually resolved through runtime
+checks. Simply have every operation that takes an index compare it to the length of the
+array. However C and C++ provide no guards by default, and in some cases array
+length isn't even known, making it \emph{impossible} to check.
+
+
+
+
+
+\section{Iterator Invalidation}
+
+Iterator invalidation occurs when a collection is mutated while it's being iterated
+over. It's a particularly interesting problem because it's similar to a
+use-after-free or indexing out of bounds, but can require more pervasive checking
+to guard against. A simple example in C++:
+
+\begin{minted}{C++}
+#include <vector>
+#include <stdio.h>
+using namespace std;
+
+int main() {
+    // a growable array of four 5's
+    vector<char> data (4, 5);
+
+    // loop over the array to print the elements out
+    for (auto it = data.begin(); it != data.end(); ++it) {
+        printf("%u\n", *it);
+
+        // if this is the first step of the iteration
+        // push `0` onto the back of the array
+        if (it == data.begin()) {
+            data.push_back(0);
+        }
+    }
+}
+\end{minted}
+
+When an iterator is invalidated it will start acting on
+outdated information, potentially stomping through memory that is no longer
+part of the collection. For instance, when we executed this program it produced
+22(!) values. Evidently the array's backing storage had been reallocated
+in a different location on the heap, conveniently only a few bytes over. The \emph{it}
+variable simply walked forward through the heap until it found the new end of
+the array. In other words, we managed to index out of bounds \emph{and} use-after-free
+at the same time.
+
+Even if an iterator isn't invalidated, mutating a collection
+while iterating it is an easy way to produce a nonsensical program. For instance,
+unconditionally inserting into a collection while iterating into it may lead
+to an infinite memory-consuming loop. That said, it can be be desirable to
+mutate a collection while iterating it. Removing elements while processing them
+is a rather common operation.
+
+In order to guard against this, any operations which can invalidate an iterator
+need to somehow know about any outstanding iterators, or otherwise signal to
+them that a change has been made. One way to do this is to have the
+collection contain a timestamp of when it was last modified, and have iterators
+repeatedly verify that it hasn't changed. This is exactly how OpenJDK's ArrayList is
+implemented \cite{jdkiter}.
+
+Once again, neither C nor C++ provide any guards against this sort of thing
+by default. Even in Java there's no automatic solution to this problem. The
+programmer just needs to think about iterator invalidation and ensure that it
+can't happen.
+
+Iterator invalidation can be generalized to the invalidation of any ``view''
+into another type. Iterators are particularly nasty because they're often
+low-level and performance sensitive, but any view can be made
+inconsistent by mutating what it intends to represent.
+
+
+
+
+
+
+\section{Data Races}
+
+A data race occurs when two separate threads attempt to access the same location
+in memory in an unsynchronized manner, and one of them is writing. Unlike the
+other problems discussed here, a data race is primarily an issue of correctly
+expressing intent to the compiler.
+
+Many of the optimizations we expect a good optimizing compiler to perform are
+completely broken in a concurrent context. Consider the following code:
+
+\begin{minted}{C}
+step = 7;
+while (step != 0) {
+    if (step == 2) {
+        do_stuff();
+    }
+    do_other_stuff();
+    step -= 1;
+}
+\end{minted}
+
+One reasonable rearrangement of this code is as follows:
+
+\begin{minted}{C}
+step = 7;
+while (step != 2) {
+    do_other_stuff();
+    step -= 1;
+}
+
+do_stuff();
+do_other_stuff();
+do_other_stuff();
+\end{minted}
+
+This eliminates the need to perform the extra check in the loop, a clearly
+desirable optimization. However this transformation is unsound if another
+thread can modify the value of the step variable, causing the branch to be
+taken multiple times. Worse, if the step variable is kept in a register
+(yet another desirable optimization), any writes another thread performs
+will be completely ignored. In order to deal with this, one needs to
+communicate to the compiler that data accesses need to be properly synchronized.
+
+Correctly preventing data races is a difficult problem. As always,
+C and C++ generally leave this up to the programmer. They expose intrinsics for
+performing atomic operations that inhibit optimizations and emit atomic hardware
+instructions, but nothing prevents misusing these operations or simply ignoring
+them completely. Some systems solve this problem by simply forbidding one
+of the ingredients of a data race: sharing (message passing), mutability
+(pure functional programming), or concurrency (JavaScript-style event loops).
+Java is notable for allowing all three, but still eliminating data races by
+making aggressive guarantees about atomicity \cite{aspinall2007formalising}.
+
+However Java programs still permit the more general problem of
+\emph{race conditions}, which are much more difficult to address. A race condition
+is any situation in which the order in which two threads run their instructions
+leads to incorrect behaviour. Even if all instructions are atomic, it's quite easy
+to have a race condition. For instance, if two threads are trying to insert into
+a growable array, they may both atomically read the length of the array,
+write to the end of the array, and then update its length. However this valid
+execution will produce incorrect results:
+
+\begin{minted}{text}
+thread A: read length
+thread B: read length
+thread A: write to end
+thread A: increment length
+thread B: write to end
+thread B: increment length
+\end{minted}
+
+In this execution thread B will overwrite the element inserted by A, and the length
+will be incremented twice, leading to uninitialized memory being exposed in the last
+index of the array. This can easily lead to a memory-safety violation if the
+uninitialized element is read, even though no data races occurred.
+
+
+
+
+
+\section{Memory Leaks}
+
+Memory leaks are unlike any of the other errors above. The other errors are a matter
+of doing a thing that shouldn't have been done. Leaks, on the other hand, are
+failing to do something that \emph{should} have been done. In contrast to a
+use-after-free, a memory leak occurs when memory is \emph{never} returned to the allocator.
+We can demonstrate a memory leak by just removing the call to `free` from our
+use-after-free example:
+
+\begin{minted}{C}
+#include <stdlib.h>
+#include <stdio.h>
+
+// memory leak with heap allocation
+int main() {
+    // Get some memory from the allocator
+    char* string = (char*) calloc(3, 1);
+    string[0] = 'h';
+    string[1] = 'i';
+
+    printf("%s\n", string);
+
+    // Don't bother to release the memory
+}
+\end{minted}
+
+Leaks aren't a memory-safety issue. Leaks just waste resources which can
+seriously impact performance, or even cause a crash. Crashing is obviously not
+good, so leaks should be avoided if possible. That said, leaks can be benign or
+even desirable under the right circumstances. For instance, our example of a
+leak is actually totally fine. Operating systems reclaim a process' memory on
+exit anyway, so fiddling with the allocator is just slowing down the program's
+execution for no good reason.
+
+Most languages handle memory leaks with garbage collection. C++ primarily
+handles memory leaks with destructors. C doesn't provide anything for avoiding
+memory leaks. Regardless, no strategy is perfect because properly eliminating
+leaks may require semantic understanding of how an application works. For
+instance, none of the strategies mentioned can deal with forgetting to remove
+unused values from a collection. Even ignoring these ``undetectable'' cases,
+these strategies can also fail to properly collect truly unreachable memory
+due to implementation details.
+
+Memory leaks generalize to the leaking of basically any other resource such
+as threads, file descriptors, or connections. Arguably, leaks are just a special
+case of forgetting to do any final step at all. Garbage collection does nothing
+for these errors, while destructors work just as well for them all.
+
+Leaks are a sufficiently special case that we'll be skipping over them for
+the bulk of this thesis. For now we'll only focus on the errors that can lead
+to programs behaving incorrectly, instead of just poorly.
+
+
