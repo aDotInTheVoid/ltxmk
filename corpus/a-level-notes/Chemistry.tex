@@ -1,0 +1,19 @@
+\documentclass[11pt,numbers=noenddot,a4paper]{scrreprt}
+\newcommand{\gauth}{Nixon Enraght-Moony}
+\newcommand{\gtitl}{Chemistry}
+\newcommand{\speccode}{H232}
+\newcommand{\specboard}{OCR}
+
+\input{common/preamble}
+
+% Specifies the directory where pictures are stored
+\graphicspath{{common/pictures/}{chemistry/pictures/}} 
+
+\begin{document}
+
+\doparttoc[n] % Needed for part toc to work, idk why
+
+\input{common/cover}
+\input{common/frontmatter}
+\input{chemistry/outline}
+\end{document}

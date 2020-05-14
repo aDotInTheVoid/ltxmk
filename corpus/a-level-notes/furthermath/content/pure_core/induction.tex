@@ -1,0 +1,26 @@
+
+\chapter{Proof by induction}
+
+\begin{example}
+    Prove that every term the sequence given by $a_1=3$ and $a_{n+1}=a_n+2$
+    is odd. 
+    \par\noindent\hrulefill\par\par 
+    When $n=1$, $a_n=a_1=3$ which is odd. Therfor the theorem is true for $n=1$
+    \par
+    Assume the theorem is true for $n=k$. Therefor $a_k=2p+1$ where $p\in\mathbb{Z}$
+    \par
+    Now we need to show the theorem is true for $n=k+1$. 
+    Target statement: $a_{k+1}=2q+1$ where $q\in\mathbb{Z}$.
+    \begin{align*}
+        a_{k+1}&=a_k+2\\
+        &=2p+1+2 &\text{ where } p\in\mathbb{Z}\\
+        &= 2(p+1)+1 \\
+        &= 2q+1 &\text{ where } q\in\mathbb{Z}
+    \end{align*}
+    Because it is true for $n=1$ and $n=k$ being true implys the theorem is 
+    true for $n=k+1$, so it is true for all $n\in\mathbb{N}^+$
+\end{example}
+\begin{example}
+    
+\end{example}
+

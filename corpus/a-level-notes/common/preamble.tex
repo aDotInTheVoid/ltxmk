@@ -1,0 +1,279 @@
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+% https://github.com/vEnhance/napkin
+% 446cbd71e57b3c09833cde40f1dfca905d6ab28e
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------
+% Some Packages
+%--------------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsthm} % AMS Base
+\usepackage[usenames,svgnames,dvipsnames]{xcolor} % Color
+\usepackage{hyperref} % Links
+\usepackage[nameinlink]{cleveref} % References
+\usepackage{mathtools} % Inline Matricies
+\usepackage{microtype} % Nice typography
+
+\newenvironment{moral}{%
+	\begin{mdframed}[linecolor=green!70!black]%
+	\bfseries\color{green!70!black}}%
+	{\end{mdframed}}
+
+%--------------------------------------------------------------------------
+% Page Headings
+%--------------------------------------------------------------------------
+\usepackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+\def\shortdate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+\ihead{\footnotesize \textbf{\sffamily\gtitl}, by \emph{\gauth}} 
+\automark{section}
+\chead{}
+\ohead{\footnotesize \headmark}
+\cfoot{\pagemark}
+
+%--------------------------------------------------------------------------
+% Chapter & Part Headings
+%--------------------------------------------------------------------------
+\addtokomafont{chapterprefix}{\raggedleft}
+\renewcommand*{\sectionformat}{\color{purple}\S\thesection\autodot\enskip}
+
+\RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+\renewcommand*{\chapterformat}{%
+\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+\scalebox{2.718}{\color{purple}\thechapter\autodot}\enskip}}
+
+\addtokomafont{partprefix}{\rmfamily\mdseries}
+\renewcommand*{\partformat}{\color{purple}\scalebox{2.5}{\thepart}%
+	\enlargethispage{2em}}
+%--------------------------------------------------------------------------
+% ((Sub)Sub)Section Format
+%--------------------------------------------------------------------------
+\renewcommand*{\sectionformat}{\color{purple}\S\thesection\autodot\enskip}
+
+\renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\autodot\enskip}
+\renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\autodot\enskip}
+
+
+
+%--------------------------------------------------------------------------
+% Part Minitoc
+%--------------------------------------------------------------------------
+\usepackage[tight]{minitoc}
+\noptcrule
+\mtcsetfont{parttoc}{section}{\rmfamily\upshape\mdseries}
+
+\renewcommand*{\partheadstartvskip}{}
+\renewcommand*{\partheadendvskip}{}
+\renewcommand\beforeparttoc{\hspace{\fill}\rule{0.95\linewidth}{2pt}\hspace{\fill}}
+\let\oldpart\part
+\renewcommand{\part}[1]{\oldpart{#1}\parttoc\cleardoublepage}
+\newcommand{\specpart}[2]{\oldpart{#1}\begin{spec}#2\end{spec}\parttoc\cleardoublepage}
+
+%--------------------------------------------------------------------------
+% Box Styles (Theroyms ETC)
+%--------------------------------------------------------------------------
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+
+% Styles
+\theoremstyle{definition}
+\mdfdefinestyle{mdbluebox}{%
+	roundcorner = 10pt,
+	linewidth=1pt,
+	skipabove=12pt,
+	innerbottommargin=9pt,
+	skipbelow=2pt,
+	nobreak=true,
+	linecolor=blue,
+	backgroundcolor=TealBlue!5,
+}
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{MidnightBlue},
+	mdframed={style=mdbluebox},
+	headpunct={\\[3pt]},
+	postheadspace={0pt}
+]{thmbluebox}
+
+\mdfdefinestyle{mdrecbox}{%
+	linewidth=0.5pt,
+	skipabove=12pt,
+	frametitleaboveskip=5pt,
+	frametitlebelowskip=0pt,
+	skipbelow=2pt,
+	frametitlefont=\bfseries,
+	innertopmargin=4pt,
+	innerbottommargin=8pt,
+	nobreak=true,
+	linecolor=RawSienna,
+	backgroundcolor=Salmon!5,
+}
+\declaretheoremstyle[
+	headfont=\bfseries\color{RawSienna},
+	mdframed={style=mdrecbox},
+	headpunct={\\[3pt]},
+	postheadspace={0pt},
+]{thmrecbox}
+
+\declaretheorem[%
+style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmrecbox,name=Example,sibling=theorem]{example}
+
+\mdfdefinestyle{mdinlinebox}{%
+	skipabove=8pt,
+	linewidth=3pt,
+	rightline=false,
+	leftline=true,
+	topline=false,
+	bottomline=false,
+	linecolor=gray,
+	backgroundcolor=black!2
+}
+\declaretheoremstyle[
+	headfont=\bfseries,
+	bodyfont=\normalfont\small,
+	spaceabove=0pt,
+	spacebelow=0pt,
+	mdframed={style=mdinlinebox}
+]{thminlinebox}
+\theoremstyle{theorem}
+\declaretheorem[name=Question,sibling=theorem,style=thminlinebox]{ques}
+\declaretheorem[name=Exercise,sibling=theorem,style=thminlinebox]{exercise}
+
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{abuse}[theorem]{Abuse of Notation}
+
+\newtheorem{problem}{Problem}[chapter]
+\renewcommand{\theproblem}{\thechapter\Alph{problem}}
+\newtheorem{sproblem}[problem]{Problem}
+\newtheorem{dproblem}[problem]{Problem}
+\renewcommand{\thesproblem}{\theproblem$^{\star}$}
+\renewcommand{\thedproblem}{\theproblem$^{\dagger}$}
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
+
+\newenvironment{spec}{%
+	\begin{mdframed}[linecolor=Sepia!70!black,
+		backgroundcolor=Sepia!5,
+		roundcorner = 5pt,
+		linewidth=1pt]%
+	\color{Sepia!70!black}}%
+	{\end{mdframed}}
+
+%--------------------------------------------------------------------------
+% Table Of Contents
+%--------------------------------------------------------------------------
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\tableofcontents}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \pdfbookmark[0]{\contentsname}{toc}%
+}{}{}%
+\makeatother
+\setcounter{tocdepth}{1}
+% Fix spacing issues in ToC
+\usepackage[tocindentauto]{tocstyle}
+\usetocstyle{KOMAlike}
+\addtokomafont{partentry}{\LARGE}
+% \mtcsetfont{parttoc}{part}{}
+
+
+
+
+% \usepackage{tkz-graph}
+% \pgfarrowsdeclare{biggertip}{biggertip}{%
+%   \setlength{\arrowsize}{1pt}  
+%   \addtolength{\arrowsize}{.1\pgflinewidth}  
+%   \pgfarrowsrightextend{0}  
+%   \pgfarrowsleftextend{-5\arrowsize}  
+% }{%
+%   \setlength{\arrowsize}{1pt}  
+%   \addtolength{\arrowsize}{.1\pgflinewidth}  
+%   \pgfpathmoveto{\pgfpoint{-5\arrowsize}{4\arrowsize}}  
+%   \pgfpathlineto{\pgfpointorigin}  
+%   \pgfpathlineto{\pgfpoint{-5\arrowsize}{-4\arrowsize}}  
+%   \pgfusepathqstroke  
+% }  
+% \tikzset{
+% 	EdgeStyle/.style = {>=biggertip}
+% }
+
+
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%  _   _ _                   __  __           _     
+% | \ | (_)_  _____  _ __   |  \/  | ___   __| |___ 
+% |  \| | \ \/ / _ \| '_ \  | |\/| |/ _ \ / _` / __|
+% | |\  | |>  < (_) | | | | | |  | | (_) | (_| \__ \
+% |_| \_|_/_/\_\___/|_| |_| |_|  |_|\___/ \__,_|___/
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+
+%--------------------------------------------------------------------------
+% PACKAGES
+%--------------------------------------------------------------------------
+\usepackage{helvet} % Helvetica Font
+\usepackage{graphicx} % Images
+\usepackage[utf8]{inputenc} % UTF8
+
+%--------------------------------------------------------------------------
+% COVER: https://tex.stackexchange.com/a/452771
+%--------------------------------------------------------------------------
+\usepackage{tikz,fouriernc}
+\usetikzlibrary{calc}
+
+
+%--------------------------------------------------------------------------
+% KOMA Compat: https://www.tug.org/pipermail/tex-live/2016-July/038985.html
+%--------------------------------------------------------------------------
+\makeatletter
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
+
+%--------------------------------------------------------------------------
+% Title
+%--------------------------------------------------------------------------
+\title{\gtitl}
+\author{\gauth}
+
+\hypersetup{
+  pdfauthor={\gauth},
+  pdftitle={\gtitl},
+  hidelinks=true
+}
+%--------------------------------------------------------------------------
+% Math Sets
+%--------------------------------------------------------------------------
+\newcommand{\natplus}{\mathbb{Z}^+}
+\newcommand{\natzero}{\mathbb{Z}^+_0}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexs}{\mathbb{C}}
+%--------------------------------------------------------------------------
+% List Settings
+%--------------------------------------------------------------------------
+\usepackage{enumitem}
+% \setlist{nolistsep}
+
+

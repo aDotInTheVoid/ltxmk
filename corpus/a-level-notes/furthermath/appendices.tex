@@ -1,0 +1,231 @@
+\chapter{Formulae and Identities}
+%TODO: Have header say appendix in appendix
+
+These will not be given. You are expected to know them.
+
+\section{Pure Mathematics}
+\subsection{Quadratic Equations}
+\[ax^2+bx+c=0 \iff  x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
+
+\subsection{Laws of Indices} 
+\begin{align*} 
+    a^xa^y &\equiv a^{x+y}\\
+    a^x \div a^y &\equiv a^{x-y}\\
+(a^x)^y &\equiv a^{xy}
+\end{align*}
+
+\subsection{Laws of Logarithms}
+\(
+    x = a^n \iff n = \log_ax
+\) where \(a>0\) and \(x>0\)
+\begin{align*}
+    \log_ax + \log_ay &\equiv \log_a(xy) \\
+    \log_ax - \log_ay &\equiv \log_a(\frac{x}{y}) \\
+    k\log_ax &\equiv \log_a(x^k)
+\end{align*}
+
+\subsection{Coordinate Geometry}
+
+A straight line graph, gradient \(m\) passing through \( (x_1, y_1) \) has equation
+\[
+    y-y_1 = m(x-x_1)
+\]
+\noindent
+Straight lines with gradients \(m_1\) and \(m_2\) are perpendicular when  \( m_1m_2=-1 \)
+
+\subsection{Sequences}
+
+General term of an arithmetic progression: 
+\[u_n=a+(n-1)d\]
+General term of a geometric progression:
+\[u_n=ar^{n-1}\]
+
+\subsection{Trigonometry}
+In the triangle ABC:
+\begin{align*}
+    \frac{a}{\sin A} &= \frac{b}{\sin B} = \frac{c}{\sin C} \\
+    a^2 &= b^2 + c^2 -2bc\cos A \\
+    \text{Area} &= \frac{ab\sin C}{2}
+\end{align*}
+
+\begin{align*}
+1 &\equiv \cos^2A+\sin^2A \\
+\sec^2A&\equiv 1+\tan^2A\\
+\csc^2A&\equiv 1+\cot^2A\\
+\sin 2A &\equiv 2\sin A \cos A \\
+\cos 2A &\equiv \cos^2A-\sin^2A \\
+\tan 2A &\equiv \frac{2\tan A}{1-\tan^2A}
+\end{align*}
+
+\subsection{Mensuration}
+
+Circumference and Area of circle, radius \(r\) and diameter \(d\)
+\begin{align*} 
+C&=2\pi r = \pi d \\
+A&=\pi r^2 
+\end{align*}
+Pythagoras’ Theorem: In any right-angled triangle where \(a\), 
+\(b\) and \(c\) are the lengths of the sides and \(c\) is the hypotenuse:
+\[c^2=a^2+b^2\]
+
+\noindent
+Area of a trapezium where where \(a\) and \(b\) are the lengths of the parallel
+sides and \(h\) is their perpendicular separation:
+\[\text{Area}=\frac{(a+b)h}{2}\]
+\par
+
+\[
+    \text{Volume of a prism} = \text{area of cross section} \times
+    \text{length}
+\]
+
+\noindent
+For a circle of radius \(r\), where an angle at the centre of \(\theta\) radians
+subtends an arc of length \(l\) and encloses an associated sector of area \(a\):
+\begin{align*}
+l&=r\theta\\
+a&=\frac{r^2\theta}{2}
+\end{align*}
+\subsection{Complex Numbers}
+For two complex numbers \(z_1=r_1e^{i\theta_1}\) and \(z_2=r_2e^{i\theta_2}\)
+\begin{align*}
+z_1z_2 &= r_1r_2e^{i(\theta_1+\theta_2)}\\
+\frac{z_1}{z_2}&= \frac{r_1}{r_2} e^{i(\theta_1-\theta_2)}
+\end{align*}
+\subsubsection{Loci in the Argand diagram}
+\(|z-a| = r \) is a circle radius \(r\)  centred at \(a\)
+\par
+\(\arg(z-a) = \theta \) is a half line drawn from \(a\) at angle \(\theta\) to a
+line parallel to the positive real axis
+\subsubsection{Exponential Form}
+\[          
+e^{i\theta}=\cos\theta+i\sin\theta
+\]
+\subsection{Matrices}
+For a $2$ by $2$ matrix
+$\begin{psmallmatrix}a & b\\ c & d\end{psmallmatrix}$
+the determinant
+$ \Delta =  \begin{vsmallmatrix}a & b\\ c & d\end{vsmallmatrix} = ad-bc$. 
+The inverse is
+$
+\frac{1}{\Delta} \begin{psmallmatrix}d & -b\\ -c & a\end{psmallmatrix}
+$
+\par
+
+The transformation represented by matrix $\mathbf{AB}$ is the transformation
+represented by matrix $\mathbf{B}$ followed by the transformation represented by
+matrix $\mathbf{A}$.
+\par
+
+For matrices $\mathbf{A}$, $\mathbf{B}$: $(\mathbf{AB})^{-1}=\mathbf{A}^{-1}\mathbf{B}^{-1}$
+\subsection{Algebra}
+\[
+    \sum_{r=1}^nr=\frac{n(n+1)}{2}
+\]
+For $ax^2+bx+c=0$ with roots $\alpha$ and $\beta$:
+\begin{align*}
+\alpha+\beta &= \frac{-b}{a}\\
+\alpha\beta&=\frac{c}{a}
+\end{align*}
+For $ax^3+bx^2+cx+d=0$ with roots $\alpha$, $\beta$ and $\gamma$:
+\begin{align*}
+\sum\alpha &= \frac{-b}{a}\\
+\sum\alpha\beta&=\frac{c}{a}\\
+\alpha\beta\gamma&=\frac{-d}{a}
+\end{align*}
+
+\subsection{Hyperbolic Functions}
+\begin{align*}
+\cosh x &\equiv \frac{e^x+e^{-x}}{2}\\
+\sinh x &\equiv \frac{e^x-e^{-x}}{2}\\
+\tanh x &\equiv \frac{\sinh x}{\cosh x }
+\end{align*}
+
+\subsection{Calculus and Differential Equations}
+\subsubsection{Differentiation}
+\begin{align*}
+    &\frac{d}{dx} x^n \equiv nx^{n-1}\\
+    &\frac{d}{dx} \sin kx   \equiv k\cos kx\\
+    &\frac{d}{dx} \cos kx   \equiv -k\sin kx\\
+    &\frac{d}{dx} \sinh kx  \equiv k\cosh kx\\
+    &\frac{d}{dx} \cosh kx  \equiv k\sinh kx \\
+    &\frac{d}{dx} e^{kx}    \equiv ke^{kx}\\
+    &\frac{d}{dx} \ln x     \equiv \frac{1}{x}\\
+    &\frac{d}{dx} f(x)+g(x) \equiv f'(x)+g'(x)\\
+    &\frac{d}{dx} f(x)g(x)  \equiv f'(x)g(x) + f(x)g'(x) \\
+    &\frac{d}{dx} f(g(x))   \equiv f'(g(x))g'(x)
+\end{align*}
+\subsubsection{Integration}
+\begin{align*}
+    &\int x^n           \,dx \equiv \frac{x^{n+1}}{n+1} + c \ \text{where}\  n\neq -1 \\
+    &\int \cos kx       \,dx \equiv \frac{\sin kx}{k} + c\\
+    &\int \sin kx       \,dx \equiv \frac{-\cos kx}{k} + c\\
+    &\int \cosh kx      \,dx \equiv \frac{\sinh kx}{k} + c\\
+    &\int \sinh kx      \,dx \equiv \frac{\cosh kx}{k} + c\\
+    &\int e^{kx}        \,dx \equiv \frac{e^{kx}}{k} + c\\
+    &\int \frac{1}{x}   \,dx \equiv \ln|x|+c \,\text{where}\,x\neq 0\\
+    &\int f'(x)+g'(x)   \,dx \equiv f(x)+g(x)+c\\
+    &\int f'(g(x))g'(x) \,dx \equiv f(g(x))+c
+\end{align*}
+
+\subsubsection{Area under a curve}
+\[
+    \int_a^b y\,dx \ \text{where} \ y\geq 0
+\]
+
+\subsubsection{Volumes of revolution about the x and y axes}
+\begin{align*}
+    V_x &= \pi\int_a^b y^2 \,dx\\
+    V_y &= \pi\int_c^d x^2 \, dy
+\end{align*}
+
+\subsubsection{Simple Harmonic Motion}
+\[\ddot{x}=-\omega^2x\]
+
+%TODO: Vectors
+
+%TODO: Non-pure core
+
+\chapter{Number Sets}
+\section{Integers}
+\begin{itemize}
+    \item $\natplus$: Positive integers without $0$. $\{\,1,\, 2,\, 3\,\dots\,\}$
+    \item $\natzero$: Positive integers with $0$. $\{\,0,\,1,\, 2,\, 3\,\dots\,\}$
+    \item $\ints$: Integers. $\{\, \dots \,-3,\,-2,\,-1,\,0,\,1,\,2,\,3\,\dots\,\}$
+\end{itemize}
+\section{Unused Integers}
+I will try to avoid these as they are ambiguous.
+\begin{itemize}
+    \item $\mathbb{N}$: Natural numbers. May or may not include $0$. I will use 
+            $\natplus$ or $natzero$ to be explicit.
+\end{itemize}
+\section{Non-Integers}
+\begin{itemize}
+    \item $\rationals$: Numbers that can be expressed as a fraction: 
+        $\rationals=\{\, \frac{p}{q} \,\mid\, p\in\ints,\, q\in\natplus \,\}$
+    \item $\reals$: Real numbers. The definition gets axiomatic fast, so I will just
+                    say that they are just $1$ number (not a matrix/vector) and are
+                    not complex / imaginary.
+    \item $\complexs$: A number with a real part and a complex part. 
+            $\complexs = \{\, a+bi \,\mid\, a\in\reals\,b\in\reals\,\}$
+                       
+\end{itemize}
+
+% \begin{tikzpicture}[fill=gray]
+%     % left hand
+%     \scope
+%     \clip (-2,-2) rectangle (2,2)
+%           (1,0) circle (1);
+%     \fill (0,0) circle (1);
+%     \endscope
+%     % right hand
+%     \scope
+%     \clip (-2,-2) rectangle (2,2)
+%           (0,0) circle (1);
+%     \fill (1,0) circle (1);
+%     \endscope
+%     % outline
+%     \draw (0,0) circle (1) (0,1)  node [text=black,above] {$A$}
+%           (1,0) circle (1) (1,1)  node [text=black,above] {$B$}
+%           (-2,-2) rectangle (3,2) node [text=black,above] {$H$};
+% \end{tikzpicture}
