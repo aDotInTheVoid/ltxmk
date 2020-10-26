@@ -1,3 +1,7 @@
+**THIS IS ABANDONED. DO NOT USE**
+
+---
+
 # LTXMK: A LaTeX build system
 
 LTXMK is intended to be a replacement for [latexmk](https://mg.readthedocs.io/latexmk.html)
@@ -16,7 +20,8 @@ LTXMK is intended to be a replacement for [latexmk](https://mg.readthedocs.io/la
     - Everything is a pdf
 
 ## Status
-Currently LTXMK is being developed and does not work.
+Currently LTXMK is being abandoned and doesn't work. The LaTeX output is just too unfriendly to be parsed by anythink other than a 10kloc perl script.
+
 
 ## Things to support
 
